@@ -1,0 +1,6 @@
+@mixin font($size, $family: $font-family-sans-serif, $color: #000, $lineHeight: 1.2, $weight: normal, $style: normal, $letterSpacing: inherit) {
+  font: $weight $style $size $family, sans-serif;
+  line-height: $lineHeight;
+  letter-spacing: $letterSpacing;
+  color: $color;
+}

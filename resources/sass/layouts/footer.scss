@@ -1,0 +1,54 @@
+.footer {
+  background: $footerBG;
+
+  &__wrapper {
+    background: $footerBG;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid $footerBorder;
+    padding: 39px 0 40px;
+  }
+
+  &__nav-link {
+    margin: 0 36px;
+    @include font(13px, $font-family-sans-serif, $white, 13px, 400);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__contacts {
+
+  }
+
+  &__email {
+    @include font(14px, $font-family-sans-serif, $white, 14px, 400);
+    text-decoration: none;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      width: 12px;
+      height: 10px;
+      margin-right: 15px;
+      //background: url('../images/icon-email.png') center center no-repeat;
+    }
+  }
+
+  &__quote {
+    padding: 40px 0 100px;
+    @include font(13px, $font-family-sans-serif, $headText, 19px, 400);
+  }
+}

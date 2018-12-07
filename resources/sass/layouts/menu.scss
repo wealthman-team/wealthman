@@ -1,0 +1,41 @@
+.menu {
+  font-size: 0;
+  line-height: 0;
+
+  &__list {
+    display: inline-block;
+  }
+
+  &__list-item {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__list-link {
+    display: block;
+    border: 1px solid $borderColor;
+    border-top: none;
+    padding: 7px 14px;
+    @include font(14px, $font-family-sans-serif, $blueText, 20px, 500);
+    background: $white;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 0 0 5px 5px;
+
+    &.active {
+      color: $white;
+      background: $blueText;
+    }
+
+    &:hover {
+      color: $white;
+      background: $blueText;
+    }
+  }
+}
