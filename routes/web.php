@@ -26,4 +26,18 @@ Route::get('/home', 'HomeController@index')->name('home');
  */
 Route::namespace('Admin')->group(function () {
     Route::get('/admin/', 'AdminController@index')->name('admin.index')->middleware('auth:admin', 'revalidate');
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('robo-advisors', 'RoboAdvisorController', ['names' => [
+            'index' => 'admin.roboAdvisors.index',
+            'create' => 'admin.roboAdvisors.create',
+            'store' => 'admin.roboAdvisors.store',
+            'show' => 'admin.roboAdvisors.show',
+            'edit' => 'admin.roboAdvisors.edit',
+            'update' => 'admin.roboAdvisors.update',
+            'destroy' => 'admin.roboAdvisors.destroy',
+        ]])->parameters([
+            'robo-advisors' => 'roboAdvisor'
+        ])->middleware(['auth:admin', 'revalidate']);
+    });
 });
