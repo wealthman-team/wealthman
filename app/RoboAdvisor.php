@@ -108,4 +108,9 @@ class RoboAdvisor extends Model
     {
         return $this->hasOne('App\Rating');
     }
+
+    public function account_types()
+    {
+        return $this->belongsToMany('App\AccountType');
+    }
 }

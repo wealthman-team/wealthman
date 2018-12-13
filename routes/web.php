@@ -40,4 +40,18 @@ Route::namespace('Admin')->group(function () {
             'robo-advisors' => 'roboAdvisor'
         ])->middleware(['auth:admin', 'revalidate']);
     });
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('account-types', 'AccountTypeController', ['names' => [
+            'index' => 'admin.accountTypes.index',
+            'create' => 'admin.accountTypes.create',
+            'store' => 'admin.accountTypes.store',
+            'show' => 'admin.accountTypes.show',
+            'edit' => 'admin.accountTypes.edit',
+            'update' => 'admin.accountTypes.update',
+            'destroy' => 'admin.accountTypes.destroy',
+        ]])->parameters([
+            'account-types' => 'accountType'
+        ])->middleware(['auth:admin', 'revalidate']);
+    });
 });

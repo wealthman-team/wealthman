@@ -17,6 +17,13 @@
                 </a>
             </li>
 
+            <li class="{{ setCatActive('admin/account-types') }} {{ setCatActive('admin/account-types/*') }}">
+                <a href="{{ route('admin.accountTypes.index') }}">
+                    <i class="fa fa-money"></i>
+                    <span>Account types</span>
+                </a>
+            </li>
+
             <li>
                 <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <i class="fa fa-sign-out"></i>
