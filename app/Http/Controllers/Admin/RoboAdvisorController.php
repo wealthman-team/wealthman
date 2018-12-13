@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\RoboAdvisor;
+use App\Rating;
 use App\Sources\Page;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -113,7 +114,7 @@ class RoboAdvisorController extends Controller
 
         $roboAdvisor->save();
 
-        //$roboAdvisor->rating()->save(new Rating($this->getRaiting($request)));
+        $roboAdvisor->rating()->save(new Rating($this->getRaiting($request)));
 
         return redirect()
             ->route('admin.roboAdvisors.index')
@@ -213,7 +214,7 @@ class RoboAdvisorController extends Controller
 
         $roboAdvisor->save();
 
-        //$roboAdvisor->rating()->save(new Rating($this->getRaiting($request)));
+        $roboAdvisor->rating->fill($this->getRaiting($request))->save();
 
         return redirect()
             ->route('admin.roboAdvisors.index')
@@ -238,5 +239,27 @@ class RoboAdvisorController extends Controller
                 ->route('admin.roboAdvisors.index')
                 ->with('status', $this->messages['errorDelete']);
         }
+    }
+
+    /**
+     * Calculate company rating.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    private function getRaiting(Request $request)
+    {
+        $total = ($request->commissions + $request->service + $request->comfortable
+                 + $request->tools + $request->investment_options + $request->asset_allocation)/6;
+
+        return [
+            'commissions' => $request->commissions,
+            'service' => $request->service,
+            'comfortable' => $request->comfortable,
+            'tools' => $request->tools,
+            'investment_options' => $request->investment_options,
+            'asset_allocation' => $request->asset_allocation,
+            'total' => $total,
+        ];
     }
 }

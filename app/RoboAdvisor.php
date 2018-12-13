@@ -103,4 +103,9 @@ class RoboAdvisor extends Model
             'contact_details'   => 'More data',
         ];
     }
+
+    public function rating()
+    {
+        return $this->hasOne('App\Rating');
+    }
 }

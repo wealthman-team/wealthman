@@ -58,6 +58,7 @@ require('admin-lte');
 require('icheck');
 require('select2');
 window.Noty = require('noty');
+window.noUiSlider = require('nouislider');
 
 $(function () {
     $('.js-model-delete-modal').on('show.bs.modal', function (e) {
@@ -91,4 +92,31 @@ $(function () {
     $('.js-editor').each(function () {
         CKEDITOR.replace($(this).attr('id'));
     });
+
+	$('.js-no-ui-slider').each(function () {
+		let self = $(this);
+		let inputId = self.data('inputId');
+		let valueId = self.data('valueId');
+		let min = self.data('min');
+		let max = self.data('max');
+		let input = $(`#${inputId}`);
+		let valueContainer = $(`#${valueId}`);
+
+		noUiSlider.create(this, {
+			start: input.val(),
+			step: 0.5,
+			range: {
+				min: min,
+				max: max
+			}
+		});
+
+		this.noUiSlider.on('update', function (values, handle) {
+			input.val(values[handle]);
+			valueContainer.html('Value: ' + values[handle]);
+
+            console.log('values = ', values);
+            console.log('handle = ', handle);
+		});
+	});
 });

@@ -12,12 +12,32 @@
 @import '~admin-lte/dist/css/AdminLTE.css';
 @import '~admin-lte/dist/css/skins/_all-skins.css';
 
+// Nouislider
+@import "~nouislider/distribute/nouislider.min.css";
+
 // Variables
 @import 'variables';
 
 // Mix
 @import 'mixins';
 
+body {
+  font-family: $font-family-sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+}
+
 .table.small-text {
   font-size: 0.8rem;
+}
+
+.no-ui-slider {
+  width: 280px;
+  margin: 10px 15px 15px 15px;
+}
+
+.no-ui-slider-value {
+  margin-left: 15px;
+  font-size: 14px;
+  color: $gray;
 }
