@@ -129,6 +129,21 @@
                                             @endif
                                         </div>
 
+                                        {{-- Account types --}}
+                                        <div class="form-group">
+                                            <label for="robo-advisor-account-types-input">Accounts Available</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-money"></i>
+                                                </div>
+                                                <select class="form-control js-select2" id="robo-advisor-account-types-input" name="account_types[]" multiple style="width: 100%;">
+                                                    @foreach($accountTypes as $accountType)
+                                                        <option value="{{ $accountType->id }}" {{ in_array($accountType->id, (old('account_types') ?? $accountTypesID)) ? 'selected' : '' }}>{{ $accountType->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         {{-- Robo Advisor referral link --}}
                                         <div class="form-group {{ $errors->has('referral_link') ? ' has-error' : '' }}">
                                             <label for="robo-advisor-referral-link-input">Referral link</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\RoboAdvisor;
 use App\Rating;
+use App\AccountType;
 use App\Sources\Page;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -48,7 +49,9 @@ class RoboAdvisorController extends Controller
         Page::setTitle('Add new Robo Advisor | Wealthman');
         Page::setDescription('Add new Robo Advisor | Wealthman');
 
-        return view('admin.roboAdvisors.create');
+        return view('admin.roboAdvisors.create', [
+            'accountTypes' => AccountType::all(),
+        ]);
     }
 
     /**
@@ -114,6 +117,7 @@ class RoboAdvisorController extends Controller
 
         $roboAdvisor->save();
 
+        $roboAdvisor->account_types()->sync(isset($request->account_types) ? $request->account_types : []);
         $roboAdvisor->rating()->save(new Rating($this->getRaiting($request)));
 
         return redirect()
@@ -147,7 +151,9 @@ class RoboAdvisorController extends Controller
         Page::setDescription('Edit Robo Advisor | Wealthman');
 
         return view('admin.roboAdvisors.edit', [
-            'roboAdvisor' => $roboAdvisor
+            'roboAdvisor' => $roboAdvisor,
+            'accountTypesID' => $roboAdvisor->account_types->pluck('id')->toArray(),
+            'accountTypes' => AccountType::all(),
         ]);
     }
 
@@ -214,6 +220,7 @@ class RoboAdvisorController extends Controller
 
         $roboAdvisor->save();
 
+        $roboAdvisor->account_types()->sync(isset($request->account_types) ? $request->account_types : []);
         $roboAdvisor->rating->fill($this->getRaiting($request))->save();
 
         return redirect()
