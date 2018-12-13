@@ -19,7 +19,7 @@ Route::get('/admin/login', 'Auth\LoginController@showAdminLoginForm')->name('adm
 Route::post('/admin/login', 'Auth\LoginController@adminLogin')->name('admin.login');
 Route::post('/admin/logout', 'Auth\LoginController@logout')->name('admin.logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 /*
  * Admin routes
