@@ -12,14 +12,13 @@
 */
 
 Route::get('/', 'IndexController@index')->name('home');
+Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
 
 //Auth::routes();
 
 Route::get('/admin/login', 'Auth\LoginController@showAdminLoginForm')->name('admin.login');
 Route::post('/admin/login', 'Auth\LoginController@adminLogin')->name('admin.login');
 Route::post('/admin/logout', 'Auth\LoginController@logout')->name('admin.logout');
-
-//Route::get('/home', 'HomeController@index')->name('home');
 
 /*
  * Admin routes
