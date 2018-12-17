@@ -1,7 +1,14 @@
 .container {
-  width: 1140px;
+  width: $containerWidth;
   margin: 0 auto;
 }
+
+.header-logo {
+  width: 204px;
+  color: $logoBG;
+}
+
+/*
 
 .link {
   display: inline-block;
@@ -111,4 +118,4 @@
     display: table;
     clear: both;
   }
-}
+}*/

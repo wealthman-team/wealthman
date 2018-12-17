@@ -25,9 +25,9 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Wealthman', $request->input('page'));
-        Page::setDescription('Description', $request->input('page'));
+        Page::setTitle('Home | Wealthman');
+        Page::setDescription('Main page');
 
-        return view('welcome');
+        return view('index');
     }
 }

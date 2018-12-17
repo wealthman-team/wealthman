@@ -1,40 +1,15 @@
 .header {
-  min-width: 1140px;
-  border-bottom: 1px solid $borderColor;
+  height: 78px;
+  background: $white;
 
   &__content {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 62px;
+    height: 78px;
   }
 
   &__logo-container {
-    width: 214px;
-  }
-
-  &__logo {
-    width: 160px;
-    height: 32px;
-  }
-
-  &__right-section {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  &__text {
-    max-width: 440px;
-    margin-left: 54px;
-    @include font(13px, $font-family-sans-serif, $headText, 19px, 400);
-  }
-
-  &__email {
-    display: flex;
-    align-items: center;
-    @include font(14px, $font-family-sans-serif, $link, 14px, 400);
-    text-decoration: none;
+    width: 204px;
   }
 }
