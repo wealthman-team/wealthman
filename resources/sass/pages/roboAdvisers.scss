@@ -1,0 +1,9 @@
+.robo-advisors {
+  background: $white url("../images/roboAdvisorsBG.png") top center no-repeat;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 55px;
+  }
+}

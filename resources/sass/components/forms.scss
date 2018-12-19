@@ -1,0 +1,60 @@
+.form-group {
+  margin-bottom: 18px;
+}
+
+.label {
+  @include font(13px, $Geometria, $text, 16px, 400);
+  cursor: pointer;
+  user-select: none;
+
+  &_inline {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.checkbox {
+  position: relative;
+  margin-right: 10px;
+  font-size: 0;
+  line-height: 0;
+
+  &_inline {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  input {
+    position: absolute;
+    z-index: 2;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked {
+      + .checkbox__icon-container {
+        .checkbox__icon {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .checkbox__icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $text;
+    border-radius: 4px;
+  }
+
+  &__icon {
+    width: 9px;
+    color: $text;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,55 @@
+.range-slider {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__checkbox {
+    font-size: 0;
+    line-height: 0;
+  }
+
+  &__values {
+    @include font(13px, $Geometria, $text, 16px, 400);
+  }
+
+  &__body {
+    padding-top: 18px;
+    padding-bottom: 6px;
+  }
+
+  &__slider {
+    height: 1px !important;
+    margin: 0 7px;
+    border: 0 !important;
+
+    .noUi-handle {
+      right: -7px !important;
+      width: 13px !important;
+      height: 13px !important;
+      border-color: $text !important;
+      border-radius: 50% !important;
+      background: #fafafa !important;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
+
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+
+    .noUi-horizontal {
+      height: 1px !important;
+
+    }
+
+    .noUi-connects {
+      background: $inactive !important;
+    }
+
+    .noUi-connect {
+      background: $text !important;
+    }
+  }
+}

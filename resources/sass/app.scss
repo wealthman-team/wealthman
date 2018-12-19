@@ -1,10 +1,3 @@
-
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-// Variables
-@import 'variables';
-
 // Reset CSS
 @import '~reset-css/sass/reset';
 
@@ -21,6 +14,9 @@
 @import "~noty/src/noty.scss";
 @import "~noty/src/themes/metroui.scss";
 
+// Nouislider
+@import "~nouislider/distribute/nouislider.min.css";
+
 // Custom Scrollbar
 @import "~malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
 
@@ -31,6 +27,7 @@
 @import "global";
 @import "layouts";
 @import "components";
+@import "pages";
 
 html,
 body {

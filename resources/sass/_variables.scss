@@ -4,6 +4,10 @@ $font-family-sans-serif: "Open Sans", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
+// Fonts
+$Geometria: Geometria, sans-serif;
+$Intro: Intro, sans-serif;
+
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
@@ -24,12 +28,9 @@ $bodyBG: #f8f9fd;
 $headText: #97a4b1;
 $blueText: #077bfa;
 $borderColor: #d2d5de;
-$h1: #363636;
-$text: #637280;
 $link: #077bfa;
 $selectBorder: #d2d5de;
 $selectText: #363636;
-$filtersBG: #eff1f7;
 $headerText: #363636;
 $listBorder: #dfe7ed;
 $footerBG: #1f203f;
@@ -39,5 +40,11 @@ $red: #fa0718;
 $panelBG: #0089f0;
 
 $logoBG: #39A9DC;
+$breadcrumbs: #c4c4c4;
+$breadcrumbsH: #172341;
+$h1: #172341;
+$text: #172341;
+$inactive: #dfdfdf;
+$filtersBG: #fafafa;
 
 $containerWidth: 1305px;

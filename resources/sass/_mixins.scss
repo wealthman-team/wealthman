@@ -4,3 +4,12 @@
   letter-spacing: $letterSpacing;
   color: $color;
 }
+
+@mixin blur($px: 0) {
+  -webkit-filter: blur(#{$px}px) !important;
+  -ms-filter: blur(#{$px}px) !important;
+  -moz-filter: blur(#{$px}) !important;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='blur'><feGaussianBlur stdDeviation='#{$px}'/></filter></svg>#blur");
+  filter: blur(#{$px}px);
+  filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius='#{$px}');
+}

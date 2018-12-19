@@ -114,9 +114,6 @@ $(function () {
 		this.noUiSlider.on('update', function (values, handle) {
 			input.val(values[handle]);
 			valueContainer.html('Value: ' + values[handle]);
-
-            console.log('values = ', values);
-            console.log('handle = ', handle);
 		});
 	});
 });
