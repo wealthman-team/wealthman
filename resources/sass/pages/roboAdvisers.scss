@@ -1,16 +1,18 @@
 .robo-advisors {
   background: $white url("../images/roboAdvisorsBG.png") top center no-repeat;
 
-  &__content {
+  &__container {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     padding-top: 55px;
   }
-
-  &__list {
+  &__content {
     flex-shrink: 0;
     width: 974px;
+  }
+
+  &__list {
     padding: 4px;
     border-radius: 20px;
     background-color: $filtersBG;
