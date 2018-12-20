@@ -10,6 +10,7 @@
   &__content {
     flex-shrink: 0;
     width: 974px;
+    padding-bottom: 100px;
   }
 
   &__list {
@@ -70,5 +71,45 @@
   &__lh-details {
     width: 167px;
     margin-right: 25px;
+  }
+
+  &__text-container {
+    padding-top: 70px;
+  }
+
+  &__text-inner {
+    padding: 30px 20px;
+    border-radius: 20px;
+    background-color: $filtersBG;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  &__text-strong {
+    margin: 0 -16px -6px;
+    padding: 4px 16px;
+    border-radius: 20px;
+    background-color: $white;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+
+  &__section-title {
+    margin-bottom: 20px;
+    @include font(22px, $Geometria, $text, 28px, 400);
+  }
+
+  &__h2 {
+    margin-bottom: 52px;
+    @include font(32px, $Intro, $text, 38px, 400);
+  }
+
+  &__h3 {
+    margin-bottom: 16px;
+    padding-top: 36px;
+    @include font(22px, $Geometria, $text, 28px, 700);
+  }
+
+  &__p {
+    margin-bottom: 20px;
+    @include font(14px, $Geometria, $text, 20px, 400);
   }
 }
