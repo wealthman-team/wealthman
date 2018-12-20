@@ -48,6 +48,22 @@ $(function () {
 		});
 	});
 
+	$('.js-ra-list').each(function () {
+		let raList = $(this);
+		let raItems = $('.js-ra-item', raList);
+
+		raItems.each(function () {
+			let raItem = $(this);
+			let opener = $('.js-ra-item-opener', raItem);
+			let raItemBody = $('.js-ra-item-body', raItem);
+
+			opener.on('click', function () {
+				raItem.toggleClass('open');
+				raItemBody.stop().slideToggle(200);
+			});
+		});
+	});
+
 	$('.js-range-slider').each(function () {
 		let self = $(this);
 		let sliderItem = $('.js-range-slider-item', self).get(0);

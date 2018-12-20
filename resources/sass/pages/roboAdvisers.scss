@@ -3,7 +3,70 @@
 
   &__content {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     padding-top: 55px;
+  }
+
+  &__list {
+    flex-shrink: 0;
+    width: 974px;
+    padding: 4px;
+    border-radius: 20px;
+    background-color: $filtersBG;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  &__list-title {
+
+  }
+
+  &__list-header {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 16px;
+    @include font(12px, $Geometria, $text, 15px, 700);
+    text-transform: uppercase;
+  }
+
+  &__lh-item {
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  &__lh-company {
+    width: 101px;
+    margin-right: 35px;
+  }
+
+  &__lh-rating {
+    width: 47px;
+    margin-right: 25px;
+  }
+
+  &__lh-recommendation {
+    width: 149px;
+    margin-right: 25px;
+  }
+
+  &__lh-account {
+    width: 87px;
+    margin-right: 25px;
+  }
+
+  &__lh-fee {
+    width: 50px;
+    margin-right: 25px;
+  }
+
+  &__lh-aum {
+    width: 62px;
+    margin-right: 25px;
+  }
+
+  &__lh-details {
+    width: 167px;
+    margin-right: 25px;
   }
 }
