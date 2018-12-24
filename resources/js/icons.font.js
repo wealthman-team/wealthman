@@ -12,5 +12,4 @@ module.exports = {
 	'html': 'true',
 	'css': 'true',
 	'writeFiles': 'true',
-
 };

@@ -1,39 +1,47 @@
 <div class="robo-advisors-item js-ra-item">
     <div class="robo-advisors-item__header">
         <div class="robo-advisors-item__section robo-advisors-item__company">
-            @svg('logo')
+            @if ($roboAdvisor->logo)
+                <img src="{{ asset('storage/' . $roboAdvisor->logo) }}" />
+            @endif
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__rating">
-            9.5
+            {{ $roboAdvisor->rating->total }}
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__recommendation">
             Recommendation
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__account">
-            $500
+            ${{ $roboAdvisor->minimum_account }}
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__fee">
-            0,25%
+            {{ $roboAdvisor->management_fee }}%
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__aum">
-            >$11 Bln
+            >
+            {{ getAUMNum($roboAdvisor->aum) }}
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__details">
             <div class="robo-advisors-item__promotions">
-                Up To 1 Year Free
+                @if ($roboAdvisor->promotions)
+                    {{ $roboAdvisor->promotions }}
+                @else
+                    Promotions: None
+                @endif
             </div>
-            <div class="robo-advisors-item__info">
-                Free under $10k and SoFi
-                Borrowers; 0.25%/year
-            </div>
+            @if ($roboAdvisor->fee_details)
+                <div class="robo-advisors-item__info">
+                    {{ $roboAdvisor->fee_details }}
+                </div>
+            @endif
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__actions">
             <ul>
                 <li>
-                    <a class="robo-advisors-item__sign-up" href="{{ route('home') }}">Sign up</a>
+                    <a class="robo-advisors-item__sign-up" href="{{ $roboAdvisor->referral_link }}">Sign up</a>
                 </li>
                 <li>
-                    <a class="robo-advisors-item__compare" href="{{ route('home') }}">Compared</a>
+                    <a class="robo-advisors-item__compare js-add-to-compare" href="#">Compared</a>
                 </li>
                 <li>
                     <a class="robo-advisors-item__review" href="{{ route('home') }}">Review</a>
@@ -52,7 +60,7 @@
                         Commission & Fees
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        8
+                        {{ $roboAdvisor->rating->commissions }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -60,7 +68,7 @@
                         Customer Service
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        9
+                        {{ $roboAdvisor->rating->service }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -68,7 +76,7 @@
                         Ease of Use
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        9
+                        {{ $roboAdvisor->rating->comfortable }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -76,7 +84,7 @@
                         Tools & Resources
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        9
+                        {{ $roboAdvisor->rating->tools }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -84,7 +92,7 @@
                         Investment Options
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        9
+                        {{ $roboAdvisor->rating->investment_options }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -92,43 +100,47 @@
                         Asset Allocation
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        8.5
+                        {{ $roboAdvisor->rating->asset_allocation }}
                     </div>
                 </div>
             </div>
 
             <div class="robo-advisors-item__description">
-                Betterment is equally a good starting point for beginning investors and a useful platform for
-                more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually.
-                If you need the assistance, it recently added human advisors who can assist with your retirement account.
-                Unfortunately, Betterment's asset allocation excludes REITs or commodities.
+                <div class="robo-advisors-item__name">{{ $roboAdvisor->name }}</div>
+                {!! $roboAdvisor->short_description !!}
             </div>
 
             <div class="robo-advisors-item__properties">
                 <ul class="robo-advisors-item__properties-list">
                     <li class="robo-advisors-item__properties-item">
                         Accounts Available:
-                        <strong> Taxable, Joint, Roth IRA, Traditional IRA, Rollover IRA, SEP IRA, Trusts, Non-Profit</strong>
+                        <strong>
+                            {{ implode(', ', $roboAdvisor->account_types->pluck('name')->toArray()) }}
+                        </strong>
                     </li>
                     <li class="robo-advisors-item__properties-item">
                         401(k) Assistance:
-                        <strong>Yes</strong>
+                        <strong>{{ $roboAdvisor->assistance_401k ? 'Yes' : 'No' }}</strong>
                     </li>
                     <li class="robo-advisors-item__properties-item">
                         Human Advice:
-                        <strong>Yes</strong>
+                        <strong>{{ $roboAdvisor->human_advisors ? 'Yes' : 'No' }}</strong>
                     </li>
                     <li class="robo-advisors-item__properties-item">
                         Tax Loss Harvesting:
-                        <strong>Yes — All Taxable Accounts</strong>
+                        @if ($roboAdvisor->tax_loss)
+                            <strong>Yes — {{ $roboAdvisor->tax_loss_details }}</strong>
+                        @else
+                            <strong>No</strong>
+                        @endif
                     </li>
                     <li class="robo-advisors-item__properties-item">
                         Fractional Shares:
-                        <strong>Yes</strong>
+                        <strong>{{ $roboAdvisor->fractional_shares ? 'Yes' : 'No' }}</strong>
                     </li>
                     <li class="robo-advisors-item__properties-item">
                         Automatic Deposits:
-                        <strong>Weekly, Biweekly and Monthly</strong>
+                        <strong>{{ $roboAdvisor->automatic_deposits ? 'Yes' : 'No' }}</strong>
                     </li>
                 </ul>
             </div>

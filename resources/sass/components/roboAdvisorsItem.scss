@@ -33,6 +33,10 @@
   &__company {
     width: 101px;
     margin-right: 35px;
+
+    img {
+      width: 101px;
+    }
   }
 
   &__rating {
@@ -135,6 +139,11 @@
     width: 423px;
     margin-right: 25px;
     @include font(13px, $Geometria, $text, 18px, 400);
+  }
+
+  &__name {
+    margin-bottom: 10px;
+    font-weight: 700;
   }
 
   &__properties {

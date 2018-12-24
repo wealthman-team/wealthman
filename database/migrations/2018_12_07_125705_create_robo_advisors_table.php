@@ -25,7 +25,7 @@ class CreateRoboAdvisorsTable extends Migration
             $table->integer('minimum_account')->nullable();
             $table->float('management_fee')->nullable();
             $table->string('fee_details')->nullable();
-            $table->integer('aum')->nullable();
+            $table->bigInteger('aum')->nullable();
             $table->string('promotions')->nullable();
             $table->boolean('human_advisors')->default(false);
             $table->string('human_advisors_details')->nullable();

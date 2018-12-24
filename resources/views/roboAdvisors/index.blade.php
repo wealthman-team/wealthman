@@ -52,11 +52,11 @@
                                 </div>
                             </div>
                             <div class="robo-advisors__list-body">
-                                @include('components/roboAdvisorsItem')
-                                @include('components/roboAdvisorsItem')
-                                @include('components/roboAdvisorsItem')
-                                @include('components/roboAdvisorsItem')
-                                @include('components/roboAdvisorsItem')
+                                @foreach($roboAdvisors as $roboAdvisor)
+                                    @include('components/roboAdvisorsItem', [
+                                        'roboAdvisor' => $roboAdvisor,
+                                    ])
+                                @endforeach
                             </div>
                         </div>
 

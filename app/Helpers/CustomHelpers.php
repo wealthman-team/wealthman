@@ -27,3 +27,26 @@ function setCatActive(string $path, string $class_name = "active")
 {
     return Request::is($path) ? $class_name : "";
 }
+
+/**
+ *
+ * Get shot value string for AUM field
+ *
+ * @param number $value
+ * @return string $result
+ */
+function getAUMNum($value)
+{
+    $result = '';
+
+    if ($value >= 1000000000) {
+        $result = floor($value/1000000000) . ' Bln';
+    } elseif ($value >= 1000000) {
+        $result = floor($value/1000000) . ' Mln';
+    } elseif ($value >= 1000) {
+        $result = floor($value/1000) . ' K';
+    } else {
+        $result = $value;
+    }
+    return $result;
+}
