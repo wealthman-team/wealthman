@@ -11,11 +11,28 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig({
+	module: {
+		rules: [
+			{
+				test: /\.font\.js/,
+				use: [
+					'css-loader',
+					'webfonts-loader'
+				]
+			}
+		]
+	}
+});
+
 mix.js('resources/js/app.js', 'public/js')
 	.js('resources/js/admin.js', 'public/js')
 	.sass('resources/sass/app.scss', 'public/css')
 	.sass('resources/sass/admin.scss', 'public/css/admin')
 	.sass('resources/sass/bootstrap.scss', 'public/css/admin')
+	.styles([
+		'public/fonts/icons/icons.css'
+	], 'public/css/icons.css')
 	.version();
 
 mix.copy('resources/images/', 'public/images/', false);

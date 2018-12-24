@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./icons.font');
 
 window.Vue = require('vue');
 

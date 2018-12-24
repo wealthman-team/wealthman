@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="/favicon.ico"/>
 
     <!-- Styles -->
+    <link href="{{ mix('/css/icons.css') }}" rel="stylesheet">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
