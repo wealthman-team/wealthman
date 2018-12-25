@@ -38,14 +38,18 @@ const app = new Vue({
 window.noUiSlider = require('nouislider');
 
 $(function () {
-	$('.js-ra-filter').each(function () {
-		let filter = $(this);
-		let filterHeader = $('.js-ra-filter-header', filter);
-		let filterBody = $('.js-ra-filter-body', filter);
+	$('.js-slide-box').each(function () {
+		let slideBox = $(this);
+		let slideBoxHeader = $('.js-slide-box-header', slideBox);
+		let slideBoxBody = $('.js-slide-box-body', slideBox);
 
-		filterHeader.on('click', function () {
-			filter.toggleClass('active');
-			filterBody.stop().slideToggle(200);
+		if (slideBox.hasClass('active')) {
+			slideBoxBody.show();
+		}
+
+		slideBoxHeader.on('click', function () {
+			slideBox.toggleClass('active');
+			slideBoxBody.stop().slideToggle(200);
 		});
 	});
 

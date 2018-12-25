@@ -13,6 +13,7 @@
 
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
+Route::get('/robo-advisors/{roboAdvisor}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
 Route::get('/compare', 'RoboAdvisorsController@roboAdvisorsCompare')->name('roboAdvisorsCompare');
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 

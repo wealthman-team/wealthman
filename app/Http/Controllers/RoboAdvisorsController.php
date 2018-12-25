@@ -28,6 +28,23 @@ class RoboAdvisorsController extends Controller
     }
 
     /**
+     * Show robo advisor page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\RoboAdvisor  $roboAdvisor
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request, RoboAdvisor $roboAdvisor)
+    {
+        Page::setTitle($roboAdvisor->name . ' | Wealthman');
+        Page::setDescription($roboAdvisor->name . '. ' . $roboAdvisor->short_description);
+
+        return view('roboAdvisors/show', [
+            'roboAdvisor' => $roboAdvisor,
+        ]);
+    }
+
+    /**
      * Robo Advisors compare page
      *
      * @return \Illuminate\Http\Response

@@ -1,0 +1,57 @@
+.robo-advisor {
+  background: $white url("../images/roboAdvisorsBG.jpg") top center no-repeat;
+
+  &__contact {
+    @include font(14px, $Geometria, $text, 20px, 300);
+
+    strong {
+      font-weight: 400;
+    }
+
+    &_margin {
+      margin-bottom: 12px;
+
+      strong {
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__contents-list {
+    li {
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__review {
+    margin-bottom: 18px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__review-name {
+    margin-bottom: 12px;
+    @include font(14px, $Geometria, $text, 20px, 700);
+  }
+
+  &__review-check {
+    width: 13px;
+    margin-left: 8px;
+    fill: $linkInfo;
+  }
+
+  &__review-recommendation {
+    width: 149px;
+    margin-bottom: 12px;
+  }
+
+  &__review-link {
+
+  }
+}

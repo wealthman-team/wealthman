@@ -1,0 +1,12 @@
+.counter {
+  display: inline-block;
+  vertical-align: middle;
+  width: 22px;
+  height: 22px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: $white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  @include font(14px, $Geometria, $text, 22px, 400);
+}

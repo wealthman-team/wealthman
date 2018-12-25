@@ -1,0 +1,38 @@
+.recommendation {
+  &__text {
+    margin-bottom: 14px;
+    @include font(12px, $Geometria, $default, 15px, 400);
+
+    &_recommended {
+      color: $success;
+    }
+
+    &_no-recommended {
+      color: $error;
+    }
+  }
+
+  &__graf {
+    display: flex;
+    height: 2px;
+    margin-bottom: 5px;
+    font-size: 0;
+    background: $success;
+  }
+
+  &__yes {
+    background: $success;
+  }
+
+  &__maybe {
+    background: $default;
+  }
+
+  &__no {
+    background: $error;
+  }
+
+  &__total {
+    @include font(11px, $Geometria, $default, 14px, 400);
+  }
+}
