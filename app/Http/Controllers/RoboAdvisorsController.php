@@ -62,9 +62,15 @@ class RoboAdvisorsController extends Controller
         }
 
         if (in_array($id, $compareList)) {
-            $compareList = array_filter($compareList, function($item) use ($id) {
-                return $item !== $id;
-            });
+            $filteredCompareList = array();
+
+            foreach ($compareList as $item) {
+                if ($item != $id) {
+                    $filteredCompareList[] = $item;
+                }
+            }
+
+            $compareList = $filteredCompareList;
         } else {
             $compareList[] = $id;
         }
