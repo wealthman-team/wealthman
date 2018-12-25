@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     height: 78px;
   }
 
@@ -18,5 +19,29 @@
       font-size: 17px;
       color: $linkInfo;
     }
+  }
+
+  &__compare-link {
+
+  }
+
+  &__compare-list-link {
+    @include font(14px, $Geometria, $text, 18px, 400);
+
+    &.hide {
+      display: none;
+    }
+  }
+
+  &__compare-link-value {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    margin-left: 9px;
+    border-radius: 14px;
+    @include font(13px, $Geometria, $text, 28px, 400);
+    background: $white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    text-align: center;
   }
 }

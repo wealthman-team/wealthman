@@ -90,6 +90,23 @@
     color: $text;
   }
 
+  &__compare-form {
+    &.active {
+      .robo-advisors-item__compare-button {
+        color: $red;
+      }
+    }
+  }
+
+  &__compare-button {
+    margin: 0;
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    @include font(13px, $Geometria, $text, 16px, 400);
+  }
+
   &__review {
     color: $text;
   }

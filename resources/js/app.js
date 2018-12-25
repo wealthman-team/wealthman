@@ -120,4 +120,54 @@ $(function () {
 			return value;
 		}
 	});
+
+	$('.js-add-to-compare').on('submit', function (e) {
+		let form = $(this);
+
+		if (form.hasClass('in-progress')) {
+			return;
+		}
+
+		toggleCompare(form, updateCompareLink);
+
+		e.preventDefault();
+	});
+
+	function toggleCompare(form, cb) {
+		$.ajax({
+			url: form.attr('action'),
+			type: 'post',
+			data:  new FormData(form.get(0)),
+			dataType: 'json',
+			processData: false,
+			contentType: false,
+			beforeSend: function () {
+				form.addClass('in-progress');
+			},
+			success: function (response) {
+				if (response.success) {
+					form.toggleClass('active');
+					cb(response.data.compareList);
+				}
+			},
+			error: function () {
+				console.log('Error add to compare');
+			},
+			complete: function () {
+				form.removeClass('in-progress');
+			}
+		});
+	}
+
+	function updateCompareLink(compareList) {
+		let list = $('.js-compare-list');
+
+		if (compareList.length > 0) {
+			list.find('.js-compare-list-value').html(compareList.length);
+			list.show();
+		} else {
+			list.find('.js-compare-list-value').html(0);
+			list.hide();
+		}
+	}
 });

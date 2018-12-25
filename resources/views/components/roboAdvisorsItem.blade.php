@@ -41,7 +41,11 @@
                     <a class="robo-advisors-item__sign-up" href="{{ $roboAdvisor->referral_link }}">Sign up</a>
                 </li>
                 <li>
-                    <a class="robo-advisors-item__compare js-add-to-compare" href="#">Compared</a>
+                    <form class="robo-advisors-item__compare-form js-add-to-compare {{ in_array($roboAdvisor->id, $compareList) ? ' active' : '' }}" action="{{ route('toggleCompare') }}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="id" value="{{ $roboAdvisor->id }}">
+                        <button class="robo-advisors-item__compare-button" type="submit">Compared</button>
+                    </form>
                 </li>
                 <li>
                     <a class="robo-advisors-item__review" href="{{ route('home') }}">Review</a>

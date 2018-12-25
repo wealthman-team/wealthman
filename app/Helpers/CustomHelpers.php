@@ -37,8 +37,6 @@ function setCatActive(string $path, string $class_name = "active")
  */
 function getAUMNum($value)
 {
-    $result = '';
-
     if ($value >= 1000000000) {
         $result = floor($value/1000000000) . ' Bln';
     } elseif ($value >= 1000000) {
@@ -49,4 +47,36 @@ function getAUMNum($value)
         $result = $value;
     }
     return $result;
+}
+
+/**
+ *
+ * Get compare list length
+ * @return int
+ */
+function getCompareList($name)
+{
+    $compare_list = json_decode(Cookie::get($name));
+
+    if (!isset($compare_list)) {
+        $compare_list = array();
+    }
+
+    return $compare_list;
+}
+
+/**
+ *
+ * Get compare list length
+ * @return int
+ */
+function getCompareListLength($name)
+{
+    $compare_list = json_decode(Cookie::get($name));
+
+    if (!isset($compare_list)) {
+        $compare_list = array();
+    }
+
+    return count($compare_list);
 }

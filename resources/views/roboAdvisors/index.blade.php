@@ -55,6 +55,7 @@
                                 @foreach($roboAdvisors as $roboAdvisor)
                                     @include('components/roboAdvisorsItem', [
                                         'roboAdvisor' => $roboAdvisor,
+                                        'compareList' => getCompareList('compare_list'),
                                     ])
                                 @endforeach
                             </div>
