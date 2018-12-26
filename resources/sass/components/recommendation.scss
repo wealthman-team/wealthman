@@ -1,4 +1,14 @@
 .recommendation {
+  &.opened {
+    .recommendation__graf {
+      height: 11px;
+
+      span {
+        opacity: 1;
+      }
+    }
+  }
+
   &__text {
     margin-bottom: 14px;
     @include font(12px, $Geometria, $default, 15px, 400);
@@ -16,19 +26,41 @@
     display: flex;
     height: 2px;
     margin-bottom: 5px;
-    font-size: 0;
-    background: $success;
+    transition: height 0.1s ease-in-out 0s;
+
+    span {
+      opacity: 0;
+      transition: opacity 0.1s ease-in-out 0s;
+      @include font(8px, $Geometria, $white, 10px, 700);
+    }
+
+    div:first-child {
+      border-radius: 1px 0 0 1px;
+    }
+
+    div:last-child {
+      border-radius: 0 1px 1px 0;
+    }
   }
 
   &__yes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: $success;
   }
 
   &__maybe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: $default;
   }
 
   &__no {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: $error;
   }
 

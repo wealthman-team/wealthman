@@ -26,7 +26,7 @@
                 <div class="robo-advisors__container">
                     @include('components/roboAdvisorsFilters')
 
-                    <div class="robo-advisors__content">
+                    <div class="main-content">
                         <div class="robo-advisors__list js-ra-list">
                             <div class="robo-advisors__list-header">
                                 <div class="robo-advisors__lh-item robo-advisors__lh-company">
