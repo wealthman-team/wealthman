@@ -179,6 +179,15 @@
     margin-bottom: 70px;
   }
 
+  &__section-text {
+    padding: 30px 20px;
+  }
+
+  &__section-footer {
+    padding-top: 16px;
+    text-align: center;
+  }
+
   &__characteristics-table {
     width: 100%;
     text-align: left;
@@ -201,6 +210,35 @@
   &__simple-table {
     width: 100%;
     text-align: left;
+
+    &_three {
+      td {
+        width: 33.33333333%;
+      }
+    }
+
+    &_with-padding {
+      tr {
+        &:last-child {
+          td {
+            padding-bottom: 0;
+          }
+        }
+      }
+
+      th {
+        padding-bottom: 18px;
+      }
+
+      td {
+        padding-bottom: 23px;
+      }
+    }
+
+    th {
+      @include font(13px, $Geometria, #ABB0BA, 18px, 700);
+      text-transform: uppercase;
+    }
 
     td {
       @include font(14px, $Geometria, $text, 20px, 400);
