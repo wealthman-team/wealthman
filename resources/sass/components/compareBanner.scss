@@ -1,0 +1,14 @@
+.compare-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 68px;
+  border-radius: 20px;
+  box-shadow: inset 0 4px 12px rgba(0,0,0,0.16);
+  background: linear-gradient(45deg, #cfdffb, #7092d7);
+
+  &__title {
+    @include font(24px, $Geometria, $text, 30px, 300);
+    text-transform: uppercase;
+  }
+}

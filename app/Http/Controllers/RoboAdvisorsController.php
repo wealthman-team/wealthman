@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\RoboAdvisor;
+use App\AccountType;
 use App\Sources\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -39,8 +40,13 @@ class RoboAdvisorsController extends Controller
         Page::setTitle($roboAdvisor->name . ' | Wealthman');
         Page::setDescription($roboAdvisor->name . '. ' . $roboAdvisor->short_description);
 
+        $accountTypes = AccountType::all();
+
+        $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();
+
         return view('roboAdvisors/show', [
             'roboAdvisor' => $roboAdvisor,
+            'accountTypes' => $accountTypes,
         ]);
     }
 
