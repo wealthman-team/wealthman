@@ -3,7 +3,7 @@
         <form action="{{ route('roboAdvisors') }}" method="post" role="form" autocomplete="off">
             {{ csrf_field() }}
     
-            <div class="slide-box js-slide-box">
+            <div class="slide-box active js-slide-box">
                 <div class="slide-box__header js-slide-box-header">
                     <div class="slide-box__title">
                         General

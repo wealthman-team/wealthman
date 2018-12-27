@@ -12,12 +12,35 @@
 
   &__logo-container {
     width: 204px;
+    margin-left: 20px;
 
     .icon-logo {
       display: block;
       height: 78px;
       font-size: 17px;
       color: $linkInfo;
+    }
+  }
+
+  &__left-col {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right-col {
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav {
+    margin-left: 126px;
+  }
+
+  &__nav-item {
+    margin-right: 32px;
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 

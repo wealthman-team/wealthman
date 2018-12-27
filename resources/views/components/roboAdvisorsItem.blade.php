@@ -9,7 +9,13 @@
             {{ $roboAdvisor->rating->total }}
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__recommendation">
-            Recommendation
+            @include('components/recommendation', [
+                'text' => 'Strongly recommended',
+                'yes' => 10,
+                'maybe' => 2,
+                'no' => 5,
+                'total' => 17,
+            ])
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__account">
             ${{ $roboAdvisor->minimum_account }}

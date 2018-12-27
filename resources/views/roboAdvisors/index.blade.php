@@ -31,21 +31,27 @@
                             <div class="robo-advisors__list-header">
                                 <div class="robo-advisors__lh-item robo-advisors__lh-company">
                                     Company
+                                    <span class="sort-icon asc"></span>
                                 </div>
                                 <div class="robo-advisors__lh-item robo-advisors__lh-rating">
                                     Rating
+                                    <span class="sort-icon desc"></span>
                                 </div>
                                 <div class="robo-advisors__lh-item robo-advisors__lh-recommendation">
                                     Recommendation
+                                    <span class="sort-icon"></span>
                                 </div>
                                 <div class="robo-advisors__lh-item robo-advisors__lh-account">
                                     Min account
+                                    <span class="sort-icon"></span>
                                 </div>
                                 <div class="robo-advisors__lh-item robo-advisors__lh-fee">
                                     Fee
+                                    <span class="sort-icon"></span>
                                 </div>
                                 <div class="robo-advisors__lh-item robo-advisors__lh-aum">
                                     AUM
+                                    <span class="sort-icon"></span>
                                 </div>
                                 <div class="robo-advisors__lh-item robo-advisors__lh-details">
                                     Additional details

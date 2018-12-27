@@ -25,6 +25,16 @@
     }
   }
 
+  &_blue {
+    background-color: $linkInfo;
+    box-shadow: 0 4px 12px rgba(14,101,139,0.32);
+    color: $white;
+
+    &:hover {
+      box-shadow: 0 8px 18px rgba(14,101,139,0.32);
+    }
+  }
+
   &_adaptive {
     width: auto;
     padding-left: 60px;

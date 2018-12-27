@@ -1,0 +1,61 @@
+.sort-icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 4px;
+  height: 7px;
+  font-size: 0;
+  line-height: 0;
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    border: 3px solid rgba(0,0,0,0);
+    border-left-width: 2px;
+    border-right-width: 2px;
+  }
+
+  &:before {
+    top: -4px;
+    border-bottom-color: #E2E3E6;
+  }
+
+  &:after {
+    bottom: -4px;
+    border-top-color: #E2E3E6;
+  }
+
+  &:hover,
+  &.active {
+    &:before {
+      border-bottom-color: $text;
+    }
+
+    &:after {
+      border-top-color: $text;
+    }
+  }
+
+  &.asc {
+    &:before {
+      border-bottom-color: $text;
+    }
+
+    &:after {
+      border-top-color: #E2E3E6;
+    }
+  }
+
+  &.desc {
+    &:before {
+      border-bottom-color: #E2E3E6;
+    }
+
+    &:after {
+      border-top-color: $text;
+    }
+  }
+}

@@ -41,6 +41,10 @@
     color: $linkInfo;
   }
 
+  &_white {
+    color: $white;
+  }
+
   &:hover {
     color: $linkInfo;
     text-decoration: none;
@@ -101,4 +105,16 @@
 
 .margin {
   margin-bottom: 30px;
+}
+
+.search-icon {
+  display: inline-block;
+  width: 28px;
+  height: 38px;
+  margin-left: 32px;
+  cursor: pointer;
+}
+
+.start-search {
+  margin-left: 32px;
 }
