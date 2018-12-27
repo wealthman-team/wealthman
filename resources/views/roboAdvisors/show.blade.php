@@ -121,7 +121,9 @@
                                 <div class="robo-advisor__review">
                                     <div class="robo-advisor__review-name">
                                         Betterment
-                                        @svg('check', 'robo-advisor__review-check')
+                                        <span class="robo-advisor__verify">
+                                            @svg('verify')
+                                        </span>
                                     </div>
 
                                     <div class="robo-advisor__review-recommendation">
@@ -144,7 +146,9 @@
                                 <div class="robo-advisor__review">
                                     <div class="robo-advisor__review-name">
                                         Betterment
-                                        @svg('check', 'robo-advisor__review-check')
+                                        <span class="robo-advisor__verify">
+                                            @svg('verify')
+                                        </span>
                                     </div>
 
                                     <div class="robo-advisor__review-recommendation">
@@ -167,7 +171,9 @@
                                 <div class="robo-advisor__review">
                                     <div class="robo-advisor__review-name">
                                         Betterment
-                                        @svg('check', 'robo-advisor__review-check')
+                                        <span class="robo-advisor__verify">
+                                            @svg('verify')
+                                        </span>
                                     </div>
 
                                     <div class="robo-advisor__review-recommendation">
@@ -198,6 +204,10 @@
                                         @if ($roboAdvisor->logo)
                                             <img src="{{ asset('storage/' . $roboAdvisor->logo) }}" />
                                         @endif
+
+                                        <span class="robo-advisor__verify robo-advisor__verify_margin">
+                                            @svg('verify')
+                                        </span>
                                     </div>
 
                                     <div class="robo-advisor__recommendation">
@@ -797,6 +807,86 @@
                             </div>
                             <div class="robo-advisor__section-footer">
                                 <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
+                            </div>
+                        </div>
+
+                        <div class="robo-advisor__section">
+                            <h2 class="h2">
+                                PROS AND CONS
+                            </h2>
+                            <div class="panel panel_padding">
+                                <div class="panel panel_grad-green panel_margin">
+                                    <div class="robo-advisor__section-text">
+                                        <div class="reach-text">
+                                            <h3>
+                                                Pros
+                                                <span class="robo-advisor__section-icon">
+                                                    @svg('plus')
+                                                </span>
+                                            </h3>
+                                            <p>
+                                                <strong>Free for Accounts Under $5,000</strong>
+                                                — With our special promotion link. Even more is possible
+                                                with the refer-a-friend offer.
+                                            </p>
+                                            <p>
+                                                <strong>Tax-Loss Harvesting for All Accounts</strong>
+                                                — This is Wealthfront's specialty. It helps with taxable accounts
+                                                and according to Wealthfront helps increase returns.
+                                            </p>
+                                            <p>
+                                                <strong>Stock Level Tax-Loss Harvesting</strong>
+                                                — When investing over $100,000, it's a further way to decrease taxes
+                                                and fund expenses by avoiding ETF fees.
+                                            </p>
+                                            <p>
+                                                <strong>Risk Parity</strong>
+                                                — The recently added risk parity option may smooth out returns
+                                                compared to the traditional 60% stock/40% bond portfolio.
+                                                However, we question at what cost, and Wealthfront's
+                                                performance remains untested.
+                                            </p>
+                                            <p>
+                                                <strong>529 Plan Option</strong>
+                                                — This option makes Wealthfront somewhat unique in that most
+                                                robo advisors focus only on retirement planning.
+                                            </p>
+                                            <p>
+                                                <strong>Two-Factor Authentication</strong>
+                                                — Either via a SMS text message or an app installed on your phone,
+                                                you can be assured that your account is protected
+                                                from hackers gaining entry.
+                                            </p>
+                                            <p>
+                                                <strong>Free Financial Planning</strong>
+                                                — You can use Wealthfront's financial planning service,
+                                                Path, with no obligation or required investment.
+                                            </p>
+                                            <p>
+                                                <strong>Path Considers External Accounts</strong>
+                                                — The Path planning tools consider all of your accounts,
+                                                even those held outside Wealthfront, to give you a complete
+                                                picture of your goals.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel_grad-red">
+                                    <div class="robo-advisor__section-text">
+                                        <div class="reach-text">
+                                            <h3>
+                                                Cons
+                                                <span class="robo-advisor__section-icon">
+                                                    @svg('minus')
+                                                </span>
+                                            </h3>
+                                            <p>
+                                                <strong>No Fractional Shares</strong>
+                                                — It's possible to have cash sitting in your account, not invested.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

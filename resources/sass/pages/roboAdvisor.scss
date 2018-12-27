@@ -93,13 +93,24 @@
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
     flex-shrink: 0;
     width: 240px;
     margin-right: 70px;
-    padding-right: 40px;
+    //padding-right: 40px;
 
     img {
-      width: 100%;
+      width: 200px;
+    }
+  }
+
+  &__verify {
+    display: inline-block;
+    vertical-align: middle;
+
+    &_margin {
+      margin-left: 16px;
     }
   }
 
@@ -181,6 +192,15 @@
 
   &__section-text {
     padding: 30px 20px;
+  }
+
+  &__section-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 14px;
+    height: 28px;
+    margin-left: 10px;
+    line-height: 10px;
   }
 
   &__section-footer {
