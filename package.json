@@ -27,6 +27,7 @@
         "popper.js": "^1.12",
         "reset-css": "^4.0.1",
         "select2": "^4.0.6-rc.1",
+        "slick-carousel": "^1.8.1",
         "uniqid": "^5.0.3",
         "vue": "^2.5.17",
         "webfonts-loader": "^4.3.0"

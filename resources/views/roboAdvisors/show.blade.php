@@ -802,6 +802,89 @@
 
                         <div class="robo-advisor__section">
                             <h2 class="h2">
+                                How it works?
+                            </h2>
+                            <div class="panel">
+                                <div class="robo-advisor__section-text">
+                                    <div class="reach-text">
+                                        <p>
+                                            Wealthfront uses a team of “world-class financial experts” led by
+                                            legendary economist Burton Malkiel. He’s the author of the investment
+                                            classic <a href="#">A Random Walk Down Wall Street</a>, which I recommend reading.
+                                            Malkiel is Wealthfront’s Chief Investment Officer.
+                                        </p>
+                                        <p>
+                                            Wealthfront has some similarities to <a href="#">Betterment</a> and other robo advisors,
+                                            in that you start by completing a questionnaire. Wealthfront’s questionnaire
+                                            has four objective questions and six subjective ones. The purpose of the
+                                            survey is to determine your risk tolerance and to set asset allocations.
+                                        </p>
+                                        <p>
+                                            Once established, the allocations will remain constant regardless of the
+                                            amount of money you have invested. After specific thresholds are crossed
+                                            within your account, the portfolio will automatically be adjusted to ensure
+                                            it stays in line with the proposed asset mix.
+                                        </p>
+                                        <p>
+                                            <strong>Account Minimums.</strong>
+                                            The minimum account size is $500, and there is also
+                                            a minimum withdrawal amount, which is $250. You cannot draw your
+                                            account below the $500 minimum.
+                                        </p>
+                                        <p>
+                                            <strong>Fees.</strong>
+                                            There’s a lot of good news here. From <a href="#">our research</a>, for accounts
+                                            under $10,000, Wealthfront is one of the cheapest robo advisors,
+                                            including ETF fees. Annually, expect to shell out 0.25%.
+                                            However, with our promo link, the first $5,000 in your account is
+                                            managed free, and amounts above $5,000 have an annual 0.25% fee.
+                                        </p>
+                                        <p>
+                                            Let’s break it down. On a $100,000 account the fee would be $237.50 for a
+                                            full year — and with our exclusive promotional link, the first $5,000
+                                            would be excluded from annual fees. The amount of the annual fee will
+                                            be prorated and withdrawn on a monthly basis. Wealthfront is cheap when
+                                            compared to the thousands of dollars in fees typically charged by
+                                            financial advisors.
+                                        </p>
+                                        <p>
+                                            As mentioned above, there’s another way to have more than $5,000 managed
+                                            free under Wealthfront. After becoming a Wealthfront customer,
+                                            refer friends to the service. Each new signup grants you an
+                                            additional $5,000 of free management.
+                                        </p>
+                                        <p>
+                                            The only other fee you incur is the very low fee embedded in the cost
+                                            of the ETFs. From our 60% stocks, 40% bonds portfolio test, we found the
+                                            ETF fees averaged 0.18%. That gives Wealthfront an advantage over even
+                                            the deepest discount brokers.
+                                        </p>
+                                        <br>
+                                        <h3>Screenshots</h3>
+                                        <div class="panel panel_white panel_negative-margin">
+                                            @include('components/simpleSlider', [
+                                                'images' => [[
+                                                    'src' => asset('images/blog_easierwaytoplan.png'),
+                                                    'alt' => 'Slide 1',
+                                                ],[
+                                                    'src' => asset('images/blog_easierwaytoplan.png'),
+                                                    'alt' => 'Slide 2',
+                                                ],[
+                                                    'src' => asset('images/blog_easierwaytoplan.png'),
+                                                    'alt' => 'Slide 3',
+                                                ],]
+                                            ])
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="robo-advisor__section-footer">
+                                <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
+                            </div>
+                        </div>
+
+                        <div class="robo-advisor__section">
+                            <h2 class="h2">
                                 Portfolio
                             </h2>
                             <div class="panel">
