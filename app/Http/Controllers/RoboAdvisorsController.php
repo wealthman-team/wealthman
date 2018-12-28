@@ -51,18 +51,18 @@ class RoboAdvisorsController extends Controller
     }
 
     /**
-     * Robo Advisors compare page
+     * Compare robo advisors page.
      *
      * @return \Illuminate\Http\Response
      */
-    public function roboAdvisorsCompare()
+    public function compare()
     {
         Page::setTitle('Robo Advisors Compare | Wealthman');
         Page::setDescription('Robo Advisors compare');
 
         $roboAdvisors = RoboAdvisor::where('is_active', 0)->with('rating', 'account_types')->paginate(10);
 
-        return view('roboAdvisors/index', [
+        return view('roboAdvisors/compare', [
             'roboAdvisors' => $roboAdvisors,
         ]);
     }

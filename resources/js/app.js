@@ -8,7 +8,7 @@
 require('./bootstrap');
 require('./icons.font');
 
-window.Vue = require('vue');
+//window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -18,7 +18,7 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+//Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
@@ -181,5 +181,53 @@ $(function () {
 		nextArrow: '<div class="simple-slider__nav simple-slider__nav_right"><svg class="simple-slider__arrow" xmlns="http://www.w3.org/2000/svg" width="19" height="9" viewBox="0 0 19 9"><g transform="translate(20.906 -0.825) rotate(90)"><g transform="translate(1.2 2.2)"><path d="M1.325,20.323l4,4,4-4" transform="translate(-1.2 -6.116)" fill="none" stroke="#172341" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/><line y1="17.5" transform="translate(4.125 0.207)" stroke-width="1" stroke="#172341" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" fill="none"/></g></g></svg></div>',
 	});
 
+	$('.js-compare-list').each(function () {
+		let compareList = $(this);
+		let clGroups = $('.js-compare-list-group', compareList);
+		let clGroupNames = $('.js-compare-list-group-name', compareList);
+		let clContexts = $('.js-compare-list-context', compareList);
+		let clRowNames = $('.js-compare-list-name', compareList);
+		let prevArrow = $('.js-compare-list-prev', compareList);
+		let nextArrow = $('.js-compare-list-next', compareList);
+		let listLength = compareList.data('clLength');
+		let step = 200;
+		let currentStep = 0;
+		let minItemCount = 5;
 
+		prevArrow.on('click', function () {
+			slidePrev();
+		});
+
+		nextArrow.on('click', function () {
+			slideNext();
+		});
+
+		clGroups.on('click', '.js-compare-list-group-name', function (e) {
+			$(e.delegateTarget).toggleClass('opened');
+		});
+
+		function slidePrev() {
+			if (listLength < minItemCount || (listLength - (currentStep + minItemCount)) <= 0) {
+				return;
+			}
+
+			currentStep = currentStep + 1;
+			slide();
+		}
+
+		function slideNext() {
+			if (listLength < minItemCount || currentStep <= 0) {
+				return;
+			}
+
+			currentStep = currentStep - 1;
+			slide();
+		}
+
+		function slide() {
+			clContexts.css('left', -currentStep * step);
+			clRowNames.css('left', currentStep * step);
+			clGroupNames.css('left', currentStep * step);
+		}
+	})
 });

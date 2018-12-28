@@ -1,0 +1,205 @@
+.compare {
+  &__container {
+    padding: 30px 0 70px;
+  }
+
+  &__empty {
+    margin-bottom: 26px;
+    @include font(14px, $Geometria, $textGray, 20px, 400);
+  }
+
+  &__actions-list {
+    margin-bottom: 26px;
+    @include font(13px, $Geometria, $text, 16px, 400);
+  }
+
+  &__action-item {
+    margin-left: 16px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+.compare-list {
+  position: relative;
+  overflow: hidden;
+  padding: 0 90px;
+  border-radius: 20px;
+  background-color: $contentBG;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  &__nav {
+    position: relative;
+    user-select: none;
+  }
+
+  &__nav-left,
+  &__nav-right {
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 29px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    background-color: $white;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+  }
+
+  &__nav-left {
+    left: -75px;
+
+    .compare-list__arrow {
+      transform: rotate(0deg);
+    }
+  }
+
+  &__nav-right {
+    right: -75px;
+
+    .compare-list__arrow {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__arrow {
+    width: 18px;
+  }
+
+  &__inner {
+    padding: 20px 0;
+  }
+
+  &__group {
+    position: relative;
+
+    &_with-header {
+      padding: 84px 0 0;
+    }
+
+    &.opened {
+      .compare-list__row {
+        height: 0;
+        opacity: 0;
+      }
+
+      .compare-list__group-arrow {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  &__row {
+    position: relative;
+    opacity: 1;
+    height: 100%;
+
+    &_with-hover {
+      &:hover {
+        &:before {
+          content: ' ';
+          position: absolute;
+          z-index: 0;
+          top: 0;
+          bottom: 0;
+          right: -20px;
+          left: -20px;
+          border-radius: 20px;
+          background: $white;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+        }
+      }
+    }
+  }
+
+  &__context {
+    position: relative;
+    left: 0;
+    width: 1080px;
+    transition: left 0.25s ease-in-out 0s;
+  }
+
+  &__col {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    padding: 43px 20px 16px 0;
+    @include font(13px, $Geometria, $text, 16px, 400);
+
+    &_header {
+      padding: 0 20px 16px 0;
+    }
+  }
+
+  &__group-header {
+    position: absolute;
+    top: -84px;
+    right: 0;
+    left: 0;
+  }
+
+  &__group-name {
+    position: relative;
+    display: inline-block;
+    left: 0;
+    padding: 32px 0;
+    user-select: none;
+    transition: left 0.25s ease-in-out 0s;
+    cursor: pointer;
+    @include font(16px, $Geometria, $text, 20px, 400);
+  }
+
+  &__group-arrow {
+    display: inline-block;
+    width: 15px;
+    margin-left: 16px;
+    line-height: 0;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease-in-out 0s;
+  }
+
+  &__arrow-up {
+    width: 15px;
+    color: $text;
+  }
+
+  &__row-name {
+    position: absolute;
+    z-index: 2;
+    top: 16px;
+    left: 0;
+    transition: left 0.25s ease-in-out 0s;
+    text-transform: uppercase;
+    @include font(12px, $Geometria, rgba(23,35,65,0.36), 15px, 700);
+  }
+
+  &__logo {
+    width: 140px;
+    margin-bottom: 12px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 140px;
+  }
+
+  &__icon-remove {
+    width: 12px;
+    height: 12px;
+  }
+}
