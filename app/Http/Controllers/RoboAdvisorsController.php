@@ -60,10 +60,16 @@ class RoboAdvisorsController extends Controller
         Page::setTitle('Robo Advisors Compare | Wealthman');
         Page::setDescription('Robo Advisors compare');
 
+        $accountTypes = AccountType::all();
         $roboAdvisors = RoboAdvisor::where('is_active', 0)->with('rating', 'account_types')->paginate(10);
+
+        foreach ($roboAdvisors as $roboAdvisor) {
+            $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();
+        }
 
         return view('roboAdvisors/compare', [
             'roboAdvisors' => $roboAdvisors,
+            'accountTypes' => $accountTypes,
         ]);
     }
 

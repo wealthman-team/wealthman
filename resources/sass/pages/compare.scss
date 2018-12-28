@@ -51,6 +51,10 @@
     &:hover {
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
+
+    &:active {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
   }
 
   &__nav-left {

@@ -374,7 +374,7 @@
                                                             <th>ASSETS UNDER MANAGEMENT</th>
                                                             <td>
                                                                 @if ($roboAdvisor->aum)
-                                                                    {{ $roboAdvisor->aum }}
+                                                                    ${{ getAUMNum($roboAdvisor->aum) }}
                                                                 @else
                                                                     &mdash;
                                                                 @endif
@@ -671,7 +671,7 @@
                                                         <td>
                                                             @if ($roboAdvisor->responsible_investing)
                                                                 @svg('check', 'robo-advisor__check')
-                                                                @else
+                                                            @else
                                                                 &mdash;
                                                             @endif
                                                         </td>
