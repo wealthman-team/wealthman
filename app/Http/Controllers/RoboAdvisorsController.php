@@ -60,8 +60,16 @@ class RoboAdvisorsController extends Controller
         Page::setTitle('Robo Advisors Compare | Wealthman');
         Page::setDescription('Robo Advisors compare');
 
+        $compareList = Cookie::get('compare_list');
+
+        if (!isset($compareList)) {
+            $compareList = array();
+        } else {
+            $compareList = json_decode($compareList);
+        }
+
         $accountTypes = AccountType::all();
-        $roboAdvisors = RoboAdvisor::where('is_active', 0)->with('rating', 'account_types')->paginate(10);
+        $roboAdvisors = RoboAdvisor::whereIn('id', $compareList)->with('rating', 'account_types')->get();
 
         foreach ($roboAdvisors as $roboAdvisor) {
             $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();

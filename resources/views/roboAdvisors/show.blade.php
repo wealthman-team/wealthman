@@ -27,172 +27,178 @@
 
                 <div class="robo-advisors__container">
                     <div class="sidebar">
-                        <div class="slide-box active js-slide-box">
-                            <div class="slide-box__header js-slide-box-header">
-                                <div class="slide-box__title">
-                                    Contact
+                        <div class="sidebar__inner">
+                            <div class="slide-box active js-slide-box">
+                                <div class="slide-box__header js-slide-box-header">
+                                    <div class="slide-box__title">
+                                        Contact
+                                    </div>
+                                    <div class="slide-box__arrow">
+                                        @svg('arrow-up', 'slide-box__arrow-up')
+                                    </div>
                                 </div>
-                                <div class="slide-box__arrow">
-                                    @svg('arrow-up', 'slide-box__arrow-up')
+                                <div class="slide-box__body js-slide-box-body">
+                                    <div class="robo-advisor__contact robo-advisor__contact_margin">
+                                        Service region: <strong>USA</strong>
+                                    </div>
+                                    <div class="robo-advisor__contact">
+                                        Headquarters: <strong>{{ $roboAdvisor->headquarters }}</strong>
+                                    </div>
+                                    <div class="robo-advisor__contact">
+                                        Year Founded: <strong>{{ $roboAdvisor->founded }}</strong>
+                                    </div>
+                                    <div class="robo-advisor__contact">
+                                        Site: <strong>{{ $roboAdvisor->site_url }}</strong>
+                                    </div>
+                                    <div class="robo-advisor__contact">
+                                        Phone: <strong>{{ $roboAdvisor->phone }}</strong>
+                                    </div>
+                                    <div class="robo-advisor__contact">
+                                        CEO: <strong>{{ $roboAdvisor->ceo }}</strong>
+                                    </div>
+                                    <div class="robo-advisor__contact">
+                                        More data: <strong>{{ $roboAdvisor->contact_details }}</strong>
+                                    </div>
+                                    <div class="robo-advisor__contact">
+                                        CRD: <strong>148456 | SEC</strong>
+                                    </div>
+                                    <div class="robo-advisor__contact">
+                                        ID: <strong>69766</strong>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="slide-box__body js-slide-box-body">
-                                <div class="robo-advisor__contact robo-advisor__contact_margin">
-                                    Service region: <strong>USA</strong>
+
+                            <div class="slide-box active js-slide-box">
+                                <div class="slide-box__header js-slide-box-header">
+                                    <div class="slide-box__title">
+                                        Table of contents
+                                    </div>
+                                    <div class="slide-box__arrow">
+                                        @svg('arrow-up', 'slide-box__arrow-up')
+                                    </div>
                                 </div>
-                                <div class="robo-advisor__contact">
-                                    Headquarters: <strong>{{ $roboAdvisor->headquarters }}</strong>
+                                <div class="slide-box__body js-slide-box-body">
+                                    <ul class="robo-advisor__contents-list">
+                                        <li>
+                                            <a class="link" href="#">Pros and Cons</a>
+                                        </li>
+                                        <li>
+                                            <a class="link" href="#">About Company</a>
+                                        </li>
+                                        <li>
+                                            <a class="link" href="#">All Characteristics</a>
+                                        </li>
+                                        <li>
+                                            <a class="link" href="#">How it Works?</a>
+                                        </li>
+                                        <li>
+                                            <a class="link" href="#">Portfolio</a>
+                                        </li>
+                                        <li>
+                                            <a class="link" href="#">Alternatives</a>
+                                        </li>
+                                        <li>
+                                            <a class="link" href="#">Conclusion</a>
+                                        </li>
+                                        <li>
+                                            <a class="link" href="#">
+                                                Reviews <span class="counter">5</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="robo-advisor__contact">
-                                    Year Founded: <strong>{{ $roboAdvisor->founded }}</strong>
+                            </div>
+
+                            <div class="slide-box active js-slide-box">
+                                <div class="slide-box__header js-slide-box-header">
+                                    <div class="slide-box__title">
+                                        Robo advisor review
+                                    </div>
+                                    <div class="slide-box__arrow">
+                                        @svg('arrow-up', 'slide-box__arrow-up')
+                                    </div>
                                 </div>
-                                <div class="robo-advisor__contact">
-                                    Site: <strong>{{ $roboAdvisor->site_url }}</strong>
-                                </div>
-                                <div class="robo-advisor__contact">
-                                    Phone: <strong>{{ $roboAdvisor->phone }}</strong>
-                                </div>
-                                <div class="robo-advisor__contact">
-                                    CEO: <strong>{{ $roboAdvisor->ceo }}</strong>
-                                </div>
-                                <div class="robo-advisor__contact">
-                                    More data: <strong>{{ $roboAdvisor->contact_details }}</strong>
-                                </div>
-                                <div class="robo-advisor__contact">
-                                    CRD: <strong>148456 | SEC</strong>
-                                </div>
-                                <div class="robo-advisor__contact">
-                                    ID: <strong>69766</strong>
+                                <div class="slide-box__body js-slide-box-body">
+                                    <div class="robo-advisor__review">
+                                        <div class="robo-advisor__review-name">
+                                            Betterment
+                                            <span class="robo-advisor__verify">
+                                                @svg('verify')
+                                            </span>
+                                        </div>
+
+                                        <div class="robo-advisor__review-recommendation">
+                                            @include('components/recommendation', [
+                                                'text' => 'Strongly recommended',
+                                                'yes' => 10,
+                                                'maybe' => 2,
+                                                'no' => 5,
+                                                'total' => 17,
+                                            ])
+                                        </div>
+
+                                        <div class="robo-advisor__review-link">
+                                            <a class="link link_active" href="#">
+                                                Review
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="robo-advisor__review">
+                                        <div class="robo-advisor__review-name">
+                                            Betterment
+                                            <span class="robo-advisor__verify">
+                                                @svg('verify')
+                                            </span>
+                                        </div>
+
+                                        <div class="robo-advisor__review-recommendation">
+                                            @include('components/recommendation', [
+                                                'text' => 'Strongly recommended',
+                                                'yes' => 10,
+                                                'maybe' => 2,
+                                                'no' => 5,
+                                                'total' => 17,
+                                            ])
+                                        </div>
+
+                                        <div class="robo-advisor__review-link">
+                                            <a class="link link_active" href="#">
+                                                Review
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="robo-advisor__review">
+                                        <div class="robo-advisor__review-name">
+                                            Betterment
+                                            <span class="robo-advisor__verify">
+                                                @svg('verify')
+                                            </span>
+                                        </div>
+
+                                        <div class="robo-advisor__review-recommendation">
+                                            @include('components/recommendation', [
+                                                'text' => 'Strongly recommended',
+                                                'yes' => 10,
+                                                'maybe' => 2,
+                                                'no' => 5,
+                                                'total' => 17,
+                                            ])
+                                        </div>
+
+                                        <div class="robo-advisor__review-link">
+                                            <a class="link link_active" href="#">
+                                                Review
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="slide-box active js-slide-box">
-                            <div class="slide-box__header js-slide-box-header">
-                                <div class="slide-box__title">
-                                    Table of contents
-                                </div>
-                                <div class="slide-box__arrow">
-                                    @svg('arrow-up', 'slide-box__arrow-up')
-                                </div>
-                            </div>
-                            <div class="slide-box__body js-slide-box-body">
-                                <ul class="robo-advisor__contents-list">
-                                    <li>
-                                        <a class="link" href="#">Pros and Cons</a>
-                                    </li>
-                                    <li>
-                                        <a class="link" href="#">About Company</a>
-                                    </li>
-                                    <li>
-                                        <a class="link" href="#">All Characteristics</a>
-                                    </li>
-                                    <li>
-                                        <a class="link" href="#">How it Works?</a>
-                                    </li>
-                                    <li>
-                                        <a class="link" href="#">Portfolio</a>
-                                    </li>
-                                    <li>
-                                        <a class="link" href="#">Alternatives</a>
-                                    </li>
-                                    <li>
-                                        <a class="link" href="#">Conclusion</a>
-                                    </li>
-                                    <li>
-                                        <a class="link" href="#">
-                                            Reviews <span class="counter">5</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="slide-box active js-slide-box">
-                            <div class="slide-box__header js-slide-box-header">
-                                <div class="slide-box__title">
-                                    Robo advisor review
-                                </div>
-                                <div class="slide-box__arrow">
-                                    @svg('arrow-up', 'slide-box__arrow-up')
-                                </div>
-                            </div>
-                            <div class="slide-box__body js-slide-box-body">
-                                <div class="robo-advisor__review">
-                                    <div class="robo-advisor__review-name">
-                                        Betterment
-                                        <span class="robo-advisor__verify">
-                                            @svg('verify')
-                                        </span>
-                                    </div>
-
-                                    <div class="robo-advisor__review-recommendation">
-                                        @include('components/recommendation', [
-                                            'text' => 'Strongly recommended',
-                                            'yes' => 10,
-                                            'maybe' => 2,
-                                            'no' => 5,
-                                            'total' => 17,
-                                        ])
-                                    </div>
-
-                                    <div class="robo-advisor__review-link">
-                                        <a class="link link_active" href="#">
-                                            Review
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="robo-advisor__review">
-                                    <div class="robo-advisor__review-name">
-                                        Betterment
-                                        <span class="robo-advisor__verify">
-                                            @svg('verify')
-                                        </span>
-                                    </div>
-
-                                    <div class="robo-advisor__review-recommendation">
-                                        @include('components/recommendation', [
-                                            'text' => 'Strongly recommended',
-                                            'yes' => 10,
-                                            'maybe' => 2,
-                                            'no' => 5,
-                                            'total' => 17,
-                                        ])
-                                    </div>
-
-                                    <div class="robo-advisor__review-link">
-                                        <a class="link link_active" href="#">
-                                            Review
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="robo-advisor__review">
-                                    <div class="robo-advisor__review-name">
-                                        Betterment
-                                        <span class="robo-advisor__verify">
-                                            @svg('verify')
-                                        </span>
-                                    </div>
-
-                                    <div class="robo-advisor__review-recommendation">
-                                        @include('components/recommendation', [
-                                            'text' => 'Strongly recommended',
-                                            'yes' => 10,
-                                            'maybe' => 2,
-                                            'no' => 5,
-                                            'total' => 17,
-                                        ])
-                                    </div>
-
-                                    <div class="robo-advisor__review-link">
-                                        <a class="link link_active" href="#">
-                                            Review
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="sidebar__footer sidebar__footer_center">
+                            <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
                         </div>
                     </div>
                     <div class="main-content">
@@ -222,7 +228,12 @@
                                     </div>
 
                                     <div class="robo-advisor__top-buttons">
-                                        <a class="button" href="#">Compare</a>
+                                        {{--<a class="button" href="#">Compare</a>--}}
+                                        <form class="robo-advisors-item__compare-form js-add-to-compare {{ in_array($roboAdvisor->id, getCompareList('compare_list')) ? ' active' : '' }}" action="{{ route('toggleCompare') }}" method="post">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="id" value="{{ $roboAdvisor->id }}">
+                                            <button class="button" type="submit">Compared</button>
+                                        </form>
                                         <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
                                     </div>
                                 </div>
