@@ -4,11 +4,11 @@
             <div class="header__left-col">
                 <div class="header__logo-container">
                     <a href="{{ route('home') }}">
-                        <span class="icon icon-logo"></span>
+                        @svg('logo', 'icon-logo')
                     </a>
                 </div>
                 <div class="header__nav">
-                    <a class="link header__nav-item" href="#">Directory</a>
+                    <a class="link header__nav-item" href="{{ route('roboAdvisors') }}">Directory</a>
                     <a class="link header__nav-item" href="#">About Us</a>
                     <a class="link header__nav-item" href="#">Team</a>
                     <a class="link header__nav-item" href="#">Contacts</a>

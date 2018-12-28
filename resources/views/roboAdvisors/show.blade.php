@@ -566,7 +566,7 @@
                                         <div class="slide-box active js-slide-box">
                                             <div class="slide-box__header js-slide-box-header">
                                                 <div class="slide-box__title">
-                                                    GENERAL CHARACTERISTICS
+                                                    ACCOUNT AVAILABLE
                                                 </div>
                                                 <div class="slide-box__arrow">
                                                     @svg('arrow-up', 'slide-box__arrow-up')
