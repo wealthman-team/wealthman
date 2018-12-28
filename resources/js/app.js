@@ -195,11 +195,11 @@ $(function () {
 		let minItemCount = 5;
 
 		prevArrow.on('click', function () {
-			slidePrev();
+			slideNext();
 		});
 
 		nextArrow.on('click', function () {
-			slideNext();
+			slidePrev();
 		});
 
 		clGroups.on('click', '.js-compare-list-group-name', function (e) {
