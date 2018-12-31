@@ -4,6 +4,25 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\AccountType
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $is_active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\RoboAdvisor[] $roboAdvisors
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AccountType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AccountType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AccountType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AccountType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AccountType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AccountType whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AccountType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AccountType whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class AccountType extends Model
 {
     protected $visible = [
