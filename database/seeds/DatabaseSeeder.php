@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         DB::statement( 'SET FOREIGN_KEY_CHECKS=0;' );
 
         $this->call(AdminsTableSeeder::class);
+        $this->call(AccountTypeSeeder::class);
         $this->call(RoboAdvisorSeeder::class);
-
 
         // supposed to only apply to a single connection and reset it's self
         // undo what is done for clarity

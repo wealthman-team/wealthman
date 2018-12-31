@@ -5,10 +5,13 @@ use Illuminate\Filesystem\Filesystem;
 
 class RoboAdvisorSeeder extends Seeder
 {
+    private $robo_advisor_iteration = 0;
+    private $account_type_iteration = 0;
+
     const ROBO_ADVISORS = [
         'WEALTHFRONT' => [
-            'id' => '1',
             'name' => 'Wealthfront',
+            'logo' => '/files/wealthfront-review.png',
             'title' => 'Wealthfront Review 2018 – Improving on Passive Investing',
             'short_description' => "<p>Wealthfront is a robo advisor that emphasizes low fees and automated investing. The service shines when you have a taxable account, and the service is free for accounts under $5K if you use the Investor Junkie promotion or if you are referred by a current Wealthfront client. The negative is it doesn&#39;t support fractional shares.</p>",
             'description' => null,
@@ -49,8 +52,7 @@ class RoboAdvisorSeeder extends Seeder
             'contact_details' => 'Clearing Agency: RBC | FINRA',
             'is_active' => '0',
             'ratings' => [
-                'id' => '1',
-                'commissions' => '9.00',
+                 'commissions' => '9.00',
                 'service' => '9.00',
                 'comfortable' => '8.00',
                 'tools' => '8.50',
@@ -58,11 +60,21 @@ class RoboAdvisorSeeder extends Seeder
                 'asset_allocation' => '9.00',
                 'total' => '8.67',
             ],
-            'logo' => '/files/wealthfront-review.png',
+            'account_types' => [
+                AccountTypeSeeder::ACCOUNT_TYPES['TAXABLE']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRADITIONAL_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SEP_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['JOINT']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRUSTS']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['NON_PROFIT']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['529']['id'],
+            ],
         ],
         'BETTERMENT' => [
-            'id' => '2',
             'name' => 'Betterment',
+            'logo' => '/files/betterment-review.png',
             'title' => 'Betterment Review 2018 – Making Investing Simple',
             'short_description' => "<p>Betterment is equally a good starting point for beginning investors and a useful platform for more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually. If you need the assistance, it recently added human advisors who can assist with your retirement account. Unfortunately, Betterment&#39;s asset allocation excludes REITs or commodities.</p>",
             'description' => null,
@@ -103,7 +115,6 @@ class RoboAdvisorSeeder extends Seeder
             'contact_details' => null,
             'is_active' => '0',
             'ratings' => [
-                'id' => '2',
                 'commissions' => '8.00',
                 'service' => '9.00',
                 'comfortable' => '9.00',
@@ -112,11 +123,20 @@ class RoboAdvisorSeeder extends Seeder
                 'asset_allocation' => '8.50',
                 'total' => '8.75',
             ],
-            'logo' => '/files/betterment-review.png',
+            'account_types' => [
+                AccountTypeSeeder::ACCOUNT_TYPES['TAXABLE']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRADITIONAL_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SEP_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['JOINT']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRUSTS']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['NON_PROFIT']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
         ],
         'SOFI' => [
-            'id' => '3',
             'name' => 'SoFi',
+            'logo' => '/files/sofi-wealth-management-review.png',
             'title' => 'SoFi Wealth Review 2018 – A Low-Cost Robo Advisor for Millennials',
             'short_description' => "<p>SoFi Wealth is an investment management service that combines robo investing with access to a human financial advisor. Accounts are free for SoFi borrowers and those with a portfolio below $10,000. SoFi Wealth focuses only on index fund investments to meet your financial goals, and you won&#39;t find tax loss harvesting.</p>",
             'description' => null,
@@ -157,7 +177,6 @@ class RoboAdvisorSeeder extends Seeder
             'contact_details' => null,
             'is_active' => '0',
             'ratings' => [
-                'id' => '3',
                 'commissions' => '9.50',
                 'service' => '9.00',
                 'comfortable' => '9.50',
@@ -166,11 +185,18 @@ class RoboAdvisorSeeder extends Seeder
                 'asset_allocation' => '8.00',
                 'total' => '8.58',
             ],
-            'logo' => '/files/sofi-wealth-management-review.png',
+            'account_types' => [
+                AccountTypeSeeder::ACCOUNT_TYPES['TAXABLE']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRADITIONAL_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SEP_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['JOINT']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
         ],
         'WEALTHSIMPLE' => [
-            'id' => '4',
             'name' => 'Wealthsimple',
+            'logo' => '/files/wealthsimple-review.png',
             'title' => 'Wealthsimple Review 2018 – Automated Investing With Human Advice',
             'short_description' => "<p>Wealthsimple is a solid addition to the current slate of robo advisors available. The service offers a socially responsible investment option, as well as assistance from a live representative. However, compared to other firms their fees are on the high side.</p>",
             'description' => null,
@@ -211,7 +237,6 @@ class RoboAdvisorSeeder extends Seeder
             'contact_details' => null,
             'is_active' => '0',
             'ratings' => [
-                'id' => '4',
                 'commissions' => '7.00',
                 'service' => '8.50',
                 'comfortable' => '8.50',
@@ -220,11 +245,19 @@ class RoboAdvisorSeeder extends Seeder
                 'asset_allocation' => '8.00',
                 'total' => '8.00',
             ],
-            'logo' => '/files/wealthsimple-review.png',
+            'account_types' => [
+                AccountTypeSeeder::ACCOUNT_TYPES['TAXABLE']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRADITIONAL_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SEP_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['JOINT']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRUSTS']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
         ],
         'M1_FINANCE' => [
-            'id' => '5',
             'name' => 'M1 Finance',
+            'logo' => '/files/betterment-review.png',
             'title' => 'M1 Finance Review 2018 – A Robo Advisor and Brokerage Hybrid',
             'short_description' => "<p>Combining the best of both traditional investment brokerage accounts and robo advisors, M1 Finance is dangerously close to being the perfect all-around investment platform. The only significant negatives are that it does not offer tax-loss harvesting or investment in mutual funds.</p>",
             'description' => null,
@@ -265,7 +298,6 @@ class RoboAdvisorSeeder extends Seeder
             'contact_details' => null,
             'is_active' => '0',
             'ratings' => [
-                'id' => '5',
                 'commissions' => '10.00',
                 'service' => '7.00',
                 'comfortable' => '9.00',
@@ -274,11 +306,19 @@ class RoboAdvisorSeeder extends Seeder
                 'asset_allocation' => '9.00',
                 'total' => '8.67',
             ],
-            'logo' => '/files/betterment-review.png',
+            'account_types' => [
+                AccountTypeSeeder::ACCOUNT_TYPES['TAXABLE']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRADITIONAL_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SEP_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['JOINT']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRUSTS']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
         ],
         'VPAS' => [
-            'id' => '6',
             'name' => 'Vanguard Personal Advisor Services',
+            'logo' => '/files/vanguard-review.png',
             'title' => 'Vanguard Personal Advisor Services Review 2018 – Low-Cost, Personal Service',
             'short_description' => "<p>A solid entry into the robo advisor space, Vanguard Personal Advisor Services is backed by the trusted Vanguard brand and features real, live human advisors you can call. Unfortunately, the service requires a hefty $50k deposit, which excludes many beginning investors.</p>",
             'description' => null,
@@ -319,7 +359,6 @@ class RoboAdvisorSeeder extends Seeder
             'contact_details' => null,
             'is_active' => '0',
             'ratings' => [
-                'id' => '6',
                 'commissions' => '8.50',
                 'service' => '7.50',
                 'comfortable' => '7.00',
@@ -328,11 +367,20 @@ class RoboAdvisorSeeder extends Seeder
                 'asset_allocation' => '8.00',
                 'total' => '7.83',
             ],
-            'logo' => '/files/vanguard-review.png',
+            'account_types' => [
+                AccountTypeSeeder::ACCOUNT_TYPES['TAXABLE']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRADITIONAL_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SEP_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['JOINT']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SIMPLE_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRUSTS']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
         ],
         'MEGI' => [
-            'id' => '7',
             'name' => 'Merrill Edge Guided Investing (MEGI)',
+            'logo' => '/files/megi-review.png',
             'title' => 'Merrill Edge Guided Investing (MEGI) Review 2018 – Merrill Lynch Enters the Robo Advisor Space',
             'short_description' => "<p>MEGI is a robo advisor that combines automated investing with active management of your portfolio. It invests your money in index-based ETFs, but it actively manages your portfolio allocation. This gives you an opportunity to both outperform the market and minimize losses in a downturn. The major negative is that the management fee is higher than those of most other robo advisors. But the active management component may very well justify the higher fee.</p>",
             'description' => null,
@@ -373,7 +421,6 @@ class RoboAdvisorSeeder extends Seeder
             'contact_details' => null,
             'is_active' => '0',
             'ratings' => [
-                'id' => '7',
                 'commissions' => '6.00',
                 'service' => '8.50',
                 'comfortable' => '8.00',
@@ -382,7 +429,19 @@ class RoboAdvisorSeeder extends Seeder
                 'asset_allocation' => '8.00',
                 'total' => '8.08',
             ],
-            'logo' => '/files/megi-review.png',
+            'account_types' => [
+                AccountTypeSeeder::ACCOUNT_TYPES['TAXABLE']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['TRADITIONAL_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SEP_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SOLO_401(K)']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['JOINT']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['SIMPLE_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['CUSTODIAL']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['401(K)']['id'],
+                AccountTypeSeeder::ACCOUNT_TYPES['529']['id'],
+            ],
         ]
     ];
 
@@ -397,20 +456,36 @@ class RoboAdvisorSeeder extends Seeder
         // clear tables
         DB::table('robo_advisors')->truncate();
         DB::table('ratings')->truncate();
+        DB::table('account_type_robo_advisor')->truncate();
+        // create base RoboAdvisors
+        $this->createRoboAdvisors();
+        // create RoboAdvisors clone
+        $this->createRoboAdvisors(true, 5);
+    }
 
+    /**
+     * @param bool $is_need_recursion
+     * @param $max_recursion
+     * @param int $recursion_level
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function createRoboAdvisors($is_need_recursion = false, $max_recursion = 0, $recursion_level = 1)
+    {
         foreach (self::ROBO_ADVISORS as $robo_advisor) {
+            $this->robo_advisor_iteration++;
             $logo = '';
             $filesystem = new Filesystem();
             $path = __DIR__ . $robo_advisor['logo'];
             if ($filesystem->exists($path)) {
-                $file_name = time() . '-' . $filesystem->basename($path);
+                $file_name = $this->robo_advisor_iteration. time() . '-' . $filesystem->basename($path);
                 $file_content = $filesystem->get($path);
                 Storage::disk('public')->put($file_name,  $file_content);
                 $logo = $file_name;
             }
+            $name = $is_need_recursion ? $robo_advisor['name'].'_(copy-'.$recursion_level.')':$robo_advisor['name'];
             DB::table('robo_advisors')->insert([
-                'id' => $robo_advisor['id'],
-                'name' => $robo_advisor['name'],
+                'id' => $this->robo_advisor_iteration,
+                'name' => $name,
                 'logo' => $logo,
                 'title' => $robo_advisor['title'],
                 'short_description' => $robo_advisor['short_description'],
@@ -455,7 +530,7 @@ class RoboAdvisorSeeder extends Seeder
                 'updated_at'=>date('Y-m-d H:i:s'),
             ]);
             DB::table('ratings')->insert([
-                'id' => $robo_advisor['ratings']['id'],
+                'id' => $this->robo_advisor_iteration,
                 'commissions' => $robo_advisor['ratings']['commissions'],
                 'service' => $robo_advisor['ratings']['service'],
                 'comfortable' => $robo_advisor['ratings']['comfortable'],
@@ -463,10 +538,25 @@ class RoboAdvisorSeeder extends Seeder
                 'investment_options' => $robo_advisor['ratings']['investment_options'],
                 'asset_allocation' => $robo_advisor['ratings']['asset_allocation'],
                 'total' => $robo_advisor['ratings']['total'],
-                'robo_advisor_id' => $robo_advisor['id'],
+                'robo_advisor_id' => $this->robo_advisor_iteration,
                 'created_at'=>date('Y-m-d H:i:s'),
                 'updated_at'=>date('Y-m-d H:i:s'),
             ]);
+            foreach ($robo_advisor['account_types'] as $account_type_id) {
+                $this->account_type_iteration++;
+                DB::table('account_type_robo_advisor')->insert([
+                    'id' => $this->account_type_iteration,
+                    'account_type_id' => $account_type_id,
+                    'robo_advisor_id' => $this->robo_advisor_iteration,
+                    'created_at'=>date('Y-m-d H:i:s'),
+                    'updated_at'=>date('Y-m-d H:i:s'),
+                ]);
+            }
+        }
+
+        if ($is_need_recursion && $recursion_level < $max_recursion) {
+
+            $this->createRoboAdvisors($is_need_recursion, $max_recursion, ++$recursion_level);
         }
     }
 }
