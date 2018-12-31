@@ -12,6 +12,9 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
+        // clear tables
+        DB::table('admins')->truncate();
+
         $user = new Admin;
         $user->name = 'GreenPanther';
         $user->email = 'greenpanther@bk.ru';
