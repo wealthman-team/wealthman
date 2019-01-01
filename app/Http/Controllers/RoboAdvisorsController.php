@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\RoboAdvisor;
 use App\AccountType;
+use App\Service\RoboAdvisorsFilter;
 use App\Sources\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -22,7 +23,10 @@ class RoboAdvisorsController extends Controller
         Page::setTitle('Robo Advisors | Wealthman', $request->input('page'));
         Page::setDescription('Robo Advisors list', $request->input('page'));
 
-        $roboAdvisors = RoboAdvisor::where('is_active', 0)->with('rating', 'account_types')->paginate(10);
+        $roboAdvisors = RoboAdvisor::where('is_active', 0)->with('rating', 'account_types');
+
+        $roboAdvisors = (new RoboAdvisorsFilter($roboAdvisors, $request))->apply();
+        $roboAdvisors = $roboAdvisors->paginate(10);
 
         return view('roboAdvisors/index', [
             'roboAdvisors' => $roboAdvisors->appends(Input::except('page')),

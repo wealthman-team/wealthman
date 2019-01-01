@@ -9,7 +9,7 @@
     <div class="range-slider__header user-select">
         <div class="range-slider__checkbox">
             <div class="checkbox checkbox_inline">
-                <input class="" id="{{ $id }}_checkbox" name="{{ $name }}_checkbox" type="checkbox">
+                <input class="js-range-slider-handle" id="{{ $id }}_checkbox" name="{{ $name }}_checkbox" type="checkbox">
                 <div class="checkbox__icon-container">
                     @svg('check', 'checkbox__icon')
                 </div>

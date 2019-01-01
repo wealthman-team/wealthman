@@ -38,7 +38,7 @@ const app = new Vue({
 window.noUiSlider = require('nouislider');
 require('slick-carousel');
 
-$(function () {
+$(function () {    
 	$('.js-slide-box').each(function () {
 		let slideBox = $(this);
 		let slideBoxHeader = $('.js-slide-box-header', slideBox);
@@ -75,6 +75,8 @@ $(function () {
 		let sliderItem = $('.js-range-slider-item', self).get(0);
 		let minValue = $('.js-range-slider-min', self);
 		let maxValue = $('.js-range-slider-max', self);
+		let minInputValue = $('.js-range-slider-from', self);
+		let maxInputValue = $('.js-range-slider-to', self);
 		let min = self.data('min');
 		let max = self.data('max');
 		let step = self.data('step');
@@ -91,7 +93,7 @@ $(function () {
 					min: min,
 					max: max
 				}
-			});
+			}, true);
 		} else {
 			noUiSlider.create(sliderItem, {
 				start: max,
@@ -101,18 +103,16 @@ $(function () {
 					min: min,
 					max: max
 				}
-			});
+			}, true);
 		}
 
 		sliderItem.noUiSlider.on('update', function (values) {
 			minValue.html(getValue(values[0]) + unit);
-
+            minInputValue.val(getValue(values[0]) + unit);
 			if (isRange) {
 				maxValue.html(getValue(values[1]) + unit);
+                maxInputValue.val(getValue(values[1]) + unit);
 			}
-
-			/*minInputValue.val(values[0]);
-			maxInputValue.val(values[1]);*/
 		});
 
 		function getValue (value) {
@@ -229,5 +229,11 @@ $(function () {
 			clRowNames.css('left', currentStep * step);
 			clGroupNames.css('left', currentStep * step);
 		}
-	})
+	});
+
+    $(".js-handle-filter-submit").submit(function(e){
+        e.preventDefault();
+        let q = $(this).serialize().replace(/&?[\w\-\d_]+=&|&?[\w\-\d_]+=$/gi,"");
+        window.location.href = this.getAttribute('action') + (q.length > 0 ? "?"+q : "");
+    });
 });

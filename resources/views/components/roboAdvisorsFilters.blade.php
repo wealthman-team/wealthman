@@ -1,9 +1,8 @@
 <div class="sidebar">
-    <form action="{{ route('roboAdvisors') }}" method="post" role="form" autocomplete="off">
+    <form class="js-handle-filter-submit" action="{{ route('roboAdvisors') }}" method="get" role="form" autocomplete="off">
         <div class="sidebar__inner">
             <div class="robo-advisors-filters">
-                {{ csrf_field() }}
-
+                {{--{{ csrf_field() }}--}}
                 <div class="slide-box js-slide-box">
                     <div class="slide-box__header js-slide-box-header">
                         <div class="slide-box__title">
