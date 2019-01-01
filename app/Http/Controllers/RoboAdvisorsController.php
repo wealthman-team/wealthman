@@ -7,6 +7,7 @@ use App\AccountType;
 use App\Sources\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Input;
 
 class RoboAdvisorsController extends Controller
 {
@@ -24,7 +25,7 @@ class RoboAdvisorsController extends Controller
         $roboAdvisors = RoboAdvisor::where('is_active', 0)->with('rating', 'account_types')->paginate(10);
 
         return view('roboAdvisors/index', [
-            'roboAdvisors' => $roboAdvisors,
+            'roboAdvisors' => $roboAdvisors->appends(Input::except('page')),
         ]);
     }
 
