@@ -79,51 +79,81 @@ $(function () {
 		let maxInputValue = $('.js-range-slider-to', self);
 		let min = self.data('min');
 		let max = self.data('max');
+		let current_max = self.data('current-max');
+		let current_min = self.data('current-min');
 		let step = self.data('step');
 		let unit = self.data('unit');
+		let reduce = self.data('reduce');
 		let isRange = self.data('isRange');
-		let round = self.data('round');
+		let float = self.data('float');
+
+        if (!float) {
+            current_max = current_max === '' || isNaN(parseInt(current_max)) ? max : parseInt(current_max);
+            current_min = current_min === '' || isNaN(parseInt(current_min)) ? min : parseInt(current_min);
+		}else{
+            current_max = current_max === '' || isNaN(parseFloat(current_max)) ? max : parseFloat(current_max);
+            current_min = current_min === '' || isNaN(parseFloat(current_min)) ? min : parseFloat(current_min);
+		}
 
 		if (isRange) {
 			noUiSlider.create(sliderItem, {
-				start: [min, max],
+				start: [
+                    current_min !== '' ? current_min : min,
+                    current_max !== '' ? current_max : max
+				],
 				step: step,
 				connect: true,
 				range: {
 					min: min,
 					max: max
 				}
-			}, true);
+			});
 		} else {
 			noUiSlider.create(sliderItem, {
-				start: max,
+				start: current_max !== '' ? current_max : max,
 				step: step,
 				connect: [true, false],
 				range: {
 					min: min,
 					max: max
 				}
-			}, true);
+			});
 		}
 
 		sliderItem.noUiSlider.on('update', function (values) {
-			minValue.html(getValue(values[0]) + unit);
-            minInputValue.val(getValue(values[0]) + unit);
+			minValue.html(reduceNum(getValue(values[0])) + unit);
+            minInputValue.val(getValue(values[0]));
 			if (isRange) {
-				maxValue.html(getValue(values[1]) + unit);
-                maxInputValue.val(getValue(values[1]) + unit);
+				maxValue.html(reduceNum(getValue(values[1])) + unit);
+                maxInputValue.val(getValue(values[1]));
 			}
 		});
 
 		function getValue (value) {
-			//let valueMin = (Math.round(values[0]) == values[0]) ? Math.round(values[0]) : values[0];
-
-			if (round) {
+			if (!float || value === '0.00') {
 				value = Math.round(value);
 			}
 
 			return value;
 		}
+
+        function reduceNum(value)
+        {
+            if (isNaN(value) || !reduce) {
+                return value;
+            }
+            if (value >= 1000000000) {
+                result = Math.floor(value/1000000000) + ' Bln';
+            } else if (value >= 1000000) {
+            	result = Math.floor(value/1000000) + ' Mln';
+			} else if (value >= 1000) {
+            	result = Math.floor(value/1000) + ' K';
+			} else {
+                result = value;
+			}
+
+            return result;
+        }
 	});
 
 	$('.js-add-to-compare').on('submit', function (e) {
@@ -232,8 +262,24 @@ $(function () {
 	});
 
     $(".js-handle-filter-submit").submit(function(e){
+        console.log('tyt');
         e.preventDefault();
-        let q = $(this).serialize().replace(/&?[\w\-\d_]+=&|&?[\w\-\d_]+=$/gi,"");
-        window.location.href = this.getAttribute('action') + (q.length > 0 ? "?"+q : "");
+        let form = $(this);
+        $('.js-range-slider', form).each(function () {
+            let self = $(this);
+            let minInputValue = $('.js-range-slider-from', self).get(0);
+            let maxInputValue = $('.js-range-slider-to', self).get(0);
+			let rangeCheckbox = $('.js-range-slider-handle', self).get(0);
+			if(minInputValue && !rangeCheckbox.checked) {
+				minInputValue.disabled = 'disabled';
+			}
+            if(maxInputValue && !rangeCheckbox.checked) {
+                maxInputValue.disabled = 'disabled';
+            }
+            rangeCheckbox.disabled = 'disable';
+        });
+        let q = form.serialize().replace(/&?[\w\-\d_]+=&|&?[\w\-\d_]+=$/gi,"");
+		let pref = window.location.search.length > 0 ? '&' : '?';
+        window.location.href = this.getAttribute('action') + (q.length > 0 ? pref+q : "");
     });
 });

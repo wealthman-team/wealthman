@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Arr;
+
 /**
  *
  * Set active css class if the specific URI is current URI
@@ -12,6 +14,22 @@
 function setActive(string $path, string $class_name = "active")
 {
     return Request::fullUrl() === $path ? $class_name : "";
+}
+
+/**
+ * @param string $path
+ * @param null $exclude
+ * @return string
+ */
+function qs_url(string $path, $exclude = null)
+{
+    $query = Request::all();
+    if ($exclude !== null) {
+        $exclude = is_array($exclude) ? $exclude : [$exclude];
+        array_forget($query, $exclude);
+    }
+
+    return $path.(Arr::query($query) ? '?'.Arr::query($query) : '');
 }
 
 /**

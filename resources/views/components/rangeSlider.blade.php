@@ -1,15 +1,18 @@
 <div class="range-slider js-range-slider"
+     data-current-min="{{ $current_min }}"
+     data-current-max="{{ $current_max }}"
      data-min="{{ $min }}"
-     data-max="{{ $max}}"
+     data-max="{{ $max }}"
      data-step="{{ $step }}"
      data-unit="{{ $unit }}"
+     data-reduce="{{ $reduce }}"
      data-is-range="{{ $isRange }}"
-     data-round="{{ isSet($round) ? $round : '' }}"
+     data-float="{{ isSet($float) ? $float : '' }}"
 >
     <div class="range-slider__header user-select">
         <div class="range-slider__checkbox">
             <div class="checkbox checkbox_inline">
-                <input class="js-range-slider-handle" id="{{ $id }}_checkbox" name="{{ $name }}_checkbox" type="checkbox">
+                <input class="js-range-slider-handle" id="{{ $id }}_checkbox" name="{{ $name }}_checkbox" type="checkbox" {{ $isActive ? 'checked="checked"' : ''}}>
                 <div class="checkbox__icon-container">
                     @svg('check', 'checkbox__icon')
                 </div>
@@ -17,10 +20,10 @@
             <label class="label label_inline" for="{{ $id }}_checkbox">{{ $label }}</label>
         </div>
         <div class="range-slider__values">
-            <span class="js-range-slider-min">{{ old($name . '_from') ?? $min }}</span>
+            <span class="js-range-slider-min">{{ $current_min && $current_min !== '' ? $current_min : $min }}</span>
             @if ($isRange)
                 -
-                <span class="js-range-slider-max">{{ old($name . '_to') ?? $max }}</span>
+                <span class="js-range-slider-max">{{ $current_max && $current_max !== '' ? $current_max : $max }}</span>
             @endif
         </div>
     </div>
