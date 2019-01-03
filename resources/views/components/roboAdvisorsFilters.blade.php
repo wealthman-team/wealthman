@@ -33,6 +33,7 @@
                                         'isRange' => $filterOption['isRange'],
                                         'isActive' => $filterOption['isActive'],
                                         'float' => $filterOption['float'],
+                                        'range_factor' => $filterOption['range_factor'],
                                     ])
                                 </div>
                             @endif

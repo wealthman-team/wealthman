@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Service\Filters\AbstractModelFilter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * App\RoboAdvisor
@@ -100,7 +102,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereTwoFactorAuth($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereVideoLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor filter($filters)
  * @mixin \Eloquent
+ * @property-read \App\Rating $ratings
  */
 class RoboAdvisor extends Model
 {
@@ -202,7 +206,7 @@ class RoboAdvisor extends Model
         ];
     }
 
-    public function rating()
+    public function ratings()
     {
         return $this->hasOne('App\Rating');
     }
@@ -210,5 +214,15 @@ class RoboAdvisor extends Model
     public function account_types()
     {
         return $this->belongsToMany('App\AccountType');
+    }
+
+    /**
+     * @param Builder|Model $builder
+     * @param AbstractModelFilter $filters
+     * @return mixed
+     */
+    public function scopeFilter($builder, $filters)
+    {
+        return $filters->apply($builder);
     }
 }

@@ -4,7 +4,7 @@
             <div class="footer__links">
                 <div class="footer__title">WEALTHMAN</div>
                 <ul class="footer__links-list">
-                    <li><a class="link link_white" href="#">Directory</a></li>
+                    <li><a class="link link_white" href="#">Advisor screener</a></li>
                     <li><a class="link link_white" href="#">About us</a></li>
                     <li><a class="link link_white" href="#">Investor relation</a></li>
                     <li><a class="link link_white" href="#">Contacts</a></li>

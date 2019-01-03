@@ -6,7 +6,7 @@
             @endif
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__rating">
-            {{ $roboAdvisor->rating->total }}
+            {{ $roboAdvisor->ratings->total }}
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__recommendation">
             @include('components/recommendation', [
@@ -70,7 +70,7 @@
                         Commission & Fees
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        {{ $roboAdvisor->rating->commissions }}
+                        {{ $roboAdvisor->ratings->commissions }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -78,7 +78,7 @@
                         Customer Service
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        {{ $roboAdvisor->rating->service }}
+                        {{ $roboAdvisor->ratings->service }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -86,7 +86,7 @@
                         Ease of Use
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        {{ $roboAdvisor->rating->comfortable }}
+                        {{ $roboAdvisor->ratings->comfortable }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -94,7 +94,7 @@
                         Tools & Resources
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        {{ $roboAdvisor->rating->tools }}
+                        {{ $roboAdvisor->ratings->tools }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -102,7 +102,7 @@
                         Investment Options
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        {{ $roboAdvisor->rating->investment_options }}
+                        {{ $roboAdvisor->ratings->investment_options }}
                     </div>
                 </div>
                 <div class="robo-advisors-item__rating-item">
@@ -110,7 +110,7 @@
                         Asset Allocation
                     </div>
                     <div class="robo-advisors-item__rating-value">
-                        {{ $roboAdvisor->rating->asset_allocation }}
+                        {{ $roboAdvisor->ratings->asset_allocation }}
                     </div>
                 </div>
             </div>

@@ -29,7 +29,7 @@
                     @if (count($roboAdvisors) === 0)
                         <div class="compare__empty">
                             You can add an robo advisors from the
-                            <a class="link link_active" href="#">directory</a>
+                            <a class="link link_active" href="#">Advisor screener</a>
                         </div>
                     @else
                         <div class="compare__actions-list">
@@ -111,7 +111,7 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
-                                                    {{ $roboAdvisor->rating->total }}
+                                                    {{ $roboAdvisor->ratings->total }}
                                                 </div>
                                             @endforeach
                                         </div>
@@ -124,7 +124,7 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
-                                                    {{ $roboAdvisor->rating->commissions }}
+                                                    {{ $roboAdvisor->ratings->commissions }}
                                                 </div>
                                             @endforeach
                                         </div>
@@ -137,7 +137,7 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
-                                                    {{ $roboAdvisor->rating->service }}
+                                                    {{ $roboAdvisor->ratings->service }}
                                                 </div>
                                             @endforeach
                                         </div>
@@ -150,7 +150,7 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
-                                                    {{ $roboAdvisor->rating->comfortable }}
+                                                    {{ $roboAdvisor->ratings->comfortable }}
                                                 </div>
                                             @endforeach
                                         </div>
@@ -163,7 +163,7 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
-                                                    {{ $roboAdvisor->rating->tools }}
+                                                    {{ $roboAdvisor->ratings->tools }}
                                                 </div>
                                             @endforeach
                                         </div>
@@ -176,7 +176,7 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
-                                                    {{ $roboAdvisor->rating->investment_options }}
+                                                    {{ $roboAdvisor->ratings->investment_options }}
                                                 </div>
                                             @endforeach
                                         </div>
@@ -189,7 +189,7 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
-                                                    {{ $roboAdvisor->rating->asset_allocation }}
+                                                    {{ $roboAdvisor->ratings->asset_allocation }}
                                                 </div>
                                             @endforeach
                                         </div>

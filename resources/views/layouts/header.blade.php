@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div class="header__nav">
-                    <a class="link header__nav-item" href="{{ route('roboAdvisors') }}">Directory</a>
+                    <a class="link header__nav-item" href="{{ route('roboAdvisors') }}">Advisor screener</a>
                     <a class="link header__nav-item" href="#">About Us</a>
                     <a class="link header__nav-item" href="#">Team</a>
                     <a class="link header__nav-item" href="#">Contacts</a>

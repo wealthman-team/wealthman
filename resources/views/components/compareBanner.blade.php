@@ -3,6 +3,6 @@
         COMPARE ALL INVESTMENT ADVISORS
     </div>
     <a class="button button_adaptive">
-        Directory of Robo Advisors
+        Advisor screener
     </a>
 </div>

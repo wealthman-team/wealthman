@@ -8,6 +8,7 @@
      data-reduce="{{ $reduce }}"
      data-is-range="{{ $isRange }}"
      data-float="{{ isSet($float) ? $float : '' }}"
+     data-range-factor="{{ $range_factor }}"
 >
     <div class="range-slider__header user-select">
         <div class="range-slider__checkbox">

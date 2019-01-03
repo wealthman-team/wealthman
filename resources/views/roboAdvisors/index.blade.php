@@ -16,7 +16,7 @@
 
             <div class="container">
                 <h1 class="page-header">
-                    Directory of Robo Advisors
+                    Advisor screener
                 </h1>
                 <div class="page-sub-header">
                     Find independent information about

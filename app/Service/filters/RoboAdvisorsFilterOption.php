@@ -1,10 +1,8 @@
 <?php
-namespace App\Service;
+namespace App\Service\Filters;
 
 use DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Input;
 
 class RoboAdvisorsFilterOption
 {
@@ -20,7 +18,7 @@ class RoboAdvisorsFilterOption
     /**
      * @var array
      */
-    private $filter_queries = [];
+    private $filter_queries = ['page'];
 
     /**
      * RoboAdvisorsFilter constructor.
@@ -118,7 +116,7 @@ class RoboAdvisorsFilterOption
                     'field' => 'founded',
                     'name' => 'founded',
                     'label' => 'Year Founded',
-                    'min' => 2008,
+                    'range_factor' => '90',
                     'max' => 2018,
                     'step_rules' => [
                         '0' => '1'
@@ -144,7 +142,7 @@ class RoboAdvisorsFilterOption
                     'label' => 'Automatic Deposits',
                 ]),
                 $this->getCheckboxFilter([
-                    'name' => 'factor_authentication',
+                    'name' => 'two_factor_auth',
                     'label' => 'Two-Factor Authentication',
                 ])
             ],
@@ -247,6 +245,14 @@ class RoboAdvisorsFilterOption
             $current_max = $this->request->get($param['name'].'_to');
         }
 
+        if (isset($param['range_factor'])) {
+            $range_factor = $param['range_factor'];
+        } elseif(($max - $min) >= 1000000000) {
+            $range_factor = '2';
+        } else {
+            $range_factor = '50';
+        }
+
         return [
             'type' => 'range',
             'current_min' => $current_min,
@@ -261,6 +267,7 @@ class RoboAdvisorsFilterOption
             'id' => $param['name'],
             'isRange' => $isRange,
             'float' => $param['float'] ?? false,
+            'range_factor' => $range_factor,
             'isActive' => !empty($current_min) || !empty($current_max),
         ];
     }
@@ -281,31 +288,4 @@ class RoboAdvisorsFilterOption
             'isActive' => $this->request->has($param['name']),
         ];
     }
-
-//    /**
-//     * Get the URL for a given page number.
-//     *
-//     * @param  int  $page
-//     * @return string
-//     */
-//    public function url($page)
-//    {
-//        if ($page <= 0) {
-//            $page = 1;
-//        }
-//
-//        // If we have any extra query string key / value pairs that need to be added
-//        // onto the URL, we will put them in query string form and then attach it
-//        // to the URL. This allows for extra information like sortings storage.
-//        $parameters = [$this->pageName => $page];
-//
-//        if (count($this->query) > 0) {
-//            $parameters = array_merge($this->query, $parameters);
-//        }
-//
-//        return $this->path
-//            .(Str::contains($this->path, '?') ? '&' : '?')
-//            .Arr::query($parameters)
-//            .$this->buildFragment();
-//    }
 }

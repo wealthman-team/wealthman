@@ -15,9 +15,8 @@
                 @elseif ($page === $paginator->currentPage() + 1 || $page === $paginator->currentPage() + 2 || $page === $paginator->currentPage() - 1 || $page === $paginator->currentPage() - 2 || $page === $paginator->lastPage() || $page === 1)
                     <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
                 @endif
-
                 {{--  Use three dots when current page is awasy from end.  --}}
-                @if ($paginator->currentPage() < $paginator->total() - 3 && $page === $paginator->total() - 1)
+                @if ($paginator->currentPage() < $paginator->lastPage() - 3 && $page === $paginator->lastPage() - 1)
                     <li class="page-item disabled"><span class="page-link">...</span></li>
                 @endif
             @endforeach

@@ -12,7 +12,7 @@ require('./icons.font');
 
 /**
  * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
+ * Vue components. It will recursively scan this Advisor screener for the Vue
  * components and automatically register them with their "basename".
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
@@ -73,6 +73,7 @@ $(function () {
 	$('.js-range-slider').each(function () {
 		let self = $(this);
 		let sliderItem = $('.js-range-slider-item', self).get(0);
+		let sliderHandle = $('.js-range-slider-handle', self).get(0);
 		let minValue = $('.js-range-slider-min', self);
 		let maxValue = $('.js-range-slider-max', self);
 		let minInputValue = $('.js-range-slider-from', self);
@@ -86,6 +87,7 @@ $(function () {
 		let reduce = self.data('reduce');
 		let isRange = self.data('isRange');
 		let float = self.data('float');
+		let range_factor = self.data('range-factor');
 
         if (!float) {
             current_max = current_max === '' || isNaN(parseInt(current_max)) ? max : parseInt(current_max);
@@ -101,10 +103,11 @@ $(function () {
                     current_min !== '' ? current_min : min,
                     current_max !== '' ? current_max : max
 				],
-				step: step,
+				// step: step,
 				connect: true,
 				range: {
 					min: min,
+                    '50%': ((max - min)/100*range_factor) + min,
 					max: max
 				}
 			});
@@ -128,6 +131,10 @@ $(function () {
                 maxInputValue.val(getValue(values[1]));
 			}
 		});
+
+        sliderItem.noUiSlider.on('change', function() {
+            sliderHandle.checked = 'checked';
+        });
 
 		function getValue (value) {
 			if (!float || value === '0.00') {
@@ -279,7 +286,8 @@ $(function () {
             rangeCheckbox.disabled = 'disable';
         });
         let q = form.serialize().replace(/&?[\w\-\d_]+=&|&?[\w\-\d_]+=$/gi,"");
-		let pref = window.location.search.length > 0 ? '&' : '?';
-        window.location.href = this.getAttribute('action') + (q.length > 0 ? pref+q : "");
+		let uri = this.getAttribute('action');
+        let separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        window.location.href = uri + (q.length > 0 ? separator+q : "");
     });
 });
