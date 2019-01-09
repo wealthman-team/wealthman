@@ -18,14 +18,26 @@
             ])
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__account">
-            ${{ $roboAdvisor->minimum_account }}
+            @if ($roboAdvisor->minimum_account || $roboAdvisor->minimum_account === 0)
+                ${{ $roboAdvisor->minimum_account }}
+            @else
+                N/A
+            @endif
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__fee">
-            {{ $roboAdvisor->management_fee }}%
+            @if ($roboAdvisor->management_fee)
+                {{ $roboAdvisor->management_fee }}%
+            @else
+                N/A
+            @endif
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__aum">
-            >
-            {{ getAUMNum($roboAdvisor->aum) }}
+            @if ($roboAdvisor->aum)
+                >
+                {{ getAUMNum($roboAdvisor->aum) }}
+            @else
+                N/A
+            @endif
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__details">
             <div class="robo-advisors-item__promotions">
