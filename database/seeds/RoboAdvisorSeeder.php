@@ -15,6 +15,65 @@ class RoboAdvisorSeeder extends Seeder
             'title' => 'Wealthfront Review 2018 – Improving on Passive Investing',
             'short_description' => "<p>Wealthfront is a robo advisor that emphasizes low fees and automated investing. The service shines when you have a taxable account, and the service is free for accounts under $5K if you use the Investor Junkie promotion or if you are referred by a current Wealthfront client. The negative is it doesn&#39;t support fractional shares.</p>",
             'description' => null,
+            'about_company' => "Wealthfront is one of many robo advisors on the market.
+                                            <a href=\"#\">These automated investing platforms</a>
+                                            have democratized investing by providing services that you once needed an
+                                            expensive personal advisor to receive. And it’s proved enormously popular.
+                                            Since its launch in December 2011, Wealthfront has built up its assets under
+                                            management (AUM) to $10.5 billion.
+                                        </p>
+                                        <p>
+                                            How it works is simple: You invest your money into a Wealthfront account
+                                            (there’s a required minimum of $500). You can choose to use a tax-deferred
+                                            individual retirement account (IRA) if you wish. Funds aren’t held by
+                                            Wealthfront, but by the Royal Bank of Canada (RBC).
+                                        </p>
+                                        <p>
+                                            Wealthfront then allocates your investment into an assortment of
+                                            <a href=\"#\">exchange-traded funds (ETFs).</a>
+                                        </p>
+                                        <p>
+                                            Like many robo-investing services, Wealthfront uses
+                                            <a href=\"#\">Modern Portfolio Theory (MPT)</a>
+                                            to create an automated asset allocation, taking into account your risk
+                                            tolerance and financial needs. The platform continually makes sure that the
+                                            allocation is correct with <a href=\"#\">automatic rebalancing.</a>
+                                        </p>
+                                        <br>
+                                        <h3>
+                                            Free Financial Planning With Path
+                                        </h3>
+                                        <p>
+                                            But let’s back up a step — Wealthfront uses a savings model called Path that
+                                            was developed by a team of Ph.D.s to help you reach your goals.
+                                            Using Path, you can set savings goals for the big stuff: retirement,
+                                            college and/or a home purchase. This service takes all of your
+                                            accounts — including external savings, banking and even mortgage accounts — and
+                                            creates personal financial advice. Path generates scenarios to help you
+                                            determine if you’re on the right… well… path to meet your savings goals.
+                                            And if not, it will suggest the best ways to go about doing so. Path is not a
+                                            separate app; it’s built into everything Wealthfront does.
+                                        </p>
+                                        <p>
+                                            It’s like having a personal financial advisor that’s software based.
+                                        </p>
+                                        <p>
+                                            Not only that, but you can use Path for free with no investment required.
+                                            In fact, Wealthfront is now the only robo advisor to offer free financial
+                                            planning. All you have to do is download the Wealthfront app and Path will
+                                            get to work for you, with the ability to answer more than 10,000 questions
+                                            tailored to your personal financial situation.
+                                        </p>
+                                        <p>
+                                            With Path, Wealthfront can help you answer these questions:
+                                        </p>
+                                        <ul>
+                                            <li>How much should you save today?</li>
+                                            <li>How much will you be worth then?</li>
+                                            <li>Could you live your current lifestyle at retirement?</li>
+                                            <li>Are you on track for your child’s college education?</li>
+                                            <li>Are you saving enough to purchase a home?</li>
+                                        </ul>",
             'referral_link' => 'https://www.wealthfront.com/',
             'video_link' => null,
             'minimum_account' => '500',
@@ -78,6 +137,65 @@ class RoboAdvisorSeeder extends Seeder
             'title' => 'Betterment Review 2018 – Making Investing Simple',
             'short_description' => "<p>Betterment is equally a good starting point for beginning investors and a useful platform for more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually. If you need the assistance, it recently added human advisors who can assist with your retirement account. Unfortunately, Betterment&#39;s asset allocation excludes REITs or commodities.</p>",
             'description' => null,
+            'about_company' => "Wealthfront is one of many robo advisors on the market.
+                                            <a href=\"#\">These automated investing platforms</a>
+                                            have democratized investing by providing services that you once needed an
+                                            expensive personal advisor to receive. And it’s proved enormously popular.
+                                            Since its launch in December 2011, Wealthfront has built up its assets under
+                                            management (AUM) to $10.5 billion.
+                                        </p>
+                                        <p>
+                                            How it works is simple: You invest your money into a Wealthfront account
+                                            (there’s a required minimum of $500). You can choose to use a tax-deferred
+                                            individual retirement account (IRA) if you wish. Funds aren’t held by
+                                            Wealthfront, but by the Royal Bank of Canada (RBC).
+                                        </p>
+                                        <p>
+                                            Wealthfront then allocates your investment into an assortment of
+                                            <a href=\"#\">exchange-traded funds (ETFs).</a>
+                                        </p>
+                                        <p>
+                                            Like many robo-investing services, Wealthfront uses
+                                            <a href=\"#\">Modern Portfolio Theory (MPT)</a>
+                                            to create an automated asset allocation, taking into account your risk
+                                            tolerance and financial needs. The platform continually makes sure that the
+                                            allocation is correct with <a href=\"#\">automatic rebalancing.</a>
+                                        </p>
+                                        <br>
+                                        <h3>
+                                            Free Financial Planning With Path
+                                        </h3>
+                                        <p>
+                                            But let’s back up a step — Wealthfront uses a savings model called Path that
+                                            was developed by a team of Ph.D.s to help you reach your goals.
+                                            Using Path, you can set savings goals for the big stuff: retirement,
+                                            college and/or a home purchase. This service takes all of your
+                                            accounts — including external savings, banking and even mortgage accounts — and
+                                            creates personal financial advice. Path generates scenarios to help you
+                                            determine if you’re on the right… well… path to meet your savings goals.
+                                            And if not, it will suggest the best ways to go about doing so. Path is not a
+                                            separate app; it’s built into everything Wealthfront does.
+                                        </p>
+                                        <p>
+                                            It’s like having a personal financial advisor that’s software based.
+                                        </p>
+                                        <p>
+                                            Not only that, but you can use Path for free with no investment required.
+                                            In fact, Wealthfront is now the only robo advisor to offer free financial
+                                            planning. All you have to do is download the Wealthfront app and Path will
+                                            get to work for you, with the ability to answer more than 10,000 questions
+                                            tailored to your personal financial situation.
+                                        </p>
+                                        <p>
+                                            With Path, Wealthfront can help you answer these questions:
+                                        </p>
+                                        <ul>
+                                            <li>How much should you save today?</li>
+                                            <li>How much will you be worth then?</li>
+                                            <li>Could you live your current lifestyle at retirement?</li>
+                                            <li>Are you on track for your child’s college education?</li>
+                                            <li>Are you saving enough to purchase a home?</li>
+                                        </ul>",
             'referral_link' => null,
             'video_link' => null,
             'minimum_account' => '0',
@@ -140,6 +258,65 @@ class RoboAdvisorSeeder extends Seeder
             'title' => 'SoFi Wealth Review 2018 – A Low-Cost Robo Advisor for Millennials',
             'short_description' => "<p>SoFi Wealth is an investment management service that combines robo investing with access to a human financial advisor. Accounts are free for SoFi borrowers and those with a portfolio below $10,000. SoFi Wealth focuses only on index fund investments to meet your financial goals, and you won&#39;t find tax loss harvesting.</p>",
             'description' => null,
+            'about_company' => "Wealthfront is one of many robo advisors on the market.
+                                            <a href=\"#\">These automated investing platforms</a>
+                                            have democratized investing by providing services that you once needed an
+                                            expensive personal advisor to receive. And it’s proved enormously popular.
+                                            Since its launch in December 2011, Wealthfront has built up its assets under
+                                            management (AUM) to $10.5 billion.
+                                        </p>
+                                        <p>
+                                            How it works is simple: You invest your money into a Wealthfront account
+                                            (there’s a required minimum of $500). You can choose to use a tax-deferred
+                                            individual retirement account (IRA) if you wish. Funds aren’t held by
+                                            Wealthfront, but by the Royal Bank of Canada (RBC).
+                                        </p>
+                                        <p>
+                                            Wealthfront then allocates your investment into an assortment of
+                                            <a href=\"#\">exchange-traded funds (ETFs).</a>
+                                        </p>
+                                        <p>
+                                            Like many robo-investing services, Wealthfront uses
+                                            <a href=\"#\">Modern Portfolio Theory (MPT)</a>
+                                            to create an automated asset allocation, taking into account your risk
+                                            tolerance and financial needs. The platform continually makes sure that the
+                                            allocation is correct with <a href=\"#\">automatic rebalancing.</a>
+                                        </p>
+                                        <br>
+                                        <h3>
+                                            Free Financial Planning With Path
+                                        </h3>
+                                        <p>
+                                            But let’s back up a step — Wealthfront uses a savings model called Path that
+                                            was developed by a team of Ph.D.s to help you reach your goals.
+                                            Using Path, you can set savings goals for the big stuff: retirement,
+                                            college and/or a home purchase. This service takes all of your
+                                            accounts — including external savings, banking and even mortgage accounts — and
+                                            creates personal financial advice. Path generates scenarios to help you
+                                            determine if you’re on the right… well… path to meet your savings goals.
+                                            And if not, it will suggest the best ways to go about doing so. Path is not a
+                                            separate app; it’s built into everything Wealthfront does.
+                                        </p>
+                                        <p>
+                                            It’s like having a personal financial advisor that’s software based.
+                                        </p>
+                                        <p>
+                                            Not only that, but you can use Path for free with no investment required.
+                                            In fact, Wealthfront is now the only robo advisor to offer free financial
+                                            planning. All you have to do is download the Wealthfront app and Path will
+                                            get to work for you, with the ability to answer more than 10,000 questions
+                                            tailored to your personal financial situation.
+                                        </p>
+                                        <p>
+                                            With Path, Wealthfront can help you answer these questions:
+                                        </p>
+                                        <ul>
+                                            <li>How much should you save today?</li>
+                                            <li>How much will you be worth then?</li>
+                                            <li>Could you live your current lifestyle at retirement?</li>
+                                            <li>Are you on track for your child’s college education?</li>
+                                            <li>Are you saving enough to purchase a home?</li>
+                                        </ul>",
             'referral_link' => 'https://www.sofi.com/wealth-management/',
             'video_link' => null,
             'minimum_account' => '100',
@@ -200,6 +377,65 @@ class RoboAdvisorSeeder extends Seeder
             'title' => 'Wealthsimple Review 2018 – Automated Investing With Human Advice',
             'short_description' => "<p>Wealthsimple is a solid addition to the current slate of robo advisors available. The service offers a socially responsible investment option, as well as assistance from a live representative. However, compared to other firms their fees are on the high side.</p>",
             'description' => null,
+            'about_company' => "Wealthfront is one of many robo advisors on the market.
+                                            <a href=\"#\">These automated investing platforms</a>
+                                            have democratized investing by providing services that you once needed an
+                                            expensive personal advisor to receive. And it’s proved enormously popular.
+                                            Since its launch in December 2011, Wealthfront has built up its assets under
+                                            management (AUM) to $10.5 billion.
+                                        </p>
+                                        <p>
+                                            How it works is simple: You invest your money into a Wealthfront account
+                                            (there’s a required minimum of $500). You can choose to use a tax-deferred
+                                            individual retirement account (IRA) if you wish. Funds aren’t held by
+                                            Wealthfront, but by the Royal Bank of Canada (RBC).
+                                        </p>
+                                        <p>
+                                            Wealthfront then allocates your investment into an assortment of
+                                            <a href=\"#\">exchange-traded funds (ETFs).</a>
+                                        </p>
+                                        <p>
+                                            Like many robo-investing services, Wealthfront uses
+                                            <a href=\"#\">Modern Portfolio Theory (MPT)</a>
+                                            to create an automated asset allocation, taking into account your risk
+                                            tolerance and financial needs. The platform continually makes sure that the
+                                            allocation is correct with <a href=\"#\">automatic rebalancing.</a>
+                                        </p>
+                                        <br>
+                                        <h3>
+                                            Free Financial Planning With Path
+                                        </h3>
+                                        <p>
+                                            But let’s back up a step — Wealthfront uses a savings model called Path that
+                                            was developed by a team of Ph.D.s to help you reach your goals.
+                                            Using Path, you can set savings goals for the big stuff: retirement,
+                                            college and/or a home purchase. This service takes all of your
+                                            accounts — including external savings, banking and even mortgage accounts — and
+                                            creates personal financial advice. Path generates scenarios to help you
+                                            determine if you’re on the right… well… path to meet your savings goals.
+                                            And if not, it will suggest the best ways to go about doing so. Path is not a
+                                            separate app; it’s built into everything Wealthfront does.
+                                        </p>
+                                        <p>
+                                            It’s like having a personal financial advisor that’s software based.
+                                        </p>
+                                        <p>
+                                            Not only that, but you can use Path for free with no investment required.
+                                            In fact, Wealthfront is now the only robo advisor to offer free financial
+                                            planning. All you have to do is download the Wealthfront app and Path will
+                                            get to work for you, with the ability to answer more than 10,000 questions
+                                            tailored to your personal financial situation.
+                                        </p>
+                                        <p>
+                                            With Path, Wealthfront can help you answer these questions:
+                                        </p>
+                                        <ul>
+                                            <li>How much should you save today?</li>
+                                            <li>How much will you be worth then?</li>
+                                            <li>Could you live your current lifestyle at retirement?</li>
+                                            <li>Are you on track for your child’s college education?</li>
+                                            <li>Are you saving enough to purchase a home?</li>
+                                        </ul>",
             'referral_link' => 'https://investorjunkie.com/go/wealthsimple-compare1',
             'video_link' => null,
             'minimum_account' => '0',
@@ -261,6 +497,65 @@ class RoboAdvisorSeeder extends Seeder
             'title' => 'M1 Finance Review 2018 – A Robo Advisor and Brokerage Hybrid',
             'short_description' => "<p>Combining the best of both traditional investment brokerage accounts and robo advisors, M1 Finance is dangerously close to being the perfect all-around investment platform. The only significant negatives are that it does not offer tax-loss harvesting or investment in mutual funds.</p>",
             'description' => null,
+            'about_company' => "Wealthfront is one of many robo advisors on the market.
+                                            <a href=\"#\">These automated investing platforms</a>
+                                            have democratized investing by providing services that you once needed an
+                                            expensive personal advisor to receive. And it’s proved enormously popular.
+                                            Since its launch in December 2011, Wealthfront has built up its assets under
+                                            management (AUM) to $10.5 billion.
+                                        </p>
+                                        <p>
+                                            How it works is simple: You invest your money into a Wealthfront account
+                                            (there’s a required minimum of $500). You can choose to use a tax-deferred
+                                            individual retirement account (IRA) if you wish. Funds aren’t held by
+                                            Wealthfront, but by the Royal Bank of Canada (RBC).
+                                        </p>
+                                        <p>
+                                            Wealthfront then allocates your investment into an assortment of
+                                            <a href=\"#\">exchange-traded funds (ETFs).</a>
+                                        </p>
+                                        <p>
+                                            Like many robo-investing services, Wealthfront uses
+                                            <a href=\"#\">Modern Portfolio Theory (MPT)</a>
+                                            to create an automated asset allocation, taking into account your risk
+                                            tolerance and financial needs. The platform continually makes sure that the
+                                            allocation is correct with <a href=\"#\">automatic rebalancing.</a>
+                                        </p>
+                                        <br>
+                                        <h3>
+                                            Free Financial Planning With Path
+                                        </h3>
+                                        <p>
+                                            But let’s back up a step — Wealthfront uses a savings model called Path that
+                                            was developed by a team of Ph.D.s to help you reach your goals.
+                                            Using Path, you can set savings goals for the big stuff: retirement,
+                                            college and/or a home purchase. This service takes all of your
+                                            accounts — including external savings, banking and even mortgage accounts — and
+                                            creates personal financial advice. Path generates scenarios to help you
+                                            determine if you’re on the right… well… path to meet your savings goals.
+                                            And if not, it will suggest the best ways to go about doing so. Path is not a
+                                            separate app; it’s built into everything Wealthfront does.
+                                        </p>
+                                        <p>
+                                            It’s like having a personal financial advisor that’s software based.
+                                        </p>
+                                        <p>
+                                            Not only that, but you can use Path for free with no investment required.
+                                            In fact, Wealthfront is now the only robo advisor to offer free financial
+                                            planning. All you have to do is download the Wealthfront app and Path will
+                                            get to work for you, with the ability to answer more than 10,000 questions
+                                            tailored to your personal financial situation.
+                                        </p>
+                                        <p>
+                                            With Path, Wealthfront can help you answer these questions:
+                                        </p>
+                                        <ul>
+                                            <li>How much should you save today?</li>
+                                            <li>How much will you be worth then?</li>
+                                            <li>Could you live your current lifestyle at retirement?</li>
+                                            <li>Are you on track for your child’s college education?</li>
+                                            <li>Are you saving enough to purchase a home?</li>
+                                        </ul>",
             'referral_link' => 'https://www.m1finance.com/?utm_campaign=31834&utm_medium=ambassador&mbsy_source=bebe17e5-5ea0-4465-9a53-420efe39cdd6&campaignid=31834&mbsy=hTr8b&utm_source=hTr8b',
             'video_link' => null,
             'minimum_account' => '0',
@@ -322,6 +617,65 @@ class RoboAdvisorSeeder extends Seeder
             'title' => 'Vanguard Personal Advisor Services Review 2018 – Low-Cost, Personal Service',
             'short_description' => "<p>A solid entry into the robo advisor space, Vanguard Personal Advisor Services is backed by the trusted Vanguard brand and features real, live human advisors you can call. Unfortunately, the service requires a hefty $50k deposit, which excludes many beginning investors.</p>",
             'description' => null,
+            'about_company' => "Wealthfront is one of many robo advisors on the market.
+                                            <a href=\"#\">These automated investing platforms</a>
+                                            have democratized investing by providing services that you once needed an
+                                            expensive personal advisor to receive. And it’s proved enormously popular.
+                                            Since its launch in December 2011, Wealthfront has built up its assets under
+                                            management (AUM) to $10.5 billion.
+                                        </p>
+                                        <p>
+                                            How it works is simple: You invest your money into a Wealthfront account
+                                            (there’s a required minimum of $500). You can choose to use a tax-deferred
+                                            individual retirement account (IRA) if you wish. Funds aren’t held by
+                                            Wealthfront, but by the Royal Bank of Canada (RBC).
+                                        </p>
+                                        <p>
+                                            Wealthfront then allocates your investment into an assortment of
+                                            <a href=\"#\">exchange-traded funds (ETFs).</a>
+                                        </p>
+                                        <p>
+                                            Like many robo-investing services, Wealthfront uses
+                                            <a href=\"#\">Modern Portfolio Theory (MPT)</a>
+                                            to create an automated asset allocation, taking into account your risk
+                                            tolerance and financial needs. The platform continually makes sure that the
+                                            allocation is correct with <a href=\"#\">automatic rebalancing.</a>
+                                        </p>
+                                        <br>
+                                        <h3>
+                                            Free Financial Planning With Path
+                                        </h3>
+                                        <p>
+                                            But let’s back up a step — Wealthfront uses a savings model called Path that
+                                            was developed by a team of Ph.D.s to help you reach your goals.
+                                            Using Path, you can set savings goals for the big stuff: retirement,
+                                            college and/or a home purchase. This service takes all of your
+                                            accounts — including external savings, banking and even mortgage accounts — and
+                                            creates personal financial advice. Path generates scenarios to help you
+                                            determine if you’re on the right… well… path to meet your savings goals.
+                                            And if not, it will suggest the best ways to go about doing so. Path is not a
+                                            separate app; it’s built into everything Wealthfront does.
+                                        </p>
+                                        <p>
+                                            It’s like having a personal financial advisor that’s software based.
+                                        </p>
+                                        <p>
+                                            Not only that, but you can use Path for free with no investment required.
+                                            In fact, Wealthfront is now the only robo advisor to offer free financial
+                                            planning. All you have to do is download the Wealthfront app and Path will
+                                            get to work for you, with the ability to answer more than 10,000 questions
+                                            tailored to your personal financial situation.
+                                        </p>
+                                        <p>
+                                            With Path, Wealthfront can help you answer these questions:
+                                        </p>
+                                        <ul>
+                                            <li>How much should you save today?</li>
+                                            <li>How much will you be worth then?</li>
+                                            <li>Could you live your current lifestyle at retirement?</li>
+                                            <li>Are you on track for your child’s college education?</li>
+                                            <li>Are you saving enough to purchase a home?</li>
+                                        </ul>",
             'referral_link' => 'https://investor.vanguard.com/advice/personal-advisor',
             'video_link' => null,
             'minimum_account' => '50000',
@@ -384,6 +738,65 @@ class RoboAdvisorSeeder extends Seeder
             'title' => 'Merrill Edge Guided Investing (MEGI) Review 2018 – Merrill Lynch Enters the Robo Advisor Space',
             'short_description' => "<p>MEGI is a robo advisor that combines automated investing with active management of your portfolio. It invests your money in index-based ETFs, but it actively manages your portfolio allocation. This gives you an opportunity to both outperform the market and minimize losses in a downturn. The major negative is that the management fee is higher than those of most other robo advisors. But the active management component may very well justify the higher fee.</p>",
             'description' => null,
+            'about_company' => "Wealthfront is one of many robo advisors on the market.
+                                            <a href=\"#\">These automated investing platforms</a>
+                                            have democratized investing by providing services that you once needed an
+                                            expensive personal advisor to receive. And it’s proved enormously popular.
+                                            Since its launch in December 2011, Wealthfront has built up its assets under
+                                            management (AUM) to $10.5 billion.
+                                        </p>
+                                        <p>
+                                            How it works is simple: You invest your money into a Wealthfront account
+                                            (there’s a required minimum of $500). You can choose to use a tax-deferred
+                                            individual retirement account (IRA) if you wish. Funds aren’t held by
+                                            Wealthfront, but by the Royal Bank of Canada (RBC).
+                                        </p>
+                                        <p>
+                                            Wealthfront then allocates your investment into an assortment of
+                                            <a href=\"#\">exchange-traded funds (ETFs).</a>
+                                        </p>
+                                        <p>
+                                            Like many robo-investing services, Wealthfront uses
+                                            <a href=\"#\">Modern Portfolio Theory (MPT)</a>
+                                            to create an automated asset allocation, taking into account your risk
+                                            tolerance and financial needs. The platform continually makes sure that the
+                                            allocation is correct with <a href=\"#\">automatic rebalancing.</a>
+                                        </p>
+                                        <br>
+                                        <h3>
+                                            Free Financial Planning With Path
+                                        </h3>
+                                        <p>
+                                            But let’s back up a step — Wealthfront uses a savings model called Path that
+                                            was developed by a team of Ph.D.s to help you reach your goals.
+                                            Using Path, you can set savings goals for the big stuff: retirement,
+                                            college and/or a home purchase. This service takes all of your
+                                            accounts — including external savings, banking and even mortgage accounts — and
+                                            creates personal financial advice. Path generates scenarios to help you
+                                            determine if you’re on the right… well… path to meet your savings goals.
+                                            And if not, it will suggest the best ways to go about doing so. Path is not a
+                                            separate app; it’s built into everything Wealthfront does.
+                                        </p>
+                                        <p>
+                                            It’s like having a personal financial advisor that’s software based.
+                                        </p>
+                                        <p>
+                                            Not only that, but you can use Path for free with no investment required.
+                                            In fact, Wealthfront is now the only robo advisor to offer free financial
+                                            planning. All you have to do is download the Wealthfront app and Path will
+                                            get to work for you, with the ability to answer more than 10,000 questions
+                                            tailored to your personal financial situation.
+                                        </p>
+                                        <p>
+                                            With Path, Wealthfront can help you answer these questions:
+                                        </p>
+                                        <ul>
+                                            <li>How much should you save today?</li>
+                                            <li>How much will you be worth then?</li>
+                                            <li>Could you live your current lifestyle at retirement?</li>
+                                            <li>Are you on track for your child’s college education?</li>
+                                            <li>Are you saving enough to purchase a home?</li>
+                                        </ul>",
             'referral_link' => 'https://www.merrilledge.com/cmaoffer?cm_mmc=gwm-edge-inv-_-investorjunkie-_-1x1_na_600.jpg-_-2019_display_merrill_edge_baseline',
             'video_link' => null,
             'minimum_account' => '5000',
@@ -490,6 +903,7 @@ class RoboAdvisorSeeder extends Seeder
                 'title' => $robo_advisor['title'],
                 'short_description' => $robo_advisor['short_description'],
                 'description' => $robo_advisor['description'],
+                'about_company' => $robo_advisor['about_company'],
                 'referral_link' => $robo_advisor['referral_link'],
                 'video_link' => $robo_advisor['video_link'],
                 'minimum_account' => $robo_advisor['minimum_account'],

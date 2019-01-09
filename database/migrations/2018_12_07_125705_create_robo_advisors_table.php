@@ -20,6 +20,7 @@ class CreateRoboAdvisorsTable extends Migration
             $table->string('title')->nullable();
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
+            $table->text('about_company')->nullable();
             $table->string('referral_link')->nullable();
             $table->string('video_link')->nullable();
             $table->integer('minimum_account')->nullable();
