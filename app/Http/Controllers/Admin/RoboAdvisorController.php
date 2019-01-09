@@ -119,7 +119,8 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->save();
 
         $roboAdvisor->account_types()->sync(isset($request->account_types) ? $request->account_types : []);
-        $roboAdvisor->rating()->save(new Rating($this->getRaiting($request)));
+        $roboAdvisor->usage_types()->sync(isset($request->usage_types) ? $request->usage_types : []);
+        $roboAdvisor->ratings()->save(new Rating($this->getRaiting($request)));
 
         return redirect()
             ->route('admin.roboAdvisors.index')
@@ -224,7 +225,8 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->save();
 
         $roboAdvisor->account_types()->sync(isset($request->account_types) ? $request->account_types : []);
-        $roboAdvisor->rating->fill($this->getRaiting($request))->save();
+        $roboAdvisor->usage_types()->sync(isset($request->usage_types) ? $request->usage_types : []);
+        $roboAdvisor->ratings->fill($this->getRaiting($request))->save();
 
         return redirect()
             ->route('admin.roboAdvisors.index')

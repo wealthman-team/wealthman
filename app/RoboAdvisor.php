@@ -54,7 +54,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\AccountType[] $account_types
- * @property-read \App\Rating $rating
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor query()
