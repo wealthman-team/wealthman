@@ -216,6 +216,11 @@ class RoboAdvisor extends Model
         return $this->belongsToMany('App\AccountType');
     }
 
+    public function usage_types()
+    {
+        return $this->belongsToMany('App\UsageType');
+    }
+
     /**
      * @param Builder|Model $builder
      * @param AbstractModelFilter $filters
