@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(AdminsTableSeeder::class);
         $this->call(AccountTypeSeeder::class);
+        $this->call(UsageTypeSeeder::class);
         $this->call(RoboAdvisorSeeder::class);
 
         // supposed to only apply to a single connection and reset it's self
