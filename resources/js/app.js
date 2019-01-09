@@ -269,7 +269,6 @@ $(function () {
 	});
 
     $(".js-handle-filter-submit").submit(function(e){
-        console.log('tyt');
         e.preventDefault();
         let form = $(this);
         $('.js-range-slider', form).each(function () {
@@ -287,6 +286,33 @@ $(function () {
         });
         let q = form.serialize().replace(/&?[\w\-\d_]+=&|&?[\w\-\d_]+=$/gi,"");
 		let uri = this.getAttribute('action');
+        let separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        window.location.href = uri + (q.length > 0 ? separator+q : "");
+    });
+
+    $('.js-handle-filter-reset').on('click', function (e) {
+        e.preventDefault();
+        let form = $(this).parents('.js-handle-filter-submit');
+        $('.js-range-slider', form).each(function () {
+            let self = $(this);
+            let minInputValue = $('.js-range-slider-from', self).get(0);
+            let maxInputValue = $('.js-range-slider-to', self).get(0);
+            let rangeCheckbox = $('.js-range-slider-handle', self).get(0);
+            if(minInputValue) {
+                minInputValue.disabled = 'disabled';
+            }
+            if(maxInputValue) {
+                maxInputValue.disabled = 'disabled';
+            }
+            rangeCheckbox.disabled = 'disable';
+        });
+        $('.js-checkbox-input', form).each(function () {
+            let checkbox = $(this).get(0);
+            checkbox.disabled = 'disable';
+		});
+
+        let q = form.serialize().replace(/&?[\w\-\d_]+=&|&?[\w\-\d_]+=$/gi,"");
+        let uri = form.get(0).getAttribute('action');
         let separator = uri.indexOf('?') !== -1 ? "&" : "?";
         window.location.href = uri + (q.length > 0 ? separator+q : "");
     });

@@ -56,102 +56,6 @@
                                 </div>
                             @endif
                         @endforeach
-                        {{--<div class="form-group">--}}
-                            {{--@include('components/rangeSlider', [--}}
-                                {{--'min' => 0,--}}
-                                {{--'max' => 10,--}}
-                                {{--'step' => 0.5,--}}
-                                {{--'unit' => '',--}}
-                                {{--'label' => 'Rating',--}}
-                                {{--'name' => 'rating',--}}
-                                {{--'id' => 'rating',--}}
-                                {{--'isRange' => true,--}}
-                            {{--])--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group">--}}
-                            {{--@include('components/rangeSlider', [--}}
-                                {{--'min' => 0,--}}
-                                {{--'max' => 1,--}}
-                                {{--'step' => 0.01,--}}
-                                {{--'unit' => '',--}}
-                                {{--'label' => 'Minimum account',--}}
-                                {{--'name' => 'minimum_account',--}}
-                                {{--'id' => 'minimum_account',--}}
-                                {{--'isRange' => true,--}}
-                            {{--])--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group">--}}
-                            {{--@include('components/rangeSlider', [--}}
-                                {{--'min' => 0,--}}
-                                {{--'max' => 100,--}}
-                                {{--'step' => 0.25,--}}
-                                {{--'unit' => '%',--}}
-                                {{--'label' => 'Fees',--}}
-                                {{--'name' => 'fees',--}}
-                                {{--'id' => 'fees',--}}
-                                {{--'isRange' => true,--}}
-                            {{--])--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group">--}}
-                            {{--@include('components/rangeSlider', [--}}
-                                {{--'current_min' => 0,--}}
-                                {{--'current_max' => 2,--}}
-                                {{--'min' => 0,--}}
-                                {{--'max' => 2,--}}
-                                {{--'step' => 0.001,--}}
-                                {{--'unit' => 'm',--}}
-                                {{--'label' => 'AUM',--}}
-                                {{--'name' => 'aum',--}}
-                                {{--'id' => 'aum',--}}
-                                {{--'isRange' => false,--}}
-                                {{--'isActive' => false,--}}
-                            {{--])--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group">--}}
-                            {{--@include('components/rangeSlider', [--}}
-                                {{--'min' => 0,--}}
-                                {{--'max' => 2000,--}}
-                                {{--'step' => 1,--}}
-                                {{--'unit' => '',--}}
-                                {{--'label' => 'Number of Users',--}}
-                                {{--'name' => 'number_users',--}}
-                                {{--'id' => 'number_users',--}}
-                                {{--'isRange' => true,--}}
-                                {{--'round' => true,--}}
-                            {{--])--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group">--}}
-                            {{--@include('components/rangeSlider', [--}}
-                                {{--'min' => 10,--}}
-                                {{--'max' => 1000,--}}
-                                {{--'step' => 10,--}}
-                                {{--'unit' => 'k',--}}
-                                {{--'label' => 'Average Account Size',--}}
-                                {{--'name' => 'account_size',--}}
-                                {{--'id' => 'account_size',--}}
-                                {{--'isRange' => true,--}}
-                                {{--'round' => true,--}}
-                            {{--])--}}
-                        {{--</div>--}}
-
-                        {{--<div class="form-group">--}}
-                            {{--@include('components/rangeSlider', [--}}
-                                {{--'min' => 2008,--}}
-                                {{--'max' => 2018,--}}
-                                {{--'step' => 1,--}}
-                                {{--'unit' => '',--}}
-                                {{--'label' => 'Year Founded',--}}
-                                {{--'name' => 'year_founded',--}}
-                                {{--'id' => 'year_founded',--}}
-                                {{--'isRange' => true,--}}
-                                {{--'round' => true,--}}
-                            {{--])--}}
-                        {{--</div>--}}
                     </div>
                 </div>
 
@@ -232,7 +136,7 @@
         </div>
         <div class="sidebar__footer">
             <button class="button button_success" type="submit">Apply</button>
-            <button class="button" type="reset">Clear</button>
+            <button class="button js-handle-filter-reset" type="reset">Clear</button>
         </div>
     </form>
 </div>
