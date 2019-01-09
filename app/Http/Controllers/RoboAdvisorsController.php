@@ -79,7 +79,7 @@ class RoboAdvisorsController extends Controller
         }
 
         $accountTypes = AccountType::all();
-        $roboAdvisors = RoboAdvisor::whereIn('id', $compareList)->with('rating', 'account_types')->get();
+        $roboAdvisors = RoboAdvisor::whereIn('id', $compareList)->with('ratings', 'account_types')->get();
 
         foreach ($roboAdvisors as $roboAdvisor) {
             $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();

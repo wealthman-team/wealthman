@@ -19,85 +19,97 @@ class RoboAdvisorsFilter extends AbstractModelFilter
 
     public function minimum_account_from($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('minimum_account', '>=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(minimum_account >= "'.$value.'" OR minimum_account = "" OR minimum_account is null)');
         }
     }
 
     public function minimum_account_to($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('minimum_account', '<=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(minimum_account <= "'.$value.'" OR minimum_account = "" OR minimum_account is null)');
         }
     }
 
     public function fees_from($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('management_fee', '>=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(management_fee >= "'.$value.'" OR management_fee = "" OR management_fee is null)');
         }
     }
 
     public function fees_to($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('management_fee', '<=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(management_fee <= "'.$value.'" OR management_fee = "" OR management_fee is null)');
         }
     }
 
     public function aum_from($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('aum', '>=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(aum >= "'.$value.'" OR aum = "" OR aum is null)');
         }
     }
 
     public function aum_to($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('aum', '<=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(aum <= "'.$value.'" OR aum = "" OR aum is null)');
         }
     }
 
     public function number_users_from($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('number_accounts', '>=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(number_accounts >= "'.$value.'" OR number_accounts = "" OR number_accounts is null)');
         }
     }
 
     public function number_users_to($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('number_accounts', '<=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(number_accounts <= "'.$value.'" OR number_accounts = "" OR number_accounts is null)');
         }
     }
 
     public function average_account_size_from($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('average_account_size', '>=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(average_account_size >= "'.$value.'" OR average_account_size = "" OR average_account_size is null)');
         }
     }
 
     public function average_account_size_to($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('average_account_size', '<=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(average_account_size <= "'.$value.'" OR average_account_size = "" OR average_account_size is null)');
         }
     }
 
     public function founded_from($value)
     {
-        if ($value && (int) $value > 0) {
-            $this->builder->where('founded', '>=', $value);
+        $value = (int) $value;
+        if ($value > 0) {
+            $this->builder->whereRaw('(founded >="'.$value.'" OR founded = "" OR founded is null)');
         }
     }
 
     public function founded_to($value)
     {
+        $value = (int) $value;
         if ($value && (int) $value > 0) {
-            $this->builder->where('founded', '<=', $value);
+            $this->builder->whereRaw('(founded <="'.$value.'" OR founded = "" OR founded is null)');
         }
     }
 

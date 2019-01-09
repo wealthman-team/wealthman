@@ -160,10 +160,10 @@ class RoboAdvisorsFilterOption
                     'name' => 'assistance_401k',
                     'label' => '401k Assistance',
                 ]),
-                $this->getCheckboxFilter([
-                    'name' => 'ira',
-                    'label' => 'IRA',
-                ]),
+//                $this->getCheckboxFilter([
+//                    'name' => 'ira',
+//                    'label' => 'IRA',
+//                ]),
                 $this->getCheckboxFilter([
                     'name' => 'planning_tools',
                     'label' => 'Retirement Planning Tools',
