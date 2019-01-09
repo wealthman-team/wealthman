@@ -17,7 +17,7 @@ class CreateUsageTypeRoboAdvisorTable extends Migration
             $table->increments('id');
 
             $table->unsignedInteger('usage_type_id')->index();
-            $table->foreign('usage_type_id')->references('id')->on('account_types')->onDelete('cascade');
+            $table->foreign('usage_type_id')->references('id')->on('usage_types')->onDelete('cascade');
 
             $table->unsignedInteger('robo_advisor_id')->index();
             $table->foreign('robo_advisor_id')->references('id')->on('robo_advisors')->onDelete('cascade');

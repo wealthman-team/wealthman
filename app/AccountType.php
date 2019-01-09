@@ -79,6 +79,6 @@ class AccountType extends Model
 
     public function roboAdvisors()
     {
-        return $this->belongsToMany('App\RoboAdvisor');
+        return $this->belongsToMany('App\RoboAdvisor', 'account_type_robo_advisor');
     }
 }

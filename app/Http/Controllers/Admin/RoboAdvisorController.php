@@ -6,6 +6,7 @@ use App\RoboAdvisor;
 use App\Rating;
 use App\AccountType;
 use App\Sources\Page;
+use App\UsageType;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
@@ -152,8 +153,10 @@ class RoboAdvisorController extends Controller
 
         return view('admin.roboAdvisors.edit', [
             'roboAdvisor' => $roboAdvisor,
+            'usageTypesID' => $roboAdvisor->usage_types->pluck('id')->toArray(),
             'accountTypesID' => $roboAdvisor->account_types->pluck('id')->toArray(),
             'accountTypes' => AccountType::all(),
+            'usageTypes' => UsageType::all(),
         ]);
     }
 

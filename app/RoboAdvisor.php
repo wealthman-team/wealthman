@@ -105,6 +105,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor filter($filters)
  * @mixin \Eloquent
  * @property-read \App\Rating $ratings
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\UsageType[] $usage_types
  */
 class RoboAdvisor extends Model
 {
@@ -213,12 +214,12 @@ class RoboAdvisor extends Model
 
     public function account_types()
     {
-        return $this->belongsToMany('App\AccountType');
+        return $this->belongsToMany('App\AccountType', 'account_type_robo_advisor');
     }
 
     public function usage_types()
     {
-        return $this->belongsToMany('App\UsageType');
+        return $this->belongsToMany('App\UsageType', 'usage_type_robo_advisor');
     }
 
     /**
