@@ -70,6 +70,12 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->title = $request->title;
         $roboAdvisor->short_description = $request->short_description;
         $roboAdvisor->description = $request->description;
+        $roboAdvisor->about_company = $request->about_company;
+        $roboAdvisor->pros = $request->pros;
+        $roboAdvisor->cons = $request->cons;
+        $roboAdvisor->how_it_works = $request->how_it_works;
+        $roboAdvisor->portfolio = $request->portfolio;
+        $roboAdvisor->conclusion = $request->conclusion;
         $roboAdvisor->referral_link = $request->referral_link;
         $roboAdvisor->video_link = $request->video_link;
         $roboAdvisor->minimum_account = $request->minimum_account;
@@ -176,6 +182,12 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->title = $request->title;
         $roboAdvisor->short_description = $request->short_description;
         $roboAdvisor->description = $request->description;
+        $roboAdvisor->about_company = $request->about_company;
+        $roboAdvisor->pros = $request->pros;
+        $roboAdvisor->cons = $request->cons;
+        $roboAdvisor->how_it_works = $request->how_it_works;
+        $roboAdvisor->portfolio = $request->portfolio;
+        $roboAdvisor->conclusion = $request->conclusion;
         $roboAdvisor->referral_link = $request->referral_link;
         $roboAdvisor->video_link = $request->video_link;
         $roboAdvisor->minimum_account = $request->minimum_account;
