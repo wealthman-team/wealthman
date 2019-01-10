@@ -11,6 +11,15 @@
 |
 */
 
+Route::get('/clear-cache', function () {
+    $cacheCclear = Artisan::call('cache:clear');
+    $viewClear = Artisan::call('view:clear');
+    $optimizeClear = Artisan::call('optimize:clear');
+    $configClear = Artisan::call('config:clear');
+    $routeClear = Artisan::call('route:clear');
+    return 'all cache cleared';
+});
+
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
 Route::get('/robo-advisors/{roboAdvisor}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');

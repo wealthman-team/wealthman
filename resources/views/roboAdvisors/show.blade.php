@@ -564,7 +564,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <th>ACCES</th>
+                                                        <th>Access platforms</th>
                                                         <td>
                                                             @if ($roboAdvisor->access_platforms)
                                                                 {{ $roboAdvisor->access_platforms }}
