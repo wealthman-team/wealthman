@@ -104,7 +104,9 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->number_accounts = $request->number_accounts;
         $roboAdvisor->average_account_size = $request->average_account_size;
         $roboAdvisor->additional_information = $request->additional_information;
+        $roboAdvisor->summary = $request->summary;
         $roboAdvisor->is_verify = $request->has('is_verify');
+        $roboAdvisor->service_region = $request->service_region;
         $roboAdvisor->headquarters = $request->headquarters;
         $roboAdvisor->founded = $request->founded;
         $roboAdvisor->site_url = $request->site_url;
@@ -216,7 +218,9 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->number_accounts = $request->number_accounts;
         $roboAdvisor->average_account_size = $request->average_account_size;
         $roboAdvisor->additional_information = $request->additional_information;
+        $roboAdvisor->summary = $request->summary;
         $roboAdvisor->is_verify = $request->has('is_verify');
+        $roboAdvisor->service_region = $request->service_region;
         $roboAdvisor->headquarters = $request->headquarters;
         $roboAdvisor->founded = $request->founded;
         $roboAdvisor->site_url = $request->site_url;

@@ -6,6 +6,7 @@ use App\Service\Filters\AbstractModelFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
+
 /**
  * App\RoboAdvisor
  *
@@ -15,6 +16,12 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $title
  * @property string|null $short_description
  * @property string|null $description
+ * @property string|null $about_company
+ * @property string|null $pros
+ * @property string|null $cons
+ * @property string|null $how_it_works
+ * @property string|null $portfolio
+ * @property string|null $conclusion
  * @property string|null $referral_link
  * @property string|null $video_link
  * @property int|null $minimum_account
@@ -43,7 +50,9 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null $number_accounts
  * @property int|null $average_account_size
  * @property string|null $additional_information
+ * @property string|null $summary
  * @property int $is_verify
+ * @property string|null $service_region
  * @property string|null $headquarters
  * @property string|null $founded
  * @property string|null $site_url
@@ -54,9 +63,13 @@ use Illuminate\Database\Eloquent\Builder;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\AccountType[] $account_types
+ * @property-read \App\Rating $ratings
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\UsageType[] $usage_types
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor filter($filters)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereAboutCompany($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereAccessPlatforms($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereAdditionalInformation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereAssistance401k($value)
@@ -65,6 +78,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereAverageAccountSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereCeo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereClearingAgency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereConclusion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereCons($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereContactDetails($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereCustomerService($value)
@@ -73,6 +88,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereFounded($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereFractionalShares($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereHeadquarters($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereHowItWorks($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereHumanAdvisors($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereHumanAdvisorsDetails($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereId($value)
@@ -85,26 +101,27 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereNumberAccounts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor wherePortfolio($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor wherePortfolioRebalancing($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor wherePromotions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor wherePros($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereRealEstate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereReferralLink($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereResponsibleInvesting($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereRetirementPlanning($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSelfClearing($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereServiceRegion($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSiteUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSmartBeta($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSummary($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereTaxLoss($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereTaxLossDetails($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereTwoFactorAuth($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereVideoLink($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor filter($filters)
  * @mixin \Eloquent
- * @property-read \App\Rating $ratings
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\UsageType[] $usage_types
  */
 class RoboAdvisor extends Model
 {
@@ -147,6 +164,8 @@ class RoboAdvisor extends Model
             'number_accounts'   => 'nullable|integer',
             'average_account_size'   => 'nullable|integer',
             'additional_information'   => 'nullable|string',
+            'summary'   => 'nullable|string',
+            'service_region'   => 'nullable|string|max:255',
             'headquarters'   => 'nullable|string|max:255',
             'founded'   => 'nullable|string|max:255',
             'site_url'   => 'nullable|string|max:255',
@@ -209,6 +228,8 @@ class RoboAdvisor extends Model
             'number_accounts'   => 'Number of Accounts',
             'average_account_size'   => 'Average Account Size',
             'additional_information'   => 'Additional information',
+            'summary'   => 'Summary',
+            'service_region'   => 'Service region',
             'headquarters'   => 'Headquarters',
             'founded'   => 'Year Founded',
             'site_url'   => 'Site url',

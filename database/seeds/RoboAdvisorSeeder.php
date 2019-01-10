@@ -66,13 +66,7 @@ class RoboAdvisorSeeder extends Seeder
                                 <li>Are you on track for your child’s college education?</li>
                                 <li>Are you saving enough to purchase a home?</li>
                             </ul>";
-    const PROS = "<h3>
-                    Pros 
-                    <span class=\"robo-advisor__section-icon\">
-                        <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"15.5\" height=\"15.5\" viewBox=\"0 0 15.5 15.5\"><g transform=\"translate(-114.247 -3894.324)\"><line x2=\"14\" transform=\"translate(114.997 3902.074)\" stroke-width=\"1.5\" stroke=\"#30bf90\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></line><line y2=\"14\" transform=\"translate(121.997 3895.074)\" stroke-width=\"1.5\" stroke=\"#30bf90\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></line></g></svg>
-                    </span>
-                </h3>
-                <p>
+    const PROS = "<p>
                     <strong>Free for Accounts Under $5,000</strong>
                     — With our special promotion link. Even more is possible
                     with the refer-a-friend offer.
@@ -116,12 +110,7 @@ class RoboAdvisorSeeder extends Seeder
                     even those held outside Wealthfront, to give you a complete
                     picture of your goals.
                 </p>";
-    const CONS = "<h3>
-                    Cons
-                    <span class=\"robo-advisor__section-icon\">
-                        <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"16.4\" height=\"2.4\" viewBox=\"0 0 16.4 2.4\"><line x2=\"14\" transform=\"translate(1.2 1.2)\" stroke-width=\"2.4\" stroke=\"#ce1348\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></line></svg>                                                </span>
-                </h3>
-                <p>
+    const CONS = "<p>
                     <strong>No Fractional Shares</strong>
                     — It's possible to have cash sitting in your account, not invested.
                 </p>";
@@ -422,7 +411,9 @@ class RoboAdvisorSeeder extends Seeder
             'number_accounts' => null,
             'average_account_size' => null,
             'additional_information' => null,
+            'summary' => "Betterment is equally a good starting point for beginning investors and a useful platform for more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually. If you need the assistance, it recently added human advisors who can assist with your retirement account. Unfortunately, Betterment's asset allocation excludes REITs or commodities.",
             'is_verify' => '0',
+            'service_region' => 'USA',
             'headquarters' => '900 Middlefield Rd., Redwood City, CA 94063',
             'founded' => '2008',
             'site_url' => null,
@@ -491,7 +482,9 @@ class RoboAdvisorSeeder extends Seeder
             'number_accounts' => null,
             'average_account_size' => null,
             'additional_information' => null,
+            'summary' => "Betterment is equally a good starting point for beginning investors and a useful platform for more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually. If you need the assistance, it recently added human advisors who can assist with your retirement account. Unfortunately, Betterment's asset allocation excludes REITs or commodities.",
             'is_verify' => '0',
+            'service_region' => 'USA',
             'headquarters' => null,
             'founded' => '2008',
             'site_url' => null,
@@ -559,7 +552,9 @@ class RoboAdvisorSeeder extends Seeder
             'number_accounts' => null,
             'average_account_size' => null,
             'additional_information' => null,
+            'summary' => "Betterment is equally a good starting point for beginning investors and a useful platform for more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually. If you need the assistance, it recently added human advisors who can assist with your retirement account. Unfortunately, Betterment's asset allocation excludes REITs or commodities.",
             'is_verify' => '0',
+            'service_region' => 'USA',
             'headquarters' => null,
             'founded' => '2011',
             'site_url' => null,
@@ -625,7 +620,9 @@ class RoboAdvisorSeeder extends Seeder
             'number_accounts' => '9467',
             'average_account_size' => '5517',
             'additional_information' => null,
+            'summary' => "Betterment is equally a good starting point for beginning investors and a useful platform for more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually. If you need the assistance, it recently added human advisors who can assist with your retirement account. Unfortunately, Betterment's asset allocation excludes REITs or commodities.",
             'is_verify' => '0',
+            'service_region' => 'USA',
             'headquarters' => '860 Richmond St. W., Toronto M6J 1C9',
             'founded' => '2014',
             'site_url' => null,
@@ -692,7 +689,9 @@ class RoboAdvisorSeeder extends Seeder
             'number_accounts' => '25000',
             'average_account_size' => '4000',
             'additional_information' => null,
+            'summary' => "Betterment is equally a good starting point for beginning investors and a useful platform for more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually. If you need the assistance, it recently added human advisors who can assist with your retirement account. Unfortunately, Betterment's asset allocation excludes REITs or commodities.",
             'is_verify' => '0',
+            'service_region' => 'USA',
             'headquarters' => '213 W. Institute Pl., Suite 301, Chicago, IL 60610',
             'founded' => '2015',
             'site_url' => null,
@@ -759,7 +758,9 @@ class RoboAdvisorSeeder extends Seeder
             'number_accounts' => null,
             'average_account_size' => null,
             'additional_information' => null,
+            'summary' => "Betterment is equally a good starting point for beginning investors and a useful platform for more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually. If you need the assistance, it recently added human advisors who can assist with your retirement account. Unfortunately, Betterment's asset allocation excludes REITs or commodities.",
             'is_verify' => '0',
+            'service_region' => 'USA',
             'headquarters' => '100 Vanguard Blvd., Malvern, PA 19355',
             'founded' => '1975',
             'site_url' => null,
@@ -827,7 +828,9 @@ class RoboAdvisorSeeder extends Seeder
             'number_accounts' => null,
             'average_account_size' => null,
             'additional_information' => null,
+            'summary' => "Betterment is equally a good starting point for beginning investors and a useful platform for more experienced investors. The robo advisor has no minimum deposit and costs 0.25% annually. If you need the assistance, it recently added human advisors who can assist with your retirement account. Unfortunately, Betterment's asset allocation excludes REITs or commodities.",
             'is_verify' => '0',
+            'service_region' => 'USA',
             'headquarters' => '1 Bryant Park, New York, NY 10036',
             'founded' => '2017',
             'site_url' => null,
@@ -939,7 +942,9 @@ class RoboAdvisorSeeder extends Seeder
                 'number_accounts' => $robo_advisor['number_accounts'],
                 'average_account_size' => $robo_advisor['average_account_size'],
                 'additional_information' => $robo_advisor['additional_information'],
+                'summary' => $robo_advisor['summary'],
                 'is_verify' => $robo_advisor['is_verify'],
+                'service_region' => $robo_advisor['service_region'],
                 'headquarters' => $robo_advisor['headquarters'],
                 'founded' => $robo_advisor['founded'],
                 'site_url' => $robo_advisor['site_url'],

@@ -1,3 +1,18 @@
+{{-- Robo Advisor service region --}}
+<div class="form-group {{ $errors->has('service_region') ? ' has-error' : '' }}">
+    <label for="robo-advisor-service-region-input">Service region</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+            <i class="fa fa-pencil"></i>
+        </div>
+        <input class="form-control" id="robo-advisor-service-region-input" type="text" name="service_region" value="{{ old('service_region') ?? $roboAdvisor->service_region }}">
+    </div>
+
+    @if ($errors->has('service_region'))
+        <span class="help-block">{{ $errors->first('service_region') }}</span>
+    @endif
+</div>
+
 {{-- Robo Advisor headquarters --}}
 <div class="form-group {{ $errors->has('headquarters') ? ' has-error' : '' }}">
     <label for="robo-advisor-headquarters-input">Headquarters</label>

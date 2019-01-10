@@ -773,6 +773,10 @@
                                         <div class="panel panel_grad-green panel_margin">
                                             <div class="robo-advisor__section-text">
                                                 <div class="reach-text">
+                                                    <h3>
+                                                        Pros
+                                                        <span class="robo-advisor__section-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="15.5" height="15.5" viewBox="0 0 15.5 15.5"><g transform="translate(-114.247 -3894.324)"><line x2="14" transform="translate(114.997 3902.074)" stroke-width="1.5" stroke="#30bf90" stroke-linecap="round" stroke-linejoin="round" fill="none"></line><line y2="14" transform="translate(121.997 3895.074)" stroke-width="1.5" stroke="#30bf90" stroke-linecap="round" stroke-linejoin="round" fill="none"></line></g></svg></span>
+                                                    </h3>
                                                     {!! $roboAdvisor->pros !!}
                                                 </div>
                                             </div>
@@ -782,6 +786,10 @@
                                         <div class="panel panel_grad-red">
                                             <div class="robo-advisor__section-text">
                                                 <div class="reach-text">
+                                                    <h3>
+                                                        Cons
+                                                        <span class="robo-advisor__section-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" width="16.4" height="2.4" viewBox="0 0 16.4 2.4"><line x2="14" transform="translate(1.2 1.2)" stroke-width="2.4" stroke="#ce1348" stroke-linecap="round" stroke-linejoin="round" fill="none"></line></svg></span>
+                                                    </h3>
                                                     {!! $roboAdvisor->cons !!}
                                                 </div>
                                             </div>

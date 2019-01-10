@@ -47,6 +47,28 @@ function setCatActive(string $path, string $class_name = "active")
 }
 
 /**
+ * @param $path
+ * @return bool
+ */
+function checkCatActive($path)
+{
+    $active = false;
+    if(\is_string($path)) {
+        $active = Request::is($path);
+    }
+    if(\is_array($path)) {
+
+        foreach ($path as $item) {
+            $active = Request::is($item);
+            if ($active) {
+                break;
+            }
+        }
+    }
+    return $active;
+}
+
+/**
  *
  * Get shot value string for AUM field
  *

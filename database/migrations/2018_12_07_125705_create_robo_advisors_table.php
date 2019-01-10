@@ -54,7 +54,9 @@ class CreateRoboAdvisorsTable extends Migration
             $table->integer('number_accounts')->nullable();
             $table->integer('average_account_size')->nullable();
             $table->text('additional_information')->nullable();
+            $table->text('summary')->nullable();
             $table->boolean('is_verify')->default(false);
+            $table->string('service_region')->nullable();
             $table->string('headquarters')->nullable();
             $table->string('founded')->nullable();
             $table->string('site_url')->nullable();
