@@ -9,13 +9,14 @@
             {{ $roboAdvisor->ratings->total }}
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__recommendation">
-            @include('components/recommendation', [
-                'text' => 'Strongly recommended',
-                'yes' => 10,
-                'maybe' => 2,
-                'no' => 5,
-                'total' => 17,
-            ])
+            {{--@include('components/recommendation', [--}}
+                {{--'text' => 'Strongly recommended',--}}
+                {{--'yes' => 10,--}}
+                {{--'maybe' => 2,--}}
+                {{--'no' => 5,--}}
+                {{--'total' => 17,--}}
+            {{--])--}}
+            <span style="color: #abb0ba">Under construction</span>
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__account">
             @if ($roboAdvisor->minimum_account || $roboAdvisor->minimum_account === 0)
@@ -34,7 +35,7 @@
         <div class="robo-advisors-item__section robo-advisors-item__aum">
             @if ($roboAdvisor->aum)
                 >
-                {{ getAUMNum($roboAdvisor->aum) }}
+                ${{ getAUMNum($roboAdvisor->aum) }}
             @else
                 N/A
             @endif
@@ -62,7 +63,7 @@
                     <form class="robo-advisors-item__compare-form js-add-to-compare {{ in_array($roboAdvisor->id, $compareList) ? ' active' : '' }}" action="{{ route('toggleCompare') }}" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" value="{{ $roboAdvisor->id }}">
-                        <button class="robo-advisors-item__compare-button" type="submit">Compared</button>
+                        <button class="robo-advisors-item__compare-button" type="submit">Compare</button>
                     </form>
                 </li>
                 <li>

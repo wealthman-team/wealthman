@@ -39,31 +39,94 @@
                                 </div>
                                 <div class="slide-box__body js-slide-box-body">
                                     <div class="robo-advisor__contact robo-advisor__contact_margin">
-                                        Service region: <strong>USA</strong>
+                                        Service region:
+                                        <strong>
+                                            @if ($roboAdvisor->service_region)
+                                                {{ $roboAdvisor->service_region }}
+                                            @else
+                                                &mdash;
+                                            @endif
+                                        </strong>
                                     </div>
                                     <div class="robo-advisor__contact">
-                                        Headquarters: <strong>{{ $roboAdvisor->headquarters }}</strong>
+                                        Headquarters:
+                                        <strong>
+                                            @if ($roboAdvisor->headquarters)
+                                                {{ $roboAdvisor->headquarters }}
+                                            @else
+                                                &mdash;
+                                            @endif
+                                        </strong>
                                     </div>
                                     <div class="robo-advisor__contact">
-                                        Year Founded: <strong>{{ $roboAdvisor->founded }}</strong>
+                                        Year Founded:
+                                        <strong>
+                                            @if ($roboAdvisor->founded)
+                                                {{ $roboAdvisor->founded }}
+                                            @else
+                                                &mdash;
+                                            @endif
+                                        </strong>
                                     </div>
                                     <div class="robo-advisor__contact">
-                                        Site: <strong>{{ $roboAdvisor->site_url }}</strong>
+                                        Site:
+                                        <strong>
+                                            @if ($roboAdvisor->site_url)
+                                                {{ $roboAdvisor->site_url }}
+                                            @else
+                                                &mdash;
+                                            @endif
+                                        </strong>
                                     </div>
                                     <div class="robo-advisor__contact">
-                                        Phone: <strong>{{ $roboAdvisor->phone }}</strong>
+                                        Phone:
+                                        <strong>
+                                            @if ($roboAdvisor->phone)
+                                                {{ $roboAdvisor->phone }}
+                                            @else
+                                                &mdash;
+                                            @endif
+                                        </strong>
                                     </div>
                                     <div class="robo-advisor__contact">
-                                        CEO: <strong>{{ $roboAdvisor->ceo }}</strong>
+                                        CEO:
+                                        <strong>
+                                            @if ($roboAdvisor->ceo)
+                                                {{ $roboAdvisor->ceo }}
+                                            @else
+                                                &mdash;
+                                            @endif
+                                        </strong>
                                     </div>
                                     <div class="robo-advisor__contact">
-                                        More data: <strong>{{ $roboAdvisor->contact_details }}</strong>
+                                        More data:
+                                        <strong>
+                                            @if ($roboAdvisor->contact_details)
+                                                {{ $roboAdvisor->contact_details }}
+                                            @else
+                                                &mdash;
+                                            @endif
+                                        </strong>
                                     </div>
                                     <div class="robo-advisor__contact">
-                                        CRD: <strong>148456 | SEC</strong>
+                                        CRD:
+                                        <strong>
+                                            @if ($roboAdvisor->finra_crd)
+                                                {{ $roboAdvisor->finra_crd }}
+                                            @else
+                                                &mdash;
+                                            @endif
+                                        </strong>
                                     </div>
                                     <div class="robo-advisor__contact">
-                                        ID: <strong>69766</strong>
+                                        ID:
+                                        <strong>
+                                            @if ($roboAdvisor->sec_id)
+                                                {{ $roboAdvisor->sec_id }}
+                                            @else
+                                                &mdash;
+                                            @endif
+                                        </strong>
                                     </div>
                                 </div>
                             </div>
@@ -79,32 +142,44 @@
                                 </div>
                                 <div class="slide-box__body js-slide-box-body">
                                     <ul class="robo-advisor__contents-list">
+                                        @if($roboAdvisor->pros || $roboAdvisor->cons)
                                         <li>
-                                            <a class="link" href="#">Pros and Cons</a>
+                                            <a class="link" href="#pros_and_cons_section">Pros and Cons</a>
                                         </li>
+                                        @endif
+                                        @if($roboAdvisor->about_company)
                                         <li>
-                                            <a class="link" href="#">About Company</a>
+                                            <a class="link" href="#about_company_section">About Company</a>
                                         </li>
+                                        @endif
                                         <li>
-                                            <a class="link" href="#">All Characteristics</a>
-                                        </li>
-                                        <li>
-                                            <a class="link" href="#">How it Works?</a>
-                                        </li>
-                                        <li>
-                                            <a class="link" href="#">Portfolio</a>
-                                        </li>
-                                        <li>
-                                            <a class="link" href="#">Alternatives</a>
-                                        </li>
-                                        <li>
-                                            <a class="link" href="#">Conclusion</a>
-                                        </li>
-                                        <li>
-                                            <a class="link" href="#">
-                                                Reviews <span class="counter">5</span>
+                                            <a class="link" href="#all_characteristics_section">
+                                                All Characteristics
                                             </a>
                                         </li>
+                                        @if($roboAdvisor->how_it_works)
+                                        <li>
+                                            <a class="link" href="#how_it_works_section">How it Works?</a>
+                                        </li>
+                                        @endif
+                                        @if($roboAdvisor->portfolio)
+                                        <li>
+                                            <a class="link" href="#portfolio_section">Portfolio</a>
+                                        </li>
+                                        @endif
+                                        {{--<li>--}}
+                                            {{--<a class="link" href="#">Alternatives</a>--}}
+                                        {{--</li>--}}
+                                        @if($roboAdvisor->conclusion)
+                                        <li>
+                                            <a class="link" href="#conclusion_section">Conclusion</a>
+                                        </li>
+                                        @endif
+                                        {{--<li>--}}
+                                            {{--<a class="link" href="#">--}}
+                                                {{--Reviews <span class="counter">5</span>--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
                                     </ul>
                                 </div>
                             </div>
@@ -232,7 +307,7 @@
                                         <form class="robo-advisors-item__compare-form js-add-to-compare {{ in_array($roboAdvisor->id, getCompareList('compare_list')) ? ' active' : '' }}" action="{{ route('toggleCompare') }}" method="post">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="id" value="{{ $roboAdvisor->id }}">
-                                            <button class="button" type="submit">Compared</button>
+                                            <button class="button" type="submit">Compare</button>
                                         </form>
                                         <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
                                     </div>
@@ -297,21 +372,18 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    @if($roboAdvisor->usage_types)
                                     <div class="robo-advisor__best-for">
                                         <div class="robo-advisor__top-title">
-                                            Best for:
+                                            Suitable for:
                                         </div>
                                         <ul class="robo-advisor__best-for-list">
-                                            <li>Beginning investors</li>
-                                            <li>Intermediate investors</li>
-                                            <li>Young investors</li>
-                                            <li>Smartphone users</li>
-                                            <li>IRA investors</li>
-                                            <li>Goal-oriented investors</li>
+                                            @foreach($roboAdvisor->usage_types as $usageType)
+                                                <li>{{$usageType->name}}</li>
+                                            @endforeach
                                         </ul>
                                     </div>
-
+                                    @endif
                                     <div class="robo-advisor__description">
                                         <div class="robo-advisor__top-title">
                                             Short description:
@@ -328,9 +400,9 @@
                             @include('components/compareBanner')
                         </div>
 
-                        <div class="robo-advisor__section">
+                        <div id="all_characteristics_section" class="robo-advisor__section">
                             <h2 class="h2">
-                                All сharacteristics
+                                All characteristics
                             </h2>
                             <div class="panel">
                                 <div class="robo-advisor__row robo-advisor__row_small-padding">
@@ -359,7 +431,7 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <th>FEES</th>
+                                                            <th>Management fee</th>
                                                             <td>
                                                                 @if ($roboAdvisor->management_fee)
                                                                     {{ $roboAdvisor->management_fee }}%/year
@@ -551,10 +623,17 @@
                                             <div class="slide-box__body js-slide-box-body">
                                                 <table class="robo-advisor__characteristics-table">
                                                     <tbody>
-                                                    <tr>
-                                                        <th>NO INFORMATION</th>
-                                                        <td>&mdash;</td>
-                                                    </tr>
+                                                    @if ($roboAdvisor->additional_information)
+                                                        <tr>
+                                                            <th>INFORMATION</th>
+                                                            <td>{!! $roboAdvisor->additional_information !!}</td>
+                                                        </tr>
+                                                    @else
+                                                        <tr>
+                                                            <th>NO INFORMATION</th>
+                                                            <td>&mdash;</td>
+                                                        </tr>
+                                                    @endif
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -724,18 +803,17 @@
                                             <div class="slide-box__body js-slide-box-body">
                                                 <table class="robo-advisor__characteristics-table">
                                                     <tbody>
-                                                    <tr>
-                                                        <th>SUMMARY</th>
-                                                        <td>
-                                                            Betterment is equally a good starting point for beginning
-                                                            investors and a useful platform for more experienced
-                                                            investors. The robo advisor has no minimum deposit and
-                                                            costs 0.25% annually. If you need the assistance, it
-                                                            recently added human advisors who can assist with your
-                                                            retirement account. Unfortunately, Betterment's asset
-                                                            allocation excludes REITs or commodities.
-                                                        </td>
-                                                    </tr>
+                                                    @if ($roboAdvisor->summary)
+                                                        <tr>
+                                                            <th>SUMMARY</th>
+                                                            <td>{!! $roboAdvisor->summary !!}</td>
+                                                        </tr>
+                                                    @else
+                                                        <tr>
+                                                            <th>NO SUMMARY</th>
+                                                            <td>&mdash;</td>
+                                                        </tr>
+                                                    @endif
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -746,7 +824,7 @@
 
                         </div>
                         @if($roboAdvisor->about_company)
-                            <div class="robo-advisor__section">
+                            <div id="about_company_section" class="robo-advisor__section">
                                 <h2 class="h2">
                                     About company
                                 </h2>
@@ -764,7 +842,7 @@
                         @endif
 
                         @if($roboAdvisor->pros || $roboAdvisor->cons)
-                            <div class="robo-advisor__section">
+                            <div id="pros_and_cons_section" class="robo-advisor__section">
                                 <h2 class="h2">
                                     PROS AND CONS
                                 </h2>
@@ -800,7 +878,7 @@
                         @endif
 
                         @if($roboAdvisor->how_it_works)
-                            <div class="robo-advisor__section">
+                            <div id="how_it_works_section" class="robo-advisor__section">
                                 <h2 class="h2">
                                     How it works?
                                 </h2>
@@ -834,7 +912,7 @@
                         @endif
 
                         @if($roboAdvisor->portfolio)
-                            <div class="robo-advisor__section">
+                            <div id="portfolio_section" class="robo-advisor__section">
                                 <h2 class="h2">
                                     Portfolio
                                 </h2>
@@ -851,7 +929,7 @@
                             </div>
                         @endif
                         @if($roboAdvisor->conclusion)
-                            <div class="robo-advisor__section">
+                            <div id="conclusion_section" class="robo-advisor__section">
                                 <h2 class="h2">
                                     Conclusion
                                 </h2>

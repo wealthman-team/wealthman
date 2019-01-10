@@ -122,6 +122,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereVideoLink($value)
  * @mixin \Eloquent
+ * @property string|null $finra_crd
+ * @property string|null $sec_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereFinraCrd($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSecId($value)
  */
 class RoboAdvisor extends Model
 {
@@ -172,6 +176,8 @@ class RoboAdvisor extends Model
             'phone'   => 'nullable|string|max:255',
             'ceo'   => 'nullable|string|max:255',
             'contact_details'   => 'nullable|string|max:255',
+            'finra_crd' => 'nullable|string|max:255',
+            'sec_id' => 'nullable|string|max:255',
         ];
     }
 
@@ -236,6 +242,8 @@ class RoboAdvisor extends Model
             'phone'   => 'Phone',
             'ceo'   => 'CEO',
             'contact_details'   => 'More data',
+            'finra_crd' => 'FINRA CRD',
+            'sec_id' => 'SEC ID',
         ];
     }
 

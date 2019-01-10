@@ -85,24 +85,24 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
-                                        <div class="compare-list__context js-compare-list-context">
-                                            <div class="compare-list__row-name js-compare-list-name">
-                                                RECOMENDATION
-                                            </div>
-                                            @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
-                                                    @include('components/recommendation', [
-                                                        'text' => 'Strongly recommended',
-                                                        'yes' => 10,
-                                                        'maybe' => 2,
-                                                        'no' => 5,
-                                                        'total' => 17,
-                                                    ])
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
+                                    {{--<div class="compare-list__row compare-list__row_with-hover">--}}
+                                        {{--<div class="compare-list__context js-compare-list-context">--}}
+                                            {{--<div class="compare-list__row-name js-compare-list-name">--}}
+                                                {{--RECOMENDATION--}}
+                                            {{--</div>--}}
+                                            {{--@foreach ($roboAdvisors as $roboAdvisor)--}}
+                                                {{--<div class="compare-list__col">--}}
+                                                    {{--@include('components/recommendation', [--}}
+                                                        {{--'text' => 'Strongly recommended',--}}
+                                                        {{--'yes' => 10,--}}
+                                                        {{--'maybe' => 2,--}}
+                                                        {{--'no' => 5,--}}
+                                                        {{--'total' => 17,--}}
+                                                    {{--])--}}
+                                                {{--</div>--}}
+                                            {{--@endforeach--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
 
                                     <div class="compare-list__row compare-list__row_with-hover">
                                         <div class="compare-list__context js-compare-list-context">
@@ -215,7 +215,7 @@
                                     <div class="compare-list__row compare-list__row_with-hover">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
-                                                FEES
+                                                Management fee
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
@@ -417,7 +417,7 @@
                                     <div class="compare-list__row compare-list__row_with-hover">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
-                                                ACCES
+                                                Access platforms
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
@@ -717,11 +717,15 @@
                                     <div class="compare-list__row compare-list__row_with-hover">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
-                                                NO INFORMATION
+                                                INFORMATION
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
+                                                @if ($roboAdvisor->additional_information)
+                                                    {!! $roboAdvisor->additional_information !!}
+                                                @else
                                                     &mdash;
+                                                @endif
                                                 </div>
                                             @endforeach
                                         </div>
@@ -747,13 +751,11 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col">
-                                                    Betterment is equally a good starting point for beginning
-                                                    investors and a useful platform for more experienced
-                                                    investors. The robo advisor has no minimum deposit and
-                                                    costs 0.25% annually. If you need the assistance, it
-                                                    recently added human advisors who can assist with your
-                                                    retirement account. Unfortunately, Betterment's asset
-                                                    allocation excludes REITs or commodities.
+                                                    @if ($roboAdvisor->summary)
+                                                        {!! $roboAdvisor->summary !!}
+                                                    @else
+                                                        &mdash;
+                                                    @endif
                                                 </div>
                                             @endforeach
                                         </div>

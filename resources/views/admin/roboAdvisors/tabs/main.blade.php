@@ -95,6 +95,36 @@
     </div>
 </div>
 
+{{-- Robo Advisor finra crd --}}
+<div class="form-group {{ $errors->has('finra_crd') ? ' has-error' : '' }}">
+    <label for="robo-advisor-finra-crd-input">FINRA CRD</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+            <i class="fa fa-pencil"></i>
+        </div>
+        <input class="form-control" id="robo-advisor-finra-crd-input" type="text" name="finra_crd" value="{{ old('finra_crd') ?? $roboAdvisor->finra_crd }}">
+    </div>
+
+    @if ($errors->has('finra_crd'))
+        <span class="help-block">{{ $errors->first('finra_crd') }}</span>
+    @endif
+</div>
+
+{{-- Robo Advisor sec id --}}
+<div class="form-group {{ $errors->has('sec_id') ? ' has-error' : '' }}">
+    <label for="robo-advisor-sec-id-input">SEC ID</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+            <i class="fa fa-pencil"></i>
+        </div>
+        <input class="form-control" id="robo-advisor-sec-id-input" type="text" name="sec_id" value="{{ old('sec_id') ?? $roboAdvisor->sec_id }}">
+    </div>
+
+    @if ($errors->has('sec_id'))
+        <span class="help-block">{{ $errors->first('sec_id') }}</span>
+    @endif
+</div>
+
 {{-- Robo Advisor referral link --}}
 <div class="form-group {{ $errors->has('referral_link') ? ' has-error' : '' }}">
     <label for="robo-advisor-referral-link-input">Referral link</label>

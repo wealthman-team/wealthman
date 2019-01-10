@@ -113,6 +113,8 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->phone = $request->phone;
         $roboAdvisor->ceo = $request->ceo;
         $roboAdvisor->contact_details = $request->contact_details;
+        $roboAdvisor->finra_crd = $request->finra_crd;
+        $roboAdvisor->sec_id = $request->sec_id;
         $roboAdvisor->is_active = $request->has('is_active');
 
         if ($request->hasFile('logo')) {
@@ -227,6 +229,8 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->phone = $request->phone;
         $roboAdvisor->ceo = $request->ceo;
         $roboAdvisor->contact_details = $request->contact_details;
+        $roboAdvisor->finra_crd = $request->finra_crd;
+        $roboAdvisor->sec_id = $request->sec_id;
         $roboAdvisor->is_active = $request->has('is_active');
 
         if ($request->hasFile('logo')) {

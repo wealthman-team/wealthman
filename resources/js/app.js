@@ -316,4 +316,11 @@ $(function () {
         let separator = uri.indexOf('?') !== -1 ? "&" : "?";
         window.location.href = uri + (q.length > 0 ? separator+q : "");
     });
+
+    $("a[href^='#']").click(function(){
+        let _body = $('html, body');
+        let _href = $(this).attr("href");
+        _body.stop(true).animate({ scrollTop: $(_href).offset().top+"px" }, 400);
+        return false;
+    });
 });

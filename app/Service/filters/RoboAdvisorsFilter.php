@@ -33,15 +33,15 @@ class RoboAdvisorsFilter extends AbstractModelFilter
         }
     }
 
-    public function fees_from($value)
+    public function management_fee_from($value)
     {
-        $value = (int) $value;
+        $value = (float) $value;
         if ($value > 0) {
             $this->builder->whereRaw('(management_fee >= "'.$value.'" OR management_fee = "" OR management_fee is null)');
         }
     }
 
-    public function fees_to($value)
+    public function management_fee_to($value)
     {
         $value = (int) $value;
         if ($value > 0) {

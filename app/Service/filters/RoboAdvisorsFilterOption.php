@@ -70,8 +70,8 @@ class RoboAdvisorsFilterOption
                 ]),
                 $this->getRangeFilter('robo_advisors', [
                     'field' => 'management_fee',
-                    'name' => 'fees',
-                    'label' => 'Fees',
+                    'name' => 'management_fee',
+                    'label' => 'Management fee',
                     'float' => true,
                     'unit' => '%',
                     'min' => 0,

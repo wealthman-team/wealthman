@@ -63,6 +63,8 @@ class CreateRoboAdvisorsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('ceo')->nullable();
             $table->string('contact_details')->nullable();
+            $table->string('finra_crd')->nullable();
+            $table->string('sec_id')->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();
         });

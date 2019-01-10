@@ -20,7 +20,7 @@
                 </h1>
                 <div class="page-sub-header">
                     Find independent information about
-                    roboadvisors in the USA
+                    roboadvisors in the US
                 </div>
 
                 <div class="robo-advisors__container">
@@ -80,7 +80,7 @@
                                     GENERAL FILTERS
                                 </div>
                                 <h3 class="robo-advisors__h3">
-                                    Fees
+                                    Management fee
                                 </h3>
                                 <p class="robo-advisors__p">
                                     Most robo advisors charge a percentage fee based on the size of the portfolio.

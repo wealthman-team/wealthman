@@ -7,6 +7,7 @@ class RoboAdvisorSeeder extends Seeder
 {
     private $robo_advisor_iteration = 0;
     private $account_type_iteration = 0;
+    private $usage_type_iteration = 0;
     const ABOUT_COMPANY = "<p>Wealthfront is one of many robo advisors on the market.
                                 <a href=\"#\">These automated investing platforms</a>
                                 have democratized investing by providing services that you once needed an
@@ -420,6 +421,8 @@ class RoboAdvisorSeeder extends Seeder
             'phone' => null,
             'ceo' => 'Andy Rachleff',
             'contact_details' => 'Clearing Agency: RBC | FINRA',
+            'finra_crd' => '148456 | SEC',
+            'sec_id' => '69766',
             'is_active' => '0',
             'ratings' => [
                  'commissions' => '9.00',
@@ -440,6 +443,11 @@ class RoboAdvisorSeeder extends Seeder
                 AccountTypeSeeder::ACCOUNT_TYPES['NON_PROFIT']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['529']['id'],
+            ],
+            'usage_types' => [
+                UsageTypeSeeder::USAGE_TYPES['SMARTPHONE_USERS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['IRA_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['GOAL_ORIENTED_INVESTORS']['id'],
             ],
         ],
         'BETTERMENT' => [
@@ -491,6 +499,8 @@ class RoboAdvisorSeeder extends Seeder
             'phone' => null,
             'ceo' => null,
             'contact_details' => null,
+            'finra_crd' => '248456 | SEC',
+            'sec_id' => '69666',
             'is_active' => '0',
             'ratings' => [
                 'commissions' => '8.00',
@@ -510,6 +520,12 @@ class RoboAdvisorSeeder extends Seeder
                 AccountTypeSeeder::ACCOUNT_TYPES['TRUSTS']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['NON_PROFIT']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
+            'usage_types' => [
+                UsageTypeSeeder::USAGE_TYPES['BEGINNING_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['INTERMEDIATE_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['IRA_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['GOAL_ORIENTED_INVESTORS']['id'],
             ],
         ],
         'SOFI' => [
@@ -561,6 +577,8 @@ class RoboAdvisorSeeder extends Seeder
             'phone' => null,
             'ceo' => null,
             'contact_details' => null,
+            'finra_crd' => '15656',
+            'sec_id' => '998766',
             'is_active' => '0',
             'ratings' => [
                 'commissions' => '9.50',
@@ -578,6 +596,10 @@ class RoboAdvisorSeeder extends Seeder
                 AccountTypeSeeder::ACCOUNT_TYPES['JOINT']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
+            'usage_types' => [
+                UsageTypeSeeder::USAGE_TYPES['BEGINNING_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['INTERMEDIATE_INVESTORS']['id'],
             ],
         ],
         'WEALTHSIMPLE' => [
@@ -629,6 +651,8 @@ class RoboAdvisorSeeder extends Seeder
             'phone' => null,
             'ceo' => 'Michael Katchen',
             'contact_details' => null,
+            'finra_crd' => '148456 | SEC',
+            'sec_id' => '69766',
             'is_active' => '0',
             'ratings' => [
                 'commissions' => '7.00',
@@ -647,6 +671,13 @@ class RoboAdvisorSeeder extends Seeder
                 AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['TRUSTS']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
+            'usage_types' => [
+                UsageTypeSeeder::USAGE_TYPES['BEGINNING_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['INTERMEDIATE_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['SMARTPHONE_USERS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['IRA_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['GOAL_ORIENTED_INVESTORS']['id'],
             ],
         ],
         'M1_FINANCE' => [
@@ -698,6 +729,8 @@ class RoboAdvisorSeeder extends Seeder
             'phone' => null,
             'ceo' => 'Brian Barnes',
             'contact_details' => null,
+            'finra_crd' => '148456 | SEC',
+            'sec_id' => '69766',
             'is_active' => '0',
             'ratings' => [
                 'commissions' => '10.00',
@@ -716,6 +749,13 @@ class RoboAdvisorSeeder extends Seeder
                 AccountTypeSeeder::ACCOUNT_TYPES['ROLLOVER_IRA']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['TRUSTS']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
+            'usage_types' => [
+                UsageTypeSeeder::USAGE_TYPES['BEGINNING_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['INTERMEDIATE_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['YOUNG_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['SMARTPHONE_USERS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['GOAL_ORIENTED_INVESTORS']['id'],
             ],
         ],
         'VPAS' => [
@@ -767,6 +807,8 @@ class RoboAdvisorSeeder extends Seeder
             'phone' => null,
             'ceo' => 'Tim Buckley',
             'contact_details' => null,
+            'finra_crd' => '148456 | SEC',
+            'sec_id' => '69766',
             'is_active' => '0',
             'ratings' => [
                 'commissions' => '8.50',
@@ -786,6 +828,13 @@ class RoboAdvisorSeeder extends Seeder
                 AccountTypeSeeder::ACCOUNT_TYPES['SIMPLE_IRA']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['TRUSTS']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['ROTH_IRA']['id'],
+            ],
+            'usage_types' => [
+                UsageTypeSeeder::USAGE_TYPES['BEGINNING_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['YOUNG_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['SMARTPHONE_USERS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['IRA_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['GOAL_ORIENTED_INVESTORS']['id'],
             ],
         ],
         'MEGI' => [
@@ -837,6 +886,8 @@ class RoboAdvisorSeeder extends Seeder
             'phone' => null,
             'ceo' => 'Lizbeth Nelle Applebaum',
             'contact_details' => null,
+            'finra_crd' => '148',
+            'sec_id' => '6955766',
             'is_active' => '0',
             'ratings' => [
                 'commissions' => '6.00',
@@ -860,6 +911,13 @@ class RoboAdvisorSeeder extends Seeder
                 AccountTypeSeeder::ACCOUNT_TYPES['401(K)']['id'],
                 AccountTypeSeeder::ACCOUNT_TYPES['529']['id'],
             ],
+            'usage_types' => [
+                UsageTypeSeeder::USAGE_TYPES['BEGINNING_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['INTERMEDIATE_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['YOUNG_INVESTORS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['SMARTPHONE_USERS']['id'],
+                UsageTypeSeeder::USAGE_TYPES['IRA_INVESTORS']['id'],
+            ],
         ]
     ];
 
@@ -875,6 +933,7 @@ class RoboAdvisorSeeder extends Seeder
         DB::table('robo_advisors')->truncate();
         DB::table('ratings')->truncate();
         DB::table('account_type_robo_advisor')->truncate();
+        DB::table('usage_type_robo_advisor')->truncate();
         // create base RoboAdvisors
         $this->createRoboAdvisors();
         // create RoboAdvisors clone
@@ -951,6 +1010,8 @@ class RoboAdvisorSeeder extends Seeder
                 'phone' => $robo_advisor['phone'],
                 'ceo' => $robo_advisor['ceo'],
                 'contact_details' => $robo_advisor['contact_details'],
+                'finra_crd' => $robo_advisor['finra_crd'],
+                'sec_id' => $robo_advisor['sec_id'],
                 'is_active' => $robo_advisor['is_active'],
                 'created_at'=>date('Y-m-d H:i:s'),
                 'updated_at'=>date('Y-m-d H:i:s'),
@@ -973,6 +1034,16 @@ class RoboAdvisorSeeder extends Seeder
                 DB::table('account_type_robo_advisor')->insert([
                     'id' => $this->account_type_iteration,
                     'account_type_id' => $account_type_id,
+                    'robo_advisor_id' => $this->robo_advisor_iteration,
+                    'created_at'=>date('Y-m-d H:i:s'),
+                    'updated_at'=>date('Y-m-d H:i:s'),
+                ]);
+            }
+            foreach ($robo_advisor['usage_types'] as $usage_type_id) {
+                $this->usage_type_iteration++;
+                DB::table('usage_type_robo_advisor')->insert([
+                    'id' => $this->usage_type_iteration,
+                    'usage_type_id' => $usage_type_id,
                     'robo_advisor_id' => $this->robo_advisor_iteration,
                     'created_at'=>date('Y-m-d H:i:s'),
                     'updated_at'=>date('Y-m-d H:i:s'),
