@@ -6,6 +6,7 @@ use App\RoboAdvisor;
 use App\AccountType;
 use App\Service\Filters\RoboAdvisorsFilter;
 use App\Service\Filters\RoboAdvisorsFilterOption;
+use App\Service\Filters\RoboAdvisorsSorting;
 use App\Sources\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -18,9 +19,10 @@ class RoboAdvisorsController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param RoboAdvisorsFilter $filter
+     * @param RoboAdvisorsSorting $sorting
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, RoboAdvisorsFilter $filter)
+    public function index(Request $request, RoboAdvisorsFilter $filter, RoboAdvisorsSorting $sorting)
     {
         Page::setTitle('Robo Advisors | Wealthman', $request->input('page'));
         Page::setDescription('Robo Advisors list', $request->input('page'));
@@ -30,7 +32,9 @@ class RoboAdvisorsController extends Controller
         $roboAdvisors = RoboAdvisor::where('is_active', 0)
             ->with('ratings', 'account_types')
             ->leftjoin('ratings', 'ratings.robo_advisor_id', '=', 'robo_advisors.id')
-            ->filter($filter)->paginate(10);
+            ->filter($filter)
+            ->sorting($sorting)
+            ->paginate(10);
 
         return view('roboAdvisors/index', [
             'roboAdvisors' => $roboAdvisors->appends(Input::except('page')),

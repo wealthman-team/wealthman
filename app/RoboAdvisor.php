@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Service\Filters\AbstractModelFilter;
+use App\Service\Filters\AbstractModelSorting;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -270,5 +271,15 @@ class RoboAdvisor extends Model
     public function scopeFilter($builder, $filters)
     {
         return $filters->apply($builder);
+    }
+
+    /**
+     * @param Builder|Model $builder
+     * @param AbstractModelSorting $sorting
+     * @return mixed
+     */
+    public function scopeSorting($builder, $sorting)
+    {
+        return $sorting->apply($builder);
     }
 }

@@ -33,6 +33,38 @@ function qs_url(string $path, $exclude = null)
 }
 
 /**
+ * @param string $name
+ * @return string
+ */
+function sort_url(string $name)
+{
+    $query = Request::all();
+    $type = array_key_exists('type', $query) && $query['type'] === 'asc' ? 'desc' : 'asc';
+    $parameters = ['sort' => $name, 'type' => $type];
+
+    if (count($query) > 0) {
+        $parameters = array_merge($query, $parameters);
+    }
+
+    return (Arr::query($parameters) ? '?'.Arr::query($parameters) : '');
+}
+
+/**
+ * @param string $name
+ * @return string
+ */
+function sort_type(string $name)
+{
+    $query = Request::all();
+    $type = '';
+    if (array_key_exists('sort', $query) && $query['sort'] === $name) {
+        $type = array_key_exists('type', $query) ? $query['type'] : '';
+    }
+
+    return $type;
+}
+
+/**
  *
  * Set category active css class if the specific URI is current URI
  *

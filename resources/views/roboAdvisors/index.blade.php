@@ -29,30 +29,29 @@
                     <div class="main-content">
                         <div class="robo-advisors__list js-ra-list">
                             <div class="robo-advisors__list-header">
-                                <div class="robo-advisors__lh-item robo-advisors__lh-company">
+                                <a href="{{sort_url('company')}}" class="robo-advisors__lh-item robo-advisors__lh-company">
                                     Company
-                                    <span class="sort-icon asc"></span>
-                                </div>
-                                <div class="robo-advisors__lh-item robo-advisors__lh-rating">
+                                    <span class="sort-icon {{sort_type('company')}}"></span>
+                                </a>
+                                <a href="{{sort_url('rating')}}" class="robo-advisors__lh-item robo-advisors__lh-rating">
                                     Rating
-                                    <span class="sort-icon desc"></span>
-                                </div>
+                                    <span class="sort-icon {{sort_type('rating')}}"></span>
+                                </a>
                                 <div class="robo-advisors__lh-item robo-advisors__lh-recommendation">
                                     Recommendation
-                                    <span class="sort-icon"></span>
                                 </div>
-                                <div class="robo-advisors__lh-item robo-advisors__lh-account">
+                                <a href="{{sort_url('account')}}" class="robo-advisors__lh-item robo-advisors__lh-account">
                                     Min account
-                                    <span class="sort-icon"></span>
-                                </div>
-                                <div class="robo-advisors__lh-item robo-advisors__lh-fee">
+                                    <span class="sort-icon {{sort_type('account')}}"></span>
+                                </a>
+                                <a href="{{sort_url('fee')}}" class="robo-advisors__lh-item robo-advisors__lh-fee">
                                     Fee
-                                    <span class="sort-icon"></span>
-                                </div>
-                                <div class="robo-advisors__lh-item robo-advisors__lh-aum">
+                                    <span class="sort-icon {{sort_type('fee')}}"></span>
+                                </a>
+                                <a href="{{sort_url('aum')}}" class="robo-advisors__lh-item robo-advisors__lh-aum">
                                     AUM
-                                    <span class="sort-icon"></span>
-                                </div>
+                                    <span class="sort-icon {{sort_type('aum')}}"></span>
+                                </a>
                                 <div class="robo-advisors__lh-item robo-advisors__lh-details">
                                     Additional details
                                 </div>
