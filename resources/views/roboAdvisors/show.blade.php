@@ -457,7 +457,7 @@
                                                             <th>ASSETS UNDER MANAGEMENT</th>
                                                             <td>
                                                                 @if ($roboAdvisor->aum)
-                                                                    ${{ getAUMNum($roboAdvisor->aum) }}
+                                                                    > ${{ getAUMNum($roboAdvisor->aum) }}
                                                                 @else
                                                                     &mdash;
                                                                 @endif
@@ -467,7 +467,7 @@
                                                             <th>NUMBER OF USERS</th>
                                                             <td>
                                                                 @if ($roboAdvisor->number_accounts)
-                                                                    {{ $roboAdvisor->number_accounts }}
+                                                                    > {{ $roboAdvisor->number_accounts }}
                                                                 @else
                                                                     &mdash;
                                                                 @endif
@@ -477,7 +477,7 @@
                                                             <th>AVERAGE ACCOUNT SIZE</th>
                                                             <td>
                                                                 @if ($roboAdvisor->average_account_size)
-                                                                    {{ $roboAdvisor->average_account_size }}
+                                                                    ${{ $roboAdvisor->average_account_size }}
                                                                 @else
                                                                     &mdash;
                                                                 @endif
@@ -524,7 +524,7 @@
                                                         <th>HUMAN ADVISORS</th>
                                                         <td>
                                                             @if ($roboAdvisor->human_advisors)
-                                                                {{ $roboAdvisor->human_advisors }}
+                                                                @svg('check', 'robo-advisor__check')
                                                             @else
                                                                 &mdash;
                                                             @endif
@@ -547,7 +547,7 @@
                                                         <th>PORTFOLIO REBALANCING</th>
                                                         <td>
                                                             @if ($roboAdvisor->portfolio_rebalancing)
-                                                                {{ $roboAdvisor->portfolio_rebalancing }}
+                                                                @svg('check', 'robo-advisor__check')
                                                             @else
                                                                 &mdash;
                                                             @endif

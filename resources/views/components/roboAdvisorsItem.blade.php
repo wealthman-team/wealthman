@@ -72,7 +72,7 @@
             </ul>
         </div>
         <div class="robo-advisors-item__opener js-ra-item-opener">
-            @svg('arrow-long-down')
+            @svg('arrow-long-down', 'robo-advisors-item__arrow-long-down')
         </div>
     </div>
     <div class="robo-advisors-item__body js-ra-item-body">

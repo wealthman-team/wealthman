@@ -36,6 +36,7 @@ mix.js('resources/js/app.js', 'public/js')
 	.version();
 
 mix.copy('resources/images/', 'public/images/', false);
+mix.copy('resources/svg/', 'public/svg/', false);
 mix.copy('resources/fonts/', 'public/fonts/', false);
 
 mix.disableNotifications();

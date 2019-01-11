@@ -7,6 +7,27 @@
     background-color: $white;
     box-shadow: 0 1px 2px rgba(0,0,0,0.08);
   }
+  &__arrow-long-down .cls-1{
+    transition: stroke 0.2s ease-in-out 0s;
+  }
+  &__arrow-long-down{
+    transition: transform 0.2s ease-in-out 0s
+  }
+  &.open &__arrow-long-down{
+    transform: rotate(180deg);
+    .cls-1{
+      stroke: #172341;
+    }
+  }
+
+  &__opener {
+    position: absolute;
+    top: 29px;
+    right: 6px;
+    width: 8px;
+    height: 18px;
+    cursor: pointer;
+  }
 
   &:hover {
     background-color: $white;
@@ -115,15 +136,6 @@
 
   &__review {
     color: $text;
-  }
-
-  &__opener {
-    position: absolute;
-    top: 29px;
-    right: 6px;
-    width: 8px;
-    height: 18px;
-    cursor: pointer;
   }
 
   &__body {
