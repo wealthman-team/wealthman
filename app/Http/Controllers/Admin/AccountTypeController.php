@@ -127,6 +127,7 @@ class AccountTypeController extends Controller
      *
      * @param  \App\AccountType $accountType
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(AccountType $accountType)
     {

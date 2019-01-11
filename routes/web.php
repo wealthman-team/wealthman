@@ -65,4 +65,18 @@ Route::namespace('Admin')->group(function () {
             'account-types' => 'accountType'
         ])->middleware(['auth:admin', 'revalidate']);
     });
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('usage-types', 'UsageTypeController', ['names' => [
+            'index' => 'admin.usageTypes.index',
+            'create' => 'admin.usageTypes.create',
+            'store' => 'admin.usageTypes.store',
+            'show' => 'admin.usageTypes.show',
+            'edit' => 'admin.usageTypes.edit',
+            'update' => 'admin.usageTypes.update',
+            'destroy' => 'admin.usageTypes.destroy',
+        ]])->parameters([
+            'usage-types' => 'usageType'
+        ])->middleware(['auth:admin', 'revalidate']);
+    });
 });
