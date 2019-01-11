@@ -74,6 +74,9 @@ class UsageTypeController extends Controller
      */
     public function show(UsageType $usageType)
     {
+        Page::setTitle('Show Usage Type | Wealthman');
+        Page::setDescription('Show Usage Type | Wealthman');
+
         return view('admin.usageTypes.show', [
             'usageType' => $usageType,
         ]);

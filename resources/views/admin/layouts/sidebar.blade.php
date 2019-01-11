@@ -10,7 +10,14 @@
                 </a>
             </li>
 
-            <li class="treeview {{ checkCatActive(['admin/robo-advisors', 'admin/robo-advisors/*', 'admin/account-types', 'admin/account-types/*']) ? 'active' : '' }}">
+            <li class="treeview {{ checkCatActive([
+                                    'admin/robo-advisors',
+                                    'admin/robo-advisors/*',
+                                    'admin/account-types',
+                                    'admin/account-types/*',
+                                    'admin/usage-types',
+                                    'admin/usage-types/*',
+                                    ]) ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-get-pocket"></i> <span>Advisor screener</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
@@ -26,6 +33,12 @@
                         <a href="{{ route('admin.accountTypes.index') }}">
                             <i class="fa fa-money"></i>
                             <span>Account types</span>
+                        </a>
+                    </li>
+                    <li class="{{ setCatActive('admin/usage-types') }} {{ setCatActive('admin/usage-types/*') }}">
+                        <a href="{{ route('admin.usageTypes.index') }}">
+                            <i class="fa fa-bookmark-o"></i>
+                            <span>Usage types</span>
                         </a>
                     </li>
                 </ul>

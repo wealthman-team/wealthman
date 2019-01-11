@@ -74,6 +74,9 @@ class AccountTypeController extends Controller
      */
     public function show(AccountType $accountType)
     {
+        Page::setTitle('Show Account Type | Wealthman');
+        Page::setDescription('Show Account Type | Wealthman');
+
         return view('admin.accountTypes.show', [
             'accountType' => $accountType,
         ]);
