@@ -71,12 +71,7 @@ class RoboAdvisorsController extends Controller
         Page::setDescription('Robo Advisors compare');
 
         $compareList = Cookie::get('compare_list');
-
-        if (!isset($compareList)) {
-            $compareList = array();
-        } else {
-            $compareList = json_decode($compareList);
-        }
+        $compareList = $compareList ? json_decode($compareList) : [];
 
         $accountTypes = AccountType::all();
         $roboAdvisors = RoboAdvisor::whereIn('id', $compareList)->with('ratings', 'account_types')->get();
@@ -88,25 +83,22 @@ class RoboAdvisorsController extends Controller
         return view('roboAdvisors/compare', [
             'roboAdvisors' => $roboAdvisors,
             'accountTypes' => $accountTypes,
+            'compareList' => $compareList,
         ]);
     }
 
     /**
      * Add/remove Robo Advisors compare to list
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function toggleCompare(Request $request)
     {
         $minutes = time() + 60 * 60 * 24 * 90;
         $compareList = Cookie::get('compare_list');
+        $compareList = $compareList ? json_decode($compareList) : [];
         $id = $request->input('id');
-
-        if (!isset($compareList)) {
-            $compareList = array();
-        } else {
-            $compareList = json_decode($compareList);
-        }
 
         if (in_array($id, $compareList)) {
             $filteredCompareList = array();
@@ -129,6 +121,21 @@ class RoboAdvisorsController extends Controller
             'data' => [
                 'compareList' => $compareList,
             ]
+        ]);
+    }
+
+    /**
+     * Add/remove Robo Advisors compare to list
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function clearCompare()
+    {
+        $minutes = time() + 60 * 60 * 24 * 90;
+        Cookie::queue('compare_list', json_encode([]), $minutes);
+
+        return response()->json([
+            'success' => 'true',
         ]);
     }
 }

@@ -165,6 +165,9 @@ $(function () {
         }
 	});
 
+    /*************
+     *  COMPARE  *
+     ************/
 	$('.js-add-to-compare').on('submit', function (e) {
 		let form = $(this);
 
@@ -214,60 +217,133 @@ $(function () {
 			list.hide();
 		}
 	}
+    $('.js-compare-list').each(function () {
+        let compareList = $(this);
+        let clGroups = $('.js-compare-list-group', compareList);
+        let clGroupNames = $('.js-compare-list-group-name', compareList);
+        let clContexts = $('.js-compare-list-context', compareList);
+        let clRowNames = $('.js-compare-list-name', compareList);
+        let prevArrow = $('.js-compare-list-prev', compareList);
+        let nextArrow = $('.js-compare-list-next', compareList);
+        let remove = $('.js-remove-from-compare', compareList);
+
+        let step = 200;
+        let currentStep = 0;
+        let minItemCount = 5;
+
+        prevArrow.on('click', function () {
+            slideNext();
+        });
+
+        nextArrow.on('click', function () {
+            slidePrev();
+        });
+
+        clGroups.on('click', '.js-compare-list-group-name', function (e) {
+            $(e.delegateTarget).toggleClass('opened');
+        });
+
+        remove.on('click', function (e) {
+            e.preventDefault();
+            let el = $(this);
+            let id = el.data('robo-advisor');
+            let _href = el.attr("href");
+            let listLength = compareList.data('clLength');
+            $('.js-compare-robo-'+id, compareList).hide(300, function() {
+                $(this).remove();
+            });
+            // update count
+            let new_listLength = --listLength;
+            if (new_listLength <= 0) {
+                $('.js-compare-result').addClass('hidden');
+                $('.js-compare-empty-result').removeClass('hidden');
+            }
+            compareList.data('clLength', new_listLength);
+            removeFromCompare(_href, id, updateCompareLink);
+        });
+
+        function slidePrev() {
+            let listLength = compareList.data('clLength');
+
+            if (listLength < minItemCount || (listLength - (currentStep + minItemCount)) <= 0) {
+                return;
+            }
+            currentStep = currentStep + 1;
+            slide();
+        }
+
+        function slideNext() {
+            let listLength = compareList.data('clLength');
+
+            if (listLength < minItemCount || currentStep <= 0) {
+                return;
+            }
+
+            currentStep = currentStep - 1;
+            slide();
+        }
+
+        function slide() {
+            clContexts.css('left', -currentStep * step);
+            clRowNames.css('left', currentStep * step);
+            clGroupNames.css('left', currentStep * step);
+        }
+
+        function removeFromCompare(url, id, cb) {
+            let formData = new FormData();
+            formData.append('id', id);
+            formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+            $.ajax({
+                url: url,
+                type: 'post',
+                data:  formData,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.success) {
+                        cb(response.data.compareList);
+                    }
+                },
+                error: function (r) {
+                    console.log(r.responseText);
+                    console.log('Error remove from compare');
+                },
+            });
+        }
+    });
+
+	$('.js-clear-compare').on('click', function (e) {
+        e.preventDefault();
+        let el = $(this);
+        let _href = el.attr("href");
+        $('.js-compare-result').fadeOut(300, function () {
+            $(this).addClass('hidden');
+            $('.js-compare-empty-result').removeClass('hidden');
+            updateCompareLink([]);
+        });
+
+        let formData = new FormData();
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+        $.ajax({
+            url: _href,
+            type: 'post',
+            data:  formData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            error: function (r) {
+                console.log(r.responseText);
+                console.log('Error remove from compare');
+            },
+        });
+    });
+	/* **** end compare **** */
 
 	$('.js-simple-slider').slick({
 		prevArrow: '<div class="simple-slider__nav simple-slider__nav_left"><svg class="simple-slider__arrow" xmlns="http://www.w3.org/2000/svg" width="19" height="9" viewBox="0 0 19 9"><g transform="translate(20.906 -0.825) rotate(90)"><g transform="translate(1.2 2.2)"><path d="M1.325,20.323l4,4,4-4" transform="translate(-1.2 -6.116)" fill="none" stroke="#172341" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/><line y1="17.5" transform="translate(4.125 0.207)" stroke-width="1" stroke="#172341" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" fill="none"/></g></g></svg></div>',
 		nextArrow: '<div class="simple-slider__nav simple-slider__nav_right"><svg class="simple-slider__arrow" xmlns="http://www.w3.org/2000/svg" width="19" height="9" viewBox="0 0 19 9"><g transform="translate(20.906 -0.825) rotate(90)"><g transform="translate(1.2 2.2)"><path d="M1.325,20.323l4,4,4-4" transform="translate(-1.2 -6.116)" fill="none" stroke="#172341" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1"/><line y1="17.5" transform="translate(4.125 0.207)" stroke-width="1" stroke="#172341" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" fill="none"/></g></g></svg></div>',
-	});
-
-	$('.js-compare-list').each(function () {
-		let compareList = $(this);
-		let clGroups = $('.js-compare-list-group', compareList);
-		let clGroupNames = $('.js-compare-list-group-name', compareList);
-		let clContexts = $('.js-compare-list-context', compareList);
-		let clRowNames = $('.js-compare-list-name', compareList);
-		let prevArrow = $('.js-compare-list-prev', compareList);
-		let nextArrow = $('.js-compare-list-next', compareList);
-		let listLength = compareList.data('clLength');
-		let step = 200;
-		let currentStep = 0;
-		let minItemCount = 5;
-
-		prevArrow.on('click', function () {
-			slideNext();
-		});
-
-		nextArrow.on('click', function () {
-			slidePrev();
-		});
-
-		clGroups.on('click', '.js-compare-list-group-name', function (e) {
-			$(e.delegateTarget).toggleClass('opened');
-		});
-
-		function slidePrev() {
-			if (listLength < minItemCount || (listLength - (currentStep + minItemCount)) <= 0) {
-				return;
-			}
-
-			currentStep = currentStep + 1;
-			slide();
-		}
-
-		function slideNext() {
-			if (listLength < minItemCount || currentStep <= 0) {
-				return;
-			}
-
-			currentStep = currentStep - 1;
-			slide();
-		}
-
-		function slide() {
-			clContexts.css('left', -currentStep * step);
-			clRowNames.css('left', currentStep * step);
-			clGroupNames.css('left', currentStep * step);
-		}
 	});
 
     $(".js-handle-filter-submit").submit(function(e){

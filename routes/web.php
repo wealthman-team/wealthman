@@ -25,6 +25,8 @@ Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors
 Route::get('/robo-advisors/{roboAdvisor}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
 Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsCompare');
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
+Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
+Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');
 
 //Auth::routes();
 

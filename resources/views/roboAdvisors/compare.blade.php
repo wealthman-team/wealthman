@@ -18,30 +18,26 @@
                 <h1 class="page-header">
                     Comparison of robo advisors
                 </h1>
-                <div class="page-sub-header">
-                    &nbsp;
-                    @if (count($roboAdvisors) === 0)
-                        Oh, there is nothing here
-                    @endif
+                <div class="page-sub-header js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden' : ''}}">
+                    Oh, there is nothing here
                 </div>
 
                 <div class="compare__container">
-                    @if (count($roboAdvisors) === 0)
-                        <div class="compare__empty">
-                            You can add an robo advisors from the
-                            <a class="link link_active" href="#">Advisor screener</a>
-                        </div>
-                    @else
-                        <div class="compare__actions-list">
+                    <div class="compare__empty js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden': ''}}">
+                        You can add an robo advisors from the
+                        <a class="link link_active" href="{{route('roboAdvisors')}}">Advisor screener</a>
+                    </div>
+                    @if (count($roboAdvisors) > 0)
+                        <div class="compare__actions-list js-compare-result">
                             <span>Show:</span>
                             <a class="link compare__action-item">Differing сharacteristics</a>
                             <a class="link link_active compare__action-item">All сharacteristics</a>
-                            <a class="link link_red compare__action-item">Delete list</a>
+                            <a class="link link_red compare__action-item js-clear-compare" href="{{ route('clearCompare') }}">Delete list</a>
                         </div>
                     @endif
 
                     @if (count($roboAdvisors) > 0)
-                        <div class="compare-list js-compare-list" data-cl-length="{{ count($roboAdvisors) }}">
+                        <div class="compare-list js-compare-list js-compare-result" data-cl-length="{{ count($roboAdvisors) }}">
                             <div class="compare-list__nav">
                                 <div class="compare-list__nav-left js-compare-list-prev">@svg('arrow-long-left', 'compare-list__arrow')</div>
                                 <div class="compare-list__nav-right js-compare-list-next">@svg('arrow-long-left', 'compare-list__arrow')</div>
@@ -52,7 +48,7 @@
                                     <div class="compare-list__row">
                                         <div class="compare-list__context js-compare-list-context">
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col compare-list__col_header">
+                                                <div class="compare-list__col compare-list__col_header js-compare-robo-{{$roboAdvisor->id}}">
                                                     <div class="compare-list__logo">
                                                         @if ($roboAdvisor->logo)
                                                             <img src="{{ asset('storage/' . $roboAdvisor->logo) }}" />
@@ -61,7 +57,7 @@
                                                     <div class="compare-list__actions">
                                                         <a class="link link_active" href="{{ $roboAdvisor->referral_link }}">Sign up</a>
                                                         <a class="link" href="{{ route('roboAdvisorsShow', $roboAdvisor) }}">Review</a>
-                                                        <a class="link" href="#">
+                                                        <a class="link js-remove-from-compare" href="{{ route('toggleCompare') }}" data-robo-advisor="{{ $roboAdvisor->id }}">
                                                             <span class="compare-list__icon-remove">
                                                                 @svg('basket')
                                                             </span>
@@ -110,7 +106,7 @@
                                                 Rating
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     {{ $roboAdvisor->ratings->total }}
                                                 </div>
                                             @endforeach
@@ -123,7 +119,7 @@
                                                 Commission & Fees
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     {{ $roboAdvisor->ratings->commissions }}
                                                 </div>
                                             @endforeach
@@ -136,7 +132,7 @@
                                                 Customer Service
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     {{ $roboAdvisor->ratings->service }}
                                                 </div>
                                             @endforeach
@@ -149,7 +145,7 @@
                                                 Ease of Use
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     {{ $roboAdvisor->ratings->comfortable }}
                                                 </div>
                                             @endforeach
@@ -162,7 +158,7 @@
                                                 Tools & Resources
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     {{ $roboAdvisor->ratings->tools }}
                                                 </div>
                                             @endforeach
@@ -175,7 +171,7 @@
                                                 Investment Options
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     {{ $roboAdvisor->ratings->investment_options }}
                                                 </div>
                                             @endforeach
@@ -188,7 +184,7 @@
                                                 Asset Allocation
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     {{ $roboAdvisor->ratings->asset_allocation }}
                                                 </div>
                                             @endforeach
@@ -201,7 +197,7 @@
                                                 MINIMUM ACCOUNT
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->minimum_account)
                                                         ${{ $roboAdvisor->minimum_account }}
                                                     @else
@@ -218,7 +214,7 @@
                                                 Management fee
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->management_fee)
                                                         {{ $roboAdvisor->management_fee }}%/year
                                                     @else
@@ -236,7 +232,7 @@
                                                 ABOUT MANAGEMENT FEE
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->fee_details)
                                                         {{ $roboAdvisor->fee_details }}
                                                     @else
@@ -253,7 +249,7 @@
                                                 ASSETS UNDER MANAGEMENT
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->aum)
                                                         ${{ getAUMNum($roboAdvisor->aum) }}
                                                     @else
@@ -270,7 +266,7 @@
                                                 NUMBER OF USERS
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->number_accounts)
                                                         {{ $roboAdvisor->number_accounts }}
                                                     @else
@@ -287,7 +283,7 @@
                                                 AVERAGE ACCOUNT SIZE
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->average_account_size)
                                                         {{ $roboAdvisor->average_account_size }}
                                                     @else
@@ -304,7 +300,7 @@
                                                 YEAR FOUNDED
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->founded)
                                                         {{ $roboAdvisor->founded }}
                                                     @else
@@ -321,7 +317,7 @@
                                                 PROMOTIONS
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->promotions)
                                                         {{ $roboAdvisor->promotions }}
                                                     @else
@@ -351,7 +347,7 @@
                                                 HUMAN ADVISORS
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->human_advisors)
                                                         {{ $roboAdvisor->human_advisors }}
                                                     @else
@@ -369,7 +365,7 @@
                                                 ABOUT HUMAN ADVISORS
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->human_advisors_details)
                                                         {{ $roboAdvisor->human_advisors_details }}
                                                     @else
@@ -386,7 +382,7 @@
                                                 PORTFOLIO REBALANCING
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->portfolio_rebalancing)
                                                         {{ $roboAdvisor->portfolio_rebalancing }}
                                                     @else
@@ -403,7 +399,7 @@
                                                 AUTOMATIC DEPOSITS
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->automatic_deposits)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -420,7 +416,7 @@
                                                 Access platforms
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->access_platforms)
                                                         {{ $roboAdvisor->access_platforms }}
                                                     @else
@@ -438,7 +434,7 @@
                                                 AUTHENTICATION
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->two_factor_auth)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -455,7 +451,7 @@
                                                 CUSTOMER SERVICE
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->customer_service)
                                                         {{ $roboAdvisor->customer_service }}
                                                     @else
@@ -472,7 +468,7 @@
                                                 CLEARING AGENCY
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->clearing_agency)
                                                         {{ $roboAdvisor->clearing_agency }}
                                                     @else
@@ -499,7 +495,7 @@
                                     <div class="compare-list__row">
                                         <div class="compare-list__context js-compare-list-context">
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col compare-list__col_header">
+                                                <div class="compare-list__col compare-list__col_header js-compare-robo-{{$roboAdvisor->id}}">
                                                     <table class="robo-advisor__simple-table">
                                                         <tbody>
                                                         @foreach($accountTypes as $accountType)
@@ -535,7 +531,7 @@
                                                 FRACTIONAL SHARES
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->fractional_shares)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -552,7 +548,7 @@
                                                 401(K) GUIDANCE
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->assistance_401k)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -569,7 +565,7 @@
                                                 TAX LOSS HARVESTING
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->tax_loss)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -588,7 +584,7 @@
                                                 HARVESTING
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->tax_loss_details)
                                                         {{ $roboAdvisor->tax_loss_details }}
                                                     @else
@@ -605,7 +601,7 @@
                                                 RETIREMENT PLANNING TOOLS
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->retirement_planning)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -622,7 +618,7 @@
                                                 SELF CLEARING
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->self_clearing)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -639,7 +635,7 @@
                                                 SMART BETA
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->smart_beta)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -656,7 +652,7 @@
                                                 SOCIALLY RESPONSIBLE INVESTING
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->responsible_investing)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -673,7 +669,7 @@
                                                 INVESTS IN COMMODITIES
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->invests_commodities)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -690,7 +686,7 @@
                                                 INVESTS IN REAL ESTATE
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->real_estate)
                                                         @svg('check', 'robo-advisor__check')
                                                     @else
@@ -720,7 +716,7 @@
                                                 INFORMATION
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                 @if ($roboAdvisor->additional_information)
                                                     {!! $roboAdvisor->additional_information !!}
                                                 @else
@@ -750,7 +746,7 @@
                                                 SUMMARY
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col">
+                                                <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->summary)
                                                         {!! $roboAdvisor->summary !!}
                                                     @else

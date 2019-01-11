@@ -9,6 +9,7 @@
   }
 
   &__actions-list {
+    padding-top: 30px;
     margin-bottom: 26px;
     @include font(13px, $Geometria, $text, 16px, 400);
   }
