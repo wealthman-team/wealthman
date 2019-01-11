@@ -71,7 +71,7 @@
                 </li>
             </ul>
         </div>
-        <div class="robo-advisors-item__opener js-ra-item-opener">
+        <div class="robo-advisors-item__opener">
             @svg('arrow-long-down', 'robo-advisors-item__arrow-long-down')
         </div>
     </div>

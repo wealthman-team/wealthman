@@ -60,13 +60,14 @@ $(function () {
 
 		raItems.each(function () {
 			let raItem = $(this);
-			let opener = $('.js-ra-item-opener', raItem);
 			let raItemBody = $('.js-ra-item-body', raItem);
 
-			opener.on('click', function () {
-				raItem.toggleClass('open');
-				raItemBody.stop().slideToggle(200);
-			});
+            raItem.on('click', function (e) {
+				if (['A', 'BUTTON', 'INPUT'].filter(s => s === e.target.nodeName).length === 0){
+                    raItem.toggleClass('open');
+                    raItemBody.stop().slideToggle(200);
+				}
+            });
 		});
 	});
 
@@ -321,7 +322,10 @@ $(function () {
     $("a[href^='#']").click(function(){
         let _body = $('html, body');
         let _href = $(this).attr("href");
-        _body.stop(true).animate({ scrollTop: $(_href).offset().top+"px" }, 400);
-        return false;
+        let id = _href.replace(/^#/, '');
+        if (id) {
+            _body.stop(true).animate({scrollTop: $("#"+id).offset().top + "px"}, 400);
+            return false;
+        }
     });
 });
