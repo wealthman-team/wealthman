@@ -63,6 +63,7 @@ class RoboAdvisorsFilterOption
                     'field' => 'minimum_account',
                     'name' => 'minimum_account',
                     'label' => 'Minimum account',
+                    'pre_prefix' => '$',
                     'min' => 0,
                     'step_rules' => [
                         '0' => '500'
@@ -73,7 +74,7 @@ class RoboAdvisorsFilterOption
                     'name' => 'management_fee',
                     'label' => 'Management fee',
                     'float' => true,
-                    'unit' => '%',
+                    'post_prefix' => '%',
                     'min' => 0,
                     'step_rules' => [
                         '0' => '0.1'
@@ -84,6 +85,7 @@ class RoboAdvisorsFilterOption
                     'name' => 'aum',
                     'label' => 'AUM',
                     'reduce' => true,
+                    'pre_prefix' => '$',
                     'min' => 0,
                     'step_rules' => [
                         '1000000' => '50000', //шаг 50 тыс.
@@ -106,6 +108,7 @@ class RoboAdvisorsFilterOption
                     'name' => 'average_account_size',
                     'label' => 'Average Account Size',
                     'min' => 0,
+                    'pre_prefix' => '$',
                     'step_rules' => [
                         '0' => '1000',
                         '100000' => '5000',
@@ -260,7 +263,8 @@ class RoboAdvisorsFilterOption
             'min' => $min,
             'max' => $max,
             'step' => $step,
-            'unit' => $param['unit'] ?? '',
+            'pre_prefix' => $param['pre_prefix'] ?? '',
+            'post_prefix' => $param['post_prefix'] ?? '',
             'reduce' => $param['reduce'] ?? false,
             'label' => $param['label'],
             'name' => $param['name'],

@@ -83,7 +83,8 @@ $(function () {
 		let current_max = self.data('current-max');
 		let current_min = self.data('current-min');
 		let step = self.data('step');
-		let unit = self.data('unit');
+		let pre_prefix = self.data('pre-prefix');
+		let post_prefix = self.data('post-prefix');
 		let reduce = self.data('reduce');
 		let isRange = self.data('isRange');
 		let float = self.data('float');
@@ -124,10 +125,10 @@ $(function () {
 		}
 
 		sliderItem.noUiSlider.on('update', function (values) {
-			minValue.html(reduceNum(getValue(values[0])) + unit);
+			minValue.html(pre_prefix + reduceNum(getValue(values[0])) + post_prefix);
             minInputValue.val(getValue(values[0]));
 			if (isRange) {
-				maxValue.html(reduceNum(getValue(values[1])) + unit);
+				maxValue.html(pre_prefix + reduceNum(getValue(values[1])) + post_prefix);
                 maxInputValue.val(getValue(values[1]));
 			}
 		});
