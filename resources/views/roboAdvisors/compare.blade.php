@@ -30,8 +30,8 @@
                     @if (count($roboAdvisors) > 0)
                         <div class="compare__actions-list js-compare-result">
                             <span>Show:</span>
-                            <a class="link compare__action-item">Differing сharacteristics</a>
-                            <a class="link link_active compare__action-item">All сharacteristics</a>
+                            <a class="link compare__action-item js-differing-characteristics">Differing characteristics</a>
+                            <a class="link link_active compare__action-item js-all-characteristics">All characteristics</a>
                             <a class="link link_red compare__action-item js-clear-compare" href="{{ route('clearCompare') }}">Delete list</a>
                         </div>
                     @endif
@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
 
-                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group">
+                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group {{$diffRoboAdvisors['general']['group_identical'] ? 'js-identical-compare' : ''}}">
                                     <div class="compare-list__context js-compare-list-context">
                                         <div class="compare-list__group-header">
                                             <div class="compare-list__group-name js-compare-list-group-name">
@@ -100,7 +100,7 @@
                                         {{--</div>--}}
                                     {{--</div>--}}
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['ratings']['total'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 Rating
@@ -113,7 +113,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['ratings']['commissions'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 Commission & Fees
@@ -126,7 +126,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['ratings']['service'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 Customer Service
@@ -139,7 +139,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['ratings']['comfortable'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 Ease of Use
@@ -152,7 +152,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['ratings']['tools'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 Tools & Resources
@@ -165,7 +165,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['ratings']['investment_options'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 Investment Options
@@ -178,7 +178,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['ratings']['asset_allocation'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 Asset Allocation
@@ -191,7 +191,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['minimum_account'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 MINIMUM ACCOUNT
@@ -208,7 +208,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['management_fee'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 Management fee
@@ -225,7 +225,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['fee_details'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 ADDITIONAL INFORMATION
@@ -243,7 +243,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['aum'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 ASSETS UNDER MANAGEMENT
@@ -260,7 +260,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['number_accounts'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 NUMBER OF USERS
@@ -277,7 +277,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['average_account_size'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 AVERAGE ACCOUNT SIZE
@@ -294,7 +294,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['founded'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 YEAR FOUNDED
@@ -311,7 +311,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['promotions'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 PROMOTIONS
@@ -329,7 +329,7 @@
                                     </div>
                                 </div>
 
-                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group">
+                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group {{$diffRoboAdvisors['services']['group_identical'] ? 'js-identical-compare' : ''}}">
                                     <div class="compare-list__context js-compare-list-context">
                                         <div class="compare-list__group-header">
                                             <div class="compare-list__group-name js-compare-list-group-name">
@@ -341,7 +341,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['services']['human_advisors'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 HUMAN ADVISORS
@@ -349,7 +349,7 @@
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->human_advisors)
-                                                        {{ $roboAdvisor->human_advisors }}
+                                                        @svg('check', 'robo-advisor__check')
                                                     @else
                                                         &mdash;
                                                     @endif
@@ -358,7 +358,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['services']['human_advisors_details'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 ADDITIONAL INFORMATION
@@ -376,7 +376,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['services']['portfolio_rebalancing'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 PORTFOLIO REBALANCING
@@ -384,7 +384,7 @@
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
                                                     @if ($roboAdvisor->portfolio_rebalancing)
-                                                        {{ $roboAdvisor->portfolio_rebalancing }}
+                                                        @svg('check', 'robo-advisor__check')
                                                     @else
                                                         &mdash;
                                                     @endif
@@ -393,7 +393,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['services']['automatic_deposits'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 AUTOMATIC DEPOSITS
@@ -410,7 +410,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['services']['access_platforms'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 Access platforms
@@ -427,7 +427,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['services']['two_factor_auth'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 TWO-FACTOR
@@ -445,7 +445,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['services']['customer_service'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 CUSTOMER SERVICE
@@ -462,7 +462,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['services']['clearing_agency'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 CLEARING AGENCY
@@ -480,7 +480,7 @@
                                     </div>
                                 </div>
 
-                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group">
+                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group {{$diffRoboAdvisors['account_available']['group_identical'] ? 'js-identical-compare' : ''}}">
                                     <div class="compare-list__context js-compare-list-context">
                                         <div class="compare-list__group-header">
                                             <div class="compare-list__group-name js-compare-list-group-name">
@@ -499,7 +499,7 @@
                                                     <table class="robo-advisor__simple-table">
                                                         <tbody>
                                                         @foreach($accountTypes as $accountType)
-                                                            <tr>
+                                                            <tr class="{{ $diffRoboAdvisors['account_available']['account_types'][$accountType->id] ? 'js-identical-compare' : '' }}">
                                                                 <td class="{{ in_array($accountType->id, $roboAdvisor->account_types_ids) ? '' : 'inactive' }}">
                                                                     {{ $accountType->name }}
                                                                 </td>
@@ -513,7 +513,7 @@
                                     </div>
                                 </div>
 
-                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group">
+                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group {{$diffRoboAdvisors['features']['group_identical'] ? 'js-identical-compare' : ''}}">
                                     <div class="compare-list__context js-compare-list-context">
                                         <div class="compare-list__group-header">
                                             <div class="compare-list__group-name js-compare-list-group-name">
@@ -525,7 +525,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['fractional_shares'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 FRACTIONAL SHARES
@@ -542,7 +542,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['assistance_401k'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 401(K) GUIDANCE
@@ -559,7 +559,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['tax_loss'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 TAX LOSS HARVESTING
@@ -576,7 +576,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['tax_loss_details'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 ADDITIONAL INFORMATION
@@ -595,7 +595,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['retirement_planning'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 RETIREMENT PLANNING TOOLS
@@ -612,7 +612,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['self_clearing'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 SELF CLEARING
@@ -629,7 +629,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['smart_beta'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 SMART BETA
@@ -646,7 +646,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['responsible_investing'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 SOCIALLY RESPONSIBLE INVESTING
@@ -663,7 +663,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['invests_commodities'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 INVESTS IN COMMODITIES
@@ -680,7 +680,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['features']['real_estate'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 INVESTS IN REAL ESTATE
@@ -698,7 +698,7 @@
                                     </div>
                                 </div>
 
-                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group">
+                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group {{$diffRoboAdvisors['additional_information']['group_identical'] ? 'js-identical-compare' : ''}}">
                                     <div class="compare-list__context js-compare-list-context">
                                         <div class="compare-list__group-header">
                                             <div class="compare-list__group-name js-compare-list-group-name">
@@ -710,7 +710,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['additional_information']['additional_information'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 INFORMATION
@@ -728,7 +728,7 @@
                                     </div>
                                 </div>
 
-                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group">
+                                <div class="compare-list__group compare-list__group_with-header js-compare-list-group {{$diffRoboAdvisors['summary']['group_identical'] ? 'js-identical-compare' : ''}}">
                                     <div class="compare-list__context js-compare-list-context">
                                         <div class="compare-list__group-header">
                                             <div class="compare-list__group-name js-compare-list-group-name">
@@ -740,7 +740,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="compare-list__row compare-list__row_with-hover">
+                                    <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['summary']['summary'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">
                                             <div class="compare-list__row-name js-compare-list-name">
                                                 SUMMARY

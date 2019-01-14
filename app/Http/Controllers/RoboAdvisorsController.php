@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\RoboAdvisor;
 use App\AccountType;
+use App\Services\DiffRoboAdvisor;
 use App\Services\Filters\RoboAdvisorsFilter;
 use App\Services\Filters\RoboAdvisorsFilterOption;
 use App\Services\Filters\RoboAdvisorsSorting;
@@ -80,6 +81,8 @@ class RoboAdvisorsController extends Controller
         $accountTypes = AccountType::all();
         $roboAdvisors = RoboAdvisor::whereIn('id', $compareList)->with('ratings', 'account_types')->get();
 
+        $diffRoboAdvisors = (new DiffRoboAdvisor($roboAdvisors, $accountTypes))->get();
+
         foreach ($roboAdvisors as $roboAdvisor) {
             $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();
         }
@@ -88,6 +91,7 @@ class RoboAdvisorsController extends Controller
             'roboAdvisors' => $roboAdvisors,
             'accountTypes' => $accountTypes,
             'compareList' => $compareList,
+            'diffRoboAdvisors' => $diffRoboAdvisors
         ]);
     }
 

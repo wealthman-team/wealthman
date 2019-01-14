@@ -339,6 +339,20 @@ $(function () {
             },
         });
     });
+    $('.js-differing-characteristics').on('click', function (e) {
+        e.preventDefault();
+        $(this).addClass('link_active');
+        $('.js-all-characteristics').removeClass('link_active');
+        $('.js-identical-compare').fadeOut(300, function () {
+            $(this).addClass('hidden');
+        });
+    });
+    $('.js-all-characteristics').on('click', function (e) {
+        e.preventDefault();
+        $(this).addClass('link_active');
+        $('.js-differing-characteristics').removeClass('link_active');
+        $('.js-identical-compare').addClass('hidden').fadeIn(300);
+    });
 	/* **** end compare **** */
 
 	$('.js-simple-slider').slick({
