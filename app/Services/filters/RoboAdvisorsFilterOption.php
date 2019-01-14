@@ -1,5 +1,5 @@
 <?php
-namespace App\Service\Filters;
+namespace App\Services\Filters;
 
 use DB;
 use Illuminate\Http\Request;

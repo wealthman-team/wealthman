@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\Service\Filters\AbstractModelFilter;
-use App\Service\Filters\AbstractModelSorting;
+use App\Services\Filters\AbstractModelFilter;
+use App\Services\Filters\AbstractModelSorting;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 

@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\RoboAdvisor;
 use App\AccountType;
-use App\Service\Filters\RoboAdvisorsFilter;
-use App\Service\Filters\RoboAdvisorsFilterOption;
-use App\Service\Filters\RoboAdvisorsSorting;
+use App\Services\Filters\RoboAdvisorsFilter;
+use App\Services\Filters\RoboAdvisorsFilterOption;
+use App\Services\Filters\RoboAdvisorsSorting;
 use App\Sources\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;

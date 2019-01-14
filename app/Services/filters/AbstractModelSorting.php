@@ -1,11 +1,11 @@
 <?php
-namespace App\Service\Filters;
+namespace App\Services\Filters;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class AbstractModelFilter
+class AbstractModelSorting
 {
     /**
      * @var Builder|Model
@@ -32,21 +32,12 @@ class AbstractModelFilter
     public function apply($builder)
     {
         $this->builder = $builder;
-
-        foreach ($this->filters() as $filter => $value) {
-            if (method_exists($this, $filter)) {
-                $this->$filter($value);
-            }
+        $sort = $this->request->input('sort');
+        $type = $this->request->input('type');
+        if ($sort && $type && method_exists($this, $sort)) {
+            $this->$sort($type);
         }
 
         return $this->builder;
-    }
-
-    /**
-     * @return array
-     */
-    public function filters()
-    {
-        return $this->request->all();
     }
 }

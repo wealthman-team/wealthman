@@ -1,5 +1,5 @@
 <?php
-namespace App\Service\Filters;
+namespace App\Services\Filters;
 
 class RoboAdvisorsFilter extends AbstractModelFilter
 {
