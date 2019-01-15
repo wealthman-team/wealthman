@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="firstSection__container" >
                     <h1 class="page-header">Select the best suited robo-advisor</h1>
-                    <h2 class="page-sub-header">Wealthman screener’ll find your best robo-advisor independently and individually for you.</h2>
+                    <h2 class="page-sub-header">Use our sophisticated Advisor screener to select robo-advisor independently or consult our free competent support.</h2>
                     <a class="button button_blue" href="{{route('roboAdvisors')}}">Start Search</a>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                     <div class="tableContainerRow">
                         <div class="leftSide">
                             <h2 class="section-header">TOP 5 <br>Robo-advisors</h2>
-                            <div class="section-sub-header">Wealthfront uses a team of “world-class financial experts” led by legendary economist Burton Malkiel.</div>
+                            <div class="section-sub-header">Use predefined advisor screeners.</div>
                             <a class="button button_blue" href="{{route('roboAdvisors')}}">More Robo-Advisors</a>
                         </div>
                         <div class="rightSide">
