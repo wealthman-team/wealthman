@@ -28,8 +28,8 @@ class IndexController extends Controller
      */
     public function index(Request $request, RoboAdvisorsSorting $sorting)
     {
-        Page::setTitle('Home | Wealthman');
-        Page::setDescription('Main page');
+        Page::setTitle('Robo-Advisor\'s Aggregator | WealthMan');
+        Page::setDescription('Use our sophisticated Advisor screener to select robo-advisor independently or consult our free competent support.');
 
         // популярные Robo Advisors
         $popularRoboAdvisors = RoboAdvisor::popular(5)->get()->pluck('id')->toArray();
