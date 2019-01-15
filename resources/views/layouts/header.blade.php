@@ -9,9 +9,9 @@
                 </div>
                 <div class="header__nav">
                     <a class="link header__nav-item" href="{{ route('roboAdvisors') }}">Advisor screener</a>
-                    <a class="link header__nav-item" href="#">About Us</a>
-                    <a class="link header__nav-item" href="#">Team</a>
-                    <a class="link header__nav-item" href="#">Contacts</a>
+                    {{--<a class="link header__nav-item" href="#">About Us</a>--}}
+                    {{--<a class="link header__nav-item" href="#">Team</a>--}}
+                    {{--<a class="link header__nav-item" href="#">Contacts</a>--}}
                 </div>
             </div>
 
@@ -27,11 +27,11 @@
                     </a>
                 </div>
 
-                <a class="button button_blue start-search" href="#">Start Search</a>
+                {{--<a class="button button_blue start-search" href="#">Start Search</a>--}}
 
-                <span class="search-icon">
-                    @svg('search')
-                </span>
+                {{--<span class="search-icon">--}}
+                    {{--@svg('search')--}}
+                {{--</span>--}}
             </div>
         </div>
     </div>

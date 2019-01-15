@@ -16,7 +16,7 @@
 
             <div class="container">
                 <h1 class="page-header">
-                    Comparison of robo advisors
+                    Comparison of robo-advisors
                 </h1>
                 <div class="page-sub-header js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden' : ''}}">
                     Oh, there is nothing here
@@ -24,7 +24,7 @@
 
                 <div class="compare__container">
                     <div class="compare__empty js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden': ''}}">
-                        You can add an robo advisors from the
+                        You can add an robo-advisors from the
                         <a class="link link_active" href="{{route('roboAdvisors')}}">Advisor screener</a>
                     </div>
                     @if (count($roboAdvisors) > 0)

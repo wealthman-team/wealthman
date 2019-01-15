@@ -1,5 +1,6 @@
 <?php
 
+use App\RoboAdvisor;
 use Illuminate\Support\Arr;
 
 /**
@@ -151,4 +152,13 @@ function getCompareListLength($name)
     }
 
     return count($compare_list);
+}
+
+/**
+ * @param int $limit
+ * @return RoboAdvisor[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+ */
+function popularRoboAdvisors($limit = 3)
+{
+    return RoboAdvisor::popular($limit)->exclude()->get();
 }

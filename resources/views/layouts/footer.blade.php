@@ -4,36 +4,36 @@
             <div class="footer__links">
                 <div class="footer__title">WEALTHMAN</div>
                 <ul class="footer__links-list">
-                    <li><a class="link link_white" href="#">Advisor screener</a></li>
-                    <li><a class="link link_white" href="#">About us</a></li>
-                    <li><a class="link link_white" href="#">Investor relation</a></li>
-                    <li><a class="link link_white" href="#">Contacts</a></li>
+                    <li><a class="link link_white" href="{{ route('roboAdvisors') }}">Advisor screener</a></li>
+                    {{--<li><a class="link link_white" href="#">About us</a></li>--}}
+                    <li><a class="link link_white" target="_blank" href="https://dapp.wealthman.io/">Investor relation</a></li>
+                    {{--<li><a class="link link_white" href="#">Contacts</a></li>--}}
                 </ul>
             </div>
             <div class="footer__links">
                 <div class="footer__title">COMMUNITY</div>
                 <ul class="footer__links-list">
-                    <li><a class="link link_white" href="#">Telegram</a></li>
-                    <li><a class="link link_white" href="#">Facebook</a></li>
-                    <li><a class="link link_white" href="#">Instagram</a></li>
-                    <li><a class="link link_white" href="#">Bitcointalk</a></li>
+                    <li><a class="link link_white" target="_blank" href="https://t.me/wealthman_global">Telegram</a></li>
+                    <li><a class="link link_white" target="_blank" href="https://www.facebook.com/Wealthman.io">Facebook</a></li>
+                    <li><a class="link link_white" target="_blank" href="https://www.instagram.com/wealthman_platform/">Instagram</a></li>
+                    <li><a class="link link_white" target="_blank" href="https://bitcointalk.org/index.php?topic=2006205">Bitcointalk</a></li>
                 </ul>
             </div>
             <div class="footer__links">
-                <div class="footer__title">ROBO ADVISORS</div>
+                <div class="footer__title">ROBO-ADVISORS</div>
                 <ul class="footer__links-list">
-                    <li><a class="link link_white" href="#">Wealthfront</a></li>
-                    <li><a class="link link_white" href="#">Wealthfront</a></li>
-                    <li><a class="link link_white" href="#">Wealthfront</a></li>
-                    <li><a class="link link_white" href="#">More robo advisors</a></li>
+                    @foreach(popularRoboAdvisors() as $popularRoboAdvisor)
+                        <li><a class="link link_white" href="{{ route('roboAdvisorsShow', $popularRoboAdvisor) }}">{{ $popularRoboAdvisor->name }}</a></li>
+                    @endforeach
+                    <li><a class="link link_white" href="{{ route('roboAdvisors') }}">More robo-advisors</a></li>
                 </ul>
             </div>
-            <div class="footer__links">
-                <div class="footer__title">HAVE A QUESTIONS?</div>
-                <div>
-                    <a class="button button_blue">Ask Question</a>
-                </div>
-            </div>
+            {{--<div class="footer__links">--}}
+                {{--<div class="footer__title">HAVE A QUESTIONS?</div>--}}
+                {{--<div>--}}
+                    {{--<a class="button button_blue">Ask Question</a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
         <div class="footer__bottom">
             <div class="footer__copy">

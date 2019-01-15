@@ -68,16 +68,16 @@
                                             @endif
                                         </strong>
                                     </div>
-                                    <div class="robo-advisor__contact">
-                                        Site:
-                                        <strong>
-                                            @if ($roboAdvisor->site_url)
-                                                {{ $roboAdvisor->site_url }}
-                                            @else
-                                                &mdash;
-                                            @endif
-                                        </strong>
-                                    </div>
+                                    {{--<div class="robo-advisor__contact">--}}
+                                        {{--Site:--}}
+                                        {{--<strong>--}}
+                                            {{--@if ($roboAdvisor->site_url)--}}
+                                                {{--{{ $roboAdvisor->site_url }}--}}
+                                            {{--@else--}}
+                                                {{--&mdash;--}}
+                                            {{--@endif--}}
+                                        {{--</strong>--}}
+                                    {{--</div>--}}
                                     <div class="robo-advisor__contact">
                                         Phone:
                                         <strong>

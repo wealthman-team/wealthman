@@ -192,10 +192,15 @@
 
   &__logo {
     width: 140px;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
+    height: 50px;
+    position: relative;
 
     img {
       width: 100%;
+      max-width: 100%;
+      position: absolute;
+      bottom: 0;
     }
   }
 

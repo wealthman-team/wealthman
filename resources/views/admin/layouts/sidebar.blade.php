@@ -26,7 +26,7 @@
                     <li class="{{ setCatActive('admin/robo-advisors') }} {{ setCatActive('admin/robo-advisors/*') }}">
                         <a href="{{ route('admin.roboAdvisors.index') }}">
                             <i class="fa fa-desktop"></i>
-                            <span>Robo advisors</span>
+                            <span>Robo-advisors</span>
                         </a>
                     </li>
                     <li class="{{ setCatActive('admin/account-types') }} {{ setCatActive('admin/account-types/*') }}">

@@ -82,24 +82,24 @@
                                     Management fee
                                 </h3>
                                 <p class="robo-advisors__p">
-                                    Most robo advisors charge a percentage fee based on the size of the portfolio.
+                                    Most robo-advisors charge a percentage fee based on the size of the portfolio.
                                     These fees are typically much lower than the average 1% charged
                                     by traditional financial advisors.
                                 </p>
                                 <p class="robo-advisors__p">
-                                    Other robo advisors offer human advisors alongside their online tools and automated
+                                    Other robo-advisors offer human advisors alongside their online tools and automated
                                     backend and some may charge an additional fee for consulting
                                     with human financial advisors.
                                 </p>
                                 <p class="robo-advisors__p">
-                                    It’s important to keep in mind that the upfront fees charged by robo advisors
+                                    It’s important to keep in mind that the upfront fees charged by robo-advisors
                                     aren’t the only costs in your portfolio. There are also the fees embedded in the
                                     underlying investments - typically the management fees of mutual funds and exchange
                                     traded funds (ETFs). In most cases though, these are the same costs of low-fee
                                     funds you’d be paying if you were managing your own portfolio.
                                 </p>
                                 <p class="robo-advisors__p">
-                                    Some robo advisors like Charles Schwab’s Intelligent Portfolios include other
+                                    Some robo-advisors like Charles Schwab’s Intelligent Portfolios include other
                                     hidden costs like large mandatory cash allocations that pay only a small
                                     percentage of the actual revenue the robo advisor earns on those funds.
                                 </p>
@@ -143,7 +143,7 @@
                                     Direct indexing also eliminates the management fees of index funds or ETFs,
                                     which prevents exact replication of the performance of an index investment.
                                     However, the actual calculation of fee savings must also take into
-                                    consideration of the robo advisors fees.
+                                    consideration of the robo-advisors fees.
                                 </p>
 
                                 <h3 class="robo-advisors__h3">
@@ -163,7 +163,7 @@
                                     tax loss harvesting algorithm.
                                 </p>
                                 <p class="robo-advisors__p">
-                                    Automated tax loss harvesting is one of the big ways that robo advisors can
+                                    Automated tax loss harvesting is one of the big ways that robo-advisors can
                                     increase return for investors without increasing risk. However, tax loss harvesting
                                     doesn’t benefit everyone. Investors using only tax sheltered accounts won’t see
                                     a benefit from tax loss harvesting. Investors in a 0% capital gains tax rate,
@@ -178,7 +178,7 @@
                                 <p class="robo-advisors__p">
                                     Trading on an exchange only involves whole shares. This can leave some cash on the
                                     sidelines and create a silent drag on returns.<br>
-                                    Some robo advisors support trading in fractional shares, which lets investors buy
+                                    Some robo-advisors support trading in fractional shares, which lets investors buy
                                     shares down to 1/1,000,000 of a share and increases efficiency. Fractional shares
                                     allow investors to diversify every penny in their investment account, instead of
                                     holding cash simply because the remaining funds in their portfolio
@@ -197,7 +197,7 @@
                                     There are many ways to categorize online financial services, but to us, if an
                                     automated online advisor service provides automated rebalancing, low fees, and
                                     an online dashboard - then we’re considering it a robo advisor for the sake of
-                                    this comparison of the best robo advisors, even if the service includes a
+                                    this comparison of the best robo-advisors, even if the service includes a
                                     layer of human advice.
                                 </p>
                             </div>
