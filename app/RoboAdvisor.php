@@ -7,7 +7,6 @@ use App\Services\Filters\AbstractModelSorting;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-
 /**
  * App\RoboAdvisor
  *
@@ -60,16 +59,21 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string|null $phone
  * @property string|null $ceo
  * @property string|null $contact_details
+ * @property string|null $finra_crd
+ * @property string|null $sec_id
  * @property int $is_active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\AccountType[] $account_types
  * @property-read \App\Rating $ratings
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\UsageType[] $usage_types
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor exclude($exclude = null)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor filter($filters)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor popular($limit = 3)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor sorting($sorting)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereAboutCompany($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereAccessPlatforms($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereAdditionalInformation($value)
@@ -86,6 +90,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereCustomerService($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereFeeDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereFinraCrd($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereFounded($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereFractionalShares($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereHeadquarters($value)
@@ -110,6 +115,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereReferralLink($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereResponsibleInvesting($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereRetirementPlanning($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSecId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSelfClearing($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereServiceRegion($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereShortDescription($value)
@@ -123,10 +129,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereVideoLink($value)
  * @mixin \Eloquent
- * @property string|null $finra_crd
- * @property string|null $sec_id
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereFinraCrd($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSecId($value)
  */
 class RoboAdvisor extends Model
 {
@@ -281,5 +283,34 @@ class RoboAdvisor extends Model
     public function scopeSorting($builder, $sorting)
     {
         return $sorting->apply($builder);
+    }
+
+    /**
+     * @param Builder|Model $builder
+     * @param int $limit
+     * @return mixed
+     */
+    public function scopePopular($builder, int $limit = 3)
+    {
+        return $builder
+            ->with('ratings')
+            ->leftjoin('ratings', 'ratings.robo_advisor_id', '=', 'robo_advisors.id')
+            ->orderBy('ratings.total', 'desc')
+            ->orderBy('aum', 'desc')
+            ->limit($limit);
+    }
+
+    /**
+     * @param Builder|Model $builder
+     * @param null $exclude
+     * @return mixed
+     */
+    public function scopeExclude($builder, $exclude = null)
+    {
+        if ($exclude !== null) {
+            $exclude = is_array($exclude) ? $exclude : [(int) $exclude];
+        }
+
+        return $exclude ? $builder->whereNotIn('robo_advisors.id', $exclude) : $builder;
     }
 }

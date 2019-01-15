@@ -194,80 +194,32 @@
                                     </div>
                                 </div>
                                 <div class="slide-box__body js-slide-box-body">
-                                    <div class="robo-advisor__review">
-                                        <div class="robo-advisor__review-name">
-                                            Betterment
-                                            <span class="robo-advisor__verify">
-                                                @svg('verify')
-                                            </span>
-                                        </div>
+                                    @foreach($popularRoboAdvisors as $popularRoboAdvisor)
+                                        <div class="robo-advisor__review">
+                                            <div class="robo-advisor__review-name">
+                                                {{ $popularRoboAdvisor->name }}
+                                                <span class="robo-advisor__verify">
+                                                    @svg('verify')
+                                                </span>
+                                            </div>
 
-                                        <div class="robo-advisor__review-recommendation">
-                                            @include('components/recommendation', [
-                                                'text' => 'Strongly recommended',
-                                                'yes' => 10,
-                                                'maybe' => 2,
-                                                'no' => 5,
-                                                'total' => 17,
-                                            ])
-                                        </div>
+                                            {{--<div class="robo-advisor__review-recommendation">--}}
+                                            {{--@include('components/recommendation', [--}}
+                                            {{--'text' => 'Strongly recommended',--}}
+                                            {{--'yes' => 10,--}}
+                                            {{--'maybe' => 2,--}}
+                                            {{--'no' => 5,--}}
+                                            {{--'total' => 17,--}}
+                                            {{--])--}}
+                                            {{--</div>--}}
 
-                                        <div class="robo-advisor__review-link">
-                                            <a class="link link_active" href="#">
-                                                Review
-                                            </a>
+                                            <div class="robo-advisor__review-link">
+                                                <a class="link link_active" href="{{ route('roboAdvisorsShow', $popularRoboAdvisor) }}">
+                                                    Review
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="robo-advisor__review">
-                                        <div class="robo-advisor__review-name">
-                                            Betterment
-                                            <span class="robo-advisor__verify">
-                                                @svg('verify')
-                                            </span>
-                                        </div>
-
-                                        <div class="robo-advisor__review-recommendation">
-                                            @include('components/recommendation', [
-                                                'text' => 'Strongly recommended',
-                                                'yes' => 10,
-                                                'maybe' => 2,
-                                                'no' => 5,
-                                                'total' => 17,
-                                            ])
-                                        </div>
-
-                                        <div class="robo-advisor__review-link">
-                                            <a class="link link_active" href="#">
-                                                Review
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="robo-advisor__review">
-                                        <div class="robo-advisor__review-name">
-                                            Betterment
-                                            <span class="robo-advisor__verify">
-                                                @svg('verify')
-                                            </span>
-                                        </div>
-
-                                        <div class="robo-advisor__review-recommendation">
-                                            @include('components/recommendation', [
-                                                'text' => 'Strongly recommended',
-                                                'yes' => 10,
-                                                'maybe' => 2,
-                                                'no' => 5,
-                                                'total' => 17,
-                                            ])
-                                        </div>
-
-                                        <div class="robo-advisor__review-link">
-                                            <a class="link link_active" href="#">
-                                                Review
-                                            </a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

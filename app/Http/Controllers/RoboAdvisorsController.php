@@ -58,9 +58,13 @@ class RoboAdvisorsController extends Controller
         $accountTypes = AccountType::all();
 
         $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();
+        // популярные Robo Advisors
+        $popularRoboAdvisors = RoboAdvisor::popular(3)->exclude($roboAdvisor->id)->get();
+
 
         return view('roboAdvisors/show', [
             'roboAdvisor' => $roboAdvisor,
+            'popularRoboAdvisors' => $popularRoboAdvisors,
             'accountTypes' => $accountTypes,
         ]);
     }
