@@ -17,7 +17,7 @@
 <div class="form-group">
     <div class="checkbox icheck">
         <label for="robo-advisor-is-verify-input">
-            <input class="js-icheck" id="robo-advisor-is-verify-input" name="verify" type="checkbox" {{ (old('is_verify') || $roboAdvisor->is_verify) ? 'checked' : '' }} >
+            <input class="js-icheck" id="robo-advisor-is-verify-input" name="is_verify" type="checkbox" {{ (old('is_verify') || $roboAdvisor->is_verify) ? 'checked' : '' }} >
             Verify
         </label>
     </div>

@@ -198,9 +198,11 @@
                                         <div class="robo-advisor__review">
                                             <div class="robo-advisor__review-name">
                                                 {{ $popularRoboAdvisor->name }}
-                                                <span class="robo-advisor__verify">
-                                                    @svg('verify')
-                                                </span>
+                                                @if($popularRoboAdvisor->is_verify)
+                                                    <span class="robo-advisor__verify">
+                                                        @svg('verify')
+                                                    </span>
+                                                @endif
                                             </div>
 
                                             {{--<div class="robo-advisor__review-recommendation">--}}
@@ -237,10 +239,11 @@
                                         @if ($roboAdvisor->logo)
                                             <img src="{{ asset('storage/' . $roboAdvisor->logo) }}" />
                                         @endif
-
-                                        <span class="robo-advisor__verify robo-advisor__verify_margin">
-                                            @svg('verify')
-                                        </span>
+                                        @if($roboAdvisor->is_verify)
+                                            <span class="robo-advisor__verify robo-advisor__verify_margin">
+                                                @svg('verify')
+                                            </span>
+                                        @endif
                                     </div>
 
                                     <div class="robo-advisor__recommendation">
