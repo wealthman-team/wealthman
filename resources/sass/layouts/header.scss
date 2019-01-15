@@ -1,6 +1,8 @@
 .header {
   height: 78px;
   background: $white;
+  position: relative;
+  z-index: 1;
 
   &__content {
     display: flex;
@@ -66,5 +68,9 @@
     background: $white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     text-align: center;
+  }
+
+  &__transparent {
+    background-color: transparent;
   }
 }

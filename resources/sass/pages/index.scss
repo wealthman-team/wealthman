@@ -1,0 +1,65 @@
+/* first section */
+.firstSection {
+  background-size: contain;
+  background: url(../images/backgroundHeader.png) no-repeat top right;
+  padding: 145px 0 270px 0;
+  margin: -80px auto 0;
+  h1 {
+    font-size: 28px;
+  }
+  &__container {
+    padding-left: 20px;
+  }
+  h2 {
+    max-width: 600px;
+    padding: 17px 0 27px;
+  }
+  .button{
+    font-size: 14px;
+  }
+}
+/* second section */
+.secondSection {
+  margin-top: -125px;
+  margin-left: 20px;
+
+  .section-header {
+    @include font(24px, $Intro, $text, 31px, 400);
+    margin-bottom: 17px;
+  }
+  .section-sub-header{
+    @include font(14px, $Geometria, $text, 20px, 400);
+    margin-bottom: 27px;
+  }
+  .tableContainer {
+    display: table;
+    width: 100%;
+  }
+  .tableContainerRow {
+    display: table-row;
+    width: 100%;
+  }
+  .leftSide, .rightSide {
+    display: table-cell;
+  }
+  .leftSide {
+    width: 24%;
+    vertical-align: middle;
+    padding-bottom: 29px;
+
+    .button{
+      font-size: 14px;
+      width: 233px;
+    }
+  }
+  .rightSide {
+    width: 76%;
+    border: 0px solid #dedede;
+    border-radius: 20px;
+    background: #ffffff;
+
+    .robo-advisors__list{
+      width: 974px;
+    }
+  }
+}

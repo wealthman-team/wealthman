@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header {{ checkCatActive('/') ? 'header__transparent' : '' }}">
     <div class="container">
         <div class="header__content">
             <div class="header__left-col">

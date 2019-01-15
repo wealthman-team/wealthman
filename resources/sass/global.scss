@@ -130,6 +130,12 @@
 
 .content {
   min-height: 50vh;
+  &__pd-bot:after {
+    content: '';
+    height: 0;
+    padding-top: 90px;
+    display: block;
+  }
 }
 
 .hidden{
