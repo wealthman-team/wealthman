@@ -198,7 +198,7 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
-                                                    @if ($roboAdvisor->minimum_account)
+                                                    @if ($roboAdvisor->minimum_account || $roboAdvisor->minimum_account === 0)
                                                         ${{ $roboAdvisor->minimum_account }}
                                                     @else
                                                         &mdash;
@@ -215,7 +215,7 @@
                                             </div>
                                             @foreach ($roboAdvisors as $roboAdvisor)
                                                 <div class="compare-list__col js-compare-robo-{{$roboAdvisor->id}}">
-                                                    @if ($roboAdvisor->management_fee)
+                                                    @if ($roboAdvisor->management_fee || $roboAdvisor->management_fee === 0.00)
                                                         {{ $roboAdvisor->management_fee }}%/year
                                                     @else
                                                         &mdash;

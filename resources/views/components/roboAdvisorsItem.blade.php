@@ -26,7 +26,7 @@
             @endif
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__fee">
-            @if ($roboAdvisor->management_fee)
+            @if ($roboAdvisor->management_fee || $roboAdvisor->management_fee === 0.00)
                 {{ $roboAdvisor->management_fee }}%
             @else
                 N/A

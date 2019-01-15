@@ -423,7 +423,7 @@
                                                         <tr>
                                                             <th>MINIMUM ACCOUNT</th>
                                                             <td>
-                                                                @if ($roboAdvisor->minimum_account)
+                                                                @if ($roboAdvisor->minimum_account || $roboAdvisor->minimum_account == 0)
                                                                     ${{ $roboAdvisor->minimum_account }}
                                                                 @else
                                                                     &mdash;
@@ -433,7 +433,7 @@
                                                         <tr>
                                                             <th>Management fee</th>
                                                             <td>
-                                                                @if ($roboAdvisor->management_fee)
+                                                                @if ($roboAdvisor->management_fee || $roboAdvisor->management_fee === 0.00)
                                                                     {{ $roboAdvisor->management_fee }}%/year
                                                                 @else
                                                                     &mdash;
