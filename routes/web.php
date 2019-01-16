@@ -11,7 +11,7 @@
 |
 */
 
-use Spatie\Sitemap\SitemapGenerator;
+use App\Services\Sitemap;
 
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
@@ -88,8 +88,6 @@ Route::namespace('Admin')->group(function () {
 });
 
 Route::get('sitemap-create', function (){
-
-    SitemapGenerator::create(config('app.url'))->writeToFile('sitemap.xml');
-
+    Sitemap::generate();
     return 'sitemap created';
 });

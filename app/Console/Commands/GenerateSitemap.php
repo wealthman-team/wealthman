@@ -1,8 +1,8 @@
 <?php
 namespace App\Console\Commands;
 
+use App\Services\Sitemap;
 use Illuminate\Console\Command;
-use Spatie\Sitemap\SitemapGenerator;
 
 class GenerateSitemap extends Command
 {
@@ -28,7 +28,6 @@ class GenerateSitemap extends Command
     public function handle()
     {
         // modify this to your own needs
-        SitemapGenerator::create(config('app.url'))
-            ->writeToFile(public_path('sitemap.xml'));
+        Sitemap::generate();
     }
 }
