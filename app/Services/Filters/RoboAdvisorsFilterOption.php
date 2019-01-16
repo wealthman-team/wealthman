@@ -12,6 +12,11 @@ class RoboAdvisorsFilterOption
     private $request;
 
     /**
+     * @var string
+     */
+    private $default_active_filter = 'general';
+
+    /**
      * @var array
      */
     private $filter_option = [];
@@ -64,6 +69,7 @@ class RoboAdvisorsFilterOption
                     'name' => 'minimum_account',
                     'label' => 'Minimum account',
                     'pre_prefix' => '$',
+                    'range_factor' => '15',
                     'min' => 0,
                     'step_rules' => [
                         '0' => '500'
@@ -106,7 +112,7 @@ class RoboAdvisorsFilterOption
                 $this->getRangeFilter('robo_advisors', [
                     'field' => 'average_account_size',
                     'name' => 'average_account_size',
-                    'label' => 'Average Account Size',
+                    'label' => 'Average Account',
                     'min' => 0,
                     'pre_prefix' => '$',
                     'step_rules' => [
@@ -196,12 +202,30 @@ class RoboAdvisorsFilterOption
             'filter_queries' => $this->filter_queries,
         ];
 
+
         $filters = $this->checkActiveFilters($filters, 'general');
         $filters = $this->checkActiveFilters($filters, 'services');
         $filters = $this->checkActiveFilters($filters, 'features');
+        $filters = $this->setAtLeastOneActiveFilters($filters, ['general', 'services', 'features']);
 
         return $filters;
     }
+
+    public function setAtLeastOneActiveFilters($filters, $filter_names)
+    {
+        $active_filter = false;
+        foreach ( $filter_names as $filter_name) {
+            if (array_key_exists($filter_name.'_is_active', $filters) && $filters[$filter_name.'_is_active'] === true) {
+                $active_filter = true;
+            }
+        }
+        if (!$active_filter) {
+            $filters[$this->default_active_filter . '_is_active'] = true;
+        }
+
+        return $filters;
+    }
+
 
     /**
      * @param $filters

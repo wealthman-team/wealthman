@@ -46,15 +46,4 @@ class RoboAdvisorsSorting extends AbstractModelSorting
     {
         $this->setOrder('aum', $type);
     }
-
-    /**
-     * @param string $field_name
-     * @param string $type
-     */
-    private function setOrder(string $field_name, string $type)
-    {
-        if ($type && $field_name) {
-            $this->builder->orderBy($field_name, $type);
-        }
-    }
 }

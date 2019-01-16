@@ -25,8 +25,8 @@ class RoboAdvisorsController extends Controller
      */
     public function index(Request $request, RoboAdvisorsFilter $filter, RoboAdvisorsSorting $sorting)
     {
-        Page::setTitle('Robo Advisors | Wealthman', $request->input('page'));
-        Page::setDescription('Robo Advisors list', $request->input('page'));
+        Page::setTitle('Robo-Advisor Screener | Wealthman', $request->input('page'));
+        Page::setDescription('Find independent information about robo-advisors in the US', $request->input('page'));
 
         $roboAdvisorsFilterOption = (new RoboAdvisorsFilterOption($request))->get();
 
@@ -34,7 +34,7 @@ class RoboAdvisorsController extends Controller
             ->with('ratings', 'account_types')
             ->leftjoin('ratings', 'ratings.robo_advisor_id', '=', 'robo_advisors.id')
             ->filter($filter)
-            ->sorting($sorting)
+            ->sorting($sorting->setDefault('ratings.total'))
             ->paginate(10);
 
         return view('roboAdvisors/index', [
@@ -76,8 +76,8 @@ class RoboAdvisorsController extends Controller
      */
     public function compare()
     {
-        Page::setTitle('Robo Advisors Compare | Wealthman');
-        Page::setDescription('Robo Advisors compare');
+        Page::setTitle('Comparison of Robo-Advisors | Wealthman');
+        Page::setDescription('Convenient comparison of robo-advisors. Just add robo-advisors from the list.');
 
         $compareList = Cookie::get('compare_list');
         $compareList = $compareList ? json_decode($compareList) : [];

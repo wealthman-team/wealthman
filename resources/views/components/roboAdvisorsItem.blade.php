@@ -33,8 +33,10 @@
             @endif
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__aum">
-            @if ($roboAdvisor->aum)
+            @if ($roboAdvisor->aum || $roboAdvisor->aum === 0)
+                @if ($roboAdvisor->aum > 0)
                 >
+                @endif
                 ${{ getAUMNum($roboAdvisor->aum) }}
             @else
                 N/A

@@ -37,7 +37,7 @@ class IndexController extends Controller
             ->whereIn('robo_advisors.id', $popularRoboAdvisors)
             ->with('ratings', 'account_types')
             ->leftjoin('ratings', 'ratings.robo_advisor_id', '=', 'robo_advisors.id')
-            ->sorting($sorting)
+            ->sorting($sorting->setDefault('ratings.total'))
             ->get();
 
         return view('index', [

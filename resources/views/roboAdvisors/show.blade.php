@@ -142,21 +142,22 @@
                                 </div>
                                 <div class="slide-box__body js-slide-box-body">
                                     <ul class="robo-advisor__contents-list">
-                                        @if($roboAdvisor->pros || $roboAdvisor->cons)
-                                        <li>
-                                            <a class="link" href="#pros_and_cons_section">Pros and Cons</a>
-                                        </li>
-                                        @endif
-                                        @if($roboAdvisor->about_company)
-                                        <li>
-                                            <a class="link" href="#about_company_section">About Company</a>
-                                        </li>
-                                        @endif
                                         <li>
                                             <a class="link" href="#all_characteristics_section">
                                                 All Characteristics
                                             </a>
                                         </li>
+                                        @if($roboAdvisor->about_company)
+                                            <li>
+                                                <a class="link" href="#about_company_section">About Company</a>
+                                            </li>
+                                        @endif
+                                        @if($roboAdvisor->pros || $roboAdvisor->cons)
+                                        <li>
+                                            <a class="link" href="#pros_and_cons_section">Pros and Cons</a>
+                                        </li>
+                                        @endif
+
                                         @if($roboAdvisor->how_it_works)
                                         <li>
                                             <a class="link" href="#how_it_works_section">How it Works?</a>
@@ -841,22 +842,22 @@
                                     <div class="robo-advisor__section-text">
                                         <div class="reach-text">
                                             {!! $roboAdvisor->how_it_works !!}
-                                            <br>
-                                            <h3>Screenshots</h3>
-                                            <div class="panel panel_white panel_negative-margin">
-                                                @include('components/simpleSlider', [
-                                                    'images' => [[
-                                                        'src' => asset('images/blog_easierwaytoplan.png'),
-                                                        'alt' => 'Slide 1',
-                                                    ],[
-                                                        'src' => asset('images/blog_easierwaytoplan.png'),
-                                                        'alt' => 'Slide 2',
-                                                    ],[
-                                                        'src' => asset('images/blog_easierwaytoplan.png'),
-                                                        'alt' => 'Slide 3',
-                                                    ],]
-                                                ])
-                                            </div>
+                                            {{--<br>--}}
+                                            {{--<h3>Screenshots</h3>--}}
+                                            {{--<div class="panel panel_white panel_negative-margin">--}}
+                                            {{--@include('components/simpleSlider', [--}}
+                                            {{--'images' => [[--}}
+                                            {{--'src' => asset('images/blog_easierwaytoplan.png'),--}}
+                                            {{--'alt' => 'Slide 1',--}}
+                                            {{--],[--}}
+                                            {{--'src' => asset('images/blog_easierwaytoplan.png'),--}}
+                                            {{--'alt' => 'Slide 2',--}}
+                                            {{--],[--}}
+                                            {{--'src' => asset('images/blog_easierwaytoplan.png'),--}}
+                                            {{--'alt' => 'Slide 3',--}}
+                                            {{--],]--}}
+                                            {{--])--}}
+                                            {{--</div>--}}
                                         </div>
                                     </div>
                                 </div>

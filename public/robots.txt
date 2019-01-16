@@ -1,2 +1,6 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /admin/*
+
+Host: https://wealthman.io
+Sitemap: https://wealthman.io/sitemap.xml

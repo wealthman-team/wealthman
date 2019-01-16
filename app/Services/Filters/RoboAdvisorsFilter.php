@@ -21,7 +21,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(minimum_account >= "'.$value.'" OR minimum_account = "" OR minimum_account is null)');
+            $this->builder->where('minimum_account', '>=', $value);
         }
     }
 
@@ -29,7 +29,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(minimum_account <= "'.$value.'" OR minimum_account = "" OR minimum_account is null)');
+            $this->builder->where('minimum_account', '<=', $value);
         }
     }
 
@@ -37,15 +37,15 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (float) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(management_fee >= "'.$value.'" OR management_fee = "" OR management_fee is null)');
+            $this->builder->where('management_fee', '>=', $value);
         }
     }
 
     public function management_fee_to($value)
     {
-        $value = (int) $value;
+        $value = (float) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(management_fee <= "'.$value.'" OR management_fee = "" OR management_fee is null)');
+            $this->builder->where('management_fee', '<=', $value);
         }
     }
 
@@ -53,7 +53,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(aum >= "'.$value.'" OR aum = "" OR aum is null)');
+            $this->builder->whereRaw('(aum >= "'.$value.'" OR aum is null OR (aum = "" AND aum <> 0 ))');
         }
     }
 
@@ -61,7 +61,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(aum <= "'.$value.'" OR aum = "" OR aum is null)');
+            $this->builder->whereRaw('(aum <= "'.$value.'" OR aum is null OR (aum = "" AND aum <> 0 ))');
         }
     }
 
@@ -69,7 +69,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(number_accounts >= "'.$value.'" OR number_accounts = "" OR number_accounts is null)');
+            $this->builder->whereRaw('(number_accounts >= "'.$value.'" OR number_accounts is null OR (number_accounts = "" AND number_accounts <> 0 ))');
         }
     }
 
@@ -77,7 +77,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(number_accounts <= "'.$value.'" OR number_accounts = "" OR number_accounts is null)');
+            $this->builder->whereRaw('(number_accounts <= "'.$value.'" OR number_accounts is null OR (number_accounts = "" AND number_accounts <> 0 ))');
         }
     }
 
@@ -85,7 +85,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(average_account_size >= "'.$value.'" OR average_account_size = "" OR average_account_size is null)');
+            $this->builder->whereRaw('(average_account_size >= "'.$value.'" OR average_account_size is null OR (average_account_size = "" AND average_account_size <> 0 ))');
         }
     }
 
@@ -93,7 +93,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(average_account_size <= "'.$value.'" OR average_account_size = "" OR average_account_size is null)');
+            $this->builder->whereRaw('(average_account_size <= "'.$value.'" OR average_account_size is null OR (average_account_size = "" AND average_account_size <> 0 ))');
         }
     }
 
@@ -101,7 +101,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value > 0) {
-            $this->builder->whereRaw('(founded >="'.$value.'" OR founded = "" OR founded is null)');
+            $this->builder->whereRaw('(founded >= "'.$value.'" OR founded is null OR (founded = "" AND founded <> 0 ))');
         }
     }
 
@@ -109,7 +109,7 @@ class RoboAdvisorsFilter extends AbstractModelFilter
     {
         $value = (int) $value;
         if ($value && (int) $value > 0) {
-            $this->builder->whereRaw('(founded <="'.$value.'" OR founded = "" OR founded is null)');
+            $this->builder->whereRaw('(founded <= "'.$value.'" OR founded is null OR (founded = "" AND founded <> 0 ))');
         }
     }
 
