@@ -11,12 +11,16 @@
 |
 */
 
+use Spatie\Sitemap\SitemapGenerator;
+
 Route::get('/clear-cache', function () {
-    $cacheCclear = Artisan::call('cache:clear');
-    $viewClear = Artisan::call('view:clear');
-    $optimizeClear = Artisan::call('optimize:clear');
-    $configClear = Artisan::call('config:clear');
-    $routeClear = Artisan::call('route:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('optimize:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    Artisan::call('storage:link');
+
     return 'all cache cleared';
 });
 
@@ -81,4 +85,11 @@ Route::namespace('Admin')->group(function () {
             'usage-types' => 'usageType'
         ])->middleware(['auth:admin', 'revalidate']);
     });
+});
+
+Route::get('sitemap-create', function (){
+
+    SitemapGenerator::create(config('app.url'))->writeToFile('sitemap.xml');
+
+    return 'sitemap created';
 });
