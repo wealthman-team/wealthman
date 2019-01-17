@@ -15,7 +15,7 @@ class Sitemap
             ->add(Url::create(route('roboAdvisorsCompare', [], false))->setPriority(0.9));
 
         RoboAdvisor::all()->each(function (RoboAdvisor $roboAdvisor) use ($sitemap) {
-            $sitemap->add(Url::create(route('roboAdvisorsShow', $roboAdvisor, false))->setPriority(0.8));
+            $sitemap->add(Url::create(route('roboAdvisorsShow', $roboAdvisor->slug, false))->setPriority(0.8));
         });
 
         $sitemap->writeToFile(public_path('sitemap.xml'));
