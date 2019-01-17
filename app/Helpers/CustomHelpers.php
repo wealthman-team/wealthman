@@ -164,9 +164,9 @@ function popularRoboAdvisors($limit = 3)
     return RoboAdvisor::popular($limit)->exclude()->get();
 }
 
-function redirectLink(string $link)
+function redirectLink($link)
 {
-    if (!empty($link)) {
+    if (is_string($link) && !empty($link)) {
         return route('redirect', [RedirectController::QUERY_PARAM=>$link]);
     }
 

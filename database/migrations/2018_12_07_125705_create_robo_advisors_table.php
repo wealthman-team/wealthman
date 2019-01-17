@@ -16,6 +16,7 @@ class CreateRoboAdvisorsTable extends Migration
         Schema::create('robo_advisors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug')->unique()->nullable();
             $table->string('logo')->nullable();
             $table->string('title')->nullable();
             $table->text('short_description')->nullable();

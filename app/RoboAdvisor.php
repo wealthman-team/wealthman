@@ -6,6 +6,7 @@ use App\Services\Filters\AbstractModelFilter;
 use App\Services\Filters\AbstractModelSorting;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 /**
  * App\RoboAdvisor
@@ -132,6 +133,22 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class RoboAdvisor extends Model
 {
+    use Sluggable;
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
+
     protected $hidden = [
         'created_at',
         'updated_at',
@@ -145,7 +162,7 @@ class RoboAdvisor extends Model
     public static function rules()
     {
         return [
-            'name'   => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title'   => 'nullable|string|max:255',
             'short_description'   => 'nullable|string',

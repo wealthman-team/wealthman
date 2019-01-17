@@ -1,5 +1,6 @@
 <?php
 
+use Cocur\Slugify\Slugify;
 use Illuminate\Database\Seeder;
 use Illuminate\Filesystem\Filesystem;
 
@@ -948,6 +949,8 @@ class RoboAdvisorSeeder extends Seeder
      */
     public function createRoboAdvisors($is_need_recursion = false, $max_recursion = 0, $recursion_level = 1)
     {
+        $slugify = new Slugify();
+
         foreach (self::ROBO_ADVISORS as $robo_advisor) {
             $this->robo_advisor_iteration++;
             $logo = '';
@@ -963,6 +966,7 @@ class RoboAdvisorSeeder extends Seeder
             DB::table('robo_advisors')->insert([
                 'id' => $this->robo_advisor_iteration,
                 'name' => $name,
+                'slug' => $slugify->slugify($name),
                 'logo' => $logo,
                 'title' => $robo_advisor['title'],
                 'short_description' => $robo_advisor['short_description'],

@@ -9,9 +9,12 @@ use App\Services\Filters\RoboAdvisorsFilter;
 use App\Services\Filters\RoboAdvisorsFilterOption;
 use App\Services\Filters\RoboAdvisorsSorting;
 use App\Sources\Page;
+use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Input;
+
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class RoboAdvisorsController extends Controller
 {
@@ -60,7 +63,6 @@ class RoboAdvisorsController extends Controller
         $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();
         // популярные Robo Advisors
         $popularRoboAdvisors = RoboAdvisor::popular(3)->exclude($roboAdvisor->id)->get();
-
 
         return view('roboAdvisors/show', [
             'roboAdvisor' => $roboAdvisor,

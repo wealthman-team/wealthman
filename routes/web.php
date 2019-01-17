@@ -33,6 +33,12 @@ Route::get('/sitemap-create', function (){
     Sitemap::generate();
     return 'sitemap created';
 });
+Route::get('/update-slug', function (){
+    \App\RoboAdvisor::all()->each(function (\App\RoboAdvisor $roboAdvisor) {
+        $roboAdvisor->save();
+    });
+    return 'slugs updated';
+});
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('view:clear');
