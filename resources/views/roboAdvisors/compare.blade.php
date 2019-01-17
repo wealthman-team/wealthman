@@ -55,7 +55,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="compare-list__actions">
-                                                        <a class="link link_active" href="{{ $roboAdvisor->referral_link }}">Sign up</a>
+                                                        <a class="link link_active" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign up</a>
                                                         <a class="link" href="{{ route('roboAdvisorsShow', $roboAdvisor) }}">Review</a>
                                                         <a class="link js-remove-from-compare" href="{{ route('toggleCompare') }}" data-robo-advisor="{{ $roboAdvisor->id }}">
                                                             <span class="compare-list__icon-remove">

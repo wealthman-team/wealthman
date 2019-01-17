@@ -1,6 +1,9 @@
 User-agent: *
-Disallow: /admin/
+Disallow: /admin
 Disallow: /admin/*
+Disallow: /redirect
+Disallow: /sitemap-create
+Disallow: /clear-cache
 
 Host: https://wealthman.io
 Sitemap: https://wealthman.io/sitemap.xml

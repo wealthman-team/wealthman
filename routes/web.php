@@ -13,6 +13,26 @@
 
 use App\Services\Sitemap;
 
+/*
+ * Site routes
+ */
+Route::get('/', 'IndexController@index')->name('home');
+Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
+Route::get('/robo-advisors/{roboAdvisor}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
+Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsCompare');
+Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
+Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
+Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');
+
+/*
+ * Service routes
+ */
+
+Route::get('/redirect', 'RedirectController@index')->name('redirect');
+Route::get('/sitemap-create', function (){
+    Sitemap::generate();
+    return 'sitemap created';
+});
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('view:clear');
@@ -24,15 +44,9 @@ Route::get('/clear-cache', function () {
     return 'all cache cleared';
 });
 
-Route::get('/', 'IndexController@index')->name('home');
-Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
-Route::get('/robo-advisors/{roboAdvisor}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
-Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsCompare');
-Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
-Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
-Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');
-
-//Auth::routes();
+/*
+ * Auth routes
+ */
 
 Route::get('/admin/login', 'Auth\LoginController@showAdminLoginForm')->name('admin.login');
 Route::post('/admin/login', 'Auth\LoginController@adminLogin')->name('admin.login');
@@ -87,7 +101,3 @@ Route::namespace('Admin')->group(function () {
     });
 });
 
-Route::get('sitemap-create', function (){
-    Sitemap::generate();
-    return 'sitemap created';
-});

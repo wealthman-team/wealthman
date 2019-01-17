@@ -228,7 +228,7 @@
                         </div>
 
                         <div class="sidebar__footer sidebar__footer_center">
-                            <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
+                            <a class="button button_success" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign Up</a>
                         </div>
                     </div>
                     <div class="main-content">
@@ -265,7 +265,7 @@
                                             <input type="hidden" name="id" value="{{ $roboAdvisor->id }}">
                                             <button class="button" type="submit">Compare</button>
                                         </form>
-                                        <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
+                                        <a class="button button_success" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign Up</a>
                                     </div>
                                 </div>
 
@@ -792,7 +792,7 @@
                                     </div>
                                 </div>
                                 <div class="robo-advisor__section-footer">
-                                    <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
+                                    <a class="button button_success" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign Up</a>
                                 </div>
                             </div>
                         @endif
@@ -862,7 +862,7 @@
                                     </div>
                                 </div>
                                 <div class="robo-advisor__section-footer">
-                                    <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
+                                    <a class="button button_success" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign Up</a>
                                 </div>
                             </div>
                         @endif
@@ -880,7 +880,7 @@
                                     </div>
                                 </div>
                                 <div class="robo-advisor__section-footer">
-                                    <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
+                                    <a class="button button_success" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign Up</a>
                                 </div>
                             </div>
                         @endif
@@ -897,7 +897,7 @@
                                     </div>
                                 </div>
                                 <div class="robo-advisor__section-footer">
-                                    <a class="button button_success" href="{{ $roboAdvisor->referral_link }}">Sign Up</a>
+                                    <a class="button button_success" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign Up</a>
                                 </div>
                             </div>
                         @endif

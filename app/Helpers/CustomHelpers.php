@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RedirectController;
 use App\RoboAdvisor;
 use Illuminate\Support\Arr;
 
@@ -161,4 +162,13 @@ function getCompareListLength($name)
 function popularRoboAdvisors($limit = 3)
 {
     return RoboAdvisor::popular($limit)->exclude()->get();
+}
+
+function redirectLink(string $link)
+{
+    if (!empty($link)) {
+        return route('redirect', [RedirectController::QUERY_PARAM=>$link]);
+    }
+
+    return '#';
 }

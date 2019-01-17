@@ -59,7 +59,7 @@
         <div class="robo-advisors-item__section robo-advisors-item__actions">
             <ul>
                 <li>
-                    <a class="robo-advisors-item__sign-up" href="{{ $roboAdvisor->referral_link }}">Sign up</a>
+                    <a class="robo-advisors-item__sign-up" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign up</a>
                 </li>
                 <li>
                     <form class="robo-advisors-item__compare-form js-add-to-compare {{ in_array($roboAdvisor->id, $compareList) ? ' active' : '' }}" action="{{ route('toggleCompare') }}" method="post">
