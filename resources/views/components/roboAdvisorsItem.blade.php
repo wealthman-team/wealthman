@@ -69,7 +69,7 @@
                     </form>
                 </li>
                 <li>
-                    <a class="robo-advisors-item__review" href="{{ route('roboAdvisorsShow', $roboAdvisor) }}">Review</a>
+                    <a class="robo-advisors-item__review" href="{{ route('roboAdvisorsShow', $roboAdvisor->slug) }}">Review</a>
                 </li>
             </ul>
         </div>

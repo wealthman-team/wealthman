@@ -130,6 +130,9 @@ use Cviebrock\EloquentSluggable\Sluggable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereVideoLink($value)
  * @mixin \Eloquent
+ * @property string|null $slug
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor findSimilarSlugs($attribute, $config, $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSlug($value)
  */
 class RoboAdvisor extends Model
 {

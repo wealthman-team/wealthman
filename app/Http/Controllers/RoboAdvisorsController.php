@@ -50,16 +50,16 @@ class RoboAdvisorsController extends Controller
      * Show robo advisor page.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\RoboAdvisor  $roboAdvisor
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, RoboAdvisor $roboAdvisor)
+    public function show(Request $request, $slug)
     {
+        /** @var RoboAdvisor $roboAdvisor */
+        $roboAdvisor = RoboAdvisor::whereSlug($slug)->firstOrFail();
         Page::setTitle($roboAdvisor->name . ' | Wealthman');
         Page::setDescription($roboAdvisor->name . '. ' . $roboAdvisor->short_description);
 
         $accountTypes = AccountType::all();
-
         $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();
         // популярные Robo Advisors
         $popularRoboAdvisors = RoboAdvisor::popular(3)->exclude($roboAdvisor->id)->get();

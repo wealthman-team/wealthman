@@ -23,7 +23,7 @@
                 <div class="footer__title">ROBO-ADVISORS</div>
                 <ul class="footer__links-list">
                     @foreach(popularRoboAdvisors() as $popularRoboAdvisor)
-                        <li><a class="link link_white" href="{{ route('roboAdvisorsShow', $popularRoboAdvisor) }}">{{ $popularRoboAdvisor->name }}</a></li>
+                        <li><a class="link link_white" href="{{ route('roboAdvisorsShow', $popularRoboAdvisor->slug) }}">{{ $popularRoboAdvisor->name }}</a></li>
                     @endforeach
                     <li><a class="link link_white" href="{{ route('roboAdvisors') }}">More robo-advisors</a></li>
                 </ul>

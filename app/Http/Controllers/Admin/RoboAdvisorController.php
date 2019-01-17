@@ -257,8 +257,9 @@ class RoboAdvisorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\RoboAdvisor  $roboAdvisor
+     * @param  \App\RoboAdvisor $roboAdvisor
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(RoboAdvisor $roboAdvisor)
     {

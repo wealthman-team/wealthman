@@ -217,7 +217,7 @@
                                             {{--</div>--}}
 
                                             <div class="robo-advisor__review-link">
-                                                <a class="link link_active" href="{{ route('roboAdvisorsShow', $popularRoboAdvisor) }}">
+                                                <a class="link link_active" href="{{ route('roboAdvisorsShow', $popularRoboAdvisor->slug) }}">
                                                     Review
                                                 </a>
                                             </div>

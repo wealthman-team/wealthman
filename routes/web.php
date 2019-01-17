@@ -18,7 +18,7 @@ use App\Services\Sitemap;
  */
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
-Route::get('/robo-advisors/{roboAdvisor}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
+Route::get('/robo-advisors/{slug}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
 Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsCompare');
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
@@ -32,12 +32,6 @@ Route::get('/redirect', 'RedirectController@index')->name('redirect');
 Route::get('/sitemap-create', function (){
     Sitemap::generate();
     return 'sitemap created';
-});
-Route::get('/update-slug', function (){
-    \App\RoboAdvisor::all()->each(function (\App\RoboAdvisor $roboAdvisor) {
-        $roboAdvisor->save();
-    });
-    return 'slugs updated';
 });
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
