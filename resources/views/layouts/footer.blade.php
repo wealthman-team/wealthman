@@ -28,12 +28,12 @@
                     <li><a class="link link_white" href="{{ route('roboAdvisors') }}">More robo-advisors</a></li>
                 </ul>
             </div>
-            {{--<div class="footer__links">--}}
-                {{--<div class="footer__title">HAVE A QUESTIONS?</div>--}}
-                {{--<div>--}}
-                    {{--<a class="button button_blue">Ask Question</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
+            <div class="footer__links">
+                <div class="footer__title">HAVE A QUESTIONS?</div>
+                <div>
+                    <a class="button button_blue js-jivo-button" href="#">Ask Question</a>
+                </div>
+            </div>
         </div>
         <div class="footer__bottom">
             <div class="footer__copy">

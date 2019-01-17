@@ -39,7 +39,8 @@
         @yield('content')
     </div>
 
-    <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}" type="text/javascript"></script>
+    <script src="/jivosite/jivosite.js" type="text/javascript"></script>
     @if (env('APP_ENV') != 'development')
         <!-- BEGIN JIVOSITE CODE {literal} -->
         <script type='text/javascript'>
