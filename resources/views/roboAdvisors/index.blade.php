@@ -56,16 +56,23 @@
                                     Additional details
                                 </div>
                             </div>
-                            <div class="robo-advisors__list-body">
-                                @foreach($roboAdvisors as $roboAdvisor)
-                                    @include('components/roboAdvisorsItem', [
-                                        'roboAdvisor' => $roboAdvisor,
-                                        'compareList' => getCompareList('compare_list'),
-                                    ])
-                                @endforeach
-                            </div>
+                            @if(count($roboAdvisors) > 0)
+                                <div class="robo-advisors__list-body">
+                                    @foreach($roboAdvisors as $roboAdvisor)
+                                        @include('components/roboAdvisorsItem', [
+                                            'roboAdvisor' => $roboAdvisor,
+                                            'compareList' => getCompareList('compare_list'),
+                                        ])
+                                    @endforeach
+                                </div>
+                            @else
+                                <div class="robo-advisors__list-body robo-advisors__list-empty">
+                                    <div class="robo-advisors__list-empty-message">
+                                    Oops, nothing found matching your criteria.<br> Remove some features and try again.
+                                    </div>
+                                </div>
+                            @endif
                         </div>
-
                         <div class="links-container">
                             {{ $roboAdvisors->links('components/pagination') }}
                         </div>

@@ -14,7 +14,20 @@
     background-color: $filtersBG;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
-
+  &__list-empty {
+    position: relative;
+    min-height: 150px;
+  }
+  &__list-empty-message{
+    @include font(24px, $Geometria, $h1, 30px, 300);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
   &__list-title {
 
   }
