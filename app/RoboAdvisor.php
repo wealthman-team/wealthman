@@ -133,6 +133,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
  * @property string|null $slug
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor findSimilarSlugs($attribute, $config, $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSlug($value)
+ * @property string|null $video_information
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereVideoInformation($value)
  */
 class RoboAdvisor extends Model
 {
@@ -178,6 +180,7 @@ class RoboAdvisor extends Model
             'conclusion'   => 'nullable|string',
             'referral_link'   => 'nullable|string|max:255',
             'video_link'   => 'nullable|string|max:255',
+            'video_information'   => 'nullable|string',
             'minimum_account'   => 'nullable|integer',
             'management_fee'   => 'nullable|numeric',
             'fee_details'   => 'nullable|string|max:255',
@@ -244,6 +247,7 @@ class RoboAdvisor extends Model
             'conclusion'   => 'Conclusion',
             'referral_link'   => 'Referral link',
             'video_link'   => 'Video link',
+            'video_information'   => 'Video information',
             'minimum_account'   => 'Minimum account',
             'management_fee'   => 'Management fee',
             'fee_details'   => 'Fee details',

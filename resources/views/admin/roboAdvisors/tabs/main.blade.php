@@ -155,6 +155,15 @@
     @endif
 </div>
 
+{{-- Robo Advisor short description --}}
+<div class="form-group {{ $errors->has('video_information') ? ' has-error' : '' }}">
+    <label for="robo-advisor-video-information-input">Video information</label>
+    <textarea class="form-control js-editor" id="robo-advisor-video-information-input" name="video_information">{{ old('video_information') ?? $roboAdvisor->video_information }}</textarea>
+
+    @if ($errors->has('video_information'))
+        <span class="help-block">{{ $errors->first('video_information') }}</span>
+    @endif
+</div>
 {{-------------- GENERAL CHARACTERISTICS ---------}}
 <div>
     <div class="box-header with-border"><h3>General characteristics</h3></div>

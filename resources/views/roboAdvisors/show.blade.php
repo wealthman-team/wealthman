@@ -355,7 +355,28 @@
                         <div class="robo-advisor__section">
                             @include('components/compareBanner')
                         </div>
-
+                        @if($roboAdvisor->video_link)
+                            <div class="robo-advisor__section">
+                                 <div class="panel">
+                                    <div class="robo-advisor__section-video">
+                                        <div class="reach-text">
+                                            <div class="robo-advisor__video-wrapper">
+                                                <div class="robo-advisor__information">
+                                                    @if($roboAdvisor->video_information)
+                                                        {!! $roboAdvisor->video_information !!}
+                                                    @endif
+                                                </div>
+                                                <div class="robo-advisor__video">
+                                                    <div class="robo-advisor__video-container">
+                                                        <iframe src="{!! $roboAdvisor->video_link !!}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                         <div id="all_characteristics_section" class="robo-advisor__section">
                             <h2 class="h2">
                                 All characteristics

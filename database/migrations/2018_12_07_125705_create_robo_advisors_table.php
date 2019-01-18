@@ -29,6 +29,7 @@ class CreateRoboAdvisorsTable extends Migration
             $table->text('conclusion')->nullable();
             $table->string('referral_link')->nullable();
             $table->string('video_link')->nullable();
+            $table->text('video_information')->nullable();
             $table->integer('minimum_account')->nullable();
             $table->float('management_fee')->nullable();
             $table->string('fee_details')->nullable();
