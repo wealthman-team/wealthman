@@ -38,7 +38,59 @@ const app = new Vue({
 window.noUiSlider = require('nouislider');
 require('slick-carousel');
 
-$(function () {    
+$(function () {
+    // Header scroll
+    headerSticky($(window));
+    $(window).scroll(function() {
+        headerSticky($(this));
+    });
+    function headerSticky(el)
+    {
+        let sticky = $('.js-header-sticky');
+        if(sticky.length) {
+            if (el.scrollTop() > 100) {
+                sticky.addClass('header__scrolled');
+            } else {
+                sticky.removeClass('header__scrolled');
+            }
+        }
+    }
+
+    // Header compare scroll
+    headerCompareSticky($(window));
+    $(window).scroll(function() {
+        headerCompareSticky($(this));
+    }).resize(function(){
+        headerCompareSticky($(this));
+    });
+    function headerCompareSticky(el)
+    {
+        let fixed = $('.js-compare-header-fixed');
+        if(fixed.length) {
+            let header = $('.js-header-sticky');
+            let compare_header = $('.js-compare-header');
+            let container = $('.js-compare-list');
+
+            let offset_top = compare_header.offset().top;
+            let offset_left = compare_header.offset().left;
+            let header_height = header.outerHeight(true);
+            let container_height = container.outerHeight(false);
+            let fixed_height = fixed.outerHeight(true);
+            let compare_header_width = compare_header.outerWidth(true);
+            let top = offset_top - header_height;
+            let bottom = offset_top + container_height - fixed_height - header_height;
+            let scrollTop = el.scrollTop();
+
+            if (scrollTop >= top && scrollTop < bottom) {
+                fixed.addClass('compare-list__header-scrolled');
+                fixed.attr('style', 'top:' + header_height + 'px;width:' + compare_header_width + 'px;left:' + offset_left + 'px;');
+            } else {
+                fixed.removeClass('compare-list__header-scrolled');
+                fixed.removeAttr('style');
+            }
+        }
+    }
+
 	$('.js-slide-box').each(function () {
 		let slideBox = $(this);
 		let slideBoxHeader = $('.js-slide-box-header', slideBox);
@@ -207,13 +259,13 @@ $(function () {
 	}
 
 	function updateCompareLink(compareList) {
-		let list = $('.js-compare-list');
+		let list = $('.js-compare-counter');
 
 		if (compareList.length > 0) {
-			list.find('.js-compare-list-value').html(compareList.length);
+			list.find('.js-compare-counter-value').html(compareList.length);
 			list.show();
 		} else {
-			list.find('.js-compare-list-value').html(0);
+			list.find('.js-compare-counter-value').html(0);
 			list.hide();
 		}
 	}

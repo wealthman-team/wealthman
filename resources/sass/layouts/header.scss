@@ -1,8 +1,25 @@
 .header {
   height: 78px;
-  background: $white;
-  position: relative;
-  z-index: 1;
+  &__container{
+    background: $white;
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
+    transition: box-shadow 500ms;
+  }
+
+  &__home {
+    position: absolute;
+    background-color: transparent;
+    z-index: 1;
+  }
+
+  &__scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
 
   &__content {
     display: flex;
@@ -68,9 +85,5 @@
     background: $white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
     text-align: center;
-  }
-
-  &__transparent {
-    background-color: transparent;
   }
 }

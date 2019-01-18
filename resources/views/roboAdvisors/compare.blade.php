@@ -38,37 +38,46 @@
 
                     @if (count($roboAdvisors) > 0)
                         <div class="compare-list js-compare-list js-compare-result" data-cl-length="{{ count($roboAdvisors) }}">
-                            <div class="compare-list__nav">
-                                <div class="compare-list__nav-left js-compare-list-prev">@svg('arrow-long-left', 'compare-list__arrow')</div>
-                                <div class="compare-list__nav-right js-compare-list-next">@svg('arrow-long-left', 'compare-list__arrow')</div>
-                            </div>
-                            <div class="compare-list__inner">
-
-                                <div class="compare-list__group js-compare-list-group">
-                                    <div class="compare-list__row">
-                                        <div class="compare-list__context js-compare-list-context">
-                                            @foreach ($roboAdvisors as $roboAdvisor)
-                                                <div class="compare-list__col compare-list__col_header js-compare-robo-{{$roboAdvisor->id}}">
-                                                    <div class="compare-list__logo">
-                                                        @if ($roboAdvisor->logo)
-                                                            <img src="{{ asset('storage/' . $roboAdvisor->logo) }}" />
-                                                        @endif
-                                                    </div>
-                                                    <div class="compare-list__actions">
-                                                        <a class="link link_active" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign up</a>
-                                                        <a class="link" href="{{ route('roboAdvisorsShow', $roboAdvisor->slug) }}">Review</a>
-                                                        <a class="link js-remove-from-compare" href="{{ route('toggleCompare') }}" data-robo-advisor="{{ $roboAdvisor->id }}">
-                                                            <span class="compare-list__icon-remove">
-                                                                @svg('basket')
-                                                            </span>
-                                                        </a>
+                            <div class="compare-list__header-wrapper">
+                                <div class="compare-list__header js-compare-header">
+                                    <div class="compare-list__header-container js-compare-header-fixed">
+                                        <div class="compare-list__header-bg">
+                                            <div class="compare-list__inner compare-list__inner-header">
+                                                <div class="compare-list__nav">
+                                                    <div class="compare-list__nav-left js-compare-list-prev">@svg('arrow-long-left', 'compare-list__arrow')</div>
+                                                    <div class="compare-list__nav-right js-compare-list-next">@svg('arrow-long-left', 'compare-list__arrow')</div>
+                                                </div>
+                                                <div class="compare-list__group js-compare-list-group">
+                                                    <div class="compare-list__row">
+                                                        <div class="compare-list__context js-compare-list-context">
+                                                            @foreach ($roboAdvisors as $roboAdvisor)
+                                                                <div class="compare-list__col compare-list__col_header js-compare-robo-{{$roboAdvisor->id}}">
+                                                                    <div class="compare-list__logo">
+                                                                        @if ($roboAdvisor->logo)
+                                                                            <img src="{{ asset('storage/' . $roboAdvisor->logo) }}" />
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="compare-list__actions">
+                                                                        <a class="link link_active" href="{{ redirectLink($roboAdvisor->referral_link) }}" target="_blank">Sign up</a>
+                                                                        <a class="link" href="{{ route('roboAdvisorsShow', $roboAdvisor->slug) }}">Review</a>
+                                                                        <a class="link js-remove-from-compare" href="{{ route('toggleCompare') }}" data-robo-advisor="{{ $roboAdvisor->id }}">
+                                                                            <span class="compare-list__icon-remove">
+                                                                                @svg('basket')
+                                                                            </span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
+                            <div class="compare-list__inner">
                                 <div class="compare-list__group compare-list__group_with-header js-compare-list-group {{$diffRoboAdvisors['general']['group_identical'] ? 'js-identical-compare' : ''}}">
                                     <div class="compare-list__context js-compare-list-context">
                                         <div class="compare-list__group-header">

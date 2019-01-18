@@ -30,6 +30,48 @@
   background-color: $contentBG;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 
+  &__header-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    overflow: hidden;
+    height: 160px;
+    &:after{
+      content: '';
+      position: relative;
+      display: block;
+      height: 24px;
+      top: -24px;
+      z-index: 1;
+      box-shadow: 0 4px 12px rgba(0,0,0,0);
+      transition: box-shadow 500ms;
+    }
+  }
+  &__header-scrolled {
+    position: fixed;
+    z-index: 999;
+    &:after{
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+  }
+  &__header-bg {
+    padding: 0 90px;
+    background-color: #fafafa;
+    position: relative;
+    z-index: 2;
+  }
+  &__inner-header {
+    position: relative;
+  }
+  &__header-wrapper {
+    margin: 0 -90px;
+  }
+  &__header {
+    height: 146px;
+  }
+
   &__nav {
     position: relative;
     user-select: none;
