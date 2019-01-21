@@ -1,3 +1,23 @@
 .robo-advisors-filters {
+  .range-slider__slider {
+    height: 2px !important;
+    .noUi-connect{
+      height: 1px;
+    }
+    .noUi-connects {
+      background: transparent !important;
+      &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        z-index: 0;
+        background: #dfdfdf !important;
+      }
+    }
+  }
 }
 
