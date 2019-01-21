@@ -113,6 +113,13 @@
         &:nth-child(4){
           height: 146px;
         }
+        & .statistic__note {
+          bottom: 19px;
+        }
+
+        & .statistic__image {
+          bottom: 41px;
+        }
       }
 
       &:nth-child(1) {
@@ -182,6 +189,7 @@
     &__image {
       position: absolute;
       right: 15px;
+      transition: all 0.5s;
     }
     &__note {
       bottom: 14px;
