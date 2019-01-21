@@ -14,7 +14,7 @@
             </div>
         </section>
         <div class="container">
-            <div class="secondSection">
+            <section class="secondSection">
                 <div class="robo-advisors__container">
                     <div class="tableContainerRow">
                         <div class="leftSide">
@@ -64,7 +64,43 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section class="thirdSection">
+                <div class="container">
+                    <div class="statistic">
+                        <div class="statistic__left-side">
+                            <div class="statistic__block">
+                                <div class="statistic__item">
+                                    <div class="statistic__money">$ 1452 Bln</div>
+                                    <div class="statistic__year">2022</div>
+                                    <div class="statistic__image"><img src="{{ asset('images/statista.png') }}" alt="statistic" /></div>
+                                    <div class="statistic__note">*Forecast</div>
+                                </div>
+                                <div class="statistic__item">
+                                    <div class="statistic__money">$ 604 Bln</div>
+                                    <div class="statistic__year">2019</div>
+                                    <div class="statistic__image"><img src="{{ asset('images/statista.png') }}" alt="statistic" /></div>
+                                    <div class="statistic__note">*Forecast</div>
+                                </div>
+                                <div class="statistic__item">
+                                    <div class="statistic__money">$ 397 Bln</div>
+                                    <div class="statistic__year">2018</div>
+                                </div>
+                                <div class="statistic__item">
+                                    <div class="statistic__money">$ 244 Bln</div>
+                                    <div class="statistic__year">2017</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="statistic__right-side">
+                            <h2 class="section-header">Assets Managed by&nbsp;Robo-Advisors (in billions)</h2>
+                            <div class="section-sub-header">Beginning of <br>robo-advising tsunami</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </div>
 
