@@ -133,11 +133,26 @@
   &__pd-bot:after {
     content: '';
     height: 0;
-    padding-top: 90px;
+    padding-bottom: 120px;
     display: block;
   }
 }
 
 .hidden{
   display: none;
+}
+
+//Сам mixin
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.clearfix {
+  @include clearfix;
 }

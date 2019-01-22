@@ -124,10 +124,34 @@
 
   &__text-inner {
     margin-bottom: 70px;
-    padding: 30px 20px;
+    padding: 30px 4px 4px;
     border-radius: 20px;
     background-color: $filtersBG;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  &__text-hint {
+    transition: all 300ms;
+    border-radius: 18px;
+    background-color: #fafafa;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0);
+    padding: 16px;
+    margin-bottom: 5px;
+
+    &:hover {
+      background-color: #ffffff;
+      -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+    & .robo-advisors__p:last-child {
+      margin-bottom: 5px;
+    }
+    & .robo-advisors__h3 {
+      padding-top: 10px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__text-strong {
@@ -138,8 +162,9 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.08);
   }
 
-  &__section-title {
-    margin-bottom: 20px;
+  &__hint-title {
+    margin-bottom: 30px;
+    padding-left: 20px;
     @include font(22px, $Geometria, $text, 28px, 400);
   }
 

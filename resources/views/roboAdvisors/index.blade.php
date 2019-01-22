@@ -82,131 +82,88 @@
                                 How to choose the right robo advisor
                             </h2>
                             <div class="robo-advisors__text-inner">
-                                <div class="robo-advisors__section-title">
+                                <div class="robo-advisors__hint-title">
                                     GENERAL FILTERS
                                 </div>
-                                <h3 class="robo-advisors__h3">
-                                    Management fee
-                                </h3>
-                                <p class="robo-advisors__p">
-                                    Most robo-advisors charge a percentage fee based on the size of the portfolio.
-                                    These fees are typically much lower than the average 1% charged
-                                    by traditional financial advisors.
-                                </p>
-                                <p class="robo-advisors__p">
-                                    Other robo-advisors offer human advisors alongside their online tools and automated
-                                    backend and some may charge an additional fee for consulting
-                                    with human financial advisors.
-                                </p>
-                                <p class="robo-advisors__p">
-                                    It’s important to keep in mind that the upfront fees charged by robo-advisors
-                                    aren’t the only costs in your portfolio. There are also the fees embedded in the
-                                    underlying investments - typically the management fees of mutual funds and exchange
-                                    traded funds (ETFs). In most cases though, these are the same costs of low-fee
-                                    funds you’d be paying if you were managing your own portfolio.
-                                </p>
-                                <p class="robo-advisors__p">
-                                    Some robo-advisors like Charles Schwab’s Intelligent Portfolios include other
-                                    hidden costs like large mandatory cash allocations that pay only a small
-                                    percentage of the actual revenue the robo advisor earns on those funds.
-                                </p>
-                                <p class="robo-advisors__p">
-                                    A robo advisor that is missing features that could benefit your situation
-                                    (e.g. the lack of tax-loss harvesting when you hold funds in a taxable account)
-                                    can be an additional hidden cost of your robo advisor selection.
-                                </p>
 
-                                <h3 class="robo-advisors__h3">
-                                    Minimum Initial Deposit
-                                </h3>
-                                <p class="robo-advisors__p">
-                                    This is the minimum amount required by the robo advisor to open and maintain an account.
-                                </p>
-
-                                <div class="robo-advisors__text-strong">
+                                <div class="robo-advisors__text-hint">
                                     <h3 class="robo-advisors__h3">
-                                        Single Stock Diversification
+                                        Basic Management fee for users
                                     </h3>
                                     <p class="robo-advisors__p">
-                                        This feature helps employees and investors who hold a high percentage of
-                                        their networth in a single stock (typically the same company that signs their
-                                        checks) diversify in a tax-efficient, commission-free manner. Single stock
-                                        diversification typically involves using dollar cost averaging
-                                        to minimize volatility.
+                                        The vast majority of robo advisors include fees for their services. The final size may depend on the amount managed. In general, the amount does not exceed 1% of the fee to a real consultant. That is why robo consultants are becoming so popular.
+                                        Some advisers have a real staff of consultants and provide an expanded range of services. This list includes various economic instruments, financial professionals and a number of specialized options.
+                                    </p>
+                                    <p class="robo-advisors__p">
+                                        Advance payments are not the only expenses. The management of funds and ETFs also requires a commission. Such a format is still acceptable, since it is approximately equal to the sum of costs for self-monitoring of its portfolio.
+                                    </p>
+                                    <p class="robo-advisors__p">
+                                        Some advisors have additional payments. The system uses cash allocations and pays a minimum percentage for the provision of cash.
+                                    </p>
+                                    <p class="robo-advisors__p">
+                                        Some advisers do not include hidden costs from the use of taxable accounts. Such moments should be considered before the final selection of the robot advisor. Some offers may have limited functionality.
                                     </p>
                                 </div>
 
-                                <h3 class="robo-advisors__h3">
-                                    Direct Indexing
-                                </h3>
-                                <p class="robo-advisors__p">
-                                    As the name suggests, direct indexing allows you to directly purchase and own all
-                                    of the individual securities of a major index as opposed to owning a mutual fund
-                                    or ETF that tracks an index. Some research has suggested that direct indexing may
-                                    be more tax-efficient than owning the equivalent index funds/ETFs by allowing
-                                    investors to harvest tax losses on an index’s individual component stocks.
-                                </p>
-                                <p class="robo-advisors__p">
-                                    Direct indexing also eliminates the management fees of index funds or ETFs,
-                                    which prevents exact replication of the performance of an index investment.
-                                    However, the actual calculation of fee savings must also take into
-                                    consideration of the robo-advisors fees.
-                                </p>
+                                <div class="robo-advisors__text-hint">
+                                    <h3 class="robo-advisors__h3">
+                                        Minimum initial deposit
+                                    </h3>
+                                    <p class="robo-advisors__p">
+                                        This is a basic investment. By depositing the required amount to the account, you can count on maintaining accounts.
+                                    </p>
+                                </div>
 
-                                <h3 class="robo-advisors__h3">
-                                    Tax Loss Harvesting
-                                </h3>
-                                <p class="robo-advisors__p">
-                                    The actual financial modeling and execution of tax loss harvesting can be
-                                    extremely complicated, but the basic concept is simple - tax loss harvesting
-                                    involves selling securities that have experienced a capital loss and replacing
-                                    it with a similar one, in order to help offset taxes on capital gains and income.
-                                </p>
-                                <p class="robo-advisors__p">
-                                    Tax loss harvesting can reduce ordinary taxable income by up to $3,000 per year,
-                                    though the actual increase in investment returns will depend on the amount of tax
-                                    loss harvesting opportunities available through a year, the investor’s tax bracket,
-                                    and many other factors - including the effectiveness of the robo - advisor’s
-                                    tax loss harvesting algorithm.
-                                </p>
-                                <p class="robo-advisors__p">
-                                    Automated tax loss harvesting is one of the big ways that robo-advisors can
-                                    increase return for investors without increasing risk. However, tax loss harvesting
-                                    doesn’t benefit everyone. Investors using only tax sheltered accounts won’t see
-                                    a benefit from tax loss harvesting. Investors in a 0% capital gains tax rate,
-                                    and even some investors in the 10-15% ordinary income tax brackets might not want
-                                    to use tax loss harvesting. Investors in higher tax brackets investing in taxable
-                                    accounts will see the most benefit from tax loss harvesting.
-                                </p>
+                                <div class="robo-advisors__text-hint">
+                                    <h3 class="robo-advisors__h3">
+                                        Single stock diversification
+                                    </h3>
+                                    <p class="robo-advisors__p">
+                                        This is one of the important functions for those who use single stock. The service helps to level the effects of volatility and includes averaging of the final cost. Thanks to this format, investors can secure their portfolio and resolve all technical issues. A detailed analysis of all proposals is critical to the final selection. All options have their pros and cons. That is why a thorough analysis of all criteria forms the final vision of the finished product.
+                                    </p>
+                                </div>
 
-                                <h3 class="robo-advisors__h3">
-                                    Fractional Shares
-                                </h3>
-                                <p class="robo-advisors__p">
-                                    Trading on an exchange only involves whole shares. This can leave some cash on the
-                                    sidelines and create a silent drag on returns.<br>
-                                    Some robo-advisors support trading in fractional shares, which lets investors buy
-                                    shares down to 1/1,000,000 of a share and increases efficiency. Fractional shares
-                                    allow investors to diversify every penny in their investment account, instead of
-                                    holding cash simply because the remaining funds in their portfolio
-                                    isn’t enough to buy a whole share.
-                                </p>
+                                <div class="robo-advisors__text-hint">
+                                    <h3 class="robo-advisors__h3">
+                                        Direct indexing for everyone
+                                    </h3>
+                                    <p class="robo-advisors__p">
+                                        This option fully corresponds to its name. This is a direct purchase of assets and securities. This is a more effective option for cooperation. Unlike ETFs, each user can reduce tax expenses. Clients also have no need to pay for managing index funds. But do not forget about the commission robo advisers.
+                                    </p>
+                                </div>
 
-                                <h3 class="robo-advisors__h3">
-                                    Human Advisors
-                                </h3>
-                                <p class="robo-advisors__p">
-                                    Not every entry in the robo advisor category is completely automated.
-                                    Some are 100% automated, while others combine an online interface and
-                                    backend automation with personalized advice.
-                                </p>
-                                <p class="robo-advisors__p">
-                                    There are many ways to categorize online financial services, but to us, if an
-                                    automated online advisor service provides automated rebalancing, low fees, and
-                                    an online dashboard - then we’re considering it a robo advisor for the sake of
-                                    this comparison of the best robo-advisors, even if the service includes a
-                                    layer of human advice.
-                                </p>
+                                <div class="robo-advisors__text-hint">
+                                    <h3 class="robo-advisors__h3">
+                                        Tax loss harvesting option
+                                    </h3>
+                                    <p class="robo-advisors__p">
+                                        Tax loss harvesting is a very useful option. Thanks to this moment, you can automatically replace unprofitable positions in order to increase profitability and diversify risks. In general, a robo advisor with such functions can save up to three thousand US dollars per year. The final efficiency depends on how advanced Tax Loss algorithm is used by the advisor.
+                                    </p>
+                                    <p class="robo-advisors__p">
+                                        Automated tax loss harvesting allows you to consolidate the maximum profit and reduce operational costs for most users. Users with 0% capital gains may not appreciate this option. Taxable accounts users can count on the greatest benefit from this option.
+                                    </p>
+                                </div>
+
+                                <div class="robo-advisors__text-hint">
+                                    <h3 class="robo-advisors__h3">
+                                        Fractional Shares function
+                                    </h3>
+                                    <p class="robo-advisors__p">
+                                        This option helps to buy parts of stocks, in the case when finances are not enough to buy one share. This is the best option for investors who seek to use all the savings and get the maximum profit on the residual account. Choose only those options that are extremely important in each case. The pursuit of low commissions is not always relevant. The same rule applies in the opposite direction. There is no need to complicate the process of selecting the most affordable option. The best functionality and extended warranties should be the main argument in the selection.
+                                    </p>
+                                </div>
+
+                                <div class="robo-advisors__text-hint">
+                                    <h3 class="robo-advisors__h3">
+                                        Human advisors opportunities
+                                    </h3>
+                                    <p class="robo-advisors__p">
+                                        Most advisers on the market use a 100% machine algorithm. However, there are also combined solutions. This is the format when part of the councils is formed by real advisors. The main criterion for consideration is the availability of automatic rebalancing and an online menu for monitoring status. Even the availability of services from real advisors allows you to consider such a proposal in the context of robo services.
+                                    </p>
+                                    <p class="robo-advisors__p">
+                                        The choice of the final option depends on the required goals and the management of each client. It is worth noting that the size of the investment also affects the choice. It is necessary to study in detail all possible details and choose the most appropriate option. There are no truly universal solutions quite a bit. The most common is the choice of averages for further use.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
