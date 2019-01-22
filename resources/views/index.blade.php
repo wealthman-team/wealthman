@@ -141,6 +141,35 @@
                 </div>
             </section>
         </div>
+        <section class="fifthSection">
+            <div class="container">
+                <div class="why-use">
+                    <div class="why-use__block">
+                        <div class="why-use__item">
+                            <h2 class="section-header">Why use us</h2>
+                        </div>
+                    </div>
+                    <div class="why-use__block">
+                        <div class="why-use__item">
+                            <img class="why-use__icon" src="{{ asset('images/icon1.png') }}" alt="" />
+                            <div class="why-use__text">Best robo-advisors on one site</div>
+                        </div>
+                    </div>
+                    <div class="why-use__block">
+                        <div class="why-use__item">
+                            <img class="why-use__icon" src="{{ asset('images/icon2.png') }}" alt="" />
+                            <div class="why-use__text">Instant and free online support</div>
+                        </div>
+                    </div>
+                    <div class="why-use__block">
+                        <div class="why-use__item">
+                            <img class="why-use__icon" src="{{ asset('images/icon3.png') }}" alt="" />
+                            <div class="why-use__text">Favorable conditions for cooperation with robo-advisors and wealth managers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     @include('layouts/footer')
