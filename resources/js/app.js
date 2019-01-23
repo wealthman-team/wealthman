@@ -470,4 +470,37 @@ $(function () {
             return false;
         }
     });
+
+
+    let tab_sign_in = $('.js-tab-sign-in');
+    let tab_sign_up = $('.js-tab-sign-up');
+    let block_sign_in = $('.js-auth-sign-in');
+    let block_sign_up = $('.js-auth-sign-up');
+    let tab_sign_up_speed = 100;
+
+    tab_sign_in.on('click', function (e) {
+        e.preventDefault();
+        tab_sign_in.addClass('active');
+        tab_sign_up.removeClass('active');
+
+        block_sign_up.fadeOut(tab_sign_up_speed, function () {
+            $(this).addClass('hidden');
+            block_sign_in.fadeIn(tab_sign_up_speed, function () {
+                $(this).removeClass('hidden');
+            });
+        });
+
+    });
+    tab_sign_up.on('click', function (e) {
+        e.preventDefault();
+        tab_sign_up.addClass('active');
+        tab_sign_in.removeClass('active');
+
+        block_sign_in.fadeOut(tab_sign_up_speed, function () {
+            $(this).addClass('hidden');
+            block_sign_up.fadeIn(tab_sign_up_speed, function () {
+                $(this).removeClass('hidden');
+            });
+        });
+    });
 });

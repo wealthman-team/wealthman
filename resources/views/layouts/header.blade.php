@@ -29,7 +29,9 @@
                     </div>
 
                     <a class="button button_blue start-search js-jivo-button" href="#">Free Support</a>
-
+                    <div class="auth-icon-wrapper">
+                        <span class="auth-icon js-auth-open">@svg('sign_in', 'auth-icon__sign-in')</span>
+                    </div>
                     {{--<span class="search-icon">--}}
                         {{--@svg('search')--}}
                     {{--</span>--}}
