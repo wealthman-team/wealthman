@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginController extends Controller
+class AdminLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -37,24 +37,24 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:web')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
     }
 
     /**
-     * Show User login form
+     * Show Admin login form
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showLoginForm()
+    public function showAdminLoginForm(Request $request)
     {
         Page::setTitle('Sign in | Wealthman');
-        Page::setDescription('Website authorization form');
+        Page::setDescription('Форма авторизация администраторской части сайта Wealthman');
 
-        return view('auth.login');
+        return view('admin.auth.login');
     }
 
     /**
-     * auth
+     * Admin auth
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -62,16 +62,17 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('web')->attempt([ 'email' => $request->email,
-            'password' => $request->password], $request->get('remember'))
+        if (Auth::guard('admin')->attempt([ 'email' => $request->email,
+                                            'password' => $request->password], $request->get('remember'))
         ) {
 
-            return redirect()->intended('/');
+             return redirect()->intended('/admin');
         }
 
         return back()->withInput($request->only('email', 'remember'));
@@ -85,8 +86,8 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        Auth::guard('web')->logout();
+        Auth::guard('admin')->logout();
 
-        return redirect(route('home'));
+        return redirect(route('admin.login'));
     }
 }
