@@ -91,6 +91,69 @@ $(function () {
         }
     }
 
+    /** Auth **/
+    let Auth = (function () {
+        let auth_modal_selector = '.js-modal-auth';
+        let auth_button_selector = '.js-auth-button';
+        let modal_overlay_selector = '.js-modal-overlay';
+        let auth_modal = $(auth_modal_selector);
+
+        function toggleOverlay(open = false){
+            let overlay = $(modal_overlay_selector);
+            return (open ? overlay.addClass('open') : overlay.removeClass('open'));
+        }
+
+        function authPopupOpen(auth_modal) {
+            auth_modal.addClass('open');
+            toggleOverlay(auth_modal.hasClass('open'));
+        }
+
+        function authPopupClose(auth_modal) {
+            auth_modal.removeClass('open');
+            toggleOverlay(auth_modal.hasClass('open'));
+            auth_modal.removeAttr('style');
+        }
+
+        function basePositionAuthPopup(auth_modal, el) {
+            let padd_top = 30;
+            let top = el.offset().top + el.outerHeight(true) + padd_top;
+            let padd_left = 20;
+            let _left = el.offset().left + el.outerWidth(true) + padd_left;
+            let left = _left - auth_modal.outerWidth(true);
+
+            auth_modal.attr('style', 'top:' + top + 'px;left:' + left + 'px;');
+        }
+
+        return {
+            init: function () {
+                $(document).keydown(function(e) {
+                    // ESCAPE key pressed
+                    if (e.keyCode === 27) {
+                        authPopupClose(auth_modal);
+                    }
+                });
+                $(modal_overlay_selector).on('click', function(e) {
+                    e.stopPropagation();
+                    authPopupClose(auth_modal);
+                });
+
+                $(auth_button_selector).on('click', function (e) {
+                    e.preventDefault();
+                    basePositionAuthPopup(auth_modal, $(auth_button_selector));
+                    authPopupOpen(auth_modal);
+                });
+
+                $(window).resize(function() {
+                    basePositionAuthPopup(auth_modal, $(auth_button_selector));
+                })
+            }
+        };
+    })();
+
+    Auth.init();
+    /** End Auth **/
+
+
 	$('.js-slide-box').each(function () {
 		let slideBox = $(this);
 		let slideBoxHeader = $('.js-slide-box-header', slideBox);

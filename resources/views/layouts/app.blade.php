@@ -94,12 +94,18 @@
                 <div class="auth-form">
                     <form>
                         <div class="form-group">
+                            <input type="text" class="form-control" name="name" required placeholder="Name">
+                        </div>
+                        <div class="form-group">
                             <input type="email" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Password">
                         </div>
-                        <button type="submit" class="button button_blue">Log In</button>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password_confirmation" required placeholder="Password confirmation">
+                        </div>
+                        <button type="submit" class="button button_blue">Sign up</button>
                         <div class="auth-form__links">
                             <a class="auth-form__forgot-password" href="#">Forgot password</a>
                         </div>
