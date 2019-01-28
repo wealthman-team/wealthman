@@ -54,6 +54,20 @@ class LoginController extends Controller
     }
 
     /**
+     * Get User login form
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getLoginForm(Request $request)
+    {
+        if ($request->ajax()) {
+            return view('auth.authForm');
+        }
+        return back();
+    }
+
+    /**
      * auth
      *
      * @param Request $request

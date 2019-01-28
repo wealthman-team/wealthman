@@ -3,6 +3,7 @@
 use App\Http\Controllers\RedirectController;
 use App\RoboAdvisor;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 /**
  *
@@ -171,4 +172,9 @@ function redirectLink($link)
     }
 
     return '#';
+}
+
+function user_logged_in()
+{
+    return (bool) Auth::user();
 }

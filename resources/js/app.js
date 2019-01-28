@@ -93,59 +93,156 @@ $(function () {
 
     /** Auth **/
     let Auth = (function () {
-        let auth_modal_selector = '.js-modal-auth';
-        let auth_button_selector = '.js-auth-button';
-        let modal_overlay_selector = '.js-modal-overlay';
-        let auth_modal = $(auth_modal_selector);
+        let auth_modal = $('.js-modal-auth');
+        let auth_button = $('.js-auth-button');
+        let auth_main = $('.js-auth-main');
+        let modal_overlay = $('.js-modal-overlay');
 
         function toggleOverlay(open = false){
-            let overlay = $(modal_overlay_selector);
-            return (open ? overlay.addClass('open') : overlay.removeClass('open'));
+            return (open ? modal_overlay.addClass('open') : modal_overlay.removeClass('open'));
         }
 
         function authPopupOpen(auth_modal) {
-            auth_modal.addClass('open');
-            toggleOverlay(auth_modal.hasClass('open'));
+            if (!auth_modal.hasClass('open') && !auth_modal.data('loggedIn')) {
+                positionAuthPopup();
+                auth_modal.addClass('open');
+                toggleOverlay(auth_modal.hasClass('open'));
+            }
         }
 
         function authPopupClose(auth_modal) {
-            auth_modal.removeClass('open');
-            toggleOverlay(auth_modal.hasClass('open'));
-            auth_modal.removeAttr('style');
+            if (auth_modal.hasClass('open')) {
+                auth_modal.removeClass('open');
+                toggleOverlay(auth_modal.hasClass('open'));
+                auth_modal.removeAttr('style');
+            }
         }
 
-        function basePositionAuthPopup(auth_modal, el) {
-            let padd_top = 30;
-            let top = el.offset().top + el.outerHeight(true) + padd_top;
-            let padd_left = 20;
-            let _left = el.offset().left + el.outerWidth(true) + padd_left;
-            let left = _left - auth_modal.outerWidth(true);
+        function positionAuthPopup() {
+            let position = {top: 0, left: 0, position: 'absolute'};
+            if (auth_modal.data('position') === 'center') {
+                position = getCenterPosition();
+            } else {
+                position = getBtnPosition();
+            }
 
-            auth_modal.attr('style', 'top:' + top + 'px;left:' + left + 'px;');
+            auth_modal.attr('style', 'top:' + position.top + 'px;left:' + position.left + 'px;position:' + position.position);
+        }
+
+        function getCenterPosition(){
+            let auth_width = auth_modal.outerWidth(true);
+            let auth_height = auth_modal.outerHeight(true);
+            let position_top = (window.innerHeight - auth_height) / 2;
+            let position_left = (window.innerWidth - auth_width) / 2;
+            position_top = position_top > 0 ? position_top : 0;
+            position_left = position_left > 0 ? position_left : 0;
+
+            return {top: position_top, left: position_left, position: 'fixed'};
+        }
+
+        function getBtnPosition(){
+            let offset_top = 30;
+            let offset_left = 20;
+            let min_right = 20;
+
+            let window_width = window.innerWidth;
+            let auth_width = auth_modal.outerWidth(true);
+            let top_position = auth_button.offset().top + auth_button.outerHeight(true) + offset_top;
+            let btn_position = auth_button.offset().left + auth_button.outerWidth(true) + offset_left;
+
+            let offset_right = 0;
+            if ( (window_width - btn_position) < (offset_left + min_right)) {
+                offset_right = (offset_left + min_right) - (window_width - btn_position);
+                offset_right = offset_right <= min_right ? offset_right : min_right
+            }
+            let left_position = btn_position - auth_width - offset_right;
+
+            return {top: top_position, left: left_position, position: 'absolute'};
+        }
+
+        function initAuthMethods() {
+            let tab_sign_in = $('.js-tab-sign-in');
+            let tab_sign_up = $('.js-tab-sign-up');
+            let block_sign_in = $('.js-auth-sign-in');
+            let block_sign_up = $('.js-auth-sign-up');
+            let tab_sign_up_speed = 100;
+            
+            $(document).keydown(function (e) {
+                // ESCAPE key pressed
+                if (e.keyCode === 27) {
+                    authPopupClose(auth_modal);
+                }
+                e.stopPropagation();
+            });
+            modal_overlay.on('click', function (e) {
+                authPopupClose(auth_modal);
+                e.preventDefault();
+            });
+
+            auth_button.on('click', function (e) {
+                authPopupOpen(auth_modal);
+                e.preventDefault();
+            });
+
+            auth_main.on('click', function (e) {
+                auth_modal.data('position', 'center');
+                authPopupOpen(auth_modal);
+                e.preventDefault();
+            });
+
+            tab_sign_in.on('click', function (e) {
+                e.preventDefault();
+                tab_sign_in.addClass('active');
+                tab_sign_up.removeClass('active');
+
+                block_sign_up.fadeOut(tab_sign_up_speed, function () {
+                    $(this).addClass('hidden');
+                    block_sign_in.fadeIn(tab_sign_up_speed, function () {
+                        $(this).removeClass('hidden');
+                    });
+                });
+
+            });
+
+            tab_sign_up.on('click', function (e) {
+                e.preventDefault();
+                tab_sign_up.addClass('active');
+                tab_sign_in.removeClass('active');
+
+                block_sign_in.fadeOut(tab_sign_up_speed, function () {
+                    $(this).addClass('hidden');
+                    block_sign_up.fadeIn(tab_sign_up_speed, function () {
+                        $(this).removeClass('hidden');
+                    });
+                });
+            });
+
+            $(window).resize(function () {
+                if (auth_modal.hasClass('open')) {
+                    positionAuthPopup();
+                }
+            });
         }
 
         return {
             init: function () {
-                $(document).keydown(function(e) {
-                    // ESCAPE key pressed
-                    if (e.keyCode === 27) {
-                        authPopupClose(auth_modal);
-                    }
+                let formData = new FormData();
+                formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                $.ajax({
+                    type: 'POST',
+                    url: '/auth-form',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(result){
+                        auth_modal.html(result);
+                        initAuthMethods();
+                    },
+                    error: function (r) {
+                        console.log(r.responseText);
+                        console.log('Error init auth form');
+                    },
                 });
-                $(modal_overlay_selector).on('click', function(e) {
-                    e.stopPropagation();
-                    authPopupClose(auth_modal);
-                });
-
-                $(auth_button_selector).on('click', function (e) {
-                    e.preventDefault();
-                    basePositionAuthPopup(auth_modal, $(auth_button_selector));
-                    authPopupOpen(auth_modal);
-                });
-
-                $(window).resize(function() {
-                    basePositionAuthPopup(auth_modal, $(auth_button_selector));
-                })
             }
         };
     })();
@@ -532,38 +629,5 @@ $(function () {
             _body.stop(true).animate({scrollTop: $("#"+id).offset().top + "px"}, 400);
             return false;
         }
-    });
-
-
-    let tab_sign_in = $('.js-tab-sign-in');
-    let tab_sign_up = $('.js-tab-sign-up');
-    let block_sign_in = $('.js-auth-sign-in');
-    let block_sign_up = $('.js-auth-sign-up');
-    let tab_sign_up_speed = 100;
-
-    tab_sign_in.on('click', function (e) {
-        e.preventDefault();
-        tab_sign_in.addClass('active');
-        tab_sign_up.removeClass('active');
-
-        block_sign_up.fadeOut(tab_sign_up_speed, function () {
-            $(this).addClass('hidden');
-            block_sign_in.fadeIn(tab_sign_up_speed, function () {
-                $(this).removeClass('hidden');
-            });
-        });
-
-    });
-    tab_sign_up.on('click', function (e) {
-        e.preventDefault();
-        tab_sign_up.addClass('active');
-        tab_sign_in.removeClass('active');
-
-        block_sign_in.fadeOut(tab_sign_up_speed, function () {
-            $(this).addClass('hidden');
-            block_sign_up.fadeIn(tab_sign_up_speed, function () {
-                $(this).removeClass('hidden');
-            });
-        });
     });
 });
