@@ -1,5 +1,6 @@
 .auth-icon-wrapper {
   margin-left: 32px;
+  position: relative;
 }
 .auth-icon {
   width: 38px;
@@ -37,7 +38,17 @@
     }
   }
 }
-
+.auth-user-icon {
+  @include font(14px, $Geometria, $blue, 38px, 700);
+  text-transform: uppercase;
+  text-align: center;
+  &::selection {
+    background: transparent; /* WebKit/Blink Browsers */
+  }
+  &::-moz-selection {
+    background: transparent; /* Gecko Browsers */
+  }
+}
 .auth-social {
   &__links {
     display: flex;
@@ -57,5 +68,43 @@
     text-align: center;
     margin-bottom: 8px;
     padding-top: 7px;
+  }
+}
+.user-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  background-color: $white;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+
+  &__list {
+    border-radius: 18px;
+  }
+  &__item {
+    white-space: nowrap;
+    padding: 5px 15px;
+    &:last-child {
+      padding-bottom: 10px;
+    }
+  }
+  &__title {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 15px 5px;
+    strong {
+      font-weight: 700;
+    }
+  }
+  &__link {
+    display: inline-block;
+    @include font(14px, $Geometria, $text, 20px, 400);
+  }
+  &__sign-out {
+    color: $blue;
+  }
+  &.open {
+    display: block;
   }
 }

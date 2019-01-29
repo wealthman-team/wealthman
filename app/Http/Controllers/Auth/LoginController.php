@@ -87,7 +87,7 @@ class LoginController extends Controller
             } else {
                 $message = 'The email/password combination used was not found.';
 
-                return response()->json(['password' => $message], 422);
+                return response()->json(['password' => [$message]], 422);
             }
         } else {
             return response()->json($errors, 422);

@@ -41,23 +41,20 @@
     </div>
     <div class="js-auth-sign-up hidden">
         <div class="modal-form">
-            <form>
+            <form class="js-auth-register" action="{{ route('ajax.register') }}" method="post" data-type="json">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="name" required placeholder="Name">
+                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <span class="invalid-feedback js-email-error"></span>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <span class="invalid-feedback js-password-error"></span>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password_confirmation" required placeholder="Password confirmation">
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Password confirmation">
+                    <span class="invalid-feedback js-password-confirmation-error"></span>
                 </div>
                 <button type="submit" class="button button_blue">Sign up</button>
-                <div class="modal-form__links">
-                    <a class="modal-form__forgot-password" href="#">Forgot password</a>
-                </div>
             </form>
         </div>
     </div>

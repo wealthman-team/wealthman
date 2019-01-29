@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Sources\Page;
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Hash;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -47,12 +48,11 @@ class RegisterController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return \Illuminate\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
@@ -66,8 +66,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $parts = explode("@", $data['email']);
+        $username = $parts[0];
+
         return User::create([
-            'name' => $data['name'],
+            'name' => $username,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -84,5 +87,20 @@ class RegisterController extends Controller
         Page::setDescription('Website registration form');
 
         return view('auth.register');
+    }
+
+    public function ajaxUserRegister(Request $request)
+    {
+        $validation = $this->validator($request->all());
+        $errors = $validation->errors();
+        $errors = json_decode($errors);
+
+        if ($validation->passes()) {
+            event(new Registered($user = $this->create($request->all())));
+            $this->guard()->login($user);
+            return response()->json(['success' => true], 200);
+        } else {
+            return response()->json($errors, 422);
+        }
     }
 }

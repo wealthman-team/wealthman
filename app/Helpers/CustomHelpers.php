@@ -3,7 +3,6 @@
 use App\Http\Controllers\RedirectController;
 use App\RoboAdvisor;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
 
 /**
  *
@@ -177,4 +176,19 @@ function redirectLink($link)
 function user_logged_in()
 {
     return (bool) Auth::user();
+}
+
+function user_name()
+{
+    return Auth::user() ? Auth::user()->name : '';
+}
+
+function user_short_name()
+{
+    $user_name = Auth::user() ? Auth::user()->name : null;
+    $short_name = 'ab';
+    if ($user_name) {
+        $short_name = strlen($user_name) <= 2 ? $user_name : substr($user_name, 0, 2);
+    }
+    return $short_name;
 }

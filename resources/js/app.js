@@ -39,6 +39,35 @@ window.noUiSlider = require('nouislider');
 require('slick-carousel');
 
 $(function () {
+    // auto update token
+    let lifetime_csrf = $('meta[name="csrf-token"]').attr('data-lifetime');
+    if (lifetime_csrf) {
+        setInterval(refreshCsrf, (lifetime_csrf * 60 * 1000) - (1000*60)); //минус 1 минута
+        function refreshCsrf() {
+            let $meta_csrf = $('meta[name="csrf-token"]');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $meta_csrf.attr('content')
+                }
+            });
+            $.ajax({
+                url: '/refresh-csrf',
+                type: 'post',
+            }).then(function (result) {
+                $meta_csrf.attr('content', result);
+            }).fail(function(){
+                console.log('Error: refresh-csrf');
+            });
+        }
+    }
+
+    $(document).click(function(e) {
+        $target = $(e.target);
+        if(!$target.closest('.js-auth-icon-wrapper').length && $('.js-user-menu.open').length) {
+            $('.js-user-menu').removeClass('open');
+        }
+    });
+
     // Header scroll
     headerSticky($(window));
     $(window).scroll(function() {
@@ -95,58 +124,12 @@ $(function () {
     let Auth = (function () {
         function initAuthMethods() {
             let $login_form = $('form.js-auth-login:first');
+            let $register_form = $('form.js-auth-register:first');
             let $tab_sign_in = $('.js-tab-sign-in');
             let $tab_sign_up = $('.js-tab-sign-up');
             let $block_sign_in = $('.js-auth-sign-in');
             let $block_sign_up = $('.js-auth-sign-up');
             let tab_sign_up_speed = 100;
-
-            // Login function
-            $login_form.submit(function( e ) {
-                e.preventDefault();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                let form = $(this);
-                $.ajax({
-                    type: form.attr('method'),
-                    url: form.attr('action'),
-                    data: form.serializeArray(),
-                    dataType: form.data('type'),
-                    beforeSend : function () {
-                        //clear errors
-                        $('input[type="password"]', form).removeClass('is-invalid');
-                        $('input[type="email"]', form).removeClass('is-invalid');
-
-                        $('.js-password-error', form).html('');
-                        $('.js-email-error', form).html('');
-                    },
-                    success: function (response) {
-                        if (response.success) {
-                            location.reload();
-                        }
-                    },
-                    error: function (jqXHR) {
-                        let response = $.parseJSON(jqXHR.responseText);
-                        $('input[type="password"]', form).val('');
-                        if (response.password) {
-                            $('input[type="password"]', form).addClass('is-invalid');
-                            $('.js-password-error', form).html('<span>'+response.password+'</span>');
-                        } else {
-                            $('input[type="password"]', form).addClass('is-valid');
-                        }
-                        if (response.email) {
-                            $('input[type="email"]', form).addClass('is-invalid');
-                            $('.js-email-error', form).html('<span>'+response.email+'</span>');
-                        } else {
-                            $('input[type="email"]', form).addClass('is-valid');
-                        }
-                        console.log(response);
-                    }
-                });
-            });
 
             $tab_sign_in.on('click', function (e) {
                 e.preventDefault();
@@ -172,6 +155,107 @@ $(function () {
                     $block_sign_up.fadeIn(tab_sign_up_speed, function () {
                         $(this).removeClass('hidden');
                     });
+                });
+            });
+
+            // Login function
+            $login_form.submit(function( e ) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                let form = $(this);
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form.serializeArray(),
+                    dataType: form.data('type'),
+                    beforeSend : function () {
+                        //clear errors
+                        $('input[name="password"]', form).removeClass('is-invalid');
+                        $('input[name="email"]', form).removeClass('is-invalid');
+
+                        $('.js-password-error', form).html('');
+                        $('.js-email-error', form).html('');
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            location.reload();
+                        }
+                    },
+                    error: function (jqXHR) {
+                        let response = $.parseJSON(jqXHR.responseText);
+                        $('input[name="password"]', form).val('');
+                        if (response.password) {
+                            $('input[name="password"]', form).addClass('is-invalid');
+                            $('.js-password-error', form).html('<span>'+response.password[0]+'</span>');
+                        } else {
+                            $('input[name="password"]', form).addClass('is-valid');
+                        }
+                        if (response.email) {
+                            $('input[name="email"]', form).addClass('is-invalid');
+                            $('.js-email-error', form).html('<span>'+response.email[0]+'</span>');
+                        } else {
+                            $('input[name="email"]', form).addClass('is-valid');
+                        }
+                    }
+                });
+            });
+
+            // Register function
+            $register_form.submit(function( e ) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                let form = $(this);
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form.serializeArray(),
+                    dataType: form.data('type'),
+                    beforeSend : function () {
+                        //clear errors
+                        $('input[name="email"]', form).removeClass('is-invalid');
+                        $('input[name="password"]', form).removeClass('is-invalid');
+                        $('input[name="password_confirmation"]', form).removeClass('is-invalid');
+
+                        $('.js-email-error', form).html('');
+                        $('.js-password-error', form).html('');
+                        $('.js-password-confirmation-error', form).html('');
+
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            location.reload();
+                        }
+                    },
+                    error: function (jqXHR) {
+                        let response = $.parseJSON(jqXHR.responseText);
+                        $('input[name="password_confirmation"]', form).val('');
+                        if (response.password && response.password[0] === 'The password confirmation does not match.') {
+                            $('input[name="password_confirmation"]', form).addClass('is-invalid');
+                            $('.js-password-confirmation-error', form).html('<span>'+response.password[0]+'</span>');
+                        } else {
+                            $('input[name="password_confirmation"]', form).addClass('is-valid');
+                        }
+                        if (response.password && response.password[0] !== 'The password confirmation does not match.') {
+                            $('input[name="password"]', form).addClass('is-invalid');
+                            $('.js-password-error', form).html('<span>'+response.password[0]+'</span>');
+                        } else {
+                            $('input[name="password"]', form).addClass('is-valid');
+                        }
+                        if (response.email) {
+                            $('input[name="email"]', form).addClass('is-invalid');
+                            $('.js-email-error', form).html('<span>'+response.email[0]+'</span>');
+                        } else {
+                            $('input[name="email"]', form).addClass('is-valid');
+                        }
+                    }
                 });
             });
         }
@@ -335,6 +419,10 @@ $(function () {
     })();
     Popup.init();
     /** End Popup **/
+
+    $('.js-user-menu-open').on('click', function () {
+        $('.js-user-menu').toggleClass('open');
+    });
 
 	$('.js-slide-box').each(function () {
 		let slideBox = $(this);

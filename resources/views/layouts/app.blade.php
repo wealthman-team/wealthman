@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=1310">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" data-lifetime="{{config('session.lifetime')}}">
 
     {{-- Favicon --}}
     <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-icon-57x57.png">

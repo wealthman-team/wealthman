@@ -29,6 +29,9 @@ Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clea
  */
 
 Route::get('/redirect', 'RedirectController@index')->name('redirect');
+Route::post('/refresh-csrf', function (){
+    return csrf_token();
+});
 Route::get('/sitemap-create', function (){
     Sitemap::generate();
     return 'sitemap created';
@@ -53,6 +56,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // User Registration Routes...
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
+Route::post('/ajax-register', 'Auth\RegisterController@ajaxUserRegister')->name('ajax.register');
 // User Password Reset Routes...
 Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
