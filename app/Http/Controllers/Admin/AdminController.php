@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Sources\Page;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class AdminController extends Controller
 {

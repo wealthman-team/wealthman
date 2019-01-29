@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\RoboAdvisor;
 use App\Services\Filters\RoboAdvisorsSorting;
 use App\Sources\Page;
+use Auth;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller

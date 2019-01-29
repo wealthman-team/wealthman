@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=1310">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" data-lifetime="{{config('session.lifetime')}}">
 
     {{-- Favicon --}}
     <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-icon-57x57.png">
@@ -46,10 +46,15 @@
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 </head>
 <body class="{{ checkCatActive('/') ? 'bg-white' : '' }}">
+
     <div id="app">
         @yield('content')
+        <span class="auth-icon js-auth-main">@svg('sign_in', 'auth-icon__sign-in')</span>
     </div>
-
+    {{--popups --}}
+    <div id="modal-auth" class="modal js-modal"></div>
+    <div class="modal-overlay js-modal-overlay">&nbsp;</div>
+    {{--end popups --}}
     <script src="{{ mix('/js/app.js') }}" type="text/javascript"></script>
     <script src="/jivosite/jivosite.js" type="text/javascript"></script>
 

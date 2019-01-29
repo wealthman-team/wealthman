@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+  <defs>
+    <style>
+      .linkedin-1 {
+        fill: #3d83d9;
+      }
+
+      .linkedin-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Group_509" data-name="Group 509" transform="translate(-1162 -429)">
+    <circle id="Ellipse_33" data-name="Ellipse 33" class="linkedin-1" cx="19" cy="19" r="19" transform="translate(1162 429)"/>
+    <g id="Group_452" data-name="Group 452" transform="translate(1172.245 438.396)">
+      <path id="Path_100" data-name="Path 100" class="linkedin-2" d="M4.766,11.188h-4V22.629h4Z" transform="translate(-0.004 -4.864)"/>
+      <path id="Path_101" data-name="Path 101" class="linkedin-2" d="M2.761.6a2.006,2.006,0,1,0,1.414.588A2,2,0,0,0,2.761.6Z"/>
+      <path id="Path_102" data-name="Path 102" class="linkedin-2" d="M23.274,14.7c-.27-2.167-1.349-3.516-4.265-3.516-2.069,0-2.89.325-3.371,1.226V11.188H12.4V22.629h3.335V16.64c0-1.493.282-2.622,2.131-2.622s1.967,1.389,1.967,2.721v5.89h3.436S23.337,15.215,23.274,14.7Z" transform="translate(-5.354 -4.864)"/>
+    </g>
+  </g>
+</svg>

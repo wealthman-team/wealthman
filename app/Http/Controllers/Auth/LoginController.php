@@ -7,6 +7,7 @@ use App\Sources\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -37,41 +38,96 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:web')->except(['logout','getLoginForm']);
     }
 
     /**
-     * Show Admin login form
+     * Show User login form
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showAdminLoginForm()
+    public function showLoginForm()
     {
-        Page::setTitle('Авторизация | Wealthman');
-        Page::setDescription('Форма авторизация администраторской части сайта Wealthman');
+        Page::setTitle('Sign in | Wealthman');
+        Page::setDescription('Website authorization form');
 
-        return view('admin.auth.login');
+        return view('auth.login');
     }
 
     /**
-     * Admin auth
+     * Get User login form
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Throwable
+     */
+    public function getLoginForm(Request $request)
+    {
+        if ($request->ajax()) {
+            return view('auth.authForm')->render();
+        }
+
+        return back();
+    }
+
+    public function ajaxUserLogin(Request $request)
+    {
+        $validation = Validator::make([ 'email' => $request->email, 'password' => $request->password], [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+        $errors = $validation->errors();
+        $errors = json_decode($errors);
+        if ($validation->passes()) {
+            if (Auth::guard('web')->attempt([ 'email' => $request->email,
+                'password' => $request->password], $request->get('remember'))
+            ) {
+
+                return response()->json(['success' => true], 200);
+            } else {
+                $message = 'The email/password combination used was not found.';
+
+                return response()->json(['password' => [$message]], 422);
+            }
+        } else {
+            return response()->json($errors, 422);
+        }
+    }
+
+    /**
+     * auth
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function adminLogin(Request $request)
+    public function login(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('web')->attempt([ 'email' => $request->email,
+            'password' => $request->password], $request->get('remember'))
+        ) {
 
-            return redirect()->intended('/admin');
+            return redirect()->intended('/');
         }
+
         return back()->withInput($request->only('email', 'remember'));
+    }
+
+    /**
+     * Logout
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        return redirect(route('home'));
     }
 }

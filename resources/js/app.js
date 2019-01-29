@@ -39,6 +39,35 @@ window.noUiSlider = require('nouislider');
 require('slick-carousel');
 
 $(function () {
+    // auto update token
+    let lifetime_csrf = $('meta[name="csrf-token"]').attr('data-lifetime');
+    if (lifetime_csrf) {
+        setInterval(refreshCsrf, (lifetime_csrf * 60 * 1000) - (1000*60)); //минус 1 минута
+        function refreshCsrf() {
+            let $meta_csrf = $('meta[name="csrf-token"]');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $meta_csrf.attr('content')
+                }
+            });
+            $.ajax({
+                url: '/refresh-csrf',
+                type: 'post',
+            }).then(function (result) {
+                $meta_csrf.attr('content', result);
+            }).fail(function(){
+                console.log('Error: refresh-csrf');
+            });
+        }
+    }
+
+    $(document).click(function(e) {
+        $target = $(e.target);
+        if(!$target.closest('.js-auth-icon-wrapper').length && $('.js-user-menu.open').length) {
+            $('.js-user-menu').removeClass('open');
+        }
+    });
+
     // Header scroll
     headerSticky($(window));
     $(window).scroll(function() {
@@ -90,6 +119,310 @@ $(function () {
             }
         }
     }
+
+    /** Auth **/
+    let Auth = (function () {
+        function initAuthMethods() {
+            let $login_form = $('form.js-auth-login:first');
+            let $register_form = $('form.js-auth-register:first');
+            let $tab_sign_in = $('.js-tab-sign-in');
+            let $tab_sign_up = $('.js-tab-sign-up');
+            let $block_sign_in = $('.js-auth-sign-in');
+            let $block_sign_up = $('.js-auth-sign-up');
+            let tab_sign_up_speed = 100;
+
+            $tab_sign_in.on('click', function (e) {
+                e.preventDefault();
+                $tab_sign_in.addClass('active');
+                $tab_sign_up.removeClass('active');
+
+                $block_sign_up.fadeOut(tab_sign_up_speed, function () {
+                    $(this).addClass('hidden');
+                    $block_sign_in.fadeIn(tab_sign_up_speed, function () {
+                        $(this).removeClass('hidden');
+                    });
+                });
+
+            });
+
+            $tab_sign_up.on('click', function (e) {
+                e.preventDefault();
+                $tab_sign_up.addClass('active');
+                $tab_sign_in.removeClass('active');
+
+                $block_sign_in.fadeOut(tab_sign_up_speed, function () {
+                    $(this).addClass('hidden');
+                    $block_sign_up.fadeIn(tab_sign_up_speed, function () {
+                        $(this).removeClass('hidden');
+                    });
+                });
+            });
+
+            // Login function
+            $login_form.submit(function( e ) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                let form = $(this);
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form.serializeArray(),
+                    dataType: form.data('type'),
+                    beforeSend : function () {
+                        //clear errors
+                        $('input[name="password"]', form).removeClass('is-invalid');
+                        $('input[name="email"]', form).removeClass('is-invalid');
+
+                        $('.js-password-error', form).html('');
+                        $('.js-email-error', form).html('');
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            location.reload();
+                        }
+                    },
+                    error: function (jqXHR) {
+                        let response = $.parseJSON(jqXHR.responseText);
+                        $('input[name="password"]', form).val('');
+                        if (response.password) {
+                            $('input[name="password"]', form).addClass('is-invalid');
+                            $('.js-password-error', form).html('<span>'+response.password[0]+'</span>');
+                        } else {
+                            $('input[name="password"]', form).addClass('is-valid');
+                        }
+                        if (response.email) {
+                            $('input[name="email"]', form).addClass('is-invalid');
+                            $('.js-email-error', form).html('<span>'+response.email[0]+'</span>');
+                        } else {
+                            $('input[name="email"]', form).addClass('is-valid');
+                        }
+                    }
+                });
+            });
+
+            // Register function
+            $register_form.submit(function( e ) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                let form = $(this);
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form.serializeArray(),
+                    dataType: form.data('type'),
+                    beforeSend : function () {
+                        //clear errors
+                        $('input[name="email"]', form).removeClass('is-invalid');
+                        $('input[name="password"]', form).removeClass('is-invalid');
+                        $('input[name="password_confirmation"]', form).removeClass('is-invalid');
+
+                        $('.js-email-error', form).html('');
+                        $('.js-password-error', form).html('');
+                        $('.js-password-confirmation-error', form).html('');
+
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            location.reload();
+                        }
+                    },
+                    error: function (jqXHR) {
+                        let response = $.parseJSON(jqXHR.responseText);
+                        $('input[name="password_confirmation"]', form).val('');
+                        if (response.password && response.password[0] === 'The password confirmation does not match.') {
+                            $('input[name="password_confirmation"]', form).addClass('is-invalid');
+                            $('.js-password-confirmation-error', form).html('<span>'+response.password[0]+'</span>');
+                        } else {
+                            $('input[name="password_confirmation"]', form).addClass('is-valid');
+                        }
+                        if (response.password && response.password[0] !== 'The password confirmation does not match.') {
+                            $('input[name="password"]', form).addClass('is-invalid');
+                            $('.js-password-error', form).html('<span>'+response.password[0]+'</span>');
+                        } else {
+                            $('input[name="password"]', form).addClass('is-valid');
+                        }
+                        if (response.email) {
+                            $('input[name="email"]', form).addClass('is-invalid');
+                            $('.js-email-error', form).html('<span>'+response.email[0]+'</span>');
+                        } else {
+                            $('input[name="email"]', form).addClass('is-valid');
+                        }
+                    }
+                });
+            });
+        }
+
+        return {
+            init: function () {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '/auth-form',
+                    processData: false,
+                    contentType: false,
+                    success: function(result){
+                        $('#modal-auth').html(result);
+                        initAuthMethods();
+                    },
+                    error: function (r) {
+                        // console.log(r.responseText);
+                        console.log('Error init auth form');
+                    },
+                });
+            }
+        };
+    })();
+
+    Auth.init();
+    /** End Auth **/
+
+    /** Popup **/
+    let Popup = (function () {
+        let $modal_overlay = $('.js-modal-overlay');
+
+        function openOverlay(){
+            $modal_overlay.addClass('open');
+        }
+
+        function closeOverlay(){
+            $modal_overlay.removeClass('open');
+        }
+
+        function popupOpen($btn) {
+            let target_modal = $btn.data('modal');
+            let $modal;
+            if (target_modal) {
+                $modal = $('#'+target_modal+':first');
+            }
+            if ($modal && !$modal.hasClass('open')) {
+                $modal.attr('data-bind', $btn.data('bind'));
+                positionPopup($modal);
+                $modal.addClass('open');
+                openOverlay();
+            }
+        }
+
+        function popupClose() {
+            let $modals = $('.js-modal');
+            $modals.each(function(){
+                let $modal = $(this);
+                if ($modal.hasClass('open')) {
+                    $modal.removeClass('open');
+                    $modal.removeAttr('style');
+                    $modal.removeAttr('data-bind');
+                    closeOverlay();
+                }
+            });
+        }
+
+        function positionPopup($modal) {
+            let position = {top: 0, left: 0, position: 'absolute'};
+            let bind_id = $modal.data('bind');
+            let $btn;
+            if(bind_id){
+                $btn = $('.js-modal-open[data-bind="'+bind_id+'"]:first');
+            }
+
+            if ($btn && $btn.data('position') === 'btn') {
+                position = getBtnPosition($modal, $btn);
+            } else {
+                position = getCenterPosition($modal);
+            }
+
+            $modal.attr('style', 'top:' + position.top + 'px;left:' + position.left + 'px;position:' + position.position);
+        }
+
+        function getCenterPosition($modal){
+            let modal_width = $modal.outerWidth(true);
+            let modal_height = $modal.outerHeight(true);
+            let position_top = (window.innerHeight - modal_height) / 2;
+            let position_left = (window.innerWidth - modal_width) / 2;
+            position_top = position_top > 0 ? position_top : 0;
+            position_left = position_left > 0 ? position_left : 0;
+
+            return {top: position_top, left: position_left, position: 'fixed'};
+        }
+
+        function getBtnPosition($modal, $btn){
+            let offset_top = 30;
+            let offset_left = 20;
+            let min_right = 20;
+
+            let window_width = window.innerWidth;
+            let modal_width = $modal.outerWidth(true);
+            let top_position = $btn.offset().top + $btn.outerHeight(true) + offset_top;
+            let btn_position = $btn.offset().left + $btn.outerWidth(true) + offset_left;
+
+            let offset_right = 0;
+            if ( (window_width - btn_position) < (offset_left + min_right)) {
+                offset_right = (offset_left + min_right) - (window_width - btn_position);
+                offset_right = offset_right <= min_right ? offset_right : min_right
+            }
+            let left_position = btn_position - modal_width - offset_right;
+
+            return {top: top_position, left: left_position, position: 'absolute'};
+        }
+
+        return {
+            init: function () {
+                let $popup_open_buttons = $('.js-modal-open');
+
+                $(window).resize(function () {
+                    let $open_modals = $('.js-modal.open');
+                    $open_modals.each(function(){
+                        let $modal = $(this);
+                        let bind_id = $modal.data('bind');
+                        let $btn;
+                        if(bind_id){
+                            $btn = $('.js-modal-open[data-bind="'+bind_id+'"]:first');
+                            positionPopup($modal, $btn);
+                        }
+                    });
+                });
+
+                // event open popup
+                $popup_open_buttons.each(function(idx){
+                    let $btn = $(this);
+                    $btn.attr('data-bind', 'modal_'+idx);
+                    $btn.on('click', function (e) {
+                        popupOpen($btn);
+                        e.preventDefault();
+                    });
+                });
+
+                // events close popup
+                $(document).keydown(function (e) {
+                    // ESCAPE key pressed
+                    if (e.keyCode === 27) {
+                        popupClose();
+                    }
+                    e.stopPropagation();
+                });
+                $modal_overlay.on('click', function (e) {
+                    popupClose();
+                    e.preventDefault();
+                });
+            }
+        };
+    })();
+    Popup.init();
+    /** End Popup **/
+
+    $('.js-user-menu-open').on('click', function () {
+        $('.js-user-menu').toggleClass('open');
+    });
 
 	$('.js-slide-box').each(function () {
 		let slideBox = $(this);

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Sources\Page;
 use App\User;
-use App\Admin;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Hash;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -30,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -40,19 +41,18 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        $this->middleware('guest:admin');
+        $this->middleware('guest:web');
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return \Illuminate\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
@@ -66,8 +66,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $parts = explode("@", $data['email']);
+        $username = $parts[0];
+
         return User::create([
-            'name' => $data['name'],
+            'name' => $username,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -78,19 +81,26 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showAdminRegisterForm()
+    public function showRegistrationForm()
     {
-        return view('admin.register');
+        Page::setTitle('Sign up | Wealthman');
+        Page::setDescription('Website registration form');
+
+        return view('auth.register');
     }
 
-    protected function createAdmin(Request $request)
+    public function ajaxUserRegister(Request $request)
     {
-        $this->validator($request->all())->validate();
-        $admin = Admin::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
-        return redirect()->intended('admin/login');
+        $validation = $this->validator($request->all());
+        $errors = $validation->errors();
+        $errors = json_decode($errors);
+
+        if ($validation->passes()) {
+            event(new Registered($user = $this->create($request->all())));
+            $this->guard()->login($user);
+            return response()->json(['success' => true], 200);
+        } else {
+            return response()->json($errors, 422);
+        }
     }
 }

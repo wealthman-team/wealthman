@@ -33,8 +33,8 @@
     <link href="{{ mix('/css/admin/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ mix('/css/admin/admin.css') }}" rel="stylesheet">
 </head>
-<body class="@guest login-page @else skin-red @endguest">
-    @guest
+<body class="@guest('admin') login-page @else skin-red @endguest">
+    @guest('admin')
         @yield('content')
     @else
         <div class="wrapper">

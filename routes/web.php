@@ -29,6 +29,9 @@ Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clea
  */
 
 Route::get('/redirect', 'RedirectController@index')->name('redirect');
+Route::post('/refresh-csrf', function (){
+    return csrf_token();
+});
 Route::get('/sitemap-create', function (){
     Sitemap::generate();
     return 'sitemap created';
@@ -44,13 +47,27 @@ Route::get('/clear-cache', function () {
     return 'all cache cleared';
 });
 
-/*
- * Auth routes
- */
+// User Auth Routes...
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::post('/ajax-login', 'Auth\LoginController@ajaxUserLogin')->name('ajax.login');
+Route::post('/auth-form', 'Auth\LoginController@getLoginForm')->name('login.form');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+// User Registration Routes...
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/register', 'Auth\RegisterController@register')->name('register');
+Route::post('/ajax-register', 'Auth\RegisterController@ajaxUserRegister')->name('ajax.register');
+// User Password Reset Routes...
+Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
+// Admin Auth Routes...
+Route::get('/admin/login', 'Auth\AdminLoginController@showAdminLoginForm')->name('admin.login');
+Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
+Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
-Route::get('/admin/login', 'Auth\LoginController@showAdminLoginForm')->name('admin.login');
-Route::post('/admin/login', 'Auth\LoginController@adminLogin')->name('admin.login');
-Route::post('/admin/logout', 'Auth\LoginController@logout')->name('admin.logout');
+
 
 /*
  * Admin routes
