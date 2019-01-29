@@ -7,6 +7,7 @@ use App\Sources\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -37,7 +38,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:web')->except('logout');
+        $this->middleware('guest:web')->except(['logout','getLoginForm']);
     }
 
     /**
@@ -58,13 +59,39 @@ class LoginController extends Controller
      *
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Throwable
      */
     public function getLoginForm(Request $request)
     {
         if ($request->ajax()) {
-            return view('auth.authForm');
+            return view('auth.authForm')->render();
         }
+
         return back();
+    }
+
+    public function ajaxUserLogin(Request $request)
+    {
+        $validation = Validator::make([ 'email' => $request->email, 'password' => $request->password], [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+        $errors = $validation->errors();
+        $errors = json_decode($errors);
+        if ($validation->passes()) {
+            if (Auth::guard('web')->attempt([ 'email' => $request->email,
+                'password' => $request->password], $request->get('remember'))
+            ) {
+
+                return response()->json(['success' => true], 200);
+            } else {
+                $message = 'The email/password combination used was not found.';
+
+                return response()->json(['password' => $message], 422);
+            }
+        } else {
+            return response()->json($errors, 422);
+        }
     }
 
     /**

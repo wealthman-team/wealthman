@@ -93,153 +93,107 @@ $(function () {
 
     /** Auth **/
     let Auth = (function () {
-        let auth_modal = $('.js-modal-auth');
-        let auth_button = $('.js-auth-button');
-        let auth_main = $('.js-auth-main');
-        let modal_overlay = $('.js-modal-overlay');
-
-        function toggleOverlay(open = false){
-            return (open ? modal_overlay.addClass('open') : modal_overlay.removeClass('open'));
-        }
-
-        function authPopupOpen(auth_modal) {
-            if (!auth_modal.hasClass('open') && !auth_modal.data('loggedIn')) {
-                positionAuthPopup();
-                auth_modal.addClass('open');
-                toggleOverlay(auth_modal.hasClass('open'));
-            }
-        }
-
-        function authPopupClose(auth_modal) {
-            if (auth_modal.hasClass('open')) {
-                auth_modal.removeClass('open');
-                toggleOverlay(auth_modal.hasClass('open'));
-                auth_modal.removeAttr('style');
-            }
-        }
-
-        function positionAuthPopup() {
-            let position = {top: 0, left: 0, position: 'absolute'};
-            if (auth_modal.data('position') === 'center') {
-                position = getCenterPosition();
-            } else {
-                position = getBtnPosition();
-            }
-
-            auth_modal.attr('style', 'top:' + position.top + 'px;left:' + position.left + 'px;position:' + position.position);
-        }
-
-        function getCenterPosition(){
-            let auth_width = auth_modal.outerWidth(true);
-            let auth_height = auth_modal.outerHeight(true);
-            let position_top = (window.innerHeight - auth_height) / 2;
-            let position_left = (window.innerWidth - auth_width) / 2;
-            position_top = position_top > 0 ? position_top : 0;
-            position_left = position_left > 0 ? position_left : 0;
-
-            return {top: position_top, left: position_left, position: 'fixed'};
-        }
-
-        function getBtnPosition(){
-            let offset_top = 30;
-            let offset_left = 20;
-            let min_right = 20;
-
-            let window_width = window.innerWidth;
-            let auth_width = auth_modal.outerWidth(true);
-            let top_position = auth_button.offset().top + auth_button.outerHeight(true) + offset_top;
-            let btn_position = auth_button.offset().left + auth_button.outerWidth(true) + offset_left;
-
-            let offset_right = 0;
-            if ( (window_width - btn_position) < (offset_left + min_right)) {
-                offset_right = (offset_left + min_right) - (window_width - btn_position);
-                offset_right = offset_right <= min_right ? offset_right : min_right
-            }
-            let left_position = btn_position - auth_width - offset_right;
-
-            return {top: top_position, left: left_position, position: 'absolute'};
-        }
-
         function initAuthMethods() {
-            let tab_sign_in = $('.js-tab-sign-in');
-            let tab_sign_up = $('.js-tab-sign-up');
-            let block_sign_in = $('.js-auth-sign-in');
-            let block_sign_up = $('.js-auth-sign-up');
+            let $login_form = $('form.js-auth-login:first');
+            let $tab_sign_in = $('.js-tab-sign-in');
+            let $tab_sign_up = $('.js-tab-sign-up');
+            let $block_sign_in = $('.js-auth-sign-in');
+            let $block_sign_up = $('.js-auth-sign-up');
             let tab_sign_up_speed = 100;
-            
-            $(document).keydown(function (e) {
-                // ESCAPE key pressed
-                if (e.keyCode === 27) {
-                    authPopupClose(auth_modal);
-                }
-                e.stopPropagation();
-            });
-            modal_overlay.on('click', function (e) {
-                authPopupClose(auth_modal);
+
+            // Login function
+            $login_form.submit(function( e ) {
                 e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                let form = $(this);
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form.serializeArray(),
+                    dataType: form.data('type'),
+                    beforeSend : function () {
+                        //clear errors
+                        $('input[type="password"]', form).removeClass('is-invalid');
+                        $('input[type="email"]', form).removeClass('is-invalid');
+
+                        $('.js-password-error', form).html('');
+                        $('.js-email-error', form).html('');
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            location.reload();
+                        }
+                    },
+                    error: function (jqXHR) {
+                        let response = $.parseJSON(jqXHR.responseText);
+                        $('input[type="password"]', form).val('');
+                        if (response.password) {
+                            $('input[type="password"]', form).addClass('is-invalid');
+                            $('.js-password-error', form).html('<span>'+response.password+'</span>');
+                        } else {
+                            $('input[type="password"]', form).addClass('is-valid');
+                        }
+                        if (response.email) {
+                            $('input[type="email"]', form).addClass('is-invalid');
+                            $('.js-email-error', form).html('<span>'+response.email+'</span>');
+                        } else {
+                            $('input[type="email"]', form).addClass('is-valid');
+                        }
+                        console.log(response);
+                    }
+                });
             });
 
-            auth_button.on('click', function (e) {
-                authPopupOpen(auth_modal);
+            $tab_sign_in.on('click', function (e) {
                 e.preventDefault();
-            });
+                $tab_sign_in.addClass('active');
+                $tab_sign_up.removeClass('active');
 
-            auth_main.on('click', function (e) {
-                auth_modal.data('position', 'center');
-                authPopupOpen(auth_modal);
-                e.preventDefault();
-            });
-
-            tab_sign_in.on('click', function (e) {
-                e.preventDefault();
-                tab_sign_in.addClass('active');
-                tab_sign_up.removeClass('active');
-
-                block_sign_up.fadeOut(tab_sign_up_speed, function () {
+                $block_sign_up.fadeOut(tab_sign_up_speed, function () {
                     $(this).addClass('hidden');
-                    block_sign_in.fadeIn(tab_sign_up_speed, function () {
+                    $block_sign_in.fadeIn(tab_sign_up_speed, function () {
                         $(this).removeClass('hidden');
                     });
                 });
 
             });
 
-            tab_sign_up.on('click', function (e) {
+            $tab_sign_up.on('click', function (e) {
                 e.preventDefault();
-                tab_sign_up.addClass('active');
-                tab_sign_in.removeClass('active');
+                $tab_sign_up.addClass('active');
+                $tab_sign_in.removeClass('active');
 
-                block_sign_in.fadeOut(tab_sign_up_speed, function () {
+                $block_sign_in.fadeOut(tab_sign_up_speed, function () {
                     $(this).addClass('hidden');
-                    block_sign_up.fadeIn(tab_sign_up_speed, function () {
+                    $block_sign_up.fadeIn(tab_sign_up_speed, function () {
                         $(this).removeClass('hidden');
                     });
                 });
-            });
-
-            $(window).resize(function () {
-                if (auth_modal.hasClass('open')) {
-                    positionAuthPopup();
-                }
             });
         }
 
         return {
             init: function () {
-                let formData = new FormData();
-                formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
                 $.ajax({
                     type: 'POST',
                     url: '/auth-form',
-                    data: formData,
                     processData: false,
                     contentType: false,
                     success: function(result){
-                        auth_modal.html(result);
+                        $('#modal-auth').html(result);
                         initAuthMethods();
                     },
                     error: function (r) {
-                        console.log(r.responseText);
+                        // console.log(r.responseText);
                         console.log('Error init auth form');
                     },
                 });
@@ -250,6 +204,137 @@ $(function () {
     Auth.init();
     /** End Auth **/
 
+    /** Popup **/
+    let Popup = (function () {
+        let $modal_overlay = $('.js-modal-overlay');
+
+        function openOverlay(){
+            $modal_overlay.addClass('open');
+        }
+
+        function closeOverlay(){
+            $modal_overlay.removeClass('open');
+        }
+
+        function popupOpen($btn) {
+            let target_modal = $btn.data('modal');
+            let $modal;
+            if (target_modal) {
+                $modal = $('#'+target_modal+':first');
+            }
+            if ($modal && !$modal.hasClass('open')) {
+                $modal.attr('data-bind', $btn.data('bind'));
+                positionPopup($modal);
+                $modal.addClass('open');
+                openOverlay();
+            }
+        }
+
+        function popupClose() {
+            let $modals = $('.js-modal');
+            $modals.each(function(){
+                let $modal = $(this);
+                if ($modal.hasClass('open')) {
+                    $modal.removeClass('open');
+                    $modal.removeAttr('style');
+                    $modal.removeAttr('data-bind');
+                    closeOverlay();
+                }
+            });
+        }
+
+        function positionPopup($modal) {
+            let position = {top: 0, left: 0, position: 'absolute'};
+            let bind_id = $modal.data('bind');
+            let $btn;
+            if(bind_id){
+                $btn = $('.js-modal-open[data-bind="'+bind_id+'"]:first');
+            }
+
+            if ($btn && $btn.data('position') === 'btn') {
+                position = getBtnPosition($modal, $btn);
+            } else {
+                position = getCenterPosition($modal);
+            }
+
+            $modal.attr('style', 'top:' + position.top + 'px;left:' + position.left + 'px;position:' + position.position);
+        }
+
+        function getCenterPosition($modal){
+            let modal_width = $modal.outerWidth(true);
+            let modal_height = $modal.outerHeight(true);
+            let position_top = (window.innerHeight - modal_height) / 2;
+            let position_left = (window.innerWidth - modal_width) / 2;
+            position_top = position_top > 0 ? position_top : 0;
+            position_left = position_left > 0 ? position_left : 0;
+
+            return {top: position_top, left: position_left, position: 'fixed'};
+        }
+
+        function getBtnPosition($modal, $btn){
+            let offset_top = 30;
+            let offset_left = 20;
+            let min_right = 20;
+
+            let window_width = window.innerWidth;
+            let modal_width = $modal.outerWidth(true);
+            let top_position = $btn.offset().top + $btn.outerHeight(true) + offset_top;
+            let btn_position = $btn.offset().left + $btn.outerWidth(true) + offset_left;
+
+            let offset_right = 0;
+            if ( (window_width - btn_position) < (offset_left + min_right)) {
+                offset_right = (offset_left + min_right) - (window_width - btn_position);
+                offset_right = offset_right <= min_right ? offset_right : min_right
+            }
+            let left_position = btn_position - modal_width - offset_right;
+
+            return {top: top_position, left: left_position, position: 'absolute'};
+        }
+
+        return {
+            init: function () {
+                let $popup_open_buttons = $('.js-modal-open');
+
+                $(window).resize(function () {
+                    let $open_modals = $('.js-modal.open');
+                    $open_modals.each(function(){
+                        let $modal = $(this);
+                        let bind_id = $modal.data('bind');
+                        let $btn;
+                        if(bind_id){
+                            $btn = $('.js-modal-open[data-bind="'+bind_id+'"]:first');
+                            positionPopup($modal, $btn);
+                        }
+                    });
+                });
+
+                // event open popup
+                $popup_open_buttons.each(function(idx){
+                    let $btn = $(this);
+                    $btn.attr('data-bind', 'modal_'+idx);
+                    $btn.on('click', function (e) {
+                        popupOpen($btn);
+                        e.preventDefault();
+                    });
+                });
+
+                // events close popup
+                $(document).keydown(function (e) {
+                    // ESCAPE key pressed
+                    if (e.keyCode === 27) {
+                        popupClose();
+                    }
+                    e.stopPropagation();
+                });
+                $modal_overlay.on('click', function (e) {
+                    popupClose();
+                    e.preventDefault();
+                });
+            }
+        };
+    })();
+    Popup.init();
+    /** End Popup **/
 
 	$('.js-slide-box').each(function () {
 		let slideBox = $(this);

@@ -47,6 +47,7 @@ Route::get('/clear-cache', function () {
 // User Auth Routes...
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::post('/ajax-login', 'Auth\LoginController@ajaxUserLogin')->name('ajax.login');
 Route::post('/auth-form', 'Auth\LoginController@getLoginForm')->name('login.form');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 // User Registration Routes...

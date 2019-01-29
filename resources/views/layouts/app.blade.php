@@ -51,9 +51,10 @@
         @yield('content')
         <span class="auth-icon js-auth-main">@svg('sign_in', 'auth-icon__sign-in')</span>
     </div>
-
-    <div class="auth-modal js-modal-auth" data-logged-in="{{user_logged_in()}}"></div>
+    {{--popups --}}
+    <div id="modal-auth" class="modal js-modal"></div>
     <div class="modal-overlay js-modal-overlay">&nbsp;</div>
+    {{--end popups --}}
     <script src="{{ mix('/js/app.js') }}" type="text/javascript"></script>
     <script src="/jivosite/jivosite.js" type="text/javascript"></script>
 

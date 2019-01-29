@@ -18,23 +18,7 @@
     transform: translate(-50%, -50%);
   }
 }
-
 .auth-modal {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width:314px;
-  border-radius: 20px;
-  background-color: #fafafa;
-  box-shadow: 0 4px 12px rgba(0,0,0, 0.12);
-  z-index:10001;
-  padding: 4px;
-
-  &.open {
-    display: block;
-  }
-
   &__tabs {
     text-align: center;
     padding-top: 24px;
@@ -51,54 +35,6 @@
     &.active {
       color: $linkInfo;
     }
-  }
-}
-.modal-overlay {
-  display: none;
-  position:fixed;
-  width:100%;
-  height:100%;
-  background-color: rgba(23, 35, 65, 0.4);
-  top: 0;
-  left: 0;
-  z-index:10000;
-
-  &.open {
-    display: block;
-  }
-}
-
-.auth-form {
-  border-radius: 18px;
-  background-color: #ffffff;
-  padding: 16px;
-  text-align: center;
-  margin-bottom: 28px;
-  @include font(14px, $Geometria, $text, 20px, 400);
-
-  & .form-group {
-    margin-bottom: 16px;
-  }
-
-  & .form-control {
-    width: 100%;
-    border: 1px solid transparent;
-    border-radius: 18px;
-    background-color: #fafafa;
-    padding: 8px 16px 6px;
-    @include font(14px, $Geometria, $text, 20px, 400);
-  }
-
-  & button {
-    margin-top: 7px;
-  }
-
-  &__links {
-    padding-top: 9px;
-  }
-
-  &__forgot-password {
-    @include font(12px, $Geometria, $textGray, 15px, 400);
   }
 }
 

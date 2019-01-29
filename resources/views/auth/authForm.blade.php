@@ -4,17 +4,19 @@
 </div>
 <div class="auth-modal__content">
     <div class="js-auth-sign-in">
-        <div class="auth-form">
-            <form>
+        <div class="modal-form">
+            <form class="js-auth-login" action="{{ route('ajax.login') }}" method="post" data-type="json">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" name="email" class="form-control" placeholder="Email" autofocus>
+                    <span class="invalid-feedback js-email-error"></span>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <span class="invalid-feedback js-password-error"></span>
                 </div>
                 <button type="submit" class="button button_blue">Log In</button>
-                <div class="auth-form__links">
-                    <a class="auth-form__forgot-password" href="#">Forgot password</a>
+                <div class="modal-form__links">
+                    <a class="modal-form__forgot-password" href="#">Forgot password</a>
                 </div>
             </form>
         </div>
@@ -38,7 +40,7 @@
         </div>
     </div>
     <div class="js-auth-sign-up hidden">
-        <div class="auth-form">
+        <div class="modal-form">
             <form>
                 <div class="form-group">
                     <input type="text" class="form-control" name="name" required placeholder="Name">
@@ -53,8 +55,8 @@
                     <input type="password" class="form-control" name="password_confirmation" required placeholder="Password confirmation">
                 </div>
                 <button type="submit" class="button button_blue">Sign up</button>
-                <div class="auth-form__links">
-                    <a class="auth-form__forgot-password" href="#">Forgot password</a>
+                <div class="modal-form__links">
+                    <a class="modal-form__forgot-password" href="#">Forgot password</a>
                 </div>
             </form>
         </div>
