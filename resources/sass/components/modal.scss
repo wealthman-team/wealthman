@@ -83,3 +83,34 @@
     }
   }
 }
+.modal-page{
+  position: relative;
+}
+.modal-inline {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .alert-success {
+    color: #30bf90;
+    margin-bottom: 20px;
+  }
+  .modal {
+    display: block;
+    position: relative;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    right: auto;
+
+    &-form {
+      margin-bottom: 0;
+    }
+  }
+}

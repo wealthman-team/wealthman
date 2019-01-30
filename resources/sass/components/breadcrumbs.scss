@@ -40,4 +40,16 @@
     display: inline-block;
     vertical-align: middle;
   }
+
+  &.dark-theme &{
+    &__item {
+      color: $text;
+    }
+    &__link {
+      color: $text;
+      &:hover {
+        color: $linkInfo;
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 <div class="auth-modal__tabs">
-    <a class="auth-modal__tabs-link active js-tab-sign-in" href="#">Sign In</a>
-    <a class="auth-modal__tabs-link js-tab-sign-up" href="#">Sign Up</a>
+    <a class="auth-modal__tabs-link active js-tab-sign-in" href="{{route('login')}}">Sign In</a>
+    <a class="auth-modal__tabs-link js-tab-sign-up" href="{{route('register')}}">Sign Up</a>
 </div>
 <div class="auth-modal__content">
     <div class="js-auth-sign-in">
@@ -16,28 +16,28 @@
                 </div>
                 <button type="submit" class="button button_blue">Log In</button>
                 <div class="modal-form__links">
-                    <a class="modal-form__forgot-password" href="#">Forgot password</a>
+                    <a class="modal-form__forgot-password" href="{{route('password.forgot')}}">Forgot password</a>
                 </div>
             </form>
         </div>
-        <div class="auth-social">
-            <div class="auth-social__title">Or Log In with social</div>
-            <div class="auth-social__links">
-                <a class="auth-social__link" href="#">
-                    @svg('facebook', 'auth-social__facebook')
-                </a>
-                <a class="auth-social__link" href="#">
-                    @svg('linkedin', 'auth-social__linkedin')
-                </a>
-                <a class="auth-social__link" href="#">
-                    @svg('googleplus', 'auth-social__googleplus')
-                </a>
-                <a class="auth-social__link" href="#">
-                    @svg('twitter', 'auth-social__twitter')
-                </a>
-            </div>
-            <div class="auth-social__text">Supported browsers</div>
-        </div>
+        {{--<div class="auth-social">--}}
+            {{--<div class="auth-social__title">Or Log In with social</div>--}}
+            {{--<div class="auth-social__links">--}}
+                {{--<a class="auth-social__link" href="#">--}}
+                    {{--@svg('facebook', 'auth-social__facebook')--}}
+                {{--</a>--}}
+                {{--<a class="auth-social__link" href="#">--}}
+                    {{--@svg('linkedin', 'auth-social__linkedin')--}}
+                {{--</a>--}}
+                {{--<a class="auth-social__link" href="#">--}}
+                    {{--@svg('googleplus', 'auth-social__googleplus')--}}
+                {{--</a>--}}
+                {{--<a class="auth-social__link" href="#">--}}
+                    {{--@svg('twitter', 'auth-social__twitter')--}}
+                {{--</a>--}}
+            {{--</div>--}}
+            {{--<div class="auth-social__text">Supported browsers</div>--}}
+        {{--</div>--}}
     </div>
     <div class="js-auth-sign-up hidden">
         <div class="modal-form">
