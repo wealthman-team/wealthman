@@ -31,7 +31,7 @@
                     <a class="button button_blue start-search js-jivo-button" href="#">Free Support</a>
                     <div class="auth-icon-wrapper js-auth-icon-wrapper">
                         @if(!user_logged_in())
-                            <span class="auth-icon js-modal-open" data-modal="modal-auth" data-position="btn">@svg('sign_in', 'auth-icon__sign-in')</span>
+                            <span class="auth-icon js-modal-open js-modal-auth" data-modal="modal-auth" data-position="btn" data-href="{{route('login')}}">@svg('sign_in', 'auth-icon__sign-in')</span>
                         @else
                             <span class="auth-icon auth-user-icon js-user-menu-open">{{user_short_name()}}</span>
                             <div class="user-menu js-user-menu">

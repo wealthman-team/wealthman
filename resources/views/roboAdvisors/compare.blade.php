@@ -6,6 +6,7 @@
     <div class="content">
         <div class="compare">
             @include('components/breadcrumbs', [
+                'theme' => 'dark-theme',
                 'breadcrumbs' => [[
                     'name' => 'Home',
                     'link' => route('home'),

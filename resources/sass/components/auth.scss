@@ -39,7 +39,7 @@
   }
 }
 .auth-user-icon {
-  @include font(14px, $Geometria, $blue, 38px, 700);
+  @include font(14px, $Geometria, $blue, 40px, 700);
   text-transform: uppercase;
   text-align: center;
   &::selection {

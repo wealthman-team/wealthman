@@ -1,5 +1,5 @@
 .header {
-  height: 78px;
+  height: $headerHeight;
   &__container{
     background: $white;
     z-index: 1000;
@@ -26,7 +26,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 78px;
+    height: $headerHeight;
   }
 
   &__logo-container {
@@ -35,7 +35,7 @@
 
     .icon-logo {
       display: block;
-      height: 78px;
+      height: $headerHeight;
       font-size: 17px;
       color: $linkInfo;
     }

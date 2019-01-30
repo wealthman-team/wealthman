@@ -49,7 +49,6 @@
 
     <div id="app">
         @yield('content')
-        <span class="auth-icon js-auth-main">@svg('sign_in', 'auth-icon__sign-in')</span>
     </div>
     {{--popups --}}
     <div id="modal-auth" class="modal js-modal"></div>

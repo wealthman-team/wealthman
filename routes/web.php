@@ -58,10 +58,10 @@ Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('r
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 Route::post('/ajax-register', 'Auth\RegisterController@ajaxUserRegister')->name('ajax.register');
 // User Password Reset Routes...
-Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.forgot');
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');;
 // Admin Auth Routes...
 Route::get('/admin/login', 'Auth\AdminLoginController@showAdminLoginForm')->name('admin.login');
 Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login');

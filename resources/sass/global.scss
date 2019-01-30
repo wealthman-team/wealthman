@@ -129,7 +129,8 @@
 }
 
 .content {
-  min-height: 50vh;
+  min-height: calc(100vh - #{$headerHeight + $footerHeight});
+
   &__pd-bot:after {
     content: '';
     height: 0;

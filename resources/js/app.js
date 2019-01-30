@@ -274,6 +274,7 @@ $(function () {
                     contentType: false,
                     success: function(result){
                         $('#modal-auth').html(result);
+                        $('.js-modal-auth').removeAttr('data-href');
                         initAuthMethods();
                     },
                     error: function (r) {
@@ -302,6 +303,10 @@ $(function () {
 
         function popupOpen($btn) {
             let target_modal = $btn.data('modal');
+            let _href = $btn.data('href');
+            if (_href) {
+                return window.location = _href;
+            }
             let $modal;
             if (target_modal) {
                 $modal = $('#'+target_modal+':first');
@@ -554,15 +559,14 @@ $(function () {
      *  COMPARE  *
      ************/
 	$('.js-add-to-compare').on('submit', function (e) {
+        e.preventDefault();
 		let form = $(this);
-
 		if (form.hasClass('in-progress')) {
-			return;
+            return false;
 		}
-
 		toggleCompare(form, updateCompareLink);
 
-		e.preventDefault();
+        return false;
 	});
 
 	function toggleCompare(form, cb) {
@@ -602,6 +606,7 @@ $(function () {
 			list.hide();
 		}
 	}
+
     $('.js-compare-list').each(function () {
         let compareList = $(this);
         let clGroups = $('.js-compare-list-group', compareList);
