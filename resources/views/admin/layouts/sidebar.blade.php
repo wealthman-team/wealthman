@@ -43,6 +43,12 @@
                     </li>
                 </ul>
             </li>
+            <li class="{{ setCatActive('users') }}">
+                <a href="{{ route('admin.users.index') }}">
+                    <i class="fa fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
             <li>
                 <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <i class="fa fa-sign-out"></i>

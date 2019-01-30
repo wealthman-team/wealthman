@@ -68,12 +68,12 @@ Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.logi
 Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
 
-
 /*
  * Admin routes
  */
 Route::namespace('Admin')->group(function () {
     Route::get('/admin/', 'AdminController@index')->name('admin.index')->middleware('auth:admin', 'revalidate');
+    Route::get('/users', 'UserController@index')->name('admin.users.index')->middleware('auth:admin', 'revalidate');
 
     Route::prefix('admin')->group(function () {
         Route::resource('robo-advisors', 'RoboAdvisorController', ['names' => [
