@@ -116,5 +116,19 @@ Route::namespace('Admin')->group(function () {
             'usage-types' => 'usageType'
         ])->middleware(['auth:admin', 'revalidate']);
     });
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('reviews', 'ReviewsController', ['names' => [
+            'index' => 'admin.reviews.index',
+//            'create' => 'admin.usageTypes.create',
+//            'store' => 'admin.usageTypes.store',
+//            'show' => 'admin.usageTypes.show',
+//            'edit' => 'admin.usageTypes.edit',
+//            'update' => 'admin.usageTypes.update',
+//            'destroy' => 'admin.usageTypes.destroy',
+        ]])->parameters([
+            'reviews' => 'review'
+        ])->middleware(['auth:admin', 'revalidate']);
+    });
 });
 

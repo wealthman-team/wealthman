@@ -17,6 +17,8 @@
                                     'admin/account-types/*',
                                     'admin/usage-types',
                                     'admin/usage-types/*',
+                                    'admin/reviews',
+                                    'admin/reviews/*',
                                     ]) ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-get-pocket"></i> <span>Advisor screener</span>
@@ -39,6 +41,12 @@
                         <a href="{{ route('admin.usageTypes.index') }}">
                             <i class="fa fa-bookmark-o"></i>
                             <span>Usage types</span>
+                        </a>
+                    </li>
+                    <li class="{{ setCatActive('admin/reviews') }} {{ setCatActive('admin/reviews/*') }}">
+                        <a href="{{ route('admin.reviews.index') }}">
+                            <i class="fa fa-star-half-o"></i>
+                            <span>Reviews</span>
                         </a>
                     </li>
                 </ul>
