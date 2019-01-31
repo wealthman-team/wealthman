@@ -62,4 +62,9 @@ class Rating extends Model
     {
         return $this->belongsTo('App\RoboAdvisor');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

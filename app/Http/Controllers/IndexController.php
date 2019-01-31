@@ -40,6 +40,13 @@ class IndexController extends Controller
             ->leftjoin('ratings', 'ratings.robo_advisor_id', '=', 'robo_advisors.id')
             ->sorting($sorting->setDefault('ratings.total'))
             ->get();
+//        $R = 5;
+//        $U = 3;
+//        $N = 1;
+//
+//        $S = $R*1 + $U*0.5 + $N*1;
+
+//        dd($N / $S * 100);
 
         return view('index', [
             'roboAdvisors' => $roboAdvisors
