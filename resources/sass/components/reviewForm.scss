@@ -1,0 +1,88 @@
+.review-form {
+  padding: 16px;
+  h3 {
+    padding-top: 8px;
+    margin-bottom: 31px;
+  }
+  &__action {
+    margin-bottom: 28px;
+    .button {
+      font-size: 14px;
+      line-height: 17px;
+      margin-right: 13px;
+    }
+    .button_positive {
+      width: 210px;
+    }
+    .button_unsure {
+      min-width: 138px;
+    }
+    .button_negative {
+      width: 246px;
+      margin-right: 0;
+    }
+  }
+
+  &__item {
+
+  }
+
+  &__info {
+    @include font(13px, $Geometria, $textGray, 20px, 700);
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    @include font(16px, $Geometria, $text, 20px, 700);
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    @include font(12px, $Geometria, $text, 20px, 400);
+    margin-bottom: 14px;
+  }
+
+  &__comment {
+    @include font(14px, $Geometria, $text, 20px, 400);
+    background-color: #fafafa;
+    border-radius: 18px;
+    border: 1px solid #e9eaec;
+    width: 100%;
+    height: 155px;
+    padding: 13px 15px;
+    resize: none;
+    margin-bottom: 16px;
+
+    &::-webkit-input-placeholder {
+      color: $textGray;
+    }
+    &:-ms-input-placeholder {
+      color: $textGray;
+    }
+    &::-moz-placeholder {
+      color: $textGray;
+      opacity: 1;
+    }
+    &:-moz-placeholder {
+      color: $textGray;
+      opacity: 1;
+    }
+  }
+
+  &__send-button {
+    width: 190px;
+    font-size: 14px;
+    margin-right: 12px;
+    margin-bottom: 10px;
+  }
+
+  &__cancel-button {
+    font-size: 14px;
+    min-width: 138px;
+    margin-bottom: 10px;
+  }
+
+  &__message {
+
+  }
+}

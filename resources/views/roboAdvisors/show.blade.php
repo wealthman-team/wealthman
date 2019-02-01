@@ -926,23 +926,51 @@
                             </div>
                         @endif
 
+                        <div id="reviews_section" class="robo-advisor__section">
+                            <h2 class="h2">
+                                REVIEWS
+                            </h2>
+                            <div class="panel panel_padding">
+                                <div class="reach-text">
+                                    <div class="panel panel_white">
+                                        <div class="review-form">
+                                            <h3>Would you recommend Wealthfront to your friends?</h3>
+                                            <div class="review-form__action">
+                                                @foreach($reviewTypes as $reviewType)
+                                                    <div class="button button_{{$reviewType->code}} js-review-btn{{old('review_type') && old('review_type') === $reviewType->id ? ' active' : ''}}" data-review-type="{{$reviewType->id}}">{{$reviewType->name}}</div>
+                                                @endforeach
+                                            </div>
+                                            <div class="review-form__item js-review-form-item">
+                                                <div class="review-form__info">BEFORE WE PUBLISH YOUR VOTE:</div>
+                                                <h4 class="review-form__title">Please explain your vote by sharing your experience.</h4>
+                                                <div class="review-form__text">Writing a review increases the credibility of your vote and helps your fellow users make<br> a better-informed decision.</div>
+                                                <form action="{{route('reviews.store')}}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" class="js-review-type" name="review_type" value="{{ old('review_type') }}">
+                                                    <input type="hidden" name="robo_advisor" value="{{$roboAdvisor->id}}">
+                                                    @if (session('reviews_status'))
+                                                        <div class="review-form__message">
+                                                            {{ session('reviews_status') }}
+                                                        </div>
+                                                    @endif
+                                                    <textarea class="review-form__comment" name="comment" placeholder="Write about your experience here...">{{ old('comment') }}</textarea>
+                                                    <button class="button button_blue review-form__send-button js-review-send" type="submit">Post a Review</button>
+                                                    <button class="button button_white review-form__cancel-button js-review-cancel" type="button">Cancel</button>
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @if (session('reviews_status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('reviews_status') }}
                             </div>
                         @endif
-                        <form action="{{route('reviews.store')}}" method="post">
-                            @csrf
-                            @foreach($reviewTypes as $reviewType)
-                                <label>
-                                    {{$reviewType->name}}
-                                    <input type="radio" name="review_type" value="{{$reviewType->id}}">
-                                </label>
-                            @endforeach
-                            <input type="hidden" name="robo_advisor" value="{{$roboAdvisor->id}}">
-                            <textarea name="comment" id="" cols="30" rows="10" placeholder="comment">{{ old('comment') }}</textarea>
-                            <button type="submit">send</button>
-                        </form>
+
                     </div>
                 </div>
             </div>
