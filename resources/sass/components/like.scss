@@ -1,0 +1,44 @@
+.like,
+.dislike{
+  display: inline-block;
+  vertical-align: top;
+  @include font(12px, $Geometria, $textGray, 17px, 400);
+  margin-right: 13px;
+  min-width: 27px;
+
+  .like-icon,
+  .dislike-icon {
+    display: inline-block;
+    vertical-align: top;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  .like-count,
+  .dislike-count {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .like-icon {
+    margin-top: 0;
+    &:hover {
+      .like-1 {
+        fill: #787C82;
+      }
+      .like-1, .like-2 {
+        stroke: #787C82;
+      }
+    }
+  }
+  .dislike-icon {
+    margin-top: 3px;
+    &:hover {
+      .dislike-1 {
+        fill: #787C82;
+      }
+      .dislike-1, .dislike-2 {
+        stroke: #787C82;
+      }
+    }
+  }
+}

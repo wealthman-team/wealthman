@@ -959,8 +959,84 @@
                                                 </form>
                                             </div>
                                         </div>
-
-
+                                    </div>
+                                    {{-- Review list --}}
+                                    <div class="review-list review-list__pdt">
+                                        <div class="review-item">
+                                            <div class="review-item__user">
+                                                <span class="user-icon">an</span>
+                                                <span class="review-item__user-name">Anonymous</span>
+                                            </div>
+                                            <div class="review-item__header">
+                                                <span class="review-item__type review-item__type-positive">Would recommend</span>
+                                                <span class="review-item__date">2 years ago</span>
+                                            </div>
+                                            <div class="review-item__content">
+                                                <div class="review-item__comment">I've read all of these horrible reviews about TD Ameritrade, but honestly I have had nothing but positive experiences. It could be due to the fact that I have an awesome agent, but overall I am very happy.</div>
+                                                <div class="review-item__like">
+                                                    <div class="like">
+                                                        <span class="like-icon js-review-like">@svg('like')</span>
+                                                        <span class="like-count">2</span>
+                                                    </div>
+                                                    <div class="dislike">
+                                                        <span class="dislike-icon js-review-dislike">@svg('dislike')</span>
+                                                        <span class="dislike-count">2</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="review-item">
+                                            <div class="review-item__user">
+                                                <span class="user-icon">an</span>
+                                                <span class="review-item__user-name">Anonymous</span>
+                                            </div>
+                                            <div class="review-item__header">
+                                                <span class="review-item__type review-item__type-unsure">Maybe</span>
+                                                <span class="review-item__date">1 years ago</span>
+                                            </div>
+                                            <div class="review-item__content">
+                                                <div class="review-item__comment">I've read all of these horrible reviews about TD Ameritrade, but honestly I have had nothing but positive experiences. It could be due to the fact that I have an awesome agent, but overall I am very happy.</div>
+                                                <div class="review-item__like">
+                                                    <div class="like">
+                                                        <span class="like-icon js-review-like">@svg('like')</span>
+                                                        <span class="like-count">4</span>
+                                                    </div>
+                                                    <div class="dislike">
+                                                        <span class="dislike-icon js-review-dislike">@svg('dislike')</span>
+                                                        <span class="dislike-count"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="review-item">
+                                            <div class="review-item__user">
+                                                <span class="user-icon">an</span>
+                                                <span class="review-item__user-name">Anonymous</span>
+                                            </div>
+                                            <div class="review-item__header">
+                                                <span class="review-item__type review-item__type-negative">No, I don't recommend</span>
+                                                <span class="review-item__date">2 years ago</span>
+                                            </div>
+                                            <div class="review-item__content">
+                                                <div class="review-item__comment">I've read all of these horrible reviews about TD Ameritrade, but honestly I have had nothing but positive experiences. It could be due to the fact that I have an awesome agent, but overall I am very happy.</div>
+                                                <div class="review-item__like">
+                                                    <div class="like">
+                                                        <span class="like-icon js-review-like">@svg('like')</span>
+                                                        <span class="like-count">2</span>
+                                                    </div>
+                                                    <div class="dislike">
+                                                        <span class="dislike-icon js-review-dislike">@svg('dislike')</span>
+                                                        <span class="dislike-count">2</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-list-paginator">
+                                        <ul class="pagination" role="navigation">
+                                            <li class="page-item active"><span class="page-link">1</span></li>
+                                            <li class="page-item"><a class="page-link" href="http://wealthman.local/robo-advisors?page=2">2</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

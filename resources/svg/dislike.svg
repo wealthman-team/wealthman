@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15.559" height="15.498" viewBox="0 0 15.559 15.498">
+  <defs>
+    <style>
+      .dislike-1 {
+        fill: #abb0ba;
+      }
+
+      .dislike-1, .dislike-2 {
+        stroke: #abb0ba;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-width: 1.5px;
+      }
+
+      .dislike-2 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_238" data-name="Group 238" transform="translate(-0.45 -0.452)">
+    <path id="Path_32" data-name="Path 32" class="dislike-1" d="M1.662,22.506h0a.461.461,0,0,1-.462-.462V13.362a.461.461,0,0,1,.462-.462h4.29v5.317A4.291,4.291,0,0,1,1.662,22.506Z" transform="translate(0 -11.699)"/>
+    <path id="Path_33" data-name="Path 33" class="dislike-2" d="M11.91,36v.5a3.71,3.71,0,0,1,2.627-1.2H18.8" transform="translate(-5.722 -34.1)"/>
+    <path id="Path_34" data-name="Path 34" class="dislike-2" d="M32.96,25.3a1.239,1.239,0,1,1,0,2.477h.9a1.239,1.239,0,0,1,0,2.477" transform="translate(-19.84 -24.1)"/>
+    <path id="Path_35" data-name="Path 35" class="dislike-2" d="M35.36,21.177a1.239,1.239,0,0,0,0-2.477" transform="translate(-21.339 -12.545)"/>
+    <path id="Path_36" data-name="Path 36" class="dislike-2" d="M10.17,12.9" transform="translate(-5.603 -2.091)"/>
+    <path id="Path_37" data-name="Path 37" class="dislike-2" d="M12.29,1.2l1.681.311a3.41,3.41,0,0,1,2.824,3.451,1.239,1.239,0,1,0,2.477,0V4.113a3.548,3.548,0,0,0-.672-2" transform="translate(-7.909 9.001)"/>
+    <path id="Path_38" data-name="Path 38" class="dislike-2" d="M35.36,14.577a1.239,1.239,0,0,0,0-2.477" transform="translate(-21.339 -3.468)"/>
+    <line id="Line_16" data-name="Line 16" class="dislike-2" x2="3.333" transform="translate(10.688 11.109)"/>
+  </g>
+</svg>

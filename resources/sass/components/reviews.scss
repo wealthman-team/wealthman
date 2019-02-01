@@ -86,3 +86,60 @@
 
   }
 }
+.review-list {
+  padding: 4px;
+  &__pdt {
+    padding-top: 23px;
+  }
+  &-paginator {
+    padding: 10px 4px;
+    a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.review-item {
+  padding: 25px 12px 25px 79px;
+  @include font(14px, $Geometria, $text, 20px, 400);
+
+  .user-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: -56px;
+    margin-right: 13px;
+  }
+  &__user {
+    margin-bottom: 14px;
+  }
+  &__user-name {
+    font-size: 18px;
+    line-height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__type {
+    font-weight: 700;
+    line-height: 17px;
+    vertical-align: middle;
+    margin-right: 12px;
+    display: inline-block;
+  }
+
+  &__date {
+    font-size: 12px;
+    line-height: 17px;
+    vertical-align: middle;
+    display: inline-block;;
+    color: $textGray;
+  }
+
+  &__header {
+    margin-bottom: 16px;
+  }
+
+  &__comment {
+    margin-bottom: 16px;
+  }
+}
