@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereTotal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\User $user
  */
 class Rating extends Model
 {

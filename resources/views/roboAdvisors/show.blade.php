@@ -925,6 +925,24 @@
                                 </div>
                             </div>
                         @endif
+
+                        @if (session('reviews_status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('reviews_status') }}
+                            </div>
+                        @endif
+                        <form action="{{route('reviews.store')}}" method="post">
+                            @csrf
+                            @foreach($reviewTypes as $reviewType)
+                                <label>
+                                    {{$reviewType->name}}
+                                    <input type="radio" name="review_type" value="{{$reviewType->id}}">
+                                </label>
+                            @endforeach
+                            <input type="hidden" name="robo_advisor" value="{{$roboAdvisor->id}}">
+                            <textarea name="comment" id="" cols="30" rows="10" placeholder="comment">{{ old('comment') }}</textarea>
+                            <button type="submit">send</button>
+                        </form>
                     </div>
                 </div>
             </div>

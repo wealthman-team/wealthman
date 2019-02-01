@@ -22,8 +22,8 @@ class CreateReviewTable extends Migration
             $table->integer('user_id')->unsigned();
 
             $table->foreign('review_type_id')->references('id')->on('review_types');
-            $table->foreign('robo_advisor_id')->references('id')->on('robo_advisors');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('robo_advisor_id')->references('id')->on('robo_advisors')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

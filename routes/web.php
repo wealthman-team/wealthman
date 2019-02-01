@@ -20,14 +20,14 @@ Route::get('/', 'IndexController@index')->name('home');
 Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
 Route::get('/robo-advisors/{slug}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
 Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsCompare');
+// group post
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
 Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');
-
+Route::post('/reviews/store', 'ReviewsController@store')->name('reviews.store')->middleware(['auth:web', 'revalidate']);
 /*
  * Service routes
  */
-
 Route::get('/redirect', 'RedirectController@index')->name('redirect');
 Route::post('/refresh-csrf', function (){
     return csrf_token();
@@ -120,12 +120,12 @@ Route::namespace('Admin')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::resource('reviews', 'ReviewsController', ['names' => [
             'index' => 'admin.reviews.index',
-//            'create' => 'admin.usageTypes.create',
-//            'store' => 'admin.usageTypes.store',
-//            'show' => 'admin.usageTypes.show',
-//            'edit' => 'admin.usageTypes.edit',
-//            'update' => 'admin.usageTypes.update',
-//            'destroy' => 'admin.usageTypes.destroy',
+            'create' => 'admin.reviews.create',
+            'store' => 'admin.reviews.store',
+            'show' => 'admin.reviews.show',
+            'edit' => 'admin.reviews.edit',
+            'update' => 'admin.reviews.update',
+            'destroy' => 'admin.reviews.destroy',
         ]])->parameters([
             'reviews' => 'review'
         ])->middleware(['auth:admin', 'revalidate']);
