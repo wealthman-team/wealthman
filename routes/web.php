@@ -24,7 +24,7 @@ Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsComp
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
 Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');
-Route::post('/reviews/store', 'ReviewsController@store')->name('reviews.store')->middleware(['auth:web', 'revalidate']);
+Route::post('/reviews/create', 'ReviewsController@create')->name('reviews.create')->middleware(['auth:web', 'revalidate']);
 /*
  * Service routes
  */

@@ -5,7 +5,8 @@
     margin-bottom: 31px;
   }
   &__action {
-    margin-bottom: 28px;
+    margin-bottom: 10px;
+
     .button {
       font-size: 14px;
       line-height: 17px;
@@ -24,7 +25,11 @@
   }
 
   &__item {
-
+    display: none;
+    padding-top: 18px;
+    &.open{
+      display: block;
+    }
   }
 
   &__info {
@@ -67,6 +72,14 @@
       color: $textGray;
       opacity: 1;
     }
+
+    &.is-invalid {
+      border-color: $error;
+      &:focus {
+        border-color: $error;
+        box-shadow: 0 0 0 .2rem rgba(220,53,69,.25);
+      }
+    }
   }
 
   &__send-button {
@@ -83,7 +96,17 @@
   }
 
   &__message {
-
+    span {
+      display: inline-block;
+      padding: 10px;
+      &.error {
+        color: $error;
+      }
+      &.success {
+        color: $success;
+        padding-left: 0;
+      }
+    }
   }
 }
 .review-list {

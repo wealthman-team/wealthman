@@ -808,4 +808,64 @@ $(function () {
             return false;
         }
     });
+
+    /* Review */
+    $('.js-review-btn').on('click', function (e) {
+        e.preventDefault();
+        let $btn = $(this);
+        $('.js-review-btn').removeClass('active');
+        let review_type = $btn.data('reviewType');
+        $(this).addClass('active');
+        let $review_form = $('.js-review-form-item:first');
+        $review_form.slideDown(200, function () {
+            $(this).addClass('open');
+            $('.js-review-type:first').val(review_type);
+        });
+    });
+
+    $('.js-review-cancel').on('click', function (e) {
+        e.preventDefault();
+        $('.js-review-btn').removeClass('active');
+        let $review_form = $('.js-review-form-item:first');
+        $review_form.slideUp(200, function () {
+            $(this).removeClass('open');
+            $('.js-review-comment:first').val('');
+            $('.js-review-type:first').val('');
+        });
+    });
+
+    $('.js-review-send').on('click', function (e) {
+        e.preventDefault();
+        let $form = $('.js-review');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: $form.attr('method'),
+            url: $form.attr('action'),
+            data: $form.serializeArray(),
+            dataType: $form.data('type'),
+            beforeSend : function () {
+                //clear errors
+                $('textarea[name="comment"]', $form).removeClass('is-invalid');
+                $('.js-review-message', $form).html('');
+            },
+            success: function (response) {
+                if (response.success) {
+                    $('.js-review-message', $form).html('<span class="success">'+response.success+'</span>');
+                    $(this).html('');
+                }
+                if (response.error) {
+                    $('.js-review-message', $form).html('<span class="error">'+response.error+'</span>');
+                    $('textarea[name="comment"]', $form).addClass('is-invalid');
+                }
+            },
+            error: function () {
+                console.log('Error: create review');
+                $('.js-review-message', $form).html('<span class="error">An error occurred while adding review</span>');
+            }
+        });
+    })
 });

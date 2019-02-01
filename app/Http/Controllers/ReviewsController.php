@@ -9,6 +9,7 @@ use App\User;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Validator;
 
 class ReviewsController extends Controller
 {
@@ -20,49 +21,47 @@ class ReviewsController extends Controller
         'errorDelete' => 'Delete error reviews',
     );
 
-    public function __construct()
-    {
-        $this->middleware('guest:web')->except('store');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        $request->validate(Review::rules(), Review::messages(), Review::attributes());
+        $validation = Validator::make(['comment' => $request->comment], ['comment' => 'required|string'], Review::messages(), Review::attributes());
+        $error = $validation->messages()->first();
+        if ($validation->passes()) {
 
+            if (!Auth::user()) {
+                return response()->json(['error' => 'User not authorized'], 200);
+            }
 
-        $review = new Review;
-        $review->comment = $request->comment;
+            $user = User::whereId(Auth::user()->id)->firstOrFail();
 
-        $roboAdvisor = RoboAdvisor::whereId($request->robo_advisor)->firstOrFail();
-        $review->roboAdvisor()->associate($roboAdvisor);
+            $review = new Review;
+            $review->comment = $request->comment;
 
-        $user = User::whereId(Auth::user()->id)->firstOrFail();
-        $review->user()->associate($user);
+            $roboAdvisor = RoboAdvisor::whereId($request->robo_advisor)->firstOrFail();
+            $reviewType = ReviewType::whereId($request->review_type)->firstOrFail();
 
-        $reviewType = ReviewType::whereId($request->review_type)->firstOrFail();
-        $review->reviewType()->associate($reviewType);
+            $review->roboAdvisor()->associate($roboAdvisor);
+            $review->reviewType()->associate($reviewType);
+            $review->user()->associate($user);
 
-        //checked review
-        $todayReview = Review::whereDate('created_at', '>', Carbon::now()->subDays(1))
-            ->where('robo_advisor_id', $roboAdvisor->id)
-            ->where('user_id', $user->id)->get();
+            //checked review
+            $todayReview = Review::where('robo_advisor_id', $roboAdvisor->id)
+                ->where('user_id', $user->id)->get();
 
-        if (count($todayReview) > 0) {
-            return redirect()
-                ->route('roboAdvisorsShow', $roboAdvisor->slug)
-                ->with('reviews_status', 'Today you have already left a review');
+            if (count($todayReview) > 0) {
+                return response()->json(['error' => 'You cannot add more than one review.'], 200);
+            }
+
+            $review->save();
+
+            return response()->json(['success' => 'Thank you your review was successfully added and is awaiting moderation.'], 200);
         }
 
-        $review->save();
-
-        return redirect()
-            ->route('roboAdvisorsShow', $roboAdvisor->slug)
-            ->with('reviews_status', $this->messages['successAdd']);
+        return response()->json(['error' => $error], 200);
     }
 }

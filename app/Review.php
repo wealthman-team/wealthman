@@ -52,9 +52,7 @@ class Review extends Model
     public static function rules()
     {
         return [
-            'comment'   => 'required|string|max:255',
-            'review_type' => 'required|exists:review_types,id',
-            'robo_advisor' => 'required|exists:robo_advisors,id',
+            'comment' => 'required|string',
         ];
     }
 
@@ -69,14 +67,13 @@ class Review extends Model
             'required' => 'Field :attribute is required',
             'string' => 'Field :attribute must to be string',
             'max' => 'Max length field :attribute must to be low 255 symbols',
-            'exists' => 'Field not exists in database',
         ];
     }
 
     public static function attributes()
     {
         return [
-            'comment' => 'Comment',
+            'comment' => 'comment',
             'review_type' => 'Review type',
             'robo_advisor' => 'Robo advisor',
         ];
