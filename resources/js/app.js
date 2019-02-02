@@ -312,7 +312,7 @@ $(function () {
                 $modal = $('#'+target_modal+':first');
             }
             if ($modal && !$modal.hasClass('open')) {
-                $modal.attr('data-bind', $btn.data('bind'));
+                $modal.attr('data-bind', $btn.attr('data-bind'));
                 positionPopup($modal);
                 $modal.addClass('open');
                 openOverlay();
@@ -334,12 +334,11 @@ $(function () {
 
         function positionPopup($modal) {
             let position = {top: 0, left: 0, position: 'absolute'};
-            let bind_id = $modal.data('bind');
+            let bind_id = $modal.attr('data-bind');
             let $btn;
             if(bind_id){
                 $btn = $('.js-modal-open[data-bind="'+bind_id+'"]:first');
             }
-
             if ($btn && $btn.data('position') === 'btn') {
                 position = getBtnPosition($modal, $btn);
             } else {
@@ -809,63 +808,71 @@ $(function () {
         }
     });
 
-    /* Review */
-    $('.js-review-btn').on('click', function (e) {
-        e.preventDefault();
-        let $btn = $(this);
-        $('.js-review-btn').removeClass('active');
-        let review_type = $btn.data('reviewType');
-        $(this).addClass('active');
-        let $review_form = $('.js-review-form-item:first');
-        $review_form.slideDown(200, function () {
-            $(this).addClass('open');
-            $('.js-review-type:first').val(review_type);
-        });
-    });
+    /* Review Form */
+    (function() {
+        let $review_btn_type = $('.js-review-btn-type');
+        let $review_form_container = $('.js-review-form-container:first');
+        let $message_container = $('.js-review-message', $review_form_container);
+        let $message_wrapper = $('.js-review-form-wrapper', $review_form_container);
+        let $review_form = $('form[name="review_form"]', $review_form_container);
+        let $input_review_type = $('input[name="review_type"]:first', $review_form_container);
+        let $textarea_comment = $('textarea[name="comment"]:first', $review_form_container);
 
-    $('.js-review-cancel').on('click', function (e) {
-        e.preventDefault();
-        $('.js-review-btn').removeClass('active');
-        let $review_form = $('.js-review-form-item:first');
-        $review_form.slideUp(200, function () {
-            $(this).removeClass('open');
-            $('.js-review-comment:first').val('');
-            $('.js-review-type:first').val('');
-        });
-    });
+        $review_btn_type.on('click', function (e) {
+            e.preventDefault();
+            $review_btn_type.removeClass('active');
+            $(this).addClass('active');
 
-    $('.js-review-send').on('click', function (e) {
-        e.preventDefault();
-        let $form = $('.js-review');
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+            let review_type = $(this).data('reviewType');
+            $review_form_container.slideDown(200, function () {
+                $review_form_container.addClass('open');
+                $input_review_type.val(review_type);
+            });
         });
-        $.ajax({
-            type: $form.attr('method'),
-            url: $form.attr('action'),
-            data: $form.serializeArray(),
-            dataType: $form.data('type'),
-            beforeSend : function () {
-                //clear errors
-                $('textarea[name="comment"]', $form).removeClass('is-invalid');
-                $('.js-review-message', $form).html('');
-            },
-            success: function (response) {
-                if (response.success) {
-                    $('.js-review-message', $form).html('<span class="success">'+response.success+'</span>');
-                    $(this).html('');
-                }
-                if (response.error) {
-                    $('.js-review-message', $form).html('<span class="error">'+response.error+'</span>');
-                    $('textarea[name="comment"]', $form).addClass('is-invalid');
-                }
-            },
-            error: function () {
-                console.log('Error: create review');
-                $('.js-review-message', $form).html('<span class="error">An error occurred while adding review</span>');
-            }
+
+        $('.js-review-cancel').on('click', function (e) {
+            e.preventDefault();
+            $review_btn_type.removeClass('active');
+            $review_form_container.slideUp(200, function () {
+                $review_form_container.removeClass('open');
+                $textarea_comment.val('');
+                $input_review_type.val('');
+            });
         });
-    })
+
+        $('.js-review-send').on('click', function (e) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: $review_form.attr('method'),
+                url: $review_form.attr('action'),
+                data: $review_form.serializeArray(),
+                dataType: $review_form.data('type'),
+                beforeSend : function () {
+                    //clear errors
+                    $textarea_comment.removeClass('is-invalid');
+                    $message_container.html('');
+                },
+                success: function (response) {
+                    if (response.success) {
+                        $message_wrapper.html('');
+                        $message_container.html('<span class="success">'+response.success+'</span>');
+                    }
+                    if (response.error) {
+                        $textarea_comment.addClass('is-invalid');
+                        $message_container.html('<span class="error">'+response.error+'</span>');
+                    }
+                },
+                error: function () {
+                    console.log('Error: create review');
+                    $message_container.html('<span class="error">An error occurred during execution; please try again later.</span>');
+                }
+            });
+        });
+    })();
+    /* End Review Form */
 });

@@ -24,7 +24,7 @@ Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsComp
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
 Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');
-Route::post('/reviews/create', 'ReviewsController@create')->name('reviews.create')->middleware(['auth:web', 'revalidate']);
+Route::post('/reviews/create', 'ReviewsController@create')->name('reviews.create');
 /*
  * Service routes
  */
@@ -62,18 +62,19 @@ Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');;
-// Admin Auth Routes...
-Route::get('/admin/login', 'Auth\AdminLoginController@showAdminLoginForm')->name('admin.login');
-Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
-Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
 
 /*
  * Admin routes
  */
 Route::namespace('Admin')->group(function () {
-    Route::get('/admin/', 'AdminController@index')->name('admin.index')->middleware('auth:admin', 'revalidate');
-    Route::get('/users', 'UserController@index')->name('admin.users.index')->middleware('auth:admin', 'revalidate');
+    Route::prefix('admin')->group(function () {
+        Route::get('/', 'AdminController@index')->name('admin.index')->middleware('auth:admin', 'revalidate');
+        Route::get('/login', 'Auth\AdminLoginController@showAdminLoginForm')->name('admin.login');
+        Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
+        Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+        Route::get('/users', 'UserController@index')->name('admin.users.index')->middleware('auth:admin', 'revalidate');
+    });
 
     Route::prefix('admin')->group(function () {
         Route::resource('robo-advisors', 'RoboAdvisorController', ['names' => [

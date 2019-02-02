@@ -192,3 +192,21 @@ function user_short_name()
     }
     return $short_name;
 }
+
+function review_btn_classes($review_type_id)
+{
+    $classes = 'js-modal-open';
+    if (Auth::user()) {
+        $classes = old('review_type') && old('review_type') === $review_type_id ? 'js-review-btn-type active' : 'js-review-btn-type';
+    }
+    return $classes;
+}
+
+function review_attr_data($review_type_id)
+{
+    $attr_data = 'data-modal=modal-auth';
+    if (Auth::user()) {
+        $attr_data = 'data-review-type='.$review_type_id;
+    }
+    return $attr_data;
+}

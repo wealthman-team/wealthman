@@ -937,23 +937,25 @@
                                             <h3>Would you recommend Wealthfront to your friends?</h3>
                                             <div class="review-form__action">
                                                 @foreach($reviewTypes as $reviewType)
-                                                    <div class="button button_{{$reviewType->code}} js-review-btn{{old('review_type') && old('review_type') === $reviewType->id ? ' active' : ''}}" data-review-type="{{$reviewType->id}}">{{$reviewType->name}}</div>
+                                                    <div class="button button_{{$reviewType->code}} {{review_btn_classes($reviewType->id)}}" {{review_attr_data($reviewType->id)}}>{{$reviewType->name}}</div>
                                                 @endforeach
                                             </div>
-                                            <div class="review-form__item js-review-form-item {{old('review_type') ? ' open': ''}}">
+                                            <div class="review-form__item js-review-form-container {{old('review_type') ? ' open': ''}}">
                                                 <div class="review-form__info">BEFORE WE PUBLISH YOUR VOTE:</div>
                                                 <h4 class="review-form__title">Please explain your vote by sharing your experience.</h4>
                                                 <div class="review-form__text">Writing a review increases the credibility of your vote and helps your fellow users make<br> a better-informed decision.</div>
-                                                <form class="js-review" action="{{route('reviews.create')}}" method="post" type="json">
-                                                    <div class="review-form__message js-review-message"></div>
-                                                    <div class="js-review-form-content">
-                                                        <input type="hidden" class="js-review-type" name="review_type" value="{{ old('review_type') }}">
-                                                        <input type="hidden" name="robo_advisor" value="{{$roboAdvisor->id}}">
-                                                        <textarea class="review-form__comment js-review-comment" name="comment" placeholder="Write about your experience here...">{{ old('comment') }}</textarea>
-                                                        <button class="button button_blue review-form__send-button js-review-send" type="button">Post a Review</button>
-                                                        <button class="button button_white review-form__cancel-button js-review-cancel" type="button">Cancel</button>
+                                                <div class="review-form__message js-review-message"></div>
+                                                @auth
+                                                    <div class="js-review-form-wrapper">
+                                                        <form name="review_form" action="{{route('reviews.create')}}" method="post" type="json">
+                                                            <input type="hidden" name="review_type" value="{{ old('review_type') }}">
+                                                            <input type="hidden" name="robo_advisor" value="{{$roboAdvisor->id}}">
+                                                            <textarea class="review-form__comment" name="comment" placeholder="Write about your experience here...">{{ old('comment') }}</textarea>
+                                                            <button class="button button_blue review-form__send-button js-review-send" type="button">Post a Review</button>
+                                                            <button class="button button_white review-form__cancel-button js-review-cancel" type="button">Cancel</button>
+                                                        </form>
                                                     </div>
-                                                </form>
+                                                @endauth
                                             </div>
                                         </div>
                                     </div>

@@ -7,7 +7,6 @@ use App\ReviewType;
 use App\RoboAdvisor;
 use App\User;
 use Auth;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -29,13 +28,13 @@ class ReviewsController extends Controller
      */
     public function create(Request $request)
     {
+        if (!Auth::user()) {
+            return response()->json(['error' => 'User not authorized.'], 200);
+        }
+
         $validation = Validator::make(['comment' => $request->comment], ['comment' => 'required|string'], Review::messages(), Review::attributes());
         $error = $validation->messages()->first();
         if ($validation->passes()) {
-
-            if (!Auth::user()) {
-                return response()->json(['error' => 'User not authorized'], 200);
-            }
 
             $user = User::whereId(Auth::user()->id)->firstOrFail();
 
