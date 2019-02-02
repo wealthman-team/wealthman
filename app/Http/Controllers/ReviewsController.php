@@ -53,7 +53,7 @@ class ReviewsController extends Controller
                 ->where('user_id', $user->id)->get();
 
             if (count($todayReview) > 0) {
-                return response()->json(['error' => 'You cannot add more than one review.'], 200);
+                return response()->json(['error' => 'Unfortunately, you can\'t have more than one review. Thank you for leaving a review.'], 200);
             }
 
             $review->save();

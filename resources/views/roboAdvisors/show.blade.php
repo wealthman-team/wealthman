@@ -944,17 +944,21 @@
                                                 <div class="review-form__info">BEFORE WE PUBLISH YOUR VOTE:</div>
                                                 <h4 class="review-form__title">Please explain your vote by sharing your experience.</h4>
                                                 <div class="review-form__text">Writing a review increases the credibility of your vote and helps your fellow users make<br> a better-informed decision.</div>
-                                                <div class="review-form__message js-review-message"></div>
                                                 @auth
-                                                    <div class="js-review-form-wrapper">
-                                                        <form name="review_form" action="{{route('reviews.create')}}" method="post" type="json">
-                                                            <input type="hidden" name="review_type" value="{{ old('review_type') }}">
-                                                            <input type="hidden" name="robo_advisor" value="{{$roboAdvisor->id}}">
-                                                            <textarea class="review-form__comment" name="comment" placeholder="Write about your experience here...">{{ old('comment') }}</textarea>
-                                                            <button class="button button_blue review-form__send-button js-review-send" type="button">Post a Review</button>
-                                                            <button class="button button_white review-form__cancel-button js-review-cancel" type="button">Cancel</button>
-                                                        </form>
-                                                    </div>
+                                                    @if($is_user_create_review)
+                                                        <div class="review-form__message js-review-message"><span class="success">Unfortunately, you can't have more than one review. Thank you for leaving a review.</span></div>
+                                                    @else
+                                                        <div class="review-form__message js-review-message"></div>
+                                                        <div class="js-review-form-wrapper">
+                                                            <form name="review_form" action="{{route('reviews.create')}}" method="post" type="json">
+                                                                <input type="hidden" name="review_type" value="{{ old('review_type') }}">
+                                                                <input type="hidden" name="robo_advisor" value="{{$roboAdvisor->id}}">
+                                                                <textarea class="review-form__comment" name="comment" placeholder="Write about your experience here...">{{ old('comment') }}</textarea>
+                                                                <button class="button button_blue review-form__send-button js-review-send" type="button">Post a Review</button>
+                                                                <button class="button button_white review-form__cancel-button js-review-cancel" type="button">Cancel</button>
+                                                            </form>
+                                                        </div>
+                                                    @endif
                                                 @endauth
                                             </div>
                                         </div>
