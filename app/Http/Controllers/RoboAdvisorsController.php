@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Review;
+use App\ReviewType;
 use App\RoboAdvisor;
 use App\AccountType;
 use App\Services\DiffRoboAdvisor;
@@ -9,6 +11,7 @@ use App\Services\Filters\RoboAdvisorsFilter;
 use App\Services\Filters\RoboAdvisorsFilterOption;
 use App\Services\Filters\RoboAdvisorsSorting;
 use App\Sources\Page;
+use Auth;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -60,14 +63,32 @@ class RoboAdvisorsController extends Controller
         Page::setDescription($roboAdvisor->name . '. ' . $roboAdvisor->short_description);
 
         $accountTypes = AccountType::all();
+        $reviewTypes = ReviewType::all();
+        $reviews = Review::where('robo_advisor_id', $roboAdvisor->id)
+            ->where('is_active', true)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
+
         $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();
         // популярные Robo Advisors
         $popularRoboAdvisors = RoboAdvisor::popular(3)->exclude($roboAdvisor->id)->get();
+
+        $is_user_create_review = false;
+        if (Auth::user()) {
+            $reviewByUserCount = Review::where('robo_advisor_id', $roboAdvisor->id)
+                ->where('user_id', Auth::user()->id)->get()->count();
+            if ($reviewByUserCount > 0) {
+                $is_user_create_review = true;
+            }
+        }
 
         return view('roboAdvisors/show', [
             'roboAdvisor' => $roboAdvisor,
             'popularRoboAdvisors' => $popularRoboAdvisors,
             'accountTypes' => $accountTypes,
+            'reviewTypes' => $reviewTypes,
+            'reviews' => $reviews,
+            'is_user_create_review' => $is_user_create_review,
         ]);
     }
 

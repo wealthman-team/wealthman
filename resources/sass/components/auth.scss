@@ -38,10 +38,17 @@
     }
   }
 }
-.auth-user-icon {
+.user-icon {
   @include font(14px, $Geometria, $blue, 40px, 700);
   text-transform: uppercase;
   text-align: center;
+  width: 38px;
+  height: 38px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  display: inline-block;
+
   &::selection {
     background: transparent; /* WebKit/Blink Browsers */
   }

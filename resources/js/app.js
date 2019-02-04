@@ -312,7 +312,7 @@ $(function () {
                 $modal = $('#'+target_modal+':first');
             }
             if ($modal && !$modal.hasClass('open')) {
-                $modal.attr('data-bind', $btn.data('bind'));
+                $modal.attr('data-bind', $btn.attr('data-bind'));
                 positionPopup($modal);
                 $modal.addClass('open');
                 openOverlay();
@@ -334,12 +334,11 @@ $(function () {
 
         function positionPopup($modal) {
             let position = {top: 0, left: 0, position: 'absolute'};
-            let bind_id = $modal.data('bind');
+            let bind_id = $modal.attr('data-bind');
             let $btn;
             if(bind_id){
                 $btn = $('.js-modal-open[data-bind="'+bind_id+'"]:first');
             }
-
             if ($btn && $btn.data('position') === 'btn') {
                 position = getBtnPosition($modal, $btn);
             } else {
@@ -808,4 +807,103 @@ $(function () {
             return false;
         }
     });
+
+    /* Review Form */
+    (function() {
+        let $review_btn_type = $('.js-review-btn-type');
+        let $review_form_container = $('.js-review-form-container:first');
+        let $message_container = $('.js-review-message', $review_form_container);
+        let $message_wrapper = $('.js-review-form-wrapper', $review_form_container);
+        let $review_form = $('form[name="review_form"]', $review_form_container);
+        let $input_review_type = $('input[name="review_type"]:first', $review_form_container);
+        let $textarea_comment = $('textarea[name="comment"]:first', $review_form_container);
+
+        $review_btn_type.on('click', function (e) {
+            e.preventDefault();
+            $review_btn_type.removeClass('active');
+            $(this).addClass('active');
+
+            let review_type = $(this).data('reviewType');
+            $review_form_container.slideDown(200, function () {
+                $review_form_container.addClass('open');
+                $input_review_type.val(review_type);
+            });
+        });
+
+        $('.js-review-cancel').on('click', function (e) {
+            e.preventDefault();
+            $review_btn_type.removeClass('active');
+            $review_form_container.slideUp(200, function () {
+                $review_form_container.removeClass('open');
+                $textarea_comment.val('');
+                $input_review_type.val('');
+            });
+        });
+
+        $('.js-review-send').on('click', function (e) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: $review_form.attr('method'),
+                url: $review_form.attr('action'),
+                data: $review_form.serializeArray(),
+                dataType: $review_form.data('type'),
+                beforeSend : function () {
+                    //clear errors
+                    $textarea_comment.removeClass('is-invalid');
+                    $message_container.html('');
+                },
+                success: function (response) {
+                    if (response.success) {
+                        $message_wrapper.html('');
+                        $message_container.html('<span class="success">'+response.success+'</span>');
+                    }
+                    if (response.error) {
+                        $textarea_comment.addClass('is-invalid');
+                        $message_container.html('<span class="error">'+response.error+'</span>');
+                    }
+                },
+                error: function () {
+                    console.log('Error: create review');
+                    $message_container.html('<span class="error">An error occurred during execution; please try again later.</span>');
+                }
+            });
+        });
+    })();
+    /* End Review Form */
+    /* Review Like*/
+    (function () {
+        const $buttons = $('.js-review-like');
+        $buttons.each(function(idx){
+            let $btn = $(this);
+            $btn.on('click', function (e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'post',
+                    url: $btn.attr('href'),
+                    data: {like: $btn.data('like'), review: $btn.data('review')},
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.success) {
+                            $btn.parents('.js-like-container').find('.js-like-count').html(response.success.like > 0 ? response.success.like : '');
+                            $btn.parents('.js-like-container').find('.js-dislike-count').html(response.success.dislike > 0 ? response.success.dislike : '');
+                        }
+                    },
+                    error: function (error) {
+                        console.log('Error: create like');
+                    }
+                });
+            });
+        });
+    })();
+    /* End Review Like*/
 });

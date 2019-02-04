@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AccountTypeSeeder::class);
         $this->call(UsageTypeSeeder::class);
         $this->call(RoboAdvisorSeeder::class);
+        $this->call(ReviewTypeSeeder::class);
 
         // supposed to only apply to a single connection and reset it's self
         // undo what is done for clarity

@@ -183,12 +183,56 @@ function user_name()
     return Auth::user() ? Auth::user()->name : '';
 }
 
-function user_short_name()
+function user_short_name($user_name = '')
 {
-    $user_name = Auth::user() ? Auth::user()->name : null;
     $short_name = 'ab';
+    if (empty($user_name)) {
+        $user_name = Auth::user() ? Auth::user()->name : null;
+    }
     if ($user_name) {
         $short_name = strlen($user_name) <= 2 ? $user_name : substr($user_name, 0, 2);
     }
     return $short_name;
+}
+
+function review_btn_classes($review_type_id)
+{
+    $classes = 'js-modal-open';
+    if (Auth::user()) {
+        $classes = old('review_type') && old('review_type') === $review_type_id ? 'js-review-btn-type active' : 'js-review-btn-type';
+    }
+    return $classes;
+}
+
+function review_attr_data($review_type_id)
+{
+    $attr_data = 'data-modal=modal-auth';
+    if (Auth::user()) {
+        $attr_data = 'data-review-type='.$review_type_id;
+    }
+    return $attr_data;
+}
+
+function diffForHumans($value) {
+    $date = new \Carbon\Carbon($value);
+    return $date->diffForHumans();
+}
+
+function recommended_text($yes,$maybe, $no) {
+    $S = $yes*1 + $maybe*0.5 + $no*1;
+    $negative_percent = $no / $S * 100;
+
+    if ($negative_percent < 50) {
+        return 'Mostly recommended';
+    } elseif ($negative_percent < 20) {
+        return 'Strongly recommended';
+    } elseif ($negative_percent === 50) {
+        return 'Unsure';
+    } elseif ($negative_percent > 50) {
+        return 'Mostly not recommended';
+    } elseif ($negative_percent > 80) {
+        return 'Strongly not recommended';
+    }
+
+    return '';
 }

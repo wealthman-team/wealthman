@@ -20,14 +20,15 @@ Route::get('/', 'IndexController@index')->name('home');
 Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
 Route::get('/robo-advisors/{slug}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
 Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsCompare');
+// group post
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
 Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');
-
+Route::post('/reviews/create', 'ReviewsController@create')->name('reviews.create');
+Route::post('/reviews/like', 'ReviewsController@like')->name('reviews.like');
 /*
  * Service routes
  */
-
 Route::get('/redirect', 'RedirectController@index')->name('redirect');
 Route::post('/refresh-csrf', function (){
     return csrf_token();
@@ -61,19 +62,20 @@ Route::post('/ajax-register', 'Auth\RegisterController@ajaxUserRegister')->name(
 Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.forgot');
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');;
-// Admin Auth Routes...
-Route::get('/admin/login', 'Auth\AdminLoginController@showAdminLoginForm')->name('admin.login');
-Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login');
-Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
-
+Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 
 /*
  * Admin routes
  */
 Route::namespace('Admin')->group(function () {
-    Route::get('/admin/', 'AdminController@index')->name('admin.index')->middleware('auth:admin', 'revalidate');
+    Route::prefix('admin')->group(function () {
+        Route::get('/', 'AdminController@index')->name('admin.index')->middleware('auth:admin', 'revalidate');
+        Route::get('/login', 'Auth\AdminLoginController@showAdminLoginForm')->name('admin.login');
+        Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login');
+        Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+        Route::get('/users', 'UserController@index')->name('admin.users.index')->middleware('auth:admin', 'revalidate');
+    });
 
     Route::prefix('admin')->group(function () {
         Route::resource('robo-advisors', 'RoboAdvisorController', ['names' => [
@@ -114,6 +116,20 @@ Route::namespace('Admin')->group(function () {
             'destroy' => 'admin.usageTypes.destroy',
         ]])->parameters([
             'usage-types' => 'usageType'
+        ])->middleware(['auth:admin', 'revalidate']);
+    });
+
+    Route::prefix('admin')->group(function () {
+        Route::resource('reviews', 'ReviewsController', ['names' => [
+            'index' => 'admin.reviews.index',
+            'create' => 'admin.reviews.create',
+            'store' => 'admin.reviews.store',
+            'show' => 'admin.reviews.show',
+            'edit' => 'admin.reviews.edit',
+            'update' => 'admin.reviews.update',
+            'destroy' => 'admin.reviews.destroy',
+        ]])->parameters([
+            'reviews' => 'review'
         ])->middleware(['auth:admin', 'revalidate']);
     });
 });

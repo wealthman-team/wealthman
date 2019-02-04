@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereTotal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\User $user
  */
 class Rating extends Model
 {
@@ -61,5 +62,10 @@ class Rating extends Model
     public function roboAdvisor()
     {
         return $this->belongsTo('App\RoboAdvisor');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }
