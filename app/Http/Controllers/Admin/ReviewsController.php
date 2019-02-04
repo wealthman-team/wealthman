@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\UsageType;
+use App\Review;
+use App\ReviewType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Sources\Page;
+use Validator;
 
 class ReviewsController extends Controller
 {
@@ -28,120 +30,126 @@ class ReviewsController extends Controller
         Page::setTitle('Reviews | Wealthman', $request->input('page'));
         Page::setDescription('Reviews list', $request->input('page'));
 
-//        $usageTypes = UsageType::paginate(10);
+        $reviews = Review::orderBy('created_at', 'DESC')->paginate(10);
 
-        return view('admin.reviews.index');
+        return view('admin.reviews.index', [
+            'reviews' => $reviews,
+        ]);
     }
 
-//    /**
-//     * Show the form for creating a new resource.
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function create()
-//    {
-//        Page::setTitle('Add new Usage Type | Wealthman');
-//        Page::setDescription('Add new Usage Type | Wealthman');
-//
-//        return view('admin.usageTypes.create');
-//    }
-//
-//    /**
-//     * Store a newly created resource in storage.
-//     *
-//     * @param  \Illuminate\Http\Request  $request
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function store(Request $request)
-//    {
-//        $request->validate(UsageType::rules(), UsageType::messages(), UsageType::attributes());
-//
-//        UsageType::create($request->all());
-//
-//        return redirect()
-//            ->route('admin.usageTypes.index')
-//            ->with('statusType', 'success')
-//            ->with('status', $this->messages['successAdd']);
-//    }
-//
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  \App\UsageType $usageType
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show(UsageType $usageType)
-//    {
-//        Page::setTitle('Show Usage Type | Wealthman');
-//        Page::setDescription('Show Usage Type | Wealthman');
-//
-//        return view('admin.usageTypes.show', [
-//            'usageType' => $usageType,
-//        ]);
-//    }
-//
-//    /**
-//     * Show the form for editing the specified resource.
-//     *
-//     * @param  \App\UsageType $usageType
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function edit(UsageType $usageType)
-//    {
-//        Page::setTitle('Edit Usage Type | Wealthman');
-//        Page::setDescription('Edit Usage Type | Wealthman');
-//
-//        return view('admin.usageTypes.edit', [
-//            'usageType' => $usageType
-//        ]);
-//    }
-//
-//    /**
-//     * Update the specified resource in storage.
-//     *
-//     * @param  \Illuminate\Http\Request  $request
-//     * @param  \App\UsageType $usageType
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function update(Request $request, UsageType $usageType)
-//    {
-//        $request->validate(UsageType::rules(), UsageType::messages(), UsageType::attributes());
-//
-//        $usageType->fill($request->all());
-//        $usageType->is_active = $request->has('is_active');
-//
-//        if ($usageType->save()) {
-//            return redirect()
-//                ->route('admin.usageTypes.index')
-//                ->with('statusType', 'success')
-//                ->with('status', $this->messages['successUpdate']);
-//        } else {
-//            return back()
-//                ->withInput()
-//                ->with('statusType', 'success')
-//                ->with('status', $this->messages['errorUpdate']);
-//        }
-//    }
-//
-//    /**
-//     * Remove the specified resource from storage.
-//     *
-//     * @param  \App\UsageType $usageType
-//     * @return \Illuminate\Http\Response
-//     * @throws \Exception
-//     */
-//    public function destroy(UsageType $usageType)
-//    {
-//        if ($usageType->delete()) {
-//            return redirect()
-//                ->route('admin.usageTypes.index')
-//                ->with('statusType', 'success')
-//                ->with('status', $this->messages['successDelete']);
-//        } else {
-//            return redirect()
-//                ->route('admin.usageTypes.index')
-//                ->with('statusType', 'success')
-//                ->with('status', $this->messages['errorDelete']);
-//        }
-//    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return redirect()->route('admin.reviews.index');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        return redirect()->route('admin.reviews.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Review $review
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Review $review)
+    {
+        Page::setTitle('Show Review | Wealthman');
+        Page::setDescription('Show Review | Wealthman');
+
+        $reviewTypes = ReviewType::all();
+
+        return view('admin.reviews.show', [
+            'review' => $review,
+            'reviewTypes' => $reviewTypes
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Review $review
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Review $review)
+    {
+        Page::setTitle('Edit Review | Wealthman');
+        Page::setDescription('Edit Review | Wealthman');
+
+        $reviewTypes = ReviewType::all();
+
+        return view('admin.reviews.edit', [
+            'review' => $review,
+            'reviewTypes' => $reviewTypes
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Review $review
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Review $review)
+    {
+        $validation = Validator::make(['comment' => $request->comment], ['comment' => 'required|string'], Review::messages(), Review::attributes());
+        $errors = $validation->messages();
+        if ($validation->passes()) {
+            $reviewType = ReviewType::whereId($request->review_type)->firstOrFail();
+
+            $review->reviewType()->associate($reviewType);
+            $review->is_active = $request->has('is_active');
+            $review->comment = $request->comment;
+
+            if ($review->save()) {
+                return redirect()
+                    ->route('admin.reviews.index')
+                    ->with('statusType', 'success')
+                    ->with('status', $this->messages['successUpdate']);
+            } else {
+                return back()
+                    ->withInput()
+                    ->with('statusType', 'error')
+                    ->with('status', $this->messages['errorUpdate']);
+            }
+        }
+        return back()
+            ->withInput()
+            ->with('errors', $errors);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Review $review
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function destroy(Review $review)
+    {
+        if ($review->delete()) {
+            return redirect()
+                ->route('admin.reviews.index')
+                ->with('statusType', 'success')
+                ->with('status', $this->messages['successDelete']);
+        } else {
+            return redirect()
+                ->route('admin.reviews.index')
+                ->with('statusType', 'error')
+                ->with('status', $this->messages['errorDelete']);
+        }
+    }
 }
