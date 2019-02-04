@@ -48,13 +48,13 @@ class ReviewsController extends Controller
             $review->reviewType()->associate($reviewType);
             $review->user()->associate($user);
 
-            //checked review
-            $todayReview = Review::where('robo_advisor_id', $roboAdvisor->id)
-                ->where('user_id', $user->id)->get();
-
-            if (count($todayReview) > 0) {
-                return response()->json(['error' => 'Unfortunately, you can\'t have more than one review. Thank you for leaving a review.'], 200);
-            }
+//            //checked review
+//            $todayReview = Review::where('robo_advisor_id', $roboAdvisor->id)
+//                ->where('user_id', $user->id)->get();
+//
+//            if (count($todayReview) > 0) {
+//                return response()->json(['error' => 'Unfortunately, you can\'t have more than one review. Thank you for leaving a review.'], 200);
+//            }
 
             $review->save();
 

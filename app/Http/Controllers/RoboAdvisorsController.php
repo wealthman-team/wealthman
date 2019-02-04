@@ -64,6 +64,9 @@ class RoboAdvisorsController extends Controller
 
         $accountTypes = AccountType::all();
         $reviewTypes = ReviewType::all();
+        $reviews = Review::where('robo_advisor_id', $roboAdvisor->id)
+            ->where('is_active', false)->paginate(10);
+
         $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();
         // популярные Robo Advisors
         $popularRoboAdvisors = RoboAdvisor::popular(3)->exclude($roboAdvisor->id)->get();
@@ -82,6 +85,7 @@ class RoboAdvisorsController extends Controller
             'popularRoboAdvisors' => $popularRoboAdvisors,
             'accountTypes' => $accountTypes,
             'reviewTypes' => $reviewTypes,
+            'reviews' => $reviews,
             'is_user_create_review' => $is_user_create_review,
         ]);
     }

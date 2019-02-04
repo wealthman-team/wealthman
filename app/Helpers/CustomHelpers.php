@@ -183,10 +183,12 @@ function user_name()
     return Auth::user() ? Auth::user()->name : '';
 }
 
-function user_short_name()
+function user_short_name($user_name = '')
 {
-    $user_name = Auth::user() ? Auth::user()->name : null;
     $short_name = 'ab';
+    if (empty($user_name)) {
+        $user_name = Auth::user() ? Auth::user()->name : null;
+    }
     if ($user_name) {
         $short_name = strlen($user_name) <= 2 ? $user_name : substr($user_name, 0, 2);
     }
@@ -209,4 +211,9 @@ function review_attr_data($review_type_id)
         $attr_data = 'data-review-type='.$review_type_id;
     }
     return $attr_data;
+}
+
+function diffForHumans($value) {
+    $date = new \Carbon\Carbon($value);
+    return $date->diffForHumans();
 }
