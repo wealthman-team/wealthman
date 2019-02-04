@@ -13,6 +13,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
  *
  * @property int $id
  * @property string $name
+ * @property string|null $slug
  * @property string|null $logo
  * @property string|null $title
  * @property string|null $short_description
@@ -25,6 +26,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
  * @property string|null $conclusion
  * @property string|null $referral_link
  * @property string|null $video_link
+ * @property string|null $video_information
  * @property int|null $minimum_account
  * @property float|null $management_fee
  * @property string|null $fee_details
@@ -67,12 +69,14 @@ use Cviebrock\EloquentSluggable\Sluggable;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\AccountType[] $account_types
  * @property-read \App\Rating $ratings
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Review[] $reviews
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\UsageType[] $usage_types
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor exclude($exclude = null)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor filter($filters)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor popular($limit = 3)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor findSimilarSlugs($attribute, $config, $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor popular($limit = 3)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor sorting($sorting)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereAboutCompany($value)
@@ -121,6 +125,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereServiceRegion($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSiteUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSmartBeta($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSummary($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereTaxLoss($value)
@@ -128,13 +133,9 @@ use Cviebrock\EloquentSluggable\Sluggable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereTwoFactorAuth($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereVideoInformation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereVideoLink($value)
  * @mixin \Eloquent
- * @property string|null $slug
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor findSimilarSlugs($attribute, $config, $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereSlug($value)
- * @property string|null $video_information
- * @method static \Illuminate\Database\Eloquent\Builder|\App\RoboAdvisor whereVideoInformation($value)
  */
 class RoboAdvisor extends Model
 {
@@ -272,6 +273,11 @@ class RoboAdvisor extends Model
             'finra_crd' => 'FINRA CRD',
             'sec_id' => 'SEC ID',
         ];
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
     }
 
     public function ratings()

@@ -1,6 +1,6 @@
 .button {
   display: inline-block;
-  width: 145px;
+  min-width: 145px;
   height: 38px;
   padding: 11px;
   border: none;
@@ -36,6 +36,10 @@
     }
   }
 
+  &_white {
+    color: $textGray;
+  }
+
   &_adaptive {
     width: auto;
     padding-left: 60px;
@@ -49,5 +53,45 @@
     font-size: 16px;
     line-height: 20px;
     font-weight: 500;
+  }
+
+  &_positive {
+    transition: all 200ms;
+    background-color: $white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    color: $success;
+
+    &.active,
+    &:hover {
+      background-color: $success;
+      color: $white;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+  }
+  &_unsure {
+    transition: all 200ms;
+    background-color: $white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    color: $textGray;
+
+    &.active,
+    &:hover {
+      background-color: $textGray;
+      color: $white;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+  }
+  &_negative {
+    transition: all 200ms;
+    background-color: $white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    color: $red;
+
+    &.active,
+    &:hover {
+      background-color: $red;
+      color: $white;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
   }
 }

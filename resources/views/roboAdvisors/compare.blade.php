@@ -91,24 +91,27 @@
                                         </div>
                                     </div>
 
-                                    {{--<div class="compare-list__row compare-list__row_with-hover">--}}
-                                        {{--<div class="compare-list__context js-compare-list-context">--}}
-                                            {{--<div class="compare-list__row-name js-compare-list-name">--}}
-                                                {{--RECOMENDATION--}}
-                                            {{--</div>--}}
-                                            {{--@foreach ($roboAdvisors as $roboAdvisor)--}}
-                                                {{--<div class="compare-list__col">--}}
-                                                    {{--@include('components/recommendation', [--}}
-                                                        {{--'text' => 'Strongly recommended',--}}
-                                                        {{--'yes' => 10,--}}
-                                                        {{--'maybe' => 2,--}}
-                                                        {{--'no' => 5,--}}
-                                                        {{--'total' => 17,--}}
-                                                    {{--])--}}
-                                                {{--</div>--}}
-                                            {{--@endforeach--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
+                                    <div class="compare-list__row compare-list__row_with-hover">
+                                        <div class="compare-list__context js-compare-list-context">
+                                            <div class="compare-list__row-name js-compare-list-name">
+                                                RECOMENDATION
+                                            </div>
+                                            @foreach ($roboAdvisors as $roboAdvisor)
+                                                @if(count($roboAdvisor->reviews) > 0)
+                                                    <div class="compare-list__col">
+                                                        @include('components/recommendation', [
+                                                            'reviews' => $roboAdvisor->reviews
+                                                        ])
+                                                    </div>
+                                                @else
+                                                    <div class="compare-list__col">
+                                                        &mdash;
+                                                    </div>
+                                                @endif
+
+                                            @endforeach
+                                        </div>
+                                    </div>
 
                                     <div class="compare-list__row compare-list__row_with-hover {{$diffRoboAdvisors['general']['ratings']['total'] ? 'js-identical-compare' : ''}}">
                                         <div class="compare-list__context js-compare-list-context">

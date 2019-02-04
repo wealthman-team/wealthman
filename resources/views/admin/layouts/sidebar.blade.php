@@ -17,6 +17,8 @@
                                     'admin/account-types/*',
                                     'admin/usage-types',
                                     'admin/usage-types/*',
+                                    'admin/reviews',
+                                    'admin/reviews/*',
                                     ]) ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-get-pocket"></i> <span>Advisor screener</span>
@@ -41,17 +43,25 @@
                             <span>Usage types</span>
                         </a>
                     </li>
+                    <li class="{{ setCatActive('admin/reviews') }} {{ setCatActive('admin/reviews/*') }}">
+                        <a href="{{ route('admin.reviews.index') }}">
+                            <i class="fa fa-star-half-o"></i>
+                            <span>Reviews</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
+            <li class="{{ setCatActive('users') }}">
+                <a href="{{ route('admin.users.index') }}">
+                    <i class="fa fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
             <li>
-                <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                <a href="{{ route('admin.logout') }}">
                     <i class="fa fa-sign-out"></i>
                     <span>Logout</span>
                 </a>
-
-                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
             </li>
         </ul>
     </section>

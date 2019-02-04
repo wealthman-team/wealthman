@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15.559" height="15.5" viewBox="0 0 15.559 15.5">
+  <defs>
+    <style>
+      .like-1 {
+        fill: #abb0ba;
+      }
+
+      .like-1, .like-2 {
+        stroke: #abb0ba;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-width: 1.5px;
+      }
+
+      .like-2 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_237" data-name="Group 237" transform="translate(-0.45 -0.45)">
+    <path id="Path_32" data-name="Path 32" class="like-1" d="M1.662,22.508h0a.461.461,0,0,1-.462-.462V13.362a.461.461,0,0,1,.462-.462h4.29v5.318A4.291,4.291,0,0,1,1.662,22.508Z" transform="translate(0 -7.309)"/>
+    <path id="Path_33" data-name="Path 33" class="like-2" d="M10.36,35.3h1.55a3.71,3.71,0,0,0,2.627,1.2H18.8" transform="translate(-5.722 -21.302)"/>
+    <path id="Path_34" data-name="Path 34" class="like-2" d="M32.96,30.254a1.239,1.239,0,1,0,0-2.477h.9a1.239,1.239,0,0,0,0-2.477" transform="translate(-19.84 -15.055)"/>
+    <path id="Path_35" data-name="Path 35" class="like-2" d="M35.36,18.7a1.239,1.239,0,0,1,0,2.477" transform="translate(-21.339 -10.932)"/>
+    <path id="Path_36" data-name="Path 36" class="like-2" d="M10.17,12.9" transform="translate(-5.603 -7.309)"/>
+    <path id="Path_37" data-name="Path 37" class="like-2" d="M13.86,5.591h.518s2.417-.139,2.417-3.153a1.239,1.239,0,1,1,2.477,0v.848a3.548,3.548,0,0,1-.672,2" transform="translate(-7.909 0)"/>
+    <path id="Path_38" data-name="Path 38" class="like-2" d="M35.36,12.1a1.239,1.239,0,0,1,0,2.477" transform="translate(-21.339 -6.809)"/>
+    <line id="Line_16" data-name="Line 16" class="like-2" x2="3.333" transform="translate(10.688 5.291)"/>
+  </g>
+</svg>

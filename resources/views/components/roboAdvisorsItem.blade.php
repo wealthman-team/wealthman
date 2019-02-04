@@ -9,14 +9,15 @@
             {{ $roboAdvisor->ratings->total }}
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__recommendation">
-            {{--@include('components/recommendation', [--}}
-                {{--'text' => 'Strongly recommended',--}}
-                {{--'yes' => 10,--}}
-                {{--'maybe' => 2,--}}
-                {{--'no' => 5,--}}
-                {{--'total' => 17,--}}
-            {{--])--}}
-            <span style="color: #abb0ba">Under construction</span>
+
+            @if(count($roboAdvisor->reviews) > 0)
+                @include('components/recommendation', [
+                    'reviews' => $roboAdvisor->reviews
+                ])
+            @else
+                <span style="color: #abb0ba">&mdash;</span>
+            @endif
+
         </div>
         <div class="robo-advisors-item__section robo-advisors-item__account">
             @if ($roboAdvisor->minimum_account || $roboAdvisor->minimum_account === 0)

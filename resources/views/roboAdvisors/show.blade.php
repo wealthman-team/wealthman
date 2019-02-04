@@ -176,11 +176,13 @@
                                             <a class="link" href="#conclusion_section">Conclusion</a>
                                         </li>
                                         @endif
-                                        {{--<li>--}}
-                                            {{--<a class="link" href="#">--}}
-                                                {{--Reviews <span class="counter">5</span>--}}
-                                            {{--</a>--}}
-                                        {{--</li>--}}
+                                        @if(count($roboAdvisor->reviews) > 0)
+                                        <li>
+                                            <a class="link" href="#reviews_section">
+                                                Reviews <span class="counter">{{count($roboAdvisor->reviews)}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -206,15 +208,11 @@
                                                 @endif
                                             </div>
 
-                                            {{--<div class="robo-advisor__review-recommendation">--}}
-                                            {{--@include('components/recommendation', [--}}
-                                            {{--'text' => 'Strongly recommended',--}}
-                                            {{--'yes' => 10,--}}
-                                            {{--'maybe' => 2,--}}
-                                            {{--'no' => 5,--}}
-                                            {{--'total' => 17,--}}
-                                            {{--])--}}
-                                            {{--</div>--}}
+                                            <div class="robo-advisor__review-recommendation">
+                                            @include('components/recommendation', [
+                                                'reviews' => $popularRoboAdvisor->reviews
+                                            ])
+                                            </div>
 
                                             <div class="robo-advisor__review-link">
                                                 <a class="link link_active" href="{{ route('roboAdvisorsShow', $popularRoboAdvisor->slug) }}">
@@ -248,14 +246,10 @@
                                     </div>
 
                                     <div class="robo-advisor__recommendation">
-                                        {{--@include('components/recommendation', [--}}
-                                            {{--'text' => 'Mostly not recommended',--}}
-                                            {{--'yes' => 1,--}}
-                                            {{--'maybe' => 2,--}}
-                                            {{--'no' => 3,--}}
-                                            {{--'total' => 6,--}}
-                                            {{--'isOpen' => true,--}}
-                                        {{--])--}}
+                                        @include('components/recommendation', [
+                                            'reviews' => $roboAdvisor->reviews,
+                                            'isOpen' => true
+                                        ])
                                     </div>
 
                                     <div class="robo-advisor__top-buttons">
@@ -925,6 +919,66 @@
                                 </div>
                             </div>
                         @endif
+
+                        <div id="reviews_section" class="robo-advisor__section">
+                            <h2 class="h2">
+                                REVIEWS
+                            </h2>
+                            <div class="panel panel_padding">
+                                <div class="reach-text">
+                                    <div class="panel panel_white">
+                                        <div class="review-form">
+                                            <h3>Would you recommend Wealthfront to your friends?</h3>
+                                            <div class="review-form__action">
+                                                @foreach($reviewTypes as $reviewType)
+                                                    <div class="button button_{{$reviewType->code}} {{review_btn_classes($reviewType->id)}}" {{review_attr_data($reviewType->id)}}>{{$reviewType->name}}</div>
+                                                @endforeach
+                                            </div>
+                                            <div class="review-form__item js-review-form-container {{old('review_type') ? ' open': ''}}">
+                                                <div class="review-form__info">BEFORE WE PUBLISH YOUR VOTE:</div>
+                                                <h4 class="review-form__title">Please explain your vote by sharing your experience.</h4>
+                                                <div class="review-form__text">Writing a review increases the credibility of your vote and helps your fellow users make<br> a better-informed decision.</div>
+                                                @auth
+                                                    @if($is_user_create_review)
+                                                        <div class="review-form__message js-review-message"><span class="success">Unfortunately, you can't have more than one review. Thank you for leaving a review.</span></div>
+                                                    @else
+                                                        <div class="review-form__message js-review-message"></div>
+                                                        <div class="js-review-form-wrapper">
+                                                            <form name="review_form" action="{{route('reviews.create')}}" method="post" type="json">
+                                                                <input type="hidden" name="review_type" value="{{ old('review_type') }}">
+                                                                <input type="hidden" name="robo_advisor" value="{{$roboAdvisor->id}}">
+                                                                <textarea class="review-form__comment" name="comment" placeholder="Write about your experience here...">{{ old('comment') }}</textarea>
+                                                                <button class="button button_blue review-form__send-button js-review-send" type="button">Post a Review</button>
+                                                                <button class="button button_white review-form__cancel-button js-review-cancel" type="button">Cancel</button>
+                                                            </form>
+                                                        </div>
+                                                    @endif
+                                                @endauth
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- Review list --}}
+                                    @if(count($reviews) > 0)
+                                        <div class="review-list review-list__pdt">
+                                            @foreach($reviews as $review)
+                                                @include('components/reviewItem', [
+                                                    'review' => $review
+                                                ])
+                                            @endforeach
+                                        </div>
+                                        <div class="review-list-paginator">
+                                            {{ $reviews->links('components/pagination') }}
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        @if (session('reviews_status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('reviews_status') }}
+                            </div>
+                        @endif
+
                     </div>
                 </div>
             </div>

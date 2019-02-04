@@ -1,3 +1,22 @@
+@if(isset($reviews) && count($reviews) > 0)
+@php
+    $yes=0;
+    $maybe=0;
+    $no=0;
+@endphp
+@foreach ($reviews as $review)
+    @php
+        if ($review->reviewType->code === 'positive'){
+            $yes++;
+        } elseif ($review->reviewType->code === 'negative') {
+            $no++;
+        } else {
+           $maybe++;
+        }
+        $text = recommended_text($yes,$maybe, $no);
+    @endphp
+@endforeach
+
 <div class="recommendation {{ (isset($isOpen) && $isOpen) ? ' opened' : '' }}">
     <div class="recommendation__text">{{ $text }}</div>
     <div class="recommendation__graf">
@@ -14,6 +33,7 @@
         @endif
     </div>
     <div class="recommendation__total">
-        {{ $total }} total votes
+        {{ $reviews->count() }} total votes
     </div>
-</div> 
+</div>
+@endif
