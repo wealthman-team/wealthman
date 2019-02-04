@@ -1,3 +1,18 @@
+@php
+    $like_count=0;
+    $dislike_count=0;
+@endphp
+
+@foreach ($review->likes as $like)
+    @php
+        if ($like->like){
+          $like_count++;
+        } else {
+          $dislike_count++;
+        }
+    @endphp
+@endforeach
+
 <div class="review-item">
     <div class="review-item__user">
         <span class="user-icon">{{user_short_name($review->user->name)}}</span>
@@ -18,13 +33,15 @@
     <div class="review-item__content">
         <div class="review-item__comment">{{$review->comment}}</div>
         <div class="review-item__like">
-            <div class="like">
-                <span class="like-icon js-review-like">@svg('like')</span>
-                <span class="like-count">{{$review->like > 0 ? $review->like : ''}}</span>
-            </div>
-            <div class="dislike">
-                <span class="dislike-icon js-review-dislike">@svg('dislike')</span>
-                <span class="dislike-count">{{$review->dislike > 0 ? $review->dislike : ''}}</span>
+            <div class="js-like-container">
+                <div class="like">
+                    <a href="{{route('reviews.like')}}" class="like-icon{{auth()->user() ? ' js-review-like': ' js-modal-open'}}" {{auth()->user() ? '': 'data-modal=modal-auth'}} data-like="1" data-review="{{$review->id}}">@svg('like')</a>
+                    <span class="like-count js-like-count">{{$like_count > 0 ? $like_count : ''}}</span>
+                </div>
+                <div class="dislike">
+                    <a href="{{route('reviews.like')}}" class="dislike-icon{{auth()->user() ? ' js-review-like': ' js-modal-open'}}" {{auth()->user() ? '': 'data-modal=modal-auth'}} data-like="0" data-review="{{$review->id}}">@svg('dislike')</a>
+                    <span class="dislike-count js-dislike-count">{{$dislike_count > 0 ? $dislike_count : ''}}</span>
+                </div>
             </div>
         </div>
     </div>

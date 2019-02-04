@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Review whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Review whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ReviewLike[] $likes
  */
 class Review extends Model
 {
@@ -52,7 +53,7 @@ class Review extends Model
     public static function rules()
     {
         return [
-            'comment' => 'required|string',
+            'comment' => 'required|string|min:10',
         ];
     }
 
@@ -67,6 +68,7 @@ class Review extends Model
             'required' => 'Field :attribute is required',
             'string' => 'Field :attribute must to be string',
             'max' => 'Max length field :attribute must to be low 255 symbols',
+            'min' => 'Min length field :attribute must be at least 10 symbols',
         ];
     }
 
@@ -93,6 +95,11 @@ class Review extends Model
     public function reviewType()
     {
         return $this->belongsTo('App\ReviewType');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany('App\ReviewLike');
     }
 
     // Scopes

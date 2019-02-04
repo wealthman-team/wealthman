@@ -875,4 +875,35 @@ $(function () {
         });
     })();
     /* End Review Form */
+    /* Review Like*/
+    (function () {
+        const $buttons = $('.js-review-like');
+        $buttons.each(function(idx){
+            let $btn = $(this);
+            $btn.on('click', function (e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'post',
+                    url: $btn.attr('href'),
+                    data: {like: $btn.data('like'), review: $btn.data('review')},
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.success) {
+                            $btn.parents('.js-like-container').find('.js-like-count').html(response.success.like > 0 ? response.success.like : '');
+                            $btn.parents('.js-like-container').find('.js-dislike-count').html(response.success.dislike > 0 ? response.success.dislike : '');
+                        }
+                    },
+                    error: function (error) {
+                        console.log('Error: create like');
+                    }
+                });
+            });
+        });
+    })();
+    /* End Review Like*/
 });

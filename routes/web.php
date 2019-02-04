@@ -25,6 +25,7 @@ Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('to
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
 Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');
 Route::post('/reviews/create', 'ReviewsController@create')->name('reviews.create');
+Route::post('/reviews/like', 'ReviewsController@like')->name('reviews.like');
 /*
  * Service routes
  */
@@ -61,7 +62,7 @@ Route::post('/ajax-register', 'Auth\RegisterController@ajaxUserRegister')->name(
 Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.forgot');
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');;
+Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 
 /*

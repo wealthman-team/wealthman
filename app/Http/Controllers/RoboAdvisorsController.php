@@ -65,7 +65,9 @@ class RoboAdvisorsController extends Controller
         $accountTypes = AccountType::all();
         $reviewTypes = ReviewType::all();
         $reviews = Review::where('robo_advisor_id', $roboAdvisor->id)
-            ->where('is_active', false)->paginate(10);
+            ->where('is_active', true)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
 
         $roboAdvisor->account_types_ids = $roboAdvisor->account_types->pluck('id')->toArray();
         // популярные Robo Advisors
