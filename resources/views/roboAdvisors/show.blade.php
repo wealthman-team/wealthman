@@ -176,11 +176,13 @@
                                             <a class="link" href="#conclusion_section">Conclusion</a>
                                         </li>
                                         @endif
-                                        {{--<li>--}}
-                                            {{--<a class="link" href="#">--}}
-                                                {{--Reviews <span class="counter">5</span>--}}
-                                            {{--</a>--}}
-                                        {{--</li>--}}
+                                        @if(count($roboAdvisor->reviews) > 0)
+                                        <li>
+                                            <a class="link" href="#reviews_section">
+                                                Reviews <span class="counter">{{count($roboAdvisor->reviews)}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
