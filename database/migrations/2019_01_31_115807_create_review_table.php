@@ -16,10 +16,12 @@ class CreateReviewTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
             $table->text('comment')->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->integer('review_type_id')->unsigned();
             $table->integer('robo_advisor_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('like')->default(0);
+            $table->integer('dislike')->default(0);
 
             $table->foreign('review_type_id')->references('id')->on('review_types');
             $table->foreign('robo_advisor_id')->references('id')->on('robo_advisors')->onDelete('cascade');
