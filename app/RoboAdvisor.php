@@ -277,7 +277,7 @@ class RoboAdvisor extends Model
 
     public function reviews()
     {
-        return $this->hasMany('App\Review');
+        return $this->hasMany('App\Review')->where('is_active', true);
     }
 
     public function ratings()
