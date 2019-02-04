@@ -217,3 +217,22 @@ function diffForHumans($value) {
     $date = new \Carbon\Carbon($value);
     return $date->diffForHumans();
 }
+
+function recommended_text($yes,$maybe, $no) {
+    $S = $yes*1 + $maybe*0.5 + $no*1;
+    $negative_percent = $no / $S * 100;
+
+    if ($negative_percent < 50) {
+        return 'Mostly recommended';
+    } elseif ($negative_percent < 20) {
+        return 'Strongly recommended';
+    } elseif ($negative_percent === 50) {
+        return 'Unsure';
+    } elseif ($negative_percent > 50) {
+        return 'Mostly not recommended';
+    } elseif ($negative_percent > 80) {
+        return 'Strongly not recommended';
+    }
+
+    return '';
+}

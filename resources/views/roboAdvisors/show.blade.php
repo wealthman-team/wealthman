@@ -206,15 +206,11 @@
                                                 @endif
                                             </div>
 
-                                            {{--<div class="robo-advisor__review-recommendation">--}}
-                                            {{--@include('components/recommendation', [--}}
-                                            {{--'text' => 'Strongly recommended',--}}
-                                            {{--'yes' => 10,--}}
-                                            {{--'maybe' => 2,--}}
-                                            {{--'no' => 5,--}}
-                                            {{--'total' => 17,--}}
-                                            {{--])--}}
-                                            {{--</div>--}}
+                                            <div class="robo-advisor__review-recommendation">
+                                            @include('components/recommendation', [
+                                                'reviews' => $popularRoboAdvisor->reviews
+                                            ])
+                                            </div>
 
                                             <div class="robo-advisor__review-link">
                                                 <a class="link link_active" href="{{ route('roboAdvisorsShow', $popularRoboAdvisor->slug) }}">
@@ -248,14 +244,10 @@
                                     </div>
 
                                     <div class="robo-advisor__recommendation">
-                                        {{--@include('components/recommendation', [--}}
-                                            {{--'text' => 'Mostly not recommended',--}}
-                                            {{--'yes' => 1,--}}
-                                            {{--'maybe' => 2,--}}
-                                            {{--'no' => 3,--}}
-                                            {{--'total' => 6,--}}
-                                            {{--'isOpen' => true,--}}
-                                        {{--])--}}
+                                        @include('components/recommendation', [
+                                            'reviews' => $roboAdvisor->reviews,
+                                            'isOpen' => true
+                                        ])
                                     </div>
 
                                     <div class="robo-advisor__top-buttons">
