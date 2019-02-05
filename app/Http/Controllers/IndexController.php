@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\RoboAdvisor;
+use App\Models\RoboAdvisor;
 use App\Services\Filters\RoboAdvisorsSorting;
 use App\Sources\Page;
 use Auth;

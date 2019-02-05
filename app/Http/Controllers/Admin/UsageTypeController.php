@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\UsageType;
+use App\Models\UsageType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Sources\Page;
@@ -69,7 +69,7 @@ class UsageTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\UsageType $usageType
+     * @param  \App\Models\UsageType $usageType
      * @return \Illuminate\Http\Response
      */
     public function show(UsageType $usageType)
@@ -85,7 +85,7 @@ class UsageTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UsageType $usageType
+     * @param  \App\Models\UsageType $usageType
      * @return \Illuminate\Http\Response
      */
     public function edit(UsageType $usageType)
@@ -102,7 +102,7 @@ class UsageTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UsageType $usageType
+     * @param  \App\Models\UsageType $usageType
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, UsageType $usageType)
@@ -128,7 +128,7 @@ class UsageTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UsageType $usageType
+     * @param  \App\Models\UsageType $usageType
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */

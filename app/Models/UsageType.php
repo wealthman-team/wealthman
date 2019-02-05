@@ -1,27 +1,8 @@
 <?php
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * App\UsageType
- *
- * @property int $id
- * @property string $name
- * @property int $is_active
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\RoboAdvisor[] $roboAdvisors
- * @method static \Illuminate\Database\Eloquent\Builder|\App\UsageType newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\UsageType newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\UsageType query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\UsageType whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\UsageType whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\UsageType whereIsActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\UsageType whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\UsageType whereUpdatedAt($value)
- * @mixin \Eloquent
- */
 class UsageType extends Model
 {
     protected $visible = [
@@ -77,6 +58,6 @@ class UsageType extends Model
 
     public function roboAdvisors()
     {
-        return $this->belongsToMany('App\RoboAdvisor', 'usage_type_robo_advisor');
+        return $this->belongsToMany(RoboAdvisor::class, 'usage_type_robo_advisor');
     }
 }

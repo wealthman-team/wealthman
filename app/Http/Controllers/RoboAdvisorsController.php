@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Review;
-use App\ReviewType;
-use App\RoboAdvisor;
-use App\AccountType;
+use App\Models\Review;
+use App\Models\ReviewType;
+use App\Models\RoboAdvisor;
+use App\Models\AccountType;
 use App\Services\DiffRoboAdvisor;
 use App\Services\Filters\RoboAdvisorsFilter;
 use App\Services\Filters\RoboAdvisorsFilterOption;

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\RedirectController;
-use App\RoboAdvisor;
+use App\Models\RoboAdvisor;
 use Illuminate\Support\Arr;
 
 /**
