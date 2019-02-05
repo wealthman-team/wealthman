@@ -70,7 +70,7 @@ class UserTableSeeder extends Seeder
             ['email' => 'greenpanther@bk.ru'],
             [
                 'name' => 'GreenPanther',
-                'password' => bcrypt('secret'),
+                'password' => Hash::make('secret'),
                 'email_verified_at' => now()
             ]
         );
