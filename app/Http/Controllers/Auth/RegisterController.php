@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Token;
 use App\Sources\Page;
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -69,11 +70,18 @@ class RegisterController extends Controller
         $parts = explode("@", $data['email']);
         $username = $parts[0];
 
-        return User::create([
+        $user = User::create([
             'name' => $username,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user->assignRole('guest');
+        // API tokens
+        User::where('api_token', null)->get()->each->update([
+            'api_token' => Token::generate()
+        ]);
+        return $user;
     }
 
     /**
@@ -89,6 +97,10 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function ajaxUserRegister(Request $request)
     {
         $validation = $this->validator($request->all());

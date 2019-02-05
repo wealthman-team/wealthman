@@ -3,6 +3,34 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Review
+ *
+ * @property int $id
+ * @property string|null $comment
+ * @property int $is_active
+ * @property int $review_type_id
+ * @property int $robo_advisor_id
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ReviewLike[] $likes
+ * @property-read \App\Models\ReviewType $reviewType
+ * @property-read \App\Models\RoboAdvisor $roboAdvisor
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review whereReviewTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review whereRoboAdvisorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Review whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Review extends Model
 {
     protected $hidden = [

@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         //disable foreign key check for this connection before running seeders
         DB::statement( 'SET FOREIGN_KEY_CHECKS=0;' );
 
-        $this->call(AdminsTableSeeder::class);
+        $this->call(UserTableSeeder::class);
         $this->call(AccountTypeSeeder::class);
         $this->call(UsageTypeSeeder::class);
         $this->call(RoboAdvisorSeeder::class);

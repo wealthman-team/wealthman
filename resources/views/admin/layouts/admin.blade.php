@@ -33,10 +33,9 @@
     <link href="{{ mix('/css/admin/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ mix('/css/admin/admin.css') }}" rel="stylesheet">
 </head>
-<body class="@guest('admin') login-page @else skin-red @endguest">
-    @guest('admin')
-        @yield('content')
-    @else
+{{--<body class="@guest('admin') login-page @else skin-red @endguest">--}}
+<body class="@auth() skin-red @else login-page @endauth">
+    @auth()
         <div class="wrapper">
             @include('admin/layouts/header')
             @include('admin/layouts/sidebar')
@@ -53,7 +52,9 @@
                 @yield('content')
             </div>
         </div>
-    @endguest
+    @else
+        @yield('content')
+    @endauth
 
     <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
     <script src="{{ mix('/js/admin.js') }}"></script>

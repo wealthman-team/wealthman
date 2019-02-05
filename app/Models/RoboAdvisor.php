@@ -8,6 +8,135 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Cviebrock\EloquentSluggable\Sluggable;
 
+/**
+ * App\Models\RoboAdvisor
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $slug
+ * @property string|null $logo
+ * @property string|null $title
+ * @property string|null $short_description
+ * @property string|null $description
+ * @property string|null $about_company
+ * @property string|null $pros
+ * @property string|null $cons
+ * @property string|null $how_it_works
+ * @property string|null $portfolio
+ * @property string|null $conclusion
+ * @property string|null $referral_link
+ * @property string|null $video_link
+ * @property string|null $video_information
+ * @property int|null $minimum_account
+ * @property float|null $management_fee
+ * @property string|null $fee_details
+ * @property int|null $aum
+ * @property string|null $promotions
+ * @property int $human_advisors
+ * @property string|null $human_advisors_details
+ * @property int $assistance_401k
+ * @property int $tax_loss
+ * @property string|null $tax_loss_details
+ * @property int $portfolio_rebalancing
+ * @property int $retirement_planning
+ * @property int $automatic_deposits
+ * @property string|null $clearing_agency
+ * @property int $self_clearing
+ * @property int $smart_beta
+ * @property int $responsible_investing
+ * @property int $invests_commodities
+ * @property int $real_estate
+ * @property int $fractional_shares
+ * @property string|null $access_platforms
+ * @property int $two_factor_auth
+ * @property string|null $customer_service
+ * @property int|null $number_accounts
+ * @property int|null $average_account_size
+ * @property string|null $additional_information
+ * @property string|null $summary
+ * @property int $is_verify
+ * @property string|null $service_region
+ * @property string|null $headquarters
+ * @property string|null $founded
+ * @property string|null $site_url
+ * @property string|null $phone
+ * @property string|null $ceo
+ * @property string|null $contact_details
+ * @property string|null $finra_crd
+ * @property string|null $sec_id
+ * @property int $is_active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\AccountType[] $account_types
+ * @property-read \App\Models\Rating $ratings
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Review[] $reviews
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UsageType[] $usage_types
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor exclude($exclude = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor filter($filters)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor findSimilarSlugs($attribute, $config, $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor popular($limit = 3)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor sorting($sorting)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereAboutCompany($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereAccessPlatforms($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereAdditionalInformation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereAssistance401k($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereAum($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereAutomaticDeposits($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereAverageAccountSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereCeo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereClearingAgency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereConclusion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereCons($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereContactDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereCustomerService($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereFeeDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereFinraCrd($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereFounded($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereFractionalShares($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereHeadquarters($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereHowItWorks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereHumanAdvisors($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereHumanAdvisorsDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereInvestsCommodities($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereIsVerify($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereManagementFee($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereMinimumAccount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereNumberAccounts($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor wherePortfolio($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor wherePortfolioRebalancing($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor wherePromotions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor wherePros($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereRealEstate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereReferralLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereResponsibleInvesting($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereRetirementPlanning($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereSecId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereSelfClearing($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereServiceRegion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereShortDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereSiteUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereSmartBeta($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereSummary($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereTaxLoss($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereTaxLossDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereTwoFactorAuth($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereVideoInformation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereVideoLink($value)
+ * @mixin \Eloquent
+ */
 class RoboAdvisor extends Model
 {
     use Sluggable;
