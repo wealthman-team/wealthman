@@ -74,13 +74,11 @@ class RegisterController extends Controller
             'name' => $username,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'api_token' => Token::generate() // API tokens
         ]);
 
         $user->assignRole('guest');
-        // API tokens
-        User::where('api_token', null)->get()->each->update([
-            'api_token' => Token::generate()
-        ]);
+
         return $user;
     }
 
