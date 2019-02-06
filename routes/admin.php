@@ -59,3 +59,39 @@ Route::resource('reviews', 'ReviewsController', ['names' => [
 ]])->parameters([
     'reviews' => 'review'
 ]);
+
+Route::resource('posts', 'PostController', ['names' => [
+    'index' => 'admin.posts.index',
+    'create' => 'admin.posts.create',
+    'store' => 'admin.posts.store',
+    'show' => 'admin.posts.show',
+    'edit' => 'admin.posts.edit',
+    'update' => 'admin.posts.update',
+    'destroy' => 'admin.posts.destroy',
+]])->parameters([
+    'posts' => 'post'
+]);
+
+Route::resource('tags', 'TagController', ['names' => [
+    'index' => 'admin.tags.index',
+    'create' => 'admin.tags.create',
+    'store' => 'admin.tags.store',
+    'show' => 'admin.tags.show',
+    'edit' => 'admin.tags.edit',
+    'update' => 'admin.tags.update',
+    'destroy' => 'admin.tags.destroy',
+]])->parameters([
+    'tags' => 'tag'
+]);
+
+Route::resource('categories', 'CategoryController', ['names' => [
+    'index' => 'admin.categories.index',
+    'create' => 'admin.categories.create',
+    'store' => 'admin.categories.store',
+    'show' => 'admin.categories.show',
+    'edit' => 'admin.categories.edit',
+    'update' => 'admin.categories.update',
+    'destroy' => 'admin.categories.destroy',
+]])->parameters([
+    'categories' => 'category'
+]);

@@ -15,33 +15,6 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-//        // clear tables
-//        DB::table('users')->truncate();
-//        DB::table('roles')->truncate();
-//        DB::table('role_user')->truncate();
-//
-//        // Roles
-//        Role::firstOrCreate(['name' => Role::ROLE_GUEST]);
-//        Role::firstOrCreate(['name' => Role::ROLE_EDITOR]);
-//        $role_admin = Role::firstOrCreate(['name' => Role::ROLE_ADMIN]);
-//
-//        // Users
-//        $user = User::firstOrCreate(
-//            ['email' => 'greenpanther@bk.ru'],
-//            [
-//                'name' => 'GreenPanther',
-//                'password' => bcrypt('secret'),
-//                'email_verified_at' => now()
-//            ]
-//        );
-//
-//        $user->roles()->sync([$role_admin->id]);
-//
-//        // API tokens
-//        User::where('api_token', null)->get()->each->update([
-//            'api_token' => Token::generate()
-//        ]);
-//
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
@@ -78,8 +51,11 @@ class UserTableSeeder extends Seeder
         $user->assignRole('admin');
 
         // API tokens
-        User::where('api_token', null)->get()->each->update([
-            'api_token' => Token::generate()
-        ]);
+        $users = User::where('api_token', null)->get();
+        /** @var User $user */
+        foreach ($users as $user) {
+            $user->api_token = Token::generate();
+            $user->save();
+        }
     }
 }

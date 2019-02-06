@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
         DB::statement( 'SET FOREIGN_KEY_CHECKS=0;' );
 
         $this->call(UserTableSeeder::class);
-        $this->call(AccountTypeSeeder::class);
-        $this->call(UsageTypeSeeder::class);
-        $this->call(RoboAdvisorSeeder::class);
-        $this->call(ReviewTypeSeeder::class);
+//        $this->call(AccountTypeSeeder::class);
+//        $this->call(UsageTypeSeeder::class);
+//        $this->call(RoboAdvisorSeeder::class);
+//        $this->call(ReviewTypeSeeder::class);
 
         // supposed to only apply to a single connection and reset it's self
         // undo what is done for clarity
