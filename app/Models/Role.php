@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $guard_name
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereGuardName($value)
  */
 class Role extends Model
 {

@@ -19,61 +19,117 @@ class PostController extends Controller
 
     /**
      * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
     {
         Page::setTitle('Posts | Wealthman', $request->input('page'));
         Page::setDescription('Posts list', $request->input('page'));
 
-        dd('index');
+        $posts = Post::paginate(10);
+
+        return view('admin.posts.index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**
-     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        dd('create');
+        Page::setTitle('Add New Post | Wealthman');
+        Page::setDescription('Add New Post | Wealthman');
+
+        return view('admin.posts.create');
     }
 
     /**
      * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        dd('store');
+        $request->validate(Post::rules(), Post::messages(), Post::attributes());
+
+        Post::create($request->all());
+
+        return redirect()
+            ->route('admin.posts.index')
+            ->with('statusType', 'success')
+            ->with('status', $this->messages['successAdd']);
     }
 
     /**
      * @param Post $post
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Post $post)
     {
-        dd('show');
+        Page::setTitle('Show Post | Wealthman');
+        Page::setDescription('Show Post | Wealthman');
+
+        return view('admin.posts.show', [
+            'post' => $post
+        ]);
     }
 
     /**
      * @param Post $post
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Post $post)
     {
-        dd('edit');
+        Page::setTitle('Edit Post | Wealthman');
+        Page::setDescription('Edit Post | Wealthman');
+
+        return view('admin.posts.edit', [
+            'post' => $post
+        ]);
     }
 
     /**
      * @param Request $request
      * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Post $post)
     {
-        dd('update');
+        $request->validate(Post::rules(), Post::messages(), Post::attributes());
+
+        $post->slug = null;
+        $post->fill($request->all());
+
+        if ($post->save()) {
+            return redirect()
+                ->route('admin.posts.index')
+                ->with('statusType', 'success')
+                ->with('status', $this->messages['successUpdate']);
+        } else {
+            return back()
+                ->withInput()
+                ->with('statusType', 'success')
+                ->with('status', $this->messages['errorUpdate']);
+        }
     }
 
     /**
      * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Post $post)
     {
-        dd('destroy');
+        if ($post->delete()) {
+            return redirect()
+                ->route('admin.posts.index')
+                ->with('statusType', 'success')
+                ->with('status', $this->messages['successDelete']);
+        } else {
+            return redirect()
+                ->route('admin.posts.index')
+                ->with('statusType', 'success')
+                ->with('status', $this->messages['errorDelete']);
+        }
     }
 }
