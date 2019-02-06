@@ -5,7 +5,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="robo-advisor-name-input" type="text" name="name" value="{{ old('name') ?? $roboAdvisor->name ??  ''}}">
+        <input class="form-control" id="robo-advisor-name-input" type="text" name="name" value="{{ old('name') ?? $roboAdvisor->name }}">
     </div>
 
     @if ($errors->has('name'))
@@ -17,7 +17,7 @@
 <div class="form-group">
     <div class="checkbox icheck">
         <label for="robo-advisor-is-verify-input">
-            <input class="js-icheck" id="robo-advisor-is-verify-input" name="is_verify" type="checkbox" {{ (old('is_verify') || (isset($roboAdvisor) && $roboAdvisor->is_verify)) ? 'checked' : '' }} >
+            <input class="js-icheck" id="robo-advisor-is-verify-input" name="is_verify" type="checkbox" {{ (old('is_verify') || $roboAdvisor->is_verify) ? 'checked' : '' }} >
             Verify
         </label>
     </div>
@@ -38,7 +38,7 @@
             <span class="help-block">{{ $errors->first('logo') }}</span>
         @endif
     </div>
-    @if (isset($roboAdvisor) && $roboAdvisor->logo)
+    @if ($roboAdvisor->logo)
         <div class="form-group col-sm-6">
             <img class="img-thumbnail" src="{{ asset('storage/' . $roboAdvisor->logo) }}" width="100">
         </div>
@@ -52,7 +52,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="robo-advisor-title-input" type="text" name="title" value="{{ old('title') ?? $roboAdvisor->title ?? ''}}">
+        <input class="form-control" id="robo-advisor-title-input" type="text" name="title" value="{{ old('title') ?? $roboAdvisor->title }}">
     </div>
 
     @if ($errors->has('title'))
@@ -63,7 +63,7 @@
 {{-- Robo Advisor short description --}}
 <div class="form-group {{ $errors->has('short_description') ? ' has-error' : '' }}">
     <label for="robo-advisor-short-description-input">Short description</label>
-    <textarea class="form-control js-editor" id="robo-advisor-short-description-input" name="short_description">{{ old('short_description') ?? $roboAdvisor->short_description ?? ''}}</textarea>
+    <textarea class="form-control js-editor" id="robo-advisor-short-description-input" name="short_description">{{ old('short_description') ?? $roboAdvisor->short_description }}</textarea>
 
     @if ($errors->has('short_description'))
         <span class="help-block">{{ $errors->first('short_description') }}</span>
@@ -73,7 +73,7 @@
 {{-- Robo Advisor description --}}
 <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
     <label for="robo-advisor-description-input">Description</label>
-    <textarea class="form-control js-editor" id="robo-advisor-description-input" name="description">{{ old('description') ?? $roboAdvisor->description ?? ''}}</textarea>
+    <textarea class="form-control js-editor" id="robo-advisor-description-input" name="description">{{ old('description') ?? $roboAdvisor->description }}</textarea>
 
     @if ($errors->has('description'))
         <span class="help-block">{{ $errors->first('description') }}</span>
@@ -89,7 +89,7 @@
         </div>
         <select class="form-control js-select2" id="robo-advisor-account-types-input" name="account_types[]" multiple style="width: 100%;">
             @foreach($accountTypes as $accountType)
-                <option value="{{ $accountType->id }}" {{ in_array($accountType->id, (old('account_types') ?? $accountTypesID ?? [])) ? 'selected' : '' }}>{{ $accountType->name }}</option>
+                <option value="{{ $accountType->id }}" {{ in_array($accountType->id, (old('account_types') ?? $accountTypesID)) ? 'selected' : '' }}>{{ $accountType->name }}</option>
             @endforeach
         </select>
     </div>
@@ -102,7 +102,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="robo-advisor-finra-crd-input" type="text" name="finra_crd" value="{{ old('finra_crd') ?? $roboAdvisor->finra_crd ?? ''}}">
+        <input class="form-control" id="robo-advisor-finra-crd-input" type="text" name="finra_crd" value="{{ old('finra_crd') ?? $roboAdvisor->finra_crd }}">
     </div>
 
     @if ($errors->has('finra_crd'))
@@ -117,7 +117,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="robo-advisor-sec-id-input" type="text" name="sec_id" value="{{ old('sec_id') ?? $roboAdvisor->sec_id ?? ''}}">
+        <input class="form-control" id="robo-advisor-sec-id-input" type="text" name="sec_id" value="{{ old('sec_id') ?? $roboAdvisor->sec_id }}">
     </div>
 
     @if ($errors->has('sec_id'))
@@ -132,7 +132,7 @@
         <div class="input-group-addon">
             <i class="fa fa-link"></i>
         </div>
-        <input class="form-control" id="robo-advisor-referral-link-input" type="text" name="referral_link" value="{{ old('referral_link') ?? $roboAdvisor->referral_link ?? ''}}">
+        <input class="form-control" id="robo-advisor-referral-link-input" type="text" name="referral_link" value="{{ old('referral_link') ?? $roboAdvisor->referral_link }}">
     </div>
 
     @if ($errors->has('referral_link'))
@@ -147,7 +147,7 @@
         <div class="input-group-addon">
             <i class="fa fa-link"></i>
         </div>
-        <input class="form-control" id="robo-advisor-video-link-input" type="text" name="video_link" value="{{ old('video_link') ?? $roboAdvisor->video_link ?? ''}}">
+        <input class="form-control" id="robo-advisor-video-link-input" type="text" name="video_link" value="{{ old('video_link') ?? $roboAdvisor->video_link }}">
     </div>
 
     @if ($errors->has('video_link'))
@@ -158,7 +158,7 @@
 {{-- Robo Advisor short description --}}
 <div class="form-group {{ $errors->has('video_information') ? ' has-error' : '' }}">
     <label for="robo-advisor-video-information-input">Video information</label>
-    <textarea class="form-control js-editor" id="robo-advisor-video-information-input" name="video_information">{{ old('video_information') ?? $roboAdvisor->video_information ?? ''}}</textarea>
+    <textarea class="form-control js-editor" id="robo-advisor-video-information-input" name="video_information">{{ old('video_information') ?? $roboAdvisor->video_information }}</textarea>
 
     @if ($errors->has('video_information'))
         <span class="help-block">{{ $errors->first('video_information') }}</span>
@@ -176,7 +176,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-minimum-account-input" type="text" name="minimum_account" value="{{ old('minimum_account') ?? $roboAdvisor->minimum_account ?? ''}}">
+            <input class="form-control" id="robo-advisor-minimum-account-input" type="text" name="minimum_account" value="{{ old('minimum_account') ?? $roboAdvisor->minimum_account }}">
         </div>
 
         @if ($errors->has('minimum_account'))
@@ -191,7 +191,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-management-fee-input" type="text" name="management_fee" value="{{ old('management_fee') ?? $roboAdvisor->management_fee ?? ''}}">
+            <input class="form-control" id="robo-advisor-management-fee-input" type="text" name="management_fee" value="{{ old('management_fee') ?? $roboAdvisor->management_fee }}">
         </div>
 
         @if ($errors->has('management_fee'))
@@ -206,7 +206,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-fee-details-input" type="text" name="fee_details" value="{{ old('fee_details') ?? $roboAdvisor->fee_details ?? ''}}">
+            <input class="form-control" id="robo-advisor-fee-details-input" type="text" name="fee_details" value="{{ old('fee_details') ?? $roboAdvisor->fee_details }}">
         </div>
 
         @if ($errors->has('fee_details'))
@@ -221,7 +221,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-aum-input" type="text" name="aum" value="{{ old('aum') ?? $roboAdvisor->aum ?? ''}}">
+            <input class="form-control" id="robo-advisor-aum-input" type="text" name="aum" value="{{ old('aum') ?? $roboAdvisor->aum }}">
         </div>
 
         @if ($errors->has('aum'))
@@ -236,7 +236,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-number-accounts-input" type="text" name="number_accounts" value="{{ old('number_accounts') ?? $roboAdvisor->number_accounts ?? ''}}">
+            <input class="form-control" id="robo-advisor-number-accounts-input" type="text" name="number_accounts" value="{{ old('number_accounts') ?? $roboAdvisor->number_accounts }}">
         </div>
 
         @if ($errors->has('number_accounts'))
@@ -251,7 +251,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-average-account-size-input" type="text" name="average_account_size" value="{{ old('average_account_size') ?? $roboAdvisor->average_account_size ?? ''}}">
+            <input class="form-control" id="robo-advisor-average-account-size-input" type="text" name="average_account_size" value="{{ old('average_account_size') ?? $roboAdvisor->average_account_size }}">
         </div>
 
         @if ($errors->has('average_account_size'))
@@ -266,7 +266,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-promotions-input" type="text" name="promotions" value="{{ old('promotions') ?? $roboAdvisor->promotions ?? ''}}">
+            <input class="form-control" id="robo-advisor-promotions-input" type="text" name="promotions" value="{{ old('promotions') ?? $roboAdvisor->promotions }}">
         </div>
 
         @if ($errors->has('promotions'))
@@ -284,7 +284,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-human-advisors-input">
-                <input class="js-icheck" id="robo-advisor-human-advisors-input" name="human_advisors" type="checkbox" {{ (old('human_advisors') || (isset($roboAdvisor) && $roboAdvisor->human_advisors)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-human-advisors-input" name="human_advisors" type="checkbox" {{ (old('human_advisors') || $roboAdvisor->human_advisors) ? 'checked' : '' }} >
                 Human advisors
             </label>
         </div>
@@ -297,7 +297,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-human-advisors-details-input" type="text" name="human_advisors_details" value="{{ old('human_advisors_details') ?? $roboAdvisor->human_advisors_details ?? ''}}">
+            <input class="form-control" id="robo-advisor-human-advisors-details-input" type="text" name="human_advisors_details" value="{{ old('human_advisors_details') ?? $roboAdvisor->human_advisors_details }}">
         </div>
 
         @if ($errors->has('human_advisors_details'))
@@ -309,7 +309,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-portfolio-rebalancing-input">
-                <input class="js-icheck" id="robo-advisor-portfolio-rebalancing-input" name="portfolio_rebalancing" type="checkbox" {{ (old('portfolio_rebalancing') || (isset($roboAdvisor) && $roboAdvisor->portfolio_rebalancing)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-portfolio-rebalancing-input" name="portfolio_rebalancing" type="checkbox" {{ (old('portfolio_rebalancing') || $roboAdvisor->portfolio_rebalancing) ? 'checked' : '' }} >
                 Portfolio Rebalancing
             </label>
         </div>
@@ -319,7 +319,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-automatic-deposits-input">
-                <input class="js-icheck" id="robo-advisor-automatic-deposits-input" name="automatic_deposits" type="checkbox" {{ (old('automatic_deposits') || (isset($roboAdvisor) && $roboAdvisor->automatic_deposits)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-automatic-deposits-input" name="automatic_deposits" type="checkbox" {{ (old('automatic_deposits') || $roboAdvisor->automatic_deposits) ? 'checked' : '' }} >
                 Automatic Deposits
             </label>
         </div>
@@ -332,7 +332,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-access-platforms-input" type="text" name="access_platforms" value="{{ old('access_platforms') ?? $roboAdvisor->access_platforms ?? ''}}">
+            <input class="form-control" id="robo-advisor-access-platforms-input" type="text" name="access_platforms" value="{{ old('access_platforms') ?? $roboAdvisor->access_platforms }}">
         </div>
 
         @if ($errors->has('access_platforms'))
@@ -344,7 +344,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-two-factor-auth-input">
-                <input class="js-icheck" id="robo-advisor-two-factor-auth-input" name="two_factor_auth" type="checkbox" {{ (old('two_factor_auth') || (isset($roboAdvisor) && $roboAdvisor->two_factor_auth)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-two-factor-auth-input" name="two_factor_auth" type="checkbox" {{ (old('two_factor_auth') || $roboAdvisor->two_factor_auth) ? 'checked' : '' }} >
                 Two-Factor Authentication
             </label>
         </div>
@@ -357,7 +357,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-customer-service-input" type="text" name="customer_service" value="{{ old('customer_service') ?? $roboAdvisor->customer_service ?? ''}}">
+            <input class="form-control" id="robo-advisor-customer-service-input" type="text" name="customer_service" value="{{ old('customer_service') ?? $roboAdvisor->customer_service }}">
         </div>
 
         @if ($errors->has('customer_service'))
@@ -372,7 +372,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-clearing-agency-input" type="text" name="clearing_agency" value="{{ old('clearing_agency') ?? $roboAdvisor->clearing_agency ?? ''}}">
+            <input class="form-control" id="robo-advisor-clearing-agency-input" type="text" name="clearing_agency" value="{{ old('clearing_agency') ?? $roboAdvisor->clearing_agency }}">
         </div>
 
         @if ($errors->has('clearing_agency'))
@@ -390,7 +390,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-fractional-shares-input">
-                <input class="js-icheck" id="robo-advisor-fractional-shares-input" name="fractional_shares" type="checkbox" {{ (old('fractional_shares') || (isset($roboAdvisor) && $roboAdvisor->fractional_shares)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-fractional-shares-input" name="fractional_shares" type="checkbox" {{ (old('fractional_shares') || $roboAdvisor->fractional_shares) ? 'checked' : '' }} >
                 Fractional Shares
             </label>
         </div>
@@ -400,7 +400,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-assistance-401k-input">
-                <input class="js-icheck" id="robo-advisor-assistance-401k-input" name="assistance_401k" type="checkbox" {{ (old('assistance_401k') || (isset($roboAdvisor) && $roboAdvisor->assistance_401k)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-assistance-401k-input" name="assistance_401k" type="checkbox" {{ (old('assistance_401k') || $roboAdvisor->assistance_401k) ? 'checked' : '' }} >
                 401k Assistance
             </label>
         </div>
@@ -410,7 +410,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-tax-loss-input">
-                <input class="js-icheck" id="robo-advisor-tax-loss-input" name="tax_loss" type="checkbox" {{ (old('tax_loss') || (isset($roboAdvisor) && $roboAdvisor->tax_loss)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-tax-loss-input" name="tax_loss" type="checkbox" {{ (old('tax_loss') || $roboAdvisor->tax_loss) ? 'checked' : '' }} >
                 Tax Loss Harvesting
             </label>
         </div>
@@ -423,7 +423,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-pencil"></i>
             </div>
-            <input class="form-control" id="robo-advisor-tax-loss-details-input" type="text" name="tax_loss_details" value="{{ old('tax_loss_details') ?? $roboAdvisor->tax_loss_details ?? ''}}">
+            <input class="form-control" id="robo-advisor-tax-loss-details-input" type="text" name="tax_loss_details" value="{{ old('tax_loss_details') ?? $roboAdvisor->tax_loss_details }}">
         </div>
 
         @if ($errors->has('tax_loss_details'))
@@ -435,7 +435,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-retirement-planning-input">
-                <input class="js-icheck" id="robo-advisor-retirement-planning-input" name="retirement_planning" type="checkbox" {{ (old('retirement_planning') || (isset($roboAdvisor) && $roboAdvisor->retirement_planning)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-retirement-planning-input" name="retirement_planning" type="checkbox" {{ (old('retirement_planning') || $roboAdvisor->retirement_planning) ? 'checked' : '' }} >
                 Retirement Planning Tools
             </label>
         </div>
@@ -445,7 +445,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-self-clearing-input">
-                <input class="js-icheck" id="robo-advisor-self-clearing-input" name="self_clearing" type="checkbox" {{ (old('self_clearing') || (isset($roboAdvisor) && $roboAdvisor->self_clearing)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-self-clearing-input" name="self_clearing" type="checkbox" {{ (old('self_clearing') || $roboAdvisor->self_clearing) ? 'checked' : '' }} >
                 Self Clearing
             </label>
         </div>
@@ -455,7 +455,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-smart-beta-input">
-                <input class="js-icheck" id="robo-advisor-smart-beta-input" name="smart_beta" type="checkbox" {{ (old('smart_beta') || (isset($roboAdvisor) && $roboAdvisor->smart_beta)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-smart-beta-input" name="smart_beta" type="checkbox" {{ (old('smart_beta') || $roboAdvisor->smart_beta) ? 'checked' : '' }} >
                 Smart Beta
             </label>
         </div>
@@ -465,7 +465,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-responsible-investing-input">
-                <input class="js-icheck" id="robo-advisor-responsible-investing-input" name="responsible_investing" type="checkbox" {{ (old('responsible_investing') || (isset($roboAdvisor) && $roboAdvisor->responsible_investing)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-responsible-investing-input" name="responsible_investing" type="checkbox" {{ (old('responsible_investing') || $roboAdvisor->responsible_investing) ? 'checked' : '' }} >
                 Socially Responsible Investing
             </label>
         </div>
@@ -475,7 +475,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-invests-commodities-input">
-                <input class="js-icheck" id="robo-advisor-invests-commodities-input" name="invests_commodities" type="checkbox" {{ (old('invests_commodities') || (isset($roboAdvisor) && $roboAdvisor->invests_commodities)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-invests-commodities-input" name="invests_commodities" type="checkbox" {{ (old('invests_commodities') || $roboAdvisor->invests_commodities) ? 'checked' : '' }} >
                 Invests in Commodities
             </label>
         </div>
@@ -485,7 +485,7 @@
     <div class="form-group">
         <div class="checkbox icheck">
             <label for="robo-advisor-real-estate-input">
-                <input class="js-icheck" id="robo-advisor-real-estate-input" name="real_estate" type="checkbox" {{ (old('real_estate') || (isset($roboAdvisor) && $roboAdvisor->real_estate)) ? 'checked' : '' }} >
+                <input class="js-icheck" id="robo-advisor-real-estate-input" name="real_estate" type="checkbox" {{ (old('real_estate') || $roboAdvisor->real_estate) ? 'checked' : '' }} >
                 Invests in Real Estate
             </label>
         </div>
@@ -501,7 +501,7 @@
     {{-- Robo Advisor additional information --}}
     <div class="form-group {{ $errors->has('additional_information') ? ' has-error' : '' }}">
         <label for="robo-advisor-additional-information-input">Additional information</label>
-        <textarea class="form-control js-editor" id="robo-advisor-additional-information-input" name="additional_information">{{ old('additional_information') ?? $roboAdvisor->additional_information ?? ''}}</textarea>
+        <textarea class="form-control js-editor" id="robo-advisor-additional-information-input" name="additional_information">{{ old('additional_information') ?? $roboAdvisor->additional_information }}</textarea>
 
         @if ($errors->has('additional_information'))
             <span class="help-block">{{ $errors->first('additional_information') }}</span>
@@ -511,7 +511,7 @@
     {{-- Robo Advisor summary --}}
     <div class="form-group {{ $errors->has('summary') ? ' has-error' : '' }}">
         <label for="robo-advisor-summary-input">Summary</label>
-        <textarea class="form-control js-editor" id="robo-advisor-summary-input" name="summary">{{ old('summary') ?? $roboAdvisor->summary ?? ''}}</textarea>
+        <textarea class="form-control js-editor" id="robo-advisor-summary-input" name="summary">{{ old('summary') ?? $roboAdvisor->summary }}</textarea>
 
         @if ($errors->has('summary'))
             <span class="help-block">{{ $errors->first('summary') }}</span>

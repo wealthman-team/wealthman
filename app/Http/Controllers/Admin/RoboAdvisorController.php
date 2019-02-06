@@ -52,6 +52,7 @@ class RoboAdvisorController extends Controller
 
         return view('admin.roboAdvisors.create', [
             'accountTypes' => AccountType::all(),
+            'usageTypes' => UsageType::all(),
         ]);
     }
 

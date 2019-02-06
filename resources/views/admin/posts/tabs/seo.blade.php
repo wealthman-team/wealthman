@@ -5,7 +5,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="robo-advisor-service-region-input" type="text" name="service_region" value="{{ old('service_region') ?? $roboAdvisor->service_region ?? ''}}">
+        <input class="form-control" id="robo-advisor-service-region-input" type="text" name="service_region" value="{{ old('service_region') ?? $roboAdvisor->service_region }}">
     </div>
 
     @if ($errors->has('service_region'))
@@ -20,7 +20,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="robo-advisor-headquarters-input" type="text" name="headquarters" value="{{ old('headquarters') ?? $roboAdvisor->headquarters ?? ''}}">
+        <input class="form-control" id="robo-advisor-headquarters-input" type="text" name="headquarters" value="{{ old('headquarters') ?? $roboAdvisor->headquarters }}">
     </div>
 
     @if ($errors->has('headquarters'))
@@ -35,7 +35,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="robo-advisor-founded-input" type="text" name="founded" value="{{ old('founded') ?? $roboAdvisor->founded ?? ''}}">
+        <input class="form-control" id="robo-advisor-founded-input" type="text" name="founded" value="{{ old('founded') ?? $roboAdvisor->founded }}">
     </div>
 
     @if ($errors->has('founded'))
@@ -50,7 +50,7 @@
         <div class="input-group-addon">
             <i class="fa fa-link"></i>
         </div>
-        <input class="form-control" id="robo-advisor-site-url-input" type="text" name="site_url" value="{{ old('site_url') ?? $roboAdvisor->site_url ?? ''}}">
+        <input class="form-control" id="robo-advisor-site-url-input" type="text" name="site_url" value="{{ old('site_url') ?? $roboAdvisor->site_url }}">
     </div>
 
     @if ($errors->has('site_url'))
@@ -65,7 +65,7 @@
         <div class="input-group-addon">
             <i class="fa fa-phone"></i>
         </div>
-        <input class="form-control" id="robo-advisor-phone-input" type="text" name="phone" value="{{ old('phone') ?? $roboAdvisor->phone ?? ''}}">
+        <input class="form-control" id="robo-advisor-phone-input" type="text" name="phone" value="{{ old('phone') ?? $roboAdvisor->phone }}">
     </div>
 
     @if ($errors->has('phone'))
@@ -80,7 +80,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="robo-advisor-ceo-input" type="text" name="ceo" value="{{ old('ceo') ?? $roboAdvisor->ceo ?? ''}}">
+        <input class="form-control" id="robo-advisor-ceo-input" type="text" name="ceo" value="{{ old('ceo') ?? $roboAdvisor->ceo }}">
     </div>
 
     @if ($errors->has('ceo'))
@@ -95,7 +95,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="robo-advisor-contact-details-input" type="text" name="contact_details" value="{{ old('contact_details') ?? $roboAdvisor->contact_details ?? ''}}">
+        <input class="form-control" id="robo-advisor-contact-details-input" type="text" name="contact_details" value="{{ old('contact_details') ?? $roboAdvisor->contact_details }}">
     </div>
 
     @if ($errors->has('contact_details'))
