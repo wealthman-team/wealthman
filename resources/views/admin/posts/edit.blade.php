@@ -31,19 +31,25 @@
                                     </ul>
                                 </div>
                             @endif
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab-post-main-info" data-toggle="tab" aria-expanded="true">Main</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab-post-seo" data-toggle="tab" aria-expanded="false">SEO</a>
+                                    </li>
+                                </ul>
 
-                            <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
-                                <label for="post-title-input">Title*</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-pencil"></i>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab-post-main-info">
+                                        @include('admin.posts.tabs.main')
                                     </div>
-                                    <input class="form-control" id="post-title-input" type="text" name="title" value="{{ old('title') ?? $post->title }}">
-                                </div>
 
-                                @if ($errors->has('title'))
-                                    <span class="help-block">{{ $errors->first('title') }}</span>
-                                @endif
+                                    <div class="tab-pane" id="tab-post-seo">
+                                        @include('admin.posts.tabs.seo')
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

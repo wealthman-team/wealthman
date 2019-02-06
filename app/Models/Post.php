@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $seo_keywords
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Category $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post findSimilarSlugs($attribute, $config, $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post newModelQuery()
@@ -49,6 +49,8 @@ class Post extends Model
     protected $table = 'blog_posts';
     protected $fillable = [
         'title',
+        'content',
+        'content_html',
     ];
     protected $hidden = [
         'created_at',
@@ -76,6 +78,8 @@ class Post extends Model
     {
         return [
             'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'content_html' => 'required|string',
         ];
     }
 
@@ -86,6 +90,8 @@ class Post extends Model
     {
         return [
             'title' => 'Title',
+            'content' => 'Short Content',
+            'content_html' => 'Content',
         ];
     }
 
@@ -102,13 +108,13 @@ class Post extends Model
     }
 
     // Relationships
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class, 'blog_posts_categories');
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'blog_posts_tags');
     }
 }

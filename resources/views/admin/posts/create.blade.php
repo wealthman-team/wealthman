@@ -30,36 +30,25 @@
                                     </ul>
                                 </div>
                             @endif
-                            <div class="form-group {{ $errors->has('title') ? ' has-error' : '' }}">
-                                <label for="post-title-input">Title*</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-pencil"></i>
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab-post-main-info" data-toggle="tab" aria-expanded="true">Main</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab-post-seo" data-toggle="tab" aria-expanded="false">SEO</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab-post-main-info">
+                                        @include('admin.posts.tabs.main')
                                     </div>
-                                    <input class="form-control" id="post-title-input" type="text" name="title" value="{{ old('title') }}">
+
+                                    <div class="tab-pane" id="tab-post-seo">
+                                        @include('admin.posts.tabs.seo')
+                                    </div>
                                 </div>
-
-                                @if ($errors->has('title'))
-                                    <span class="help-block">{{ $errors->first('title') }}</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group {{ $errors->has('content') ? ' has-error' : '' }}">
-                                <label for="content-input">Short Content</label>
-                                <textarea class="form-control" id="content-input" name="content">{{ old('content') }}</textarea>
-
-                                @if ($errors->has('content'))
-                                    <span class="help-block">{{ $errors->first('content') }}</span>
-                                @endif
-                            </div>
-
-                            <div class="form-group {{ $errors->has('content_html') ? ' has-error' : '' }}">
-                                <label for="content-html-input">Content</label>
-                                <textarea class="form-control js-editor" id="content-html-input" name="content_html">{{ old('content_html') }}</textarea>
-
-                                @if ($errors->has('content_html'))
-                                    <span class="help-block">{{ $errors->first('content_html') }}</span>
-                                @endif
                             </div>
                         </div>
 

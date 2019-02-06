@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Sources\Page;
@@ -41,7 +43,10 @@ class PostController extends Controller
         Page::setTitle('Add New Post | Wealthman');
         Page::setDescription('Add New Post | Wealthman');
 
-        return view('admin.posts.create');
+        return view('admin.posts.create', [
+            'categories' => Category::all(),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
@@ -52,7 +57,10 @@ class PostController extends Controller
     {
         $request->validate(Post::rules(), Post::messages(), Post::attributes());
 
-        Post::create($request->all());
+        $post = Post::create($request->all());
+
+        $post->categories()->sync(isset($request->categories) ? $request->categories : []);
+        $post->tags()->sync(isset($request->tags) ? $request->tags : []);
 
         return redirect()
             ->route('admin.posts.index')
@@ -84,7 +92,11 @@ class PostController extends Controller
         Page::setDescription('Edit Post | Wealthman');
 
         return view('admin.posts.edit', [
-            'post' => $post
+            'post' => $post,
+            'categoriesID' => $post->categories->pluck('id')->toArray(),
+            'tagsID' => $post->tags->pluck('id')->toArray(),
+            'categories' => Category::all(),
+            'tags' => Tag::all(),
         ]);
     }
 
@@ -100,17 +112,15 @@ class PostController extends Controller
         $post->slug = null;
         $post->fill($request->all());
 
-        if ($post->save()) {
-            return redirect()
-                ->route('admin.posts.index')
-                ->with('statusType', 'success')
-                ->with('status', $this->messages['successUpdate']);
-        } else {
-            return back()
-                ->withInput()
-                ->with('statusType', 'success')
-                ->with('status', $this->messages['errorUpdate']);
-        }
+        $post->save();
+
+        $post->categories()->sync(isset($request->categories) ? $request->categories : []);
+        $post->tags()->sync(isset($request->tags) ? $request->tags : []);
+
+        return redirect()
+            ->route('admin.posts.index')
+            ->with('statusType', 'success')
+            ->with('status', $this->messages['successUpdate']);
     }
 
     /**
