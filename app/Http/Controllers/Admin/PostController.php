@@ -62,6 +62,12 @@ class PostController extends Controller
         $post->categories()->sync(isset($request->categories) ? $request->categories : []);
         $post->tags()->sync(isset($request->tags) ? $request->tags : []);
 
+        $image = $request->file('image');
+        $name = $image->getClientOriginalName();
+        $post->addMedia($image)
+            ->usingName($name)
+            ->toMediaCollection('images');
+
         return redirect()
             ->route('admin.posts.index')
             ->with('statusType', 'success')
@@ -93,6 +99,7 @@ class PostController extends Controller
 
         return view('admin.posts.edit', [
             'post' => $post,
+            'postImages' => $post->getMedia('images'),
             'categoriesID' => $post->categories->pluck('id')->toArray(),
             'tagsID' => $post->tags->pluck('id')->toArray(),
             'categories' => Category::all(),
@@ -117,6 +124,14 @@ class PostController extends Controller
         $post->categories()->sync(isset($request->categories) ? $request->categories : []);
         $post->tags()->sync(isset($request->tags) ? $request->tags : []);
 
+        $image = $request->file('image');
+        if ($image) {
+            $name = $image->getClientOriginalName();
+            $post->addMedia($image)
+                ->usingName($name)
+                ->toMediaCollection('images');
+        }
+
         return redirect()
             ->route('admin.posts.index')
             ->with('statusType', 'success')
@@ -130,6 +145,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        // remove media
+        $post->clearMediaCollection();
+        // remove entity
         if ($post->delete()) {
             return redirect()
                 ->route('admin.posts.index')

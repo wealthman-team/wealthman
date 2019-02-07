@@ -1,7 +1,6 @@
 @extends('admin/layouts/admin')
 
 @section('content')
-
     @if (session('status'))
         @include('components/noty', [
             'type' => session('statusType'),
@@ -17,7 +16,7 @@
                         <h3 class="box-title">Add new Usage Type</h3>
                     </div>
 
-                    <form action="{{ route('admin.usageTypes.store') }}" method="post" role="form" autocomplete="off">
+                    <form action="{{ route('admin.media.store') }}" method="post" role="form" autocomplete="off" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="box-body">
 
@@ -30,14 +29,26 @@
                                     </ul>
                                 </div>
                             @endif
+                            <div class="form-group {{ $errors->has('image') ? ' has-error' : '' }}">
+                                <label for="image">Image*</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-upload"></i>
+                                    </div>
+                                    <input accept="image/*" class="form-control" required="" name="image" type="file" id="image">
+                                </div>
+                                @if ($errors->has('image'))
+                                    <span class="help-block">{{ $errors->first('image') }}</span>
+                                @endif
+                            </div>
 
                             <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="usage-type-name-input">Name*</label>
+                                <label for="name-input">Name</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-pencil"></i>
                                     </div>
-                                    <input class="form-control" id="usage-type-name-input" type="text" name="name" value="{{ old('name') }}">
+                                    <input class="form-control" id="name-input" type="text" name="name" value="{{ old('name') }}">
                                 </div>
 
                                 @if ($errors->has('name'))
@@ -57,5 +68,4 @@
             </div>
         </div>
     </div>
-
 @endsection

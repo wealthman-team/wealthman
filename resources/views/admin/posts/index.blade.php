@@ -28,14 +28,32 @@
                             <tbody>
                                 <tr>
                                     <th style="width: 50px;">ID</th>
+                                    <th style="width: 55px;">Image</th>
                                     <th>Title</th>
+                                    <th>Status</th>
                                     <th style="width: 150px;">Actions</th>
                                 </tr>
                                 @if(count($posts) > 0)
                                     @foreach($posts as $post)
                                         <tr>
                                             <td>{{ $post->id }}</td>
+                                            <td>
+                                                @if ($post->getFirstMedia('images'))
+                                                    <img src="{{ $post->getFirstMedia('images')->getUrl() }}" alt="{{ $post->getFirstMedia('images')->name }}" width="50" href="50">
+                                                @endif
+                                            </td>
                                             <td>{{ $post->title }}</td>
+                                            <td>
+                                                @if($post->published)
+                                                    status: <span class="text-green">published</span>
+                                                    @if($post->published_at)
+                                                        <br>
+                                                        published at: <span>humanize_date($post->published_at)</span>
+                                                    @endif
+                                                @else
+                                                    status: <span class="text-red">unpublished</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a class="btn btn-success btn-sm" href="{{ route('admin.posts.edit', $post) }}" title="Edit">
                                                     <i class="icon fa fa-edit"></i>
@@ -53,7 +71,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="3" align="center">Posts are not in the database</td>
+                                        <td colspan="4" align="center">Posts are not in the database</td>
                                     </tr>
                                 @endif
                             </tbody>

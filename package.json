@@ -30,6 +30,7 @@
         "slick-carousel": "^1.8.1",
         "uniqid": "^5.0.3",
         "vue": "^2.5.17",
-        "webfonts-loader": "^4.3.0"
+        "webfonts-loader": "^4.3.0",
+        "clipboard": "^2.0.4"
     }
 }

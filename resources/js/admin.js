@@ -57,10 +57,15 @@ if (token) {
 require('admin-lte');
 require('icheck');
 require('select2');
+require('clipboard');
+import Clipboard from 'clipboard';
+
 window.Noty = require('noty');
 window.noUiSlider = require('nouislider');
 
 $(function () {
+    new Clipboard('[data-clipboard-target]');
+
     $('.js-model-delete-modal').on('show.bs.modal', function (e) {
         let modal = $(this);
         let form = $('.js-model-delete-form', modal);

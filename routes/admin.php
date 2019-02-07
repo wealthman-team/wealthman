@@ -95,3 +95,13 @@ Route::resource('categories', 'CategoryController', ['names' => [
 ]])->parameters([
     'categories' => 'category'
 ]);
+
+Route::resource('media', 'MediaLibraryController')
+    ->only(['index', 'show', 'create', 'store', 'destroy'])
+    ->names([
+        'index' => 'admin.media.index',
+        'create' => 'admin.media.create',
+        'store' => 'admin.media.store',
+        'show' => 'admin.media.show',
+        'destroy' => 'admin.media.destroy',
+    ]);

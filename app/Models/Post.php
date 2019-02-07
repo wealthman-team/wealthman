@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 /**
  * App\Models\Post
@@ -42,8 +44,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUserId($value)
  * @mixin \Eloquent
  */
-class Post extends Model
+class Post extends Model implements HasMedia
 {
+    use HasMediaTrait;
     use Sluggable;
 
     protected $table = 'blog_posts';

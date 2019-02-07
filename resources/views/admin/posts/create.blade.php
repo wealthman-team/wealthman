@@ -17,7 +17,7 @@
                         <h3 class="box-title">Add New Post</h3>
                     </div>
 
-                    <form action="{{ route('admin.posts.store') }}" method="post" role="form" autocomplete="off">
+                    <form action="{{ route('admin.posts.store') }}" method="post" role="form" autocomplete="off" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="box-body">
 
@@ -36,6 +36,9 @@
                                         <a href="#tab-post-main-info" data-toggle="tab" aria-expanded="true">Main</a>
                                     </li>
                                     <li>
+                                        <a href="#tab-post-media" data-toggle="tab" aria-expanded="true">Media</a>
+                                    </li>
+                                    <li>
                                         <a href="#tab-post-seo" data-toggle="tab" aria-expanded="false">SEO</a>
                                     </li>
                                 </ul>
@@ -43,6 +46,10 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="tab-post-main-info">
                                         @include('admin.posts.tabs.main')
+                                    </div>
+
+                                    <div class="tab-pane" id="tab-post-media">
+                                        @include('admin.posts.tabs.media')
                                     </div>
 
                                     <div class="tab-pane" id="tab-post-seo">
