@@ -80,12 +80,7 @@
     max-height: 44px;
     overflow: hidden;
   }
-  &__author-icon {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    width: 28px;
-    height: 28px;
-    line-height: 30px;
-    font-size: 10px;
+  & .user-icon__small {
     margin-right: 8px;
   }
   &__footer {
@@ -152,5 +147,10 @@
     height: 186px;
     overflow: hidden;
     margin-bottom: 11px;
+  }
+}
+.popular-posts {
+  .post__small {
+    margin-bottom: 0;
   }
 }

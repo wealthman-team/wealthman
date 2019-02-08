@@ -157,4 +157,28 @@ class Post extends Model implements HasMedia
     {
         return $query->orderBy('published_at', 'desc');
     }
+
+    /**
+     * @param Builder $query
+     * @param int $limit
+     * @return mixed
+     */
+    public function scopePopular(Builder $query, int $limit = 3)
+    {
+        return $query->orderBy('published_at', 'desc')->limit($limit);
+    }
+
+    /**
+     * @param Builder $query
+     * @param null $exclude
+     * @return mixed
+     */
+    public function scopeExclude(Builder $query, $exclude = null)
+    {
+        if ($exclude !== null) {
+            $exclude = is_array($exclude) ? $exclude : [(int) $exclude];
+        }
+
+        return $exclude ? $query->whereNotIn('blog_posts.id', $exclude) : $query;
+    }
 }
