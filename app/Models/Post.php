@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -43,6 +45,10 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $author
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post published()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post latest()
  */
 class Post extends Model implements HasMedia
 {
@@ -58,6 +64,14 @@ class Post extends Model implements HasMedia
     protected $hidden = [
         'created_at',
         'updated_at',
+    ];
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'published_at'
     ];
 
     /**
@@ -111,6 +125,11 @@ class Post extends Model implements HasMedia
     }
 
     // Relationships
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'blog_posts_categories');
@@ -119,5 +138,23 @@ class Post extends Model implements HasMedia
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'blog_posts_tags');
+    }
+
+    //
+    // Scopes
+    //
+    public function scopePublished(Builder $query)
+    {
+        return $query
+            ->whereNotNull('published')
+            ->where('published', true)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<', Carbon::now())
+            ;
+    }
+
+    public function scopeLatest(Builder $query)
+    {
+        return $query->orderBy('published_at', 'desc');
     }
 }

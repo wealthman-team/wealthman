@@ -30,6 +30,7 @@
                                     <th style="width: 50px;">ID</th>
                                     <th style="width: 55px;">Image</th>
                                     <th>Title</th>
+                                    <th>Author</th>
                                     <th>Status</th>
                                     <th style="width: 150px;">Actions</th>
                                 </tr>
@@ -43,12 +44,13 @@
                                                 @endif
                                             </td>
                                             <td>{{ $post->title }}</td>
+                                            <td>{{ $post->author->email }}</td>
                                             <td>
                                                 @if($post->published)
                                                     status: <span class="text-green">published</span>
                                                     @if($post->published_at)
                                                         <br>
-                                                        published at: <span>humanize_date($post->published_at)</span>
+                                                        published at: <br><span>{{humanize_date($post->published_at, 'd/m/Y, H:i')}}</span>
                                                     @endif
                                                 @else
                                                     status: <span class="text-red">unpublished</span>
@@ -71,7 +73,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="4" align="center">Posts are not in the database</td>
+                                        <td colspan="5" align="center">Posts are not in the database</td>
                                     </tr>
                                 @endif
                             </tbody>

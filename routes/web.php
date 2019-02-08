@@ -20,6 +20,7 @@ Route::get('/', 'IndexController@index')->name('home');
 Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
 Route::get('/robo-advisors/{slug}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
 Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsCompare');
+Route::get('/blog', 'BlogController@index')->name('blog');
 // group post
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');

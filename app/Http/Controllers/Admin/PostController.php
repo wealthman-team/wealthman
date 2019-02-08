@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Sources\Page;
@@ -57,16 +59,25 @@ class PostController extends Controller
     {
         $request->validate(Post::rules(), Post::messages(), Post::attributes());
 
-        $post = Post::create($request->all());
+        $post = new Post;
+        $post->title = $request->{'title'};
+        $post->content = $request->{'content'};
+        $post->content_html = $request->{'content_html'};
+        $post->published = $request->has('published');
+        $post->published_at = Carbon::now();
+        $post->user_id = Auth::user()->id;
+        $post->save();
 
         $post->categories()->sync(isset($request->categories) ? $request->categories : []);
         $post->tags()->sync(isset($request->tags) ? $request->tags : []);
 
         $image = $request->file('image');
-        $name = $image->getClientOriginalName();
-        $post->addMedia($image)
-            ->usingName($name)
-            ->toMediaCollection('images');
+        if ($image) {
+            $name = $image->getClientOriginalName();
+            $post->addMedia($image)
+                ->usingName($name)
+                ->toMediaCollection('images');
+        }
 
         return redirect()
             ->route('admin.posts.index')
@@ -117,8 +128,10 @@ class PostController extends Controller
         $request->validate(Post::rules(), Post::messages(), Post::attributes());
 
         $post->slug = null;
-        $post->fill($request->all());
-
+        $post->title = $request->{'title'};
+        $post->content = $request->{'content'};
+        $post->content_html = $request->{'content_html'};
+        $post->published = $request->has('published');
         $post->save();
 
         $post->categories()->sync(isset($request->categories) ? $request->categories : []);

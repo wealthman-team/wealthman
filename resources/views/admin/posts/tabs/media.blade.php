@@ -6,7 +6,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-upload"></i>
             </div>
-            <input id="post-image" class="form-control" name="image" type="file" accept="image/*" required="">
+            <input id="post-image" class="form-control" name="image" type="file" accept="image/*">
         </div>
 
         @if ($errors->has('image'))
