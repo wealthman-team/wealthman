@@ -14,11 +14,14 @@
         @endif
     </div>
 </div>
-@if (isset($postImages) && count($postImages) > 0)
+@if ((isset($postImages) && count($postImages) > 0) || (isset($postGallery) && count($postGallery) > 0))
     <div class="box-header with-border">
-        <h3 class="box-title">Uploaded images</h3>
+        <h3 class="box-title">Post Gallery</h3>
     </div>
     @foreach($postImages as $image)
-        <img src="{{ $image->getUrl() }}" alt="{{ $image->name }}" class="margin" width="150" href="100">
+        @include ('admin/posts/_card', ['image' => $image, 'active' => true])
+    @endforeach
+    @foreach($postGallery as $gallery)
+        @include ('admin/posts/_card', ['image' => $gallery, 'active' => false])
     @endforeach
 @endif

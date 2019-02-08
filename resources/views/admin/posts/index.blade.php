@@ -29,9 +29,8 @@
                                 <tr>
                                     <th style="width: 50px;">ID</th>
                                     <th style="width: 55px;">Image</th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Status</th>
+                                    <th style="width: 50%">Title</th>
+                                    <th>Information</th>
                                     <th style="width: 150px;">Actions</th>
                                 </tr>
                                 @if(count($posts) > 0)
@@ -40,21 +39,23 @@
                                             <td>{{ $post->id }}</td>
                                             <td>
                                                 @if ($post->getFirstMedia('images'))
-                                                    <img src="{{ $post->getFirstMedia('images')->getUrl() }}" alt="{{ $post->getFirstMedia('images')->name }}" width="50" href="50">
+                                                    <img src="{{ $post->getFirstMedia('images')->getUrl('thumb') }}" alt="" width="50" href="50">
                                                 @endif
                                             </td>
                                             <td>{{ $post->title }}</td>
-                                            <td>{{ $post->author->email }}</td>
                                             <td>
-                                                @if($post->published)
-                                                    status: <span class="text-green">published</span>
-                                                    @if($post->published_at)
-                                                        <br>
-                                                        published at: <br><span>{{humanize_date($post->published_at, 'd/m/Y, H:i')}}</span>
+                                                <ul class="post-info">
+                                                    <li>author: <span class="">{{ $post->author->name }}</span></li>
+                                                    @if($post->published)
+                                                        <li>status: <span class="text-green">published</span></li>
+                                                        @if($post->published_at)
+                                                            <li>published at: <span class="">{{humanize_date($post->published_at, 'd/m/Y, H:i')}}</span></li>
+                                                        @endif
+                                                    @else
+                                                        <li>status: <span class="text-red">unpublished</span></li>
                                                     @endif
-                                                @else
-                                                    status: <span class="text-red">unpublished</span>
-                                                @endif
+                                                </ul>
+
                                             </td>
                                             <td>
                                                 <a class="btn btn-success btn-sm" href="{{ route('admin.posts.edit', $post) }}" title="Edit">

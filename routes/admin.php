@@ -71,6 +71,9 @@ Route::resource('posts', 'PostController', ['names' => [
 ]])->parameters([
     'posts' => 'post'
 ]);
+Route::post('/posts/image/download', 'PostController@imageDownload')->name('admin.post.image.download');
+Route::post('/posts/image/remove', 'PostController@imageRemove')->name('admin.post.image.remove');
+Route::post('/posts/image/select', 'PostController@imageSelect')->name('admin.post.image.select');
 
 Route::resource('tags', 'TagController', ['names' => [
     'index' => 'admin.tags.index',

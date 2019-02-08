@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use App\Models\Media;
 use App\Models\Post;
 use App\Models\Tag;
 use Auth;
@@ -18,6 +19,8 @@ class PostController extends Controller
         'successUpdate' => 'Post success updated',
         'errorUpdate' => 'Error post save',
         'successDelete' => 'Post success delete',
+        'successImageDelete' => 'Image success delete',
+        'successImageSelected' => 'Image success selected',
         'errorDelete' => 'Delete error post',
     );
 
@@ -71,13 +74,7 @@ class PostController extends Controller
         $post->categories()->sync(isset($request->categories) ? $request->categories : []);
         $post->tags()->sync(isset($request->tags) ? $request->tags : []);
 
-        $image = $request->file('image');
-        if ($image) {
-            $name = $image->getClientOriginalName();
-            $post->addMedia($image)
-                ->usingName($name)
-                ->toMediaCollection('images');
-        }
+        $this->addImageToCollection($request, $post);
 
         return redirect()
             ->route('admin.posts.index')
@@ -111,6 +108,7 @@ class PostController extends Controller
         return view('admin.posts.edit', [
             'post' => $post,
             'postImages' => $post->getMedia('images'),
+            'postGallery' => $post->getMedia('gallery'),
             'categoriesID' => $post->categories->pluck('id')->toArray(),
             'tagsID' => $post->tags->pluck('id')->toArray(),
             'categories' => Category::all(),
@@ -137,13 +135,7 @@ class PostController extends Controller
         $post->categories()->sync(isset($request->categories) ? $request->categories : []);
         $post->tags()->sync(isset($request->tags) ? $request->tags : []);
 
-        $image = $request->file('image');
-        if ($image) {
-            $name = $image->getClientOriginalName();
-            $post->addMedia($image)
-                ->usingName($name)
-                ->toMediaCollection('images');
-        }
+        $this->addImageToCollection($request, $post);
 
         return redirect()
             ->route('admin.posts.index')
@@ -171,6 +163,59 @@ class PostController extends Controller
                 ->route('admin.posts.index')
                 ->with('statusType', 'success')
                 ->with('status', $this->messages['errorDelete']);
+        }
+    }
+
+    public function imageDownload(Request $request)
+    {
+        $mediaItem = Media::whereId((int) $request->download_image)->firstOrFail();
+
+        return $mediaItem;
+    }
+
+    public function imageRemove(Request $request)
+    {
+        $mediaItem = Media::whereId((int) $request->removed_image)->firstOrFail();
+
+        $mediaItem->delete();
+
+        return redirect()->back()
+            ->with('statusType', 'success')
+            ->with('status', $this->messages['successImageDelete']);
+    }
+
+    public function imageSelect(Request $request)
+    {
+        $mediaItem = Media::whereId((int) $request->selected_image)->firstOrFail();
+        $post = Post::whereId((int) $mediaItem->model_id)->firstOrFail();
+        $images = $post->getMedia('images');
+        foreach ($images as $old_image) {
+            $old_image->collection_name = 'gallery';
+            $old_image->save();
+        }
+
+        $mediaItem->collection_name = 'images';
+        $mediaItem->save();
+
+        return redirect()->back()
+            ->with('statusType', 'success')
+            ->with('status', $this->messages['successImageSelected']);
+    }
+
+    private function addImageToCollection(Request $request, Post $post)
+    {
+        $image = $request->file('image');
+        if ($image) {
+            $images = $post->getMedia('images');
+            /** @var Media $image */
+            foreach ($images as $old_image) {
+                $old_image->collection_name = 'gallery';
+                $old_image->save();
+            }
+            $name = $image->getClientOriginalName();
+            $post->addMedia($image)
+                ->usingName($name)
+                ->toMediaCollection('images');
         }
     }
 }

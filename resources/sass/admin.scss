@@ -52,3 +52,43 @@ body {
 .review-unpublished {
   color: $red;
 }
+
+.post-info {
+  font-size: 14px;
+  padding-left: 15px;
+  span {
+    font-weight: 700;
+    color: $text;
+  }
+}
+
+.img-card {
+  display: inline-block;
+  margin: 5px;
+  img {
+    margin: 0;
+  }
+  &__body {
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+    background-color: #FAFAFA;
+    padding: 5px;
+    border: 1px solid #bdbdbd;
+  }
+  &.active {
+    border: 2px solid #0fb90f;
+    box-shadow: 0 0px 8px rgba(21, 125, 0, 0.57);
+  }
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
