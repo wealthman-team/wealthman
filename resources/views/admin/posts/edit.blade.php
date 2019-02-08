@@ -67,6 +67,32 @@
                             </button>
                         </div>
                     </form>
+                    @if ((isset($postImages) && count($postImages) > 0) || (isset($postGallery) && count($postGallery) > 0))
+                        @foreach($postImages as $image)
+                            <form id="removeImageForm{{$image->id}}" action="{{route('admin.post.image.remove')}}" method="post" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="removed_image" value="{{$image->id}}">
+                            </form>
+                            <form id="downloadImageForm{{$image->id}}" action="{{route('admin.post.image.download')}}" method="post" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="download_image" value="{{$image->id}}">
+                            </form>
+                        @endforeach
+                        @foreach($postGallery as $gallery)
+                                <form id="selectImageForm{{$gallery->id}}" action="{{route('admin.post.image.select')}}" method="post" style="display: none;">
+                                    @csrf
+                                    <input type="hidden" name="selected_image" value="{{$gallery->id}}">
+                                </form>
+                                <form id="removeImageForm{{$gallery->id}}" action="{{route('admin.post.image.remove')}}" method="post" style="display: none;">
+                                    @csrf
+                                    <input type="hidden" name="removed_image" value="{{$gallery->id}}">
+                                </form>
+                                <form id="downloadImageForm{{$gallery->id}}" action="{{route('admin.post.image.download')}}" method="post" style="display: none;">
+                                    @csrf
+                                    <input type="hidden" name="download_image" value="{{$gallery->id}}">
+                                </form>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

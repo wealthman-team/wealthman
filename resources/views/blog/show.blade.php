@@ -30,12 +30,12 @@
                     <div class="main-content">
                         <div class="panel panel_padding blog-post__panel">
                             <div class="blog-post__image-box">
-                                <img class="blog-post__image" src="{{ $post->getFirstMedia('images')->getUrl() }}" alt="">
+                                <img class="blog-post__image" src="{{ getPostImageUrl('', $post) }}" alt="">
                             </div>
                             <div class="blog-post__info">
                                 <div class="blog-post__info-part">
-                                    <span class="user-icon user-icon__small">ok</span>
-                                    <span class="blog-post__author-name">Anton Okrema</span>
+                                    <span class="user-icon user-icon__small">{{user_short_name($post->author->name)}}</span>
+                                    <span class="blog-post__author-name">{{$post->author->name}}</span>
                                     <span class="blog-post__date">{{humanize_date($post->published_at, 'd.m.Y')}}</span>
                                 </div>
                                 <div class="blog-post__info-part">ROBO-ADVISORS REVIEW</div>

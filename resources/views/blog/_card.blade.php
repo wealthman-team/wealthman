@@ -2,9 +2,7 @@
     <div class="post__container">
         <div class="post__image-box">
             <a href="{{route('blog.show', $post->slug)}}">
-                @if ($post->getFirstMedia('images'))
-                    <img class="post__image" src="{{ $post->getFirstMedia('images')->getUrl() }}" alt="{{ $post->getFirstMedia('images')->name }}">
-                @endif
+                <img class="post__image" src="{{ getPostImageUrl($card_class, $post) }}" alt="">
             </a>
         </div>
         <div class="post__item">
@@ -21,8 +19,8 @@
             </div>
             <div class="post__footer">
                 <div class="post__author">
-                    <span class="user-icon user-icon__small">ok</span>
-                    <span class="post__author-name">Anton Okrema</span>
+                    <span class="user-icon user-icon__small">{{user_short_name($post->author->name)}}</span>
+                    <span class="post__author-name">{{$post->author->name}}</span>
                 </div>
                 <div class="post__date">{{humanize_date($post->published_at, 'd.m.Y')}}</div>
             </div>

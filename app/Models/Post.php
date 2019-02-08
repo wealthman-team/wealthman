@@ -86,16 +86,13 @@ class Post extends Model implements HasMedia
             ->fit(Manipulations::FIT_CROP, 150, 150);
 
         $this->addMediaConversion('big')
-            ->width(934)
-            ->height(594);
+            ->fit(Manipulations::FIT_CROP, 934, 594);
 
         $this->addMediaConversion('medium')
-            ->width(605)
-            ->height(385);
+            ->fit(Manipulations::FIT_CROP, 605, 385);
 
         $this->addMediaConversion('small')
-            ->width(384)
-            ->height(244);
+            ->fit(Manipulations::FIT_CROP, 384, 244);
     }
 
     /**

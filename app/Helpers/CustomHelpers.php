@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\RedirectController;
+use App\Models\Post;
 use App\Models\RoboAdvisor;
 use Illuminate\Support\Arr;
+use Spatie\MediaLibrary\Models\Media;
 
 /**
  *
@@ -241,5 +243,41 @@ function post_class($index, $max = 6)
         return 'post__small';
     } else {
         return 'post__medium';
+    }
+}
+
+/**
+ * @param $class_name
+ * @param Post $post
+ * @return bool|string
+ */
+function getPostImageUrl($class_name, Post $post)
+{
+    switch ($class_name)
+    {
+        case 'post__small':
+            try {
+                $url = $post->getFirstMedia('images') ? $post->getFirstMedia('images')->getUrl('small') : '';
+            }catch (\Exception $t) {
+                $url = '';
+            }
+
+            return !empty(trim($url)) ? trim($url) : '/images/post_small.jpg';
+        case 'post__medium':
+            try {
+                $url = $post->getFirstMedia('images') ? $post->getFirstMedia('images')->getUrl('medium') : '';
+            }catch (\Exception $t) {
+                $url = '';
+            }
+
+            return !empty(trim($url)) ? trim($url) :'/images/post_medium.jpg';
+        default:
+            try {
+                $url = $post->getFirstMedia('images') ? $post->getFirstMedia('images')->getUrl('big') : '';
+            }catch (\Exception $t) {
+                $url = '';
+            }
+
+            return !empty(trim($url)) ? trim($url) : '/images/post_big.jpg';
     }
 }

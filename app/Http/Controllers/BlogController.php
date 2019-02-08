@@ -30,7 +30,7 @@ class BlogController
         // популярные Robo Advisors
         $popularRoboAdvisors = RoboAdvisor::popular(3)->get();
         // популярные Posts
-        $popularPosts = Post::popular(3)->exclude($post->id)->get();
+        $popularPosts = Post::published()->popular(3)->exclude($post->id)->get();
 
         return view('blog.show', [
             'post' => $post,
