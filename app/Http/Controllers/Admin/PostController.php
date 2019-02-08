@@ -30,7 +30,7 @@ class PostController extends Controller
         Page::setTitle('Posts | Wealthman', $request->input('page'));
         Page::setDescription('Posts list', $request->input('page'));
 
-        $posts = Post::paginate(10);
+        $posts = Post::latest()->paginate(10);
 
         return view('admin.posts.index', [
             'posts' => $posts,

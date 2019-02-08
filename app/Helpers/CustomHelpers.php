@@ -213,12 +213,8 @@ function review_attr_data($review_type_id)
     return $attr_data;
 }
 
-function diffForHumans($value) {
-    $date = new \Carbon\Carbon($value);
-    return $date->diffForHumans();
-}
-
-function recommended_text($yes,$maybe, $no) {
+function recommended_text($yes,$maybe, $no)
+{
     $S = $yes*1 + $maybe*0.5 + $no*1;
     $negative_percent = $no / $S * 100;
 
@@ -235,4 +231,15 @@ function recommended_text($yes,$maybe, $no) {
     }
 
     return '';
+}
+
+function post_class($index, $max = 6)
+{
+    if (($index % $max) === 0) {
+        return 'post__large';
+    } elseif (($index % $max) < 4) {
+        return 'post__small';
+    } else {
+        return 'post__medium';
+    }
 }
