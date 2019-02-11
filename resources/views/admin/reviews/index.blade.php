@@ -69,7 +69,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="4">Reviews are not in the database</td>
+                                    <td colspan="6">Reviews are not in the database</td>
                                 </tr>
                             @endif
                             </tbody>

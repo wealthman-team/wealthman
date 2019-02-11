@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\RoboAdvisor;
-use App\Rating;
-use App\AccountType;
+use App\Models\RoboAdvisor;
+use App\Models\Rating;
+use App\Models\AccountType;
 use App\Sources\Page;
-use App\UsageType;
+use App\Models\UsageType;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
@@ -30,8 +30,8 @@ class RoboAdvisorController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Robo Advisors | Wealthman', $request->input('page'));
-        Page::setDescription('Robo Advisors list', $request->input('page'));
+        Page::setTitle('Robo Advisors | Wealthman');
+        Page::setDescription('Robo Advisors list');
 
         $roboAdvisors = RoboAdvisor::paginate(10);
 
@@ -52,6 +52,7 @@ class RoboAdvisorController extends Controller
 
         return view('admin.roboAdvisors.create', [
             'accountTypes' => AccountType::all(),
+            'usageTypes' => UsageType::all(),
         ]);
     }
 
@@ -142,7 +143,7 @@ class RoboAdvisorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\RoboAdvisor  $roboAdvisor
+     * @param  \App\Models\RoboAdvisor  $roboAdvisor
      * @return \Illuminate\Http\Response
      */
     public function show(RoboAdvisor $roboAdvisor)
@@ -155,7 +156,7 @@ class RoboAdvisorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\RoboAdvisor  $roboAdvisor
+     * @param  \App\Models\RoboAdvisor  $roboAdvisor
      * @return \Illuminate\Http\Response
      */
     public function edit(RoboAdvisor $roboAdvisor)
@@ -176,7 +177,7 @@ class RoboAdvisorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\RoboAdvisor  $roboAdvisor
+     * @param  \App\Models\RoboAdvisor  $roboAdvisor
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, RoboAdvisor $roboAdvisor)
@@ -259,7 +260,7 @@ class RoboAdvisorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\RoboAdvisor $roboAdvisor
+     * @param  \App\Models\RoboAdvisor $roboAdvisor
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */

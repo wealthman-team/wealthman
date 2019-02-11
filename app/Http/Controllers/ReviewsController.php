@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Review;
-use App\ReviewLike;
-use App\ReviewType;
-use App\RoboAdvisor;
-use App\User;
+use App\Models\Review;
+use App\Models\ReviewLike;
+use App\Models\ReviewType;
+use App\Models\RoboAdvisor;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Validator;

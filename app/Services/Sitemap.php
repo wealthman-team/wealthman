@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use App\RoboAdvisor;
+use App\Models\RoboAdvisor;
 use Spatie\Sitemap\Sitemap as SitemapGenerator;
 use Spatie\Sitemap\Tags\Url;
 

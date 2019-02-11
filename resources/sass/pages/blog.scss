@@ -1,0 +1,127 @@
+.blog {
+  background: $white url("../images/blogBG.jpg") top center no-repeat;
+
+  &__header-container {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    min-height: 151px;
+  }
+  .page-header {
+    padding-top: 21px;
+  }
+
+  &__content {
+    border-radius: 20px;
+    background-color: transparent;
+    min-height: 50vh;
+    padding-bottom: 54px;
+  }
+
+  &-post {
+    background: $white url("../images/postBG.jpg") top center no-repeat;
+    padding-bottom: 70px;
+    @include font(14px, $Geometria, $text, 20px, 400);
+    .page-header{
+      padding-top: 24px;
+    }
+    &__header-container {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      min-height: 151px;
+    }
+    &__panel {
+      padding-top: 20px;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    &__image-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      height: 245px;
+      margin: 0 16px 40px;
+    }
+    &__image {
+      display: block;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      transform: translatey(-50%);
+      left: 0;
+      right: 0;
+      width: 100%;
+    }
+    &__content {
+      padding: 28px 15px 5px;
+    }
+    &__info {
+      display: table;
+      width: 934px;
+      margin: 0 16px 20px;
+      color: $textGray;
+      font-size: 13px;
+      line-height: 15px;
+
+      a {
+        color: inherit;
+      }
+    }
+    &__info-part {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    &__info-part:last-child {
+      text-align: right;
+      font-weight: 700;
+    }
+    & .user-icon__small {
+      margin-right: 8px;
+    }
+    &__category-link {
+      text-transform: uppercase;
+      &:hover {
+        color: $linkInfo;
+      }
+    }
+    &__category-separator {
+      display: inline-block;
+      margin: 0 5px;
+    }
+    &__author-name {
+      display: inline-block;
+      margin-right: 28px;
+    }
+    &__date {
+      display: inline-block;
+    }
+    & .panel_white {
+      margin-bottom: 30px;
+    }
+    & .share{
+      margin: 0 17px 13px;
+    }
+  }
+}
+.filter-articles {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: $contentBG;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 26px 20px 15px;
+  margin-bottom: 18px;
+
+  &__item {
+    margin-bottom: 10px;
+    margin-right: 32px;
+  }
+  &__link {
+    @include font(14px, $Geometria, $text, 20px, 400);
+
+    &:hover,
+    &.active {
+      color: $linkInfo;
+    }
+  }
+}

@@ -31,7 +31,6 @@
                                 </div>
                             @endif
 
-                            {{-- UsageType name --}}
                             <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="usage-type-name-input">Name*</label>
                                 <div class="input-group">

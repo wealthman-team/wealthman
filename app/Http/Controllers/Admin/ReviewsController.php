@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Review;
-use App\ReviewType;
+use App\Models\Review;
+use App\Models\ReviewType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Sources\Page;
@@ -27,8 +27,8 @@ class ReviewsController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Reviews | Wealthman', $request->input('page'));
-        Page::setDescription('Reviews list', $request->input('page'));
+        Page::setTitle('Reviews | Wealthman');
+        Page::setDescription('Reviews list');
 
         $reviews = Review::orderBy('created_at', 'DESC')->paginate(10);
 
@@ -61,7 +61,7 @@ class ReviewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Review $review
+     * @param  \App\Models\Review $review
      * @return \Illuminate\Http\Response
      */
     public function show(Review $review)
@@ -80,7 +80,7 @@ class ReviewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Review $review
+     * @param  \App\Models\Review $review
      * @return \Illuminate\Http\Response
      */
     public function edit(Review $review)
@@ -100,7 +100,7 @@ class ReviewsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Review $review
+     * @param  \App\Models\Review $review
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Review $review)
@@ -134,7 +134,7 @@ class ReviewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Review $review
+     * @param  \App\Models\Review $review
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */

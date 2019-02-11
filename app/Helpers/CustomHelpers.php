@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\RedirectController;
-use App\RoboAdvisor;
+use App\Models\Post;
+use App\Models\RoboAdvisor;
 use Illuminate\Support\Arr;
+use Spatie\MediaLibrary\Models\Media;
 
 /**
  *
@@ -213,12 +215,8 @@ function review_attr_data($review_type_id)
     return $attr_data;
 }
 
-function diffForHumans($value) {
-    $date = new \Carbon\Carbon($value);
-    return $date->diffForHumans();
-}
-
-function recommended_text($yes,$maybe, $no) {
+function recommended_text($yes,$maybe, $no)
+{
     $S = $yes*1 + $maybe*0.5 + $no*1;
     $negative_percent = $no / $S * 100;
 
@@ -235,4 +233,51 @@ function recommended_text($yes,$maybe, $no) {
     }
 
     return '';
+}
+
+function post_class($index, $max = 6)
+{
+    if (($index % $max) === 0) {
+        return 'post__large';
+    } elseif (($index % $max) < 4) {
+        return 'post__small';
+    } else {
+        return 'post__medium';
+    }
+}
+
+/**
+ * @param $class_name
+ * @param Post $post
+ * @return bool|string
+ */
+function getPostImageUrl($class_name, Post $post)
+{
+    switch ($class_name)
+    {
+        case 'post__small':
+            try {
+                $url = $post->getFirstMedia('images') ? $post->getFirstMedia('images')->getUrl('small') : '';
+            }catch (\Exception $t) {
+                $url = '';
+            }
+
+            return !empty(trim($url)) ? trim($url) : '/images/post_small.jpg';
+        case 'post__medium':
+            try {
+                $url = $post->getFirstMedia('images') ? $post->getFirstMedia('images')->getUrl('medium') : '';
+            }catch (\Exception $t) {
+                $url = '';
+            }
+
+            return !empty(trim($url)) ? trim($url) :'/images/post_medium.jpg';
+        default:
+            try {
+                $url = $post->getFirstMedia('images') ? $post->getFirstMedia('images')->getUrl('big') : '';
+            }catch (\Exception $t) {
+                $url = '';
+            }
+
+            return !empty(trim($url)) ? trim($url) : '/images/post_big.jpg';
+    }
 }

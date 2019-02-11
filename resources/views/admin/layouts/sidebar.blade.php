@@ -10,6 +10,36 @@
                 </a>
             </li>
 
+            <li class="{{ setCatActive('admin/users') }}">
+                <a href="{{ route('admin.users.index') }}">
+                    <i class="fa fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="treeview {{ checkCatActive([
+                                    'admin/media',
+                                    'admin/media/*'
+                                    ]) ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-picture-o"></i> <span>Media library</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ setCatActive('admin/media') }}">
+                        <a href="{{ route('admin.media.index') }}">
+                            <i class="fa fa-picture-o"></i>
+                            <span>All media files</span>
+                        </a>
+                    </li>
+                    <li class="{{ setCatActive('admin/media/create') }}">
+                        <a href="{{ route('admin.media.create') }}">
+                            <i class="fa fa-file-o"></i>
+                            <span>New media file</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="treeview {{ checkCatActive([
                                     'admin/robo-advisors',
                                     'admin/robo-advisors/*',
@@ -51,11 +81,38 @@
                     </li>
                 </ul>
             </li>
-            <li class="{{ setCatActive('users') }}">
-                <a href="{{ route('admin.users.index') }}">
-                    <i class="fa fa-user"></i>
-                    <span>Users</span>
+            <li class="treeview {{ checkCatActive([
+                                    'admin/posts',
+                                    'admin/posts/*',
+                                    'admin/categories',
+                                    'admin/categories/*',
+                                    'admin/tags',
+                                    'admin/tags/*',
+                                    ]) ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-file-text-o"></i> <span>Posts</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
+                <ul class="treeview-menu">
+                    <li class="{{ setCatActive('admin/posts') }} {{ setCatActive('admin/posts/*') }}">
+                        <a href="{{ route('admin.posts.index') }}">
+                            <i class="fa fa-file-text-o"></i>
+                            <span>All Posts</span>
+                        </a>
+                    </li>
+                    <li class="{{ setCatActive('admin/categories') }} {{ setCatActive('admin/categories/*') }}">
+                        <a href="{{ route('admin.categories.index') }}">
+                            <i class="fa fa-tasks"></i>
+                            <span>Categories</span>
+                        </a>
+                    </li>
+                    <li class="{{ setCatActive('admin/tags') }} {{ setCatActive('admin/tags/*') }}">
+                        <a href="{{ route('admin.tags.index') }}">
+                            <i class="fa fa-tags"></i>
+                            <span>Tags</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="{{ route('admin.logout') }}">
