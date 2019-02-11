@@ -52,7 +52,7 @@ class TagController extends Controller
     {
         $request->validate(Tag::rules(), Tag::messages(), Tag::attributes());
 
-        Tag::create($request->all());
+        Tag::create($request->only(['name','description','seo_title','seo_description','seo_keywords']));
 
         return redirect()
             ->route('admin.tags.index')
@@ -98,7 +98,7 @@ class TagController extends Controller
         $request->validate(Tag::rules(), Tag::messages(), Tag::attributes());
 
         $tag->slug = null;
-        $tag->fill($request->all());
+        $tag->fill($request->only(['name','description','seo_title','seo_description','seo_keywords']));
 
         if ($tag->save()) {
             return redirect()

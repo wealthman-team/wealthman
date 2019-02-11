@@ -32,6 +32,10 @@ class Category extends Model
     protected $table = 'blog_categories';
     protected $fillable = [
         'name',
+        'description',
+        'seo_title',
+        'seo_description',
+        'seo_keywords',
     ];
     protected $hidden = [
         'created_at',
@@ -59,6 +63,11 @@ class Category extends Model
     {
         return [
             'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            //seo
+            'seo_title' => 'nullable|string|max:255',
+            'seo_description' => 'nullable|string|max:200',
+            'seo_keywords' => 'nullable|string|max:250',
         ];
     }
 
@@ -69,6 +78,10 @@ class Category extends Model
     {
         return [
             'name' => 'Name',
+            'description' => 'Description',
+            'seo_title' => 'SEO Title',
+            'seo_description' => 'SEO Description',
+            'seo_keywords' => 'SEO Keywords',
         ];
     }
 
@@ -80,7 +93,7 @@ class Category extends Model
         return [
             'required' => 'Field :attribute is required',
             'string' => 'Field :attribute must to be string',
-            'max' => 'Max length field :attribute must to be low 255 symbols',
+            'max' => 'Max length field :attribute must to be low :max symbols',
         ];
     }
 

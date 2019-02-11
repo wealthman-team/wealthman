@@ -4,7 +4,7 @@
         <div class="input-group-addon">
             <i class="fa fa-pencil"></i>
         </div>
-        <input class="form-control" id="seo_title" type="text" name="seo_title" value="{{ old('seo_title') ?? $post->seo_title ?? ''}}">
+        <input class="form-control" id="seo_title" type="text" name="seo_title" value="{{ old('seo_title') ?? $category->seo_title ?? ''}}">
     </div>
 
     @if ($errors->has('seo_title'))
@@ -13,7 +13,7 @@
 </div>
 <div class="form-group {{ $errors->has('seo_description') ? ' has-error' : '' }}">
     <label for="seo_description">Description</label>
-    <textarea class="form-control" id="seo_description" name="seo_description">{{ old('seo_description') ?? $post->seo_description ?? '' }}</textarea>
+    <textarea class="form-control" id="seo_description" name="seo_description">{{ old('seo_description') ?? $category->seo_description ?? '' }}</textarea>
 
     @if ($errors->has('seo_description'))
         <span class="help-block">{{ $errors->first('seo_description') }}</span>
@@ -21,7 +21,7 @@
 </div>
 <div class="form-group {{ $errors->has('seo_keywords') ? ' has-error' : '' }}">
     <label for="seo_keywords">Keywords</label>
-    <textarea class="form-control" id="seo_keywords" name="seo_keywords">{{ old('seo_keywords') ?? $post->seo_keywords ?? '' }}</textarea>
+    <textarea class="form-control" id="seo_keywords" name="seo_keywords">{{ old('seo_keywords') ?? $category->seo_keywords ?? '' }}</textarea>
 
     @if ($errors->has('seo_keywords'))
         <span class="help-block">{{ $errors->first('seo_keywords') }}</span>

@@ -13,7 +13,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('content') ? ' has-error' : '' }}">
-    <label for="content-input">Short Content</label>
+    <label for="content-input">Short Content*</label>
     <textarea class="form-control" id="content-input" name="content">{{ old('content') ?? $post->content ?? '' }}</textarea>
 
     @if ($errors->has('content'))
@@ -22,7 +22,7 @@
 </div>
 
 <div class="form-group {{ $errors->has('content_html') ? ' has-error' : '' }}">
-    <label for="content-html-input">Content</label>
+    <label for="content-html-input">Content*</label>
     <textarea class="form-control js-editor" id="content-html-input" name="content_html">{{ old('content_html') ?? $post->content_html ?? ''  }}</textarea>
 
     @if ($errors->has('content_html'))

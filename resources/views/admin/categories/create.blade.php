@@ -30,18 +30,25 @@
                                     </ul>
                                 </div>
                             @endif
-                            <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="category-name-input">Name*</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-pencil"></i>
-                                    </div>
-                                    <input class="form-control" id="category-name-input" type="text" name="name" value="{{ old('name') }}">
-                                </div>
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab-post-main-info" data-toggle="tab" aria-expanded="true">Main</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab-post-seo" data-toggle="tab" aria-expanded="false">SEO</a>
+                                    </li>
+                                </ul>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">{{ $errors->first('name') }}</span>
-                                @endif
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab-post-main-info">
+                                        @include('admin.categories.tabs.main')
+                                    </div>
+
+                                    <div class="tab-pane" id="tab-post-seo">
+                                        @include('admin.categories.tabs.seo')
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

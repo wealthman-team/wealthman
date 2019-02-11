@@ -10,6 +10,13 @@
                 </a>
             </li>
 
+            <li class="{{ setCatActive('admin/users') }}">
+                <a href="{{ route('admin.users.index') }}">
+                    <i class="fa fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+
             <li class="treeview {{ checkCatActive([
                                     'admin/robo-advisors',
                                     'admin/robo-advisors/*',
@@ -50,12 +57,6 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li class="{{ setCatActive('admin/users') }}">
-                <a href="{{ route('admin.users.index') }}">
-                    <i class="fa fa-user"></i>
-                    <span>Users</span>
-                </a>
             </li>
             <li class="treeview {{ checkCatActive([
                                     'admin/posts',

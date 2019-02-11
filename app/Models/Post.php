@@ -64,6 +64,9 @@ class Post extends Model implements HasMedia
         'title',
         'content',
         'content_html',
+        'seo_title',
+        'seo_description',
+        'seo_keywords',
     ];
     protected $hidden = [
         'created_at',
@@ -120,6 +123,10 @@ class Post extends Model implements HasMedia
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'content_html' => 'required|string',
+            //seo
+            'seo_title' => 'nullable|string|max:255',
+            'seo_description' => 'nullable|string|max:200',
+            'seo_keywords' => 'nullable|string|max:250',
         ];
     }
 
@@ -132,6 +139,9 @@ class Post extends Model implements HasMedia
             'title' => 'Title',
             'content' => 'Short Content',
             'content_html' => 'Content',
+            'seo_title' => 'SEO Title',
+            'seo_description' => 'SEO Description',
+            'seo_keywords' => 'SEO Keywords',
         ];
     }
 
@@ -143,7 +153,7 @@ class Post extends Model implements HasMedia
         return [
             'required' => 'Field :attribute is required',
             'string' => 'Field :attribute must to be string',
-            'max' => 'Max length field :attribute must to be low 255 symbols',
+            'max' => 'Max length field :attribute must to be low :max symbols',
         ];
     }
 

@@ -69,6 +69,11 @@ class PostController extends Controller
         $post->published = $request->has('published');
         $post->published_at = Carbon::now();
         $post->user_id = Auth::user()->id;
+        //SEO
+        $post->seo_title = $request->{'seo_title'};
+        $post->seo_description = $request->{'seo_description'};
+        $post->seo_keywords = $request->{'seo_keywords'};
+
         $post->save();
 
         $post->categories()->sync(isset($request->categories) ? $request->categories : []);
@@ -130,6 +135,11 @@ class PostController extends Controller
         $post->content = $request->{'content'};
         $post->content_html = $request->{'content_html'};
         $post->published = $request->has('published');
+        //SEO
+        $post->seo_title = $request->{'seo_title'};
+        $post->seo_description = $request->{'seo_description'};
+        $post->seo_keywords = $request->{'seo_keywords'};
+
         $post->save();
 
         $post->categories()->sync(isset($request->categories) ? $request->categories : []);

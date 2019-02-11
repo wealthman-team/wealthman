@@ -52,7 +52,7 @@ class CategoryController extends Controller
     {
         $request->validate(Category::rules(), Category::messages(), Category::attributes());
 
-        Category::create($request->all());
+        Category::create($request->only(['name','description','seo_title','seo_description','seo_keywords']));
 
         return redirect()
             ->route('admin.categories.index')
@@ -98,7 +98,7 @@ class CategoryController extends Controller
         $request->validate(Category::rules(), Category::messages(), Category::attributes());
 
         $category->slug = null;
-        $category->fill($request->all());
+        $category->fill($request->only(['name','description','seo_title','seo_description','seo_keywords']));
 
         if ($category->save()) {
             return redirect()
