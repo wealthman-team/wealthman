@@ -7,9 +7,16 @@
         </div>
         <div class="post__item">
             <div class="post__item-text">
-                <div class="post__category">
-                    <a href="#">ROBO-ADVISORS REVIEW</a>
+                @if($post->categories->count() > 0)
+                <div class="post__category" title="{{$post->categories->count()}}">
+                    @foreach($post->categories as $category)
+                        <a class="post__category-link" href="{{route('blog.category', $category->slug)}}">{{$category->name}}</a>
+                        @if(!$loop->last)
+                            <span class="post__category-separator">|</span>
+                        @endif
+                    @endforeach
                 </div>
+                @endif
                 <div class="post__title">
                     <a href="{{route('blog.show', $post->slug)}}">{{$post->title}}</a>
                 </div>

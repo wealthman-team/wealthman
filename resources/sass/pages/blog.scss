@@ -78,6 +78,16 @@
     & .user-icon__small {
       margin-right: 8px;
     }
+    &__category-link {
+      text-transform: uppercase;
+      &:hover {
+        color: $linkInfo;
+      }
+    }
+    &__category-separator {
+      display: inline-block;
+      margin: 0 5px;
+    }
     &__author-name {
       display: inline-block;
       margin-right: 28px;

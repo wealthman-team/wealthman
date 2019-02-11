@@ -9,6 +9,9 @@
             </div>
         @endif
     @endforeach
+    <div class="posts-list-paginator">
+        {{ $posts->links('components/pagination') }}
+    </div>
 @else
     <div class="post-wrapper">
         <div class="post post__large">

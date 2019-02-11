@@ -72,6 +72,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  &__category-link {
+    &:hover {
+      color: $linkInfo;
+    }
+  }
+  &__category-separator {
+    display: inline-block;
+    margin: 0 5px;
+  }
   &__title {
     font-size: 16px;
     line-height: 22px;

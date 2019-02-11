@@ -38,7 +38,14 @@
                                     <span class="blog-post__author-name">{{$post->author->name}}</span>
                                     <span class="blog-post__date">{{humanize_date($post->published_at, 'd.m.Y')}}</span>
                                 </div>
-                                <div class="blog-post__info-part">ROBO-ADVISORS REVIEW</div>
+                                <div class="blog-post__info-part">
+                                    @foreach($post->categories as $category)
+                                        <a class="blog-post__category-link" href="{{route('blog.category', $category->slug)}}">{{$category->name}}</a>
+                                        @if(!$loop->last)
+                                            <span class="blog-post__category-separator">|</span>
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="panel panel_white">
                                 <div class="reach-text">
