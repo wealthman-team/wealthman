@@ -58,13 +58,13 @@
                                 <li class="share-item share-item__title">
                                     Share:
                                 </li>
-                                <li class="share-item"><a href="#">@svg('sh-tel', 'share__tel')</a></li>
-                                <li class="share-item"><a href="#">@svg('sh-bit', 'share__bit')</a></li>
-                                <li class="share-item"><a href="#">@svg('sh-fac', 'share__fac')</a></li>
-                                <li class="share-item"><a href="#">@svg('sh-ins', 'share__ins')</a></li>
-                                <li class="share-item"><a href="#">@svg('sh-red', 'share__red')</a></li>
-                                <li class="share-item"><a href="#">@svg('sh-twit', 'share__twit')</a></li>
-                                <li class="share-item"><a href="#">@svg('sh-lin', 'share__lin')</a></li>
+                                <li class="share-item"><a href="https://t.me/wealthman_global" target="_blank">@svg('sh-tel', 'share__tel')</a></li>
+                                <li class="share-item"><a href="https://bitcointalk.org/index.php?topic=2006205" target="_blank">@svg('sh-bit', 'share__bit')</a></li>
+                                <li class="share-item"><a href="https://www.facebook.com/Wealthman.io" target="_blank">@svg('sh-fac', 'share__fac')</a></li>
+                                <li class="share-item"><a href="https://www.instagram.com/wealthman_platform/" target="_blank">@svg('sh-ins', 'share__ins')</a></li>
+                                <li class="share-item"><a href="https://www.reddit.com/r/Wealthman_io/" target="_blank">@svg('sh-red', 'share__red')</a></li>
+                                <li class="share-item"><a href="https://twitter.com/wealthman_io" target="_blank">@svg('sh-twit', 'share__twit')</a></li>
+                                <li class="share-item"><a href="https://www.linkedin.com/company/wealthman-io" target="_blank">@svg('sh-lin', 'share__lin')</a></li>
                             </ul>
                         </div>
                         <div class="popular-posts">
