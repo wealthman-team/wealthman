@@ -16,7 +16,9 @@
     <meta charset="utf-8">
     <title>{{ $pageTitle }}</title>
     <meta name="description" content="{{ $pageDescription }}">
-
+    @if(isset($pageKeywords) && !empty($pageKeywords))
+        <meta name="keywords" content="{{$pageKeywords}}" />
+    @endif
     <meta name="viewport" content="width=1310">
 
     <!-- CSRF Token -->

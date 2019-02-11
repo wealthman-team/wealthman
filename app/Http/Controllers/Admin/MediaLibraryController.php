@@ -24,8 +24,8 @@ class MediaLibraryController extends Controller
      */
     public function index(Request $request): View
     {
-        Page::setTitle('Media Library | Wealthman', $request->input('page'));
-        Page::setDescription('Media Library list', $request->input('page'));
+        Page::setTitle('Media Library | Wealthman');
+        Page::setDescription('Media Library list');
 
         $media = MediaLibrary::first()->media()->paginate(10);
 
@@ -51,8 +51,8 @@ class MediaLibraryController extends Controller
      */
     public function create(Request $request): View
     {
-        Page::setTitle('Media Library Create | Wealthman', $request->input('page'));
-        Page::setDescription('Media Library Create', $request->input('page'));
+        Page::setTitle('Media Library Create | Wealthman');
+        Page::setDescription('Media Library Create');
 
         return view('admin.media.create');
     }

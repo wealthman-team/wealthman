@@ -25,8 +25,8 @@ class UsageTypeController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Usage Types | Wealthman', $request->input('page'));
-        Page::setDescription('Usage Types list', $request->input('page'));
+        Page::setTitle('Usage Types | Wealthman');
+        Page::setDescription('Usage Types list');
 
         $usageTypes = UsageType::paginate(10);
 

@@ -25,8 +25,8 @@ class AccountTypeController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Account Types | Wealthman', $request->input('page'));
-        Page::setDescription('Account Types list', $request->input('page'));
+        Page::setTitle('Account Types | Wealthman');
+        Page::setDescription('Account Types list');
 
         $accountTypes = AccountType::paginate(10);
 

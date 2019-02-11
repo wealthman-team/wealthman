@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\RoboAdvisor;
+use App\Services\Filters\BlogCategoriesFilterOption;
 use App\Sources\Page;
 use Illuminate\Http\Request;
 
@@ -11,12 +13,33 @@ class BlogController
 {
     public function index(Request $request)
     {
-        Page::setTitle('Blog | Wealthman', $request->input('page'));
-        Page::setDescription('Blog list', $request->input('page'));
+        Page::setTitle('Blog | Wealthman');
+        Page::setDescription('Blog list');
 
-        $posts = Post::published()->latest()->paginate(7);
+        $posts = Post::published()->latest()->paginate(6);
+        $blogCategoriesFilterOption = (new BlogCategoriesFilterOption())->get();
+
         return view('blog.index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'filtersOption' => $blogCategoriesFilterOption,
+        ]);
+    }
+
+    public function category(Request $request, $slug)
+    {
+        /** @var Category $category */
+        $category = Category::whereSlug($slug)->firstOrFail();
+        Page::setTitle(!empty($category->seo_title) ? $category->seo_title : $category->name.' | Wealthman');
+        Page::setDescription(!empty($category->seo_description) ? $category->seo_description : $category->name);
+        Page::setKeywords(!empty($category->seo_keywords) ? $category->seo_keywords : '');
+
+        $posts = Post::published()->withCategory($category)->latest()->paginate(6);
+        $blogCategoriesFilterOption = (new BlogCategoriesFilterOption($category))->get();
+
+        return view('blog.category', [
+            'category' => $category,
+            'posts' => $posts,
+            'filtersOption' => $blogCategoriesFilterOption,
         ]);
     }
 

@@ -23,8 +23,8 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Categories | Wealthman', $request->input('page'));
-        Page::setDescription('Categories list', $request->input('page'));
+        Page::setTitle('Categories | Wealthman');
+        Page::setDescription('Categories list');
 
         $categories = Category::paginate(10);
 

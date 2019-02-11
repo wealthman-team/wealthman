@@ -14,14 +14,14 @@
                         'link' => route('home'),
                         ],[
                             'name' => 'Blog',
+                            'link' => route('blog.index'),
+                        ],[
+                            'name' => $category->name,
                         ]]
                     ])
                     <h1 class="page-header">
-                        Blog
+                        {{$category->name}}
                     </h1>
-                    <div class="page-sub-header">
-                        Follow us
-                    </div>
                 </div>
 
                 <div class="blog__container">

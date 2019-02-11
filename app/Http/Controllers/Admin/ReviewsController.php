@@ -27,8 +27,8 @@ class ReviewsController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Reviews | Wealthman', $request->input('page'));
-        Page::setDescription('Reviews list', $request->input('page'));
+        Page::setTitle('Reviews | Wealthman');
+        Page::setDescription('Reviews list');
 
         $reviews = Review::orderBy('created_at', 'DESC')->paginate(10);
 

@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Category
@@ -100,6 +102,18 @@ class Category extends Model
     // Relationships
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->belongsToMany(Post::class, 'blog_posts_categories');
+    }
+
+    //
+    // Scopes
+    //
+    public function scopeWithPublishedPosts(Builder $query)
+    {
+        return $query->whereHas('posts', function ($q) {
+            return $q->published();
+        })->with(['posts' => function ($q) {
+            return $q->published();
+        }]);
     }
 }

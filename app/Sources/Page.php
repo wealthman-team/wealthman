@@ -20,22 +20,30 @@ class Page
      * Set page title
      *
      * @param string $title
-     * @param int $page
      */
-    public static function setTitle($title = '', $page = 1)
+    public static function setTitle($title = '')
     {
-        View::share('pageTitle', self::addPageNumber($title, $page));
+        View::share('pageTitle', $title);
     }
 
     /**
      * Set page description
      *
      * @param string $description
-     * @param int $page
      */
-    public static function setDescription($description = '', $page = 1)
+    public static function setDescription($description = '')
     {
-        View::share('pageDescription', self::addPageNumber($description, $page));
+        View::share('pageDescription', $description);
+    }
+
+    /**
+     * Set page description
+     *
+     * @param string $keywords
+     */
+    public static function setKeywords($keywords = '')
+    {
+        View::share('pageKeywords', $keywords);
     }
 
     /**

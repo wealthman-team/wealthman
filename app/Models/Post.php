@@ -179,16 +179,16 @@ class Post extends Model implements HasMedia
     public function scopePublished(Builder $query)
     {
         return $query
-            ->whereNotNull('published')
-            ->where('published', true)
-            ->whereNotNull('published_at')
-            ->where('published_at', '<', Carbon::now())
+            ->whereNotNull('blog_posts.published')
+            ->where('blog_posts.published', true)
+            ->whereNotNull('blog_posts.published_at')
+            ->where('blog_posts.published_at', '<', Carbon::now())
             ;
     }
 
     public function scopeLatest(Builder $query)
     {
-        return $query->orderBy('published_at', 'desc');
+        return $query->orderBy('blog_posts.published_at', 'desc');
     }
 
     /**
@@ -198,7 +198,7 @@ class Post extends Model implements HasMedia
      */
     public function scopePopular(Builder $query, int $limit = 3)
     {
-        return $query->orderBy('published_at', 'desc')->limit($limit);
+        return $query->orderBy('blog_posts.published_at', 'desc')->limit($limit);
     }
 
     /**
@@ -213,5 +213,17 @@ class Post extends Model implements HasMedia
         }
 
         return $exclude ? $query->whereNotIn('blog_posts.id', $exclude) : $query;
+    }
+
+    /**
+     * @param Builder $query
+     * @param Category $category
+     * @return Builder
+     */
+    public function scopeWithCategory(Builder $query, Category $category)
+    {
+        return $query->whereHas('categories', function ($q) use($category) {
+            return $q->where('blog_categories.id', $category->id);
+        });
     }
 }

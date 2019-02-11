@@ -22,6 +22,7 @@ Route::get('/robo-advisors/{slug}', 'RoboAdvisorsController@show')->name('roboAd
 Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsCompare');
 Route::get('/blog', 'BlogController@index')->name('blog.index');
 Route::get('/blog/{slug}', 'BlogController@show')->name('blog.show');
+Route::get('/blog/categories/{slug}', 'BlogController@category')->name('blog.category');
 // group post
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');

@@ -2,8 +2,14 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="{{ $pageDescription }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{ $pageTitle }}</title>
+    <meta name="description" content="{{ $pageDescription }}">
+    @if(isset($pageKeywords) && !empty($pageKeywords))
+        <meta name="keywords" content="{{$pageKeywords}}" />
+    @endif
+
     <meta name="viewport" content="width=1310">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- Favicon --}}
@@ -24,8 +30,6 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/images/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
-    <title>{{ $pageTitle }}</title>
 
     <!-- Fonts -->
 

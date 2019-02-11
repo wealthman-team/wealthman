@@ -31,8 +31,8 @@ class RoboAdvisorsController extends Controller
      */
     public function index(Request $request, RoboAdvisorsFilter $filter, RoboAdvisorsSorting $sorting)
     {
-        Page::setTitle('Robo-Advisor Screener | Wealthman', $request->input('page'));
-        Page::setDescription('Find independent information about robo-advisors in the US', $request->input('page'));
+        Page::setTitle('Robo-Advisor Screener | Wealthman');
+        Page::setDescription('Find independent information about robo-advisors in the US');
 
         $roboAdvisorsFilterOption = (new RoboAdvisorsFilterOption($request))->get();
 

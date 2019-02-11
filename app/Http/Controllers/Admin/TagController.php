@@ -23,8 +23,8 @@ class TagController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Tags | Wealthman', $request->input('page'));
-        Page::setDescription('Tags list', $request->input('page'));
+        Page::setTitle('Tags | Wealthman');
+        Page::setDescription('Tags list');
 
         $tags = Tag::paginate(10);
 

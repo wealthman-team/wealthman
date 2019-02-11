@@ -30,8 +30,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Posts | Wealthman', $request->input('page'));
-        Page::setDescription('Posts list', $request->input('page'));
+        Page::setTitle('Posts | Wealthman');
+        Page::setDescription('Posts list');
 
         $posts = Post::latest()->paginate(10);
 

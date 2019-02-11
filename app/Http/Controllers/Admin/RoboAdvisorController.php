@@ -30,8 +30,8 @@ class RoboAdvisorController extends Controller
      */
     public function index(Request $request)
     {
-        Page::setTitle('Robo Advisors | Wealthman', $request->input('page'));
-        Page::setDescription('Robo Advisors list', $request->input('page'));
+        Page::setTitle('Robo Advisors | Wealthman');
+        Page::setDescription('Robo Advisors list');
 
         $roboAdvisors = RoboAdvisor::paginate(10);
 
