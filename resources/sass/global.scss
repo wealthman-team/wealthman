@@ -86,6 +86,7 @@
   @include font(14px, $Geometria, $text, 20px, 400);
 }
 
+.cke_editable,
 .reach-text {
   h2{
     @include font(24px, $Intro, $text, 31px, 400);

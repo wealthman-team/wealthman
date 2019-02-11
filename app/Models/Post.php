@@ -51,6 +51,8 @@ use Spatie\MediaLibrary\Models\Media;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post published()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post latest()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post exclude($exclude = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post popular($limit = 3)
  */
 class Post extends Model implements HasMedia
 {

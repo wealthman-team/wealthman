@@ -95,12 +95,7 @@ $(function () {
     });
 
     $('.js-editor').each(function () {
-        CKEDITOR.replace($(this).attr('id'),{
-            contentsCss: [
-                '/css/app.css',
-                '/css/icon.css',
-            ],
-            filebrowserBrowseUrl : '/elfinder/ckeditor',
+        CKEDITOR.replace($(this).attr('id'), {
             toolbarGroups: [
                 { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
                 { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
