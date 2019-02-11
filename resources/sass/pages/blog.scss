@@ -117,7 +117,7 @@
     margin-right: 32px;
   }
   &__link {
-    @include font(16px, $Geometria, $text, 19px, 400);
+    @include font(14px, $Geometria, $text, 20px, 400);
 
     &:hover,
     &.active {

@@ -41,20 +41,6 @@
                                     <span class="help-block">{{ $errors->first('image') }}</span>
                                 @endif
                             </div>
-
-                            <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name-input">Name</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-pencil"></i>
-                                    </div>
-                                    <input class="form-control" id="name-input" type="text" name="name" value="{{ old('name') }}">
-                                </div>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">{{ $errors->first('name') }}</span>
-                                @endif
-                            </div>
                         </div>
 
                         <div class="box-footer">

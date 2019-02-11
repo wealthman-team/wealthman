@@ -27,7 +27,7 @@ class MediaLibraryController extends Controller
         Page::setTitle('Media Library | Wealthman');
         Page::setDescription('Media Library list');
 
-        $media = MediaLibrary::first()->media()->paginate(10);
+        $media = MediaLibrary::first()->media()->latest()->paginate(10);
 
         return view('admin.media.index', [
             'media' => $media

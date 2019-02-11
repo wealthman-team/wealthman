@@ -29,7 +29,6 @@
                             <tr>
                                 <th style="width: 50px;">ID</th>
                                 <th>Image</th>
-                                <th>Name</th>
                                 <th>URL</th>
                                 <th>Created at</th>
                                 <th style="width: 150px;">Actions</th>
@@ -43,7 +42,6 @@
                                                 <img src="{{ $medium->getUrl('thumb') }}" alt="{{ $medium->name }}" width="100">
                                             </a>
                                         </td>
-                                        <td>{{ $medium->name }}</td>
                                         <td>
                                             <div class="input-group">
                                                 <input class="form-control" id="medium-{{$medium->id}}" type="text" value="{{ url($medium->getUrl()) }}" readonly>
@@ -74,7 +72,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="6" align="center">Media files are not in the database</td>
+                                    <td colspan="5" align="center">Media files are not in the database</td>
                                 </tr>
                             @endif
                             </tbody>

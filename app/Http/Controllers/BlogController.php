@@ -16,7 +16,7 @@ class BlogController
         Page::setTitle('Blog | Wealthman');
         Page::setDescription('Blog list');
 
-        $posts = Post::published()->latest()->paginate(6);
+        $posts = Post::published()->latestPosts()->paginate(6);
         $blogCategoriesFilterOption = (new BlogCategoriesFilterOption())->get();
 
         return view('blog.index', [
@@ -33,7 +33,7 @@ class BlogController
         Page::setDescription(!empty($category->seo_description) ? $category->seo_description : $category->name);
         Page::setKeywords(!empty($category->seo_keywords) ? $category->seo_keywords : '');
 
-        $posts = Post::published()->withCategory($category)->latest()->paginate(6);
+        $posts = Post::published()->withCategory($category)->latestPosts()->paginate(6);
         $blogCategoriesFilterOption = (new BlogCategoriesFilterOption($category))->get();
 
         return view('blog.category', [
@@ -47,8 +47,13 @@ class BlogController
     {
         /** @var Post $roboAdvisor */
         $post = Post::whereSlug($slug)->firstOrFail();
-        Page::setTitle($post->title . ' | Wealthman');
-        Page::setDescription($post->content);
+        if (!empty($post->redirect_url)) {
+
+            return redirect($post->redirect_url);
+        }
+        Page::setTitle(!empty($post->seo_title) ? $post->seo_title : $post->title.' | Wealthman');
+        Page::setDescription(!empty($post->seo_description) ? $post->seo_description : $post->content);
+        Page::setKeywords(!empty($post->seo_keywords) ? $post->seo_keywords : '');
 
         // популярные Robo Advisors
         $popularRoboAdvisors = RoboAdvisor::popular(3)->get();

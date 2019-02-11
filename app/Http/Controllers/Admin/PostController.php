@@ -33,7 +33,7 @@ class PostController extends Controller
         Page::setTitle('Posts | Wealthman');
         Page::setDescription('Posts list');
 
-        $posts = Post::latest()->paginate(10);
+        $posts = Post::latestPosts()->paginate(10);
 
         return view('admin.posts.index', [
             'posts' => $posts,
@@ -68,6 +68,7 @@ class PostController extends Controller
         $post->content_html = $request->{'content_html'};
         $post->published = $request->has('published');
         $post->published_at = Carbon::now();
+        $post->redirect_url = $request->{'redirect_url'};
         $post->user_id = Auth::user()->id;
         //SEO
         $post->seo_title = $request->{'seo_title'};
@@ -135,6 +136,7 @@ class PostController extends Controller
         $post->content = $request->{'content'};
         $post->content_html = $request->{'content_html'};
         $post->published = $request->has('published');
+        $post->redirect_url = $request->{'redirect_url'};
         //SEO
         $post->seo_title = $request->{'seo_title'};
         $post->seo_description = $request->{'seo_description'};

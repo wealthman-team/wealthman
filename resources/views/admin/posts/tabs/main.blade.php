@@ -58,6 +58,20 @@
     </div>
 </div>
 
+<div class="form-group {{ $errors->has('redirect_url') ? ' has-error' : '' }}">
+    <label for="post-redirect-url-input">Redirect Url</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+            <i class="fa fa-pencil"></i>
+        </div>
+        <input class="form-control" id="post-redirect-url-input" type="text" name="redirect_url" value="{{ old('redirect_url') ?? $post->redirect_url ?? ''}}">
+    </div>
+
+    @if ($errors->has('redirect_url'))
+        <span class="help-block">{{ $errors->first('redirect_url') }}</span>
+    @endif
+</div>
+
 <div class="box-header with-border">
     <h3 class="box-title">Publish settings</h3>
 </div>

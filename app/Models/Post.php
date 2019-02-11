@@ -67,6 +67,7 @@ class Post extends Model implements HasMedia
         'seo_title',
         'seo_description',
         'seo_keywords',
+        'redirect_url'
     ];
     protected $hidden = [
         'created_at',
@@ -123,6 +124,7 @@ class Post extends Model implements HasMedia
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'content_html' => 'required|string',
+            'redirect_url' => 'nullable|string|max:255',
             //seo
             'seo_title' => 'nullable|string|max:255',
             'seo_description' => 'nullable|string|max:200',
@@ -139,6 +141,7 @@ class Post extends Model implements HasMedia
             'title' => 'Title',
             'content' => 'Short Content',
             'content_html' => 'Content',
+            'redirect_url' => 'Redirect Url',
             'seo_title' => 'SEO Title',
             'seo_description' => 'SEO Description',
             'seo_keywords' => 'SEO Keywords',
@@ -186,9 +189,9 @@ class Post extends Model implements HasMedia
             ;
     }
 
-    public function scopeLatest(Builder $query)
+    public function scopeLatestPosts(Builder $query)
     {
-        return $query->orderBy('blog_posts.published_at', 'desc');
+        return $query->orderBy('blog_posts.published_at', 'desc')->orderBy('blog_posts.id', 'desc');
     }
 
     /**

@@ -1,14 +1,17 @@
+@php
+    $post_url = !empty($post->redirect_url) ? $post->redirect_url : route('blog.show', $post->slug);
+@endphp
 <div class="post {{$card_class}}">
     <div class="post__container">
         <div class="post__image-box">
-            <a href="{{route('blog.show', $post->slug)}}">
+            <a href="{{$post_url}}">
                 <img class="post__image" src="{{ getPostImageUrl($card_class, $post) }}" alt="">
             </a>
         </div>
         <div class="post__item">
             <div class="post__item-text">
                 @if($post->categories->count() > 0)
-                <div class="post__category" title="{{$post->categories->count()}}">
+                <div class="post__category">
                     @foreach($post->categories as $category)
                         <a class="post__category-link" href="{{route('blog.category', $category->slug)}}">{{$category->name}}</a>
                         @if(!$loop->last)
@@ -18,10 +21,10 @@
                 </div>
                 @endif
                 <div class="post__title">
-                    <a href="{{route('blog.show', $post->slug)}}">{{$post->title}}</a>
+                    <a href="{{$post_url}}">{{$post->title}}</a>
                 </div>
                 <div class="post__content">
-                    <a href="{{route('blog.show', $post->slug)}}">{{$post->content}}</a>
+                    <a href="{{$post_url}}">{{$post->content}}</a>
                 </div>
             </div>
             <div class="post__footer">
