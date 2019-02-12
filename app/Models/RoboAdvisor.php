@@ -136,6 +136,9 @@ use Cviebrock\EloquentSluggable\Sluggable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereVideoInformation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor whereVideoLink($value)
  * @mixin \Eloquent
+ * @property int|null $post_id
+ * @property-read \App\Models\Post|null $post
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RoboAdvisor wherePostId($value)
  */
 class RoboAdvisor extends Model
 {
@@ -273,6 +276,12 @@ class RoboAdvisor extends Model
             'finra_crd' => 'FINRA CRD',
             'sec_id' => 'SEC ID',
         ];
+    }
+
+    // Relationships
+    public function post()
+    {
+        return $this->belongsTo(Post::class, 'post_id');
     }
 
     public function reviews()

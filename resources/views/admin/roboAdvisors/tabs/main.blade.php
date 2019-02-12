@@ -519,4 +519,31 @@
     </div>
 </div>
 {{-------------- END OTHER INFORMATION ---------}}
-
+{{-------------- Blog ---------}}
+<div>
+    <div class="box-header with-border"><h3>Post</h3></div>
+    <br>
+    <br>
+    <div class="form-group">
+        <div class="checkbox icheck">
+            <label for="robo-advisor-post-input">
+                <input class="js-icheck" id="robo-advisor-post-input" name="robo_advisor_post" type="checkbox" {{ (old('robo_advisor_post') || (isset($roboAdvisor) && $roboAdvisor->post)) ? 'checked' : '' }} >
+                Automatic post creation
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="category-input">Post Categories</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <i class="fa fa-money"></i>
+            </div>
+            <select class="form-control js-select2" id="category-input" name="categories[]" multiple style="width: 100%;">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ in_array($category->id, (old('categories') ?? $categoriesID ?? [])) ? 'selected' : '' }}>{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+</div>
+{{-------------- Blog ---------}}

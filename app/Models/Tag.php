@@ -24,6 +24,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $description
+ * @property string|null $seo_title
+ * @property string|null $seo_description
+ * @property string|null $seo_keywords
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereSeoDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereSeoKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereSeoTitle($value)
  */
 class Tag extends Model
 {
