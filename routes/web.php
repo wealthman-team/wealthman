@@ -23,6 +23,7 @@ Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsComp
 Route::get('/blog', 'BlogController@index')->name('blog.index');
 Route::get('/blog/{slug}', 'BlogController@show')->name('blog.show');
 Route::get('/blog/categories/{slug}', 'BlogController@category')->name('blog.category');
+Route::get('/search', 'BlogController@search')->name('blog.search');
 // group post
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
@@ -50,3 +51,4 @@ Route::get('/clear-cache', function () {
 
     return 'all cache cleared';
 });
+

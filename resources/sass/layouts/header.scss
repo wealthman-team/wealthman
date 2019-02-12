@@ -44,6 +44,7 @@
   &__left-col {
     display: flex;
     align-items: center;
+    flex-grow: 1;
   }
 
   &__right-col {
@@ -53,6 +54,13 @@
 
   &__nav {
     margin-left: 126px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav-container {
+    display: inline-block;
   }
 
   &__nav-item {

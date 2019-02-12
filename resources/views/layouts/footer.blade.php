@@ -5,6 +5,7 @@
                 <div class="footer__title">WEALTHMAN</div>
                 <ul class="footer__links-list">
                     <li><a class="link link_white" href="{{ route('roboAdvisors') }}">Advisor screener</a></li>
+                    <li><a class="link link_white" href="{{ route('blog.index') }}">Blog</a></li>
                     {{--<li><a class="link link_white" href="#">About us</a></li>--}}
                     <li><a class="link link_white" target="_blank" href="https://dapp.wealthman.io/">Investor relation</a></li>
                     {{--<li><a class="link link_white" href="#">Contacts</a></li>--}}

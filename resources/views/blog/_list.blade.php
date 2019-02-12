@@ -13,13 +13,7 @@
         {{ $posts->links('components/pagination') }}
     </div>
 @else
-    <div class="post-wrapper">
-        <div class="post post__large">
-            <div class="post__container">
-                <div class="post__empty">
-                    <span>There is no post for the moment.</span>
-                </div>
-            </div>
-        </div>
+    <div class="post__empty">
+        <span>There is no post for the moment.</span>
     </div>
 @endif

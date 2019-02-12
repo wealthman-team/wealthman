@@ -8,6 +8,7 @@ use App\Models\RoboAdvisor;
 use App\Services\Filters\BlogCategoriesFilterOption;
 use App\Sources\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class BlogController
 {
@@ -40,6 +41,35 @@ class BlogController
             'category' => $category,
             'posts' => $posts,
             'filtersOption' => $blogCategoriesFilterOption,
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        Page::setTitle('Search | Wealthman');
+        Page::setDescription('Search result page | Wealthman');
+
+
+        $search = null;
+        $posts = [];
+        $blogCategoriesFilterOption = [];
+        if ($request->has('q')) {
+            $search = $request->input('q');
+            $posts = Post::published()->latestPosts()->whereRaw('(
+                title LIKE "%'.$request->input('q').'%" OR
+                content LIKE "%'.$search.'%" OR
+                content_html LIKE "%'.$search.'%"
+            )');
+            $allPosts = $posts->get();
+            $posts = $posts->paginate(6)->appends(Input::except('page'));
+            $blogCategoriesFilterOption = (new BlogCategoriesFilterOption(null, $allPosts))->get();
+        }
+
+
+        return view('blog.search', [
+            'posts' => $posts,
+            'filtersOption' => $blogCategoriesFilterOption,
+            'search' => $search,
         ]);
     }
 

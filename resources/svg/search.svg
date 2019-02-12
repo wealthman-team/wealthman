@@ -1,1 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"><g transform="translate(-1387 -20)"><rect width="38" height="38" rx="19" transform="translate(1387 20)" fill="#fff"/><g transform="translate(1396.8 28.8)"><line x2="5.524" y2="6.109" transform="translate(11.718 12.171)" stroke-width="1.5" stroke="#e2e3e6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" fill="none"/><circle cx="6.264" cy="6.264" r="6.264" transform="translate(1.2 1.2)" fill="none" stroke="#e2e3e6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+  <defs>
+    <style>
+      .search-icon-1, .search-icon-2 {
+        fill: none;
+      }
+
+      .search-icon-1 {
+        opacity: 0;
+      }
+
+      .search-icon-2 {
+        stroke: #e2e3e6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-width: 1.5px;
+      }
+    </style>
+  </defs>
+  <g id="Group_196" data-name="Group 196" transform="translate(-1387 -20)">
+    <rect id="Rectangle_15" data-name="Rectangle 15" class="search-icon-1" width="38" height="38" rx="19" transform="translate(1387 20)"/>
+    <g id="Group_3" data-name="Group 3" transform="translate(1396.8 28.8)">
+      <line id="Line_1" data-name="Line 1" class="search-icon-2" x2="5.524" y2="6.109" transform="translate(11.718 12.171)"/>
+      <circle id="Ellipse_1" data-name="Ellipse 1" class="search-icon-2" cx="6.264" cy="6.264" r="6.264" transform="translate(1.2 1.2)"/>
+    </g>
+  </g>
+</svg>
