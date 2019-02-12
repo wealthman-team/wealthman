@@ -26,6 +26,15 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $description
+ * @property string|null $seo_title
+ * @property string|null $seo_description
+ * @property string|null $seo_keywords
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSeoDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSeoKeywords($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSeoTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category withPublishedPosts()
  */
 class Category extends Model
 {

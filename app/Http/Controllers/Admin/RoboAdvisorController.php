@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Category;
+use App\Models\Post;
 use App\Models\RoboAdvisor;
 use App\Models\Rating;
 use App\Models\AccountType;
 use App\Sources\Page;
 use App\Models\UsageType;
+use Auth;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
@@ -53,6 +57,7 @@ class RoboAdvisorController extends Controller
         return view('admin.roboAdvisors.create', [
             'accountTypes' => AccountType::all(),
             'usageTypes' => UsageType::all(),
+            'categories' => Category::all(),
         ]);
     }
 
@@ -134,6 +139,12 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->usage_types()->sync(isset($request->usage_types) ? $request->usage_types : []);
         $roboAdvisor->ratings()->save(new Rating($this->getRaiting($request)));
 
+        $this->syncPostForRoboAdvisor(
+            $request->has('robo_advisor_post'),
+            $roboAdvisor,
+            isset($request->categories) ? $request->categories : []
+        );
+
         return redirect()
             ->route('admin.roboAdvisors.index')
             ->with('statusType', 'success')
@@ -164,26 +175,32 @@ class RoboAdvisorController extends Controller
         Page::setTitle('Edit Robo Advisor | Wealthman');
         Page::setDescription('Edit Robo Advisor | Wealthman');
 
+        $categoriesID = $roboAdvisor->post ? $roboAdvisor->post->categories->pluck('id')->toArray() : [];
+
         return view('admin.roboAdvisors.edit', [
             'roboAdvisor' => $roboAdvisor,
             'usageTypesID' => $roboAdvisor->usage_types->pluck('id')->toArray(),
             'accountTypesID' => $roboAdvisor->account_types->pluck('id')->toArray(),
             'accountTypes' => AccountType::all(),
             'usageTypes' => UsageType::all(),
+            'categories' => Category::all(),
+            'categoriesID' => $categoriesID
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RoboAdvisor  $roboAdvisor
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\RoboAdvisor $roboAdvisor
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function update(Request $request, RoboAdvisor $roboAdvisor)
     {
         $request->validate(RoboAdvisor::rules(), RoboAdvisor::messages(), RoboAdvisor::attributes());
 
+        $roboAdvisor->slug = null;
         $roboAdvisor->name = $request->name;
         $roboAdvisor->title = $request->title;
         $roboAdvisor->short_description = $request->short_description;
@@ -251,6 +268,12 @@ class RoboAdvisorController extends Controller
         $roboAdvisor->usage_types()->sync(isset($request->usage_types) ? $request->usage_types : []);
         $roboAdvisor->ratings->fill($this->getRaiting($request))->save();
 
+        $this->syncPostForRoboAdvisor(
+            $request->has('robo_advisor_post'),
+            $roboAdvisor,
+            isset($request->categories) ? $request->categories : []
+        );
+
         return redirect()
             ->route('admin.roboAdvisors.index')
             ->with('statusType', 'success')
@@ -266,6 +289,12 @@ class RoboAdvisorController extends Controller
      */
     public function destroy(RoboAdvisor $roboAdvisor)
     {
+        $post = $roboAdvisor->post;
+        if ($post) {
+            // remove media
+            $post->clearMediaCollection();
+            $post->delete();
+        }
         if ($roboAdvisor->delete()) {
             return redirect()
                 ->route('admin.roboAdvisors.index')
@@ -297,5 +326,50 @@ class RoboAdvisorController extends Controller
             'asset_allocation' => $request->asset_allocation,
             'total' => $total,
         ];
+    }
+
+    /**
+     * @param bool $is_robo_advisor_post
+     * @param RoboAdvisor $roboAdvisor
+     * @param array $categories
+     * @throws \Exception
+     */
+    private function syncPostForRoboAdvisor($is_robo_advisor_post = false, RoboAdvisor $roboAdvisor, $categories = [])
+    {
+        $post = $roboAdvisor->post;
+        if($is_robo_advisor_post) {
+            if ($post) {
+                $published = $post->published;
+                $published_at = $post->published_at;
+                $user_id = $post->user_id;
+            } else {
+                $published = true;
+                $published_at = Carbon::now();
+                $user_id = Auth::user()->id;
+                $post = new Post();
+            }
+
+            $post->title = $roboAdvisor->{'title'};
+            $post->content = strip_tags($roboAdvisor->{'short_description'});
+            $post->content_html = $roboAdvisor->{'short_description'};
+            $post->redirect_url = route('roboAdvisorsShow', $roboAdvisor->slug, false);
+            $post->published = $published;
+            $post->published_at = $published_at;
+            $post->user_id = $user_id;
+            $post->save();
+
+            $post->categories()->sync($categories);
+
+            $roboAdvisor->post_id = $post->id;
+            $roboAdvisor->save();
+        }else{
+            if ($post) {
+                $roboAdvisor->post_id = null;
+                $roboAdvisor->save();
+                // remove media
+                $post->clearMediaCollection();
+                $post->delete();
+            }
+        }
     }
 }

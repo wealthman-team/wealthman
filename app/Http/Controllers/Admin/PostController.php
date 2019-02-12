@@ -113,6 +113,7 @@ class PostController extends Controller
 
         return view('admin.posts.edit', [
             'post' => $post,
+            'is_robo_advisor' => (bool) $post->roboAdvisor,
             'postImages' => $post->getMedia('images'),
             'postGallery' => $post->getMedia('gallery'),
             'categoriesID' => $post->categories->pluck('id')->toArray(),
@@ -143,8 +144,9 @@ class PostController extends Controller
         $post->seo_keywords = $request->{'seo_keywords'};
 
         $post->save();
-
-        $post->categories()->sync(isset($request->categories) ? $request->categories : []);
+        if(!$request->has('disabled_categories')) {
+            $post->categories()->sync(isset($request->categories) ? $request->categories : []);
+        }
         $post->tags()->sync(isset($request->tags) ? $request->tags : []);
 
         $this->addImageToCollection($request, $post);
@@ -162,6 +164,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $roboAdvisor = $post->roboAdvisor;
+        if ($roboAdvisor) {
+            $roboAdvisor->post_id = null;
+            $roboAdvisor->save();
+        }
         // remove media
         $post->clearMediaCollection();
         // remove entity

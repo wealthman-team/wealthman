@@ -53,6 +53,11 @@ use Spatie\MediaLibrary\Models\Media;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post latest()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post exclude($exclude = null)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post popular($limit = 3)
+ * @property string|null $redirect_url
+ * @property-read \App\Models\RoboAdvisor $roboAdvisor
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post latestPosts()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereRedirectUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withCategory(\App\Models\Category $category)
  */
 class Post extends Model implements HasMedia
 {
@@ -174,6 +179,11 @@ class Post extends Model implements HasMedia
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'blog_posts_tags');
+    }
+
+    public function roboAdvisor()
+    {
+        return $this->hasOne(RoboAdvisor::class);
     }
 
     //

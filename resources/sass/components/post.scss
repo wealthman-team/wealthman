@@ -142,8 +142,13 @@
   &__empty {
     min-height: 245px;
     position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+
     @include font(16px, $Geometria, $text, 19px, 400);
-    & span {
+    &-message {
       position: absolute;
       display: block;
       top: 50%;

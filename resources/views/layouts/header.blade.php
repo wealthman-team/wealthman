@@ -9,11 +9,28 @@
                         </a>
                     </div>
                     <div class="header__nav">
-                        <a class="link header__nav-item" href="{{ route('roboAdvisors') }}">Advisor screener</a>
-                        <a class="link header__nav-item" href="{{ route('blog.index') }}">Blog</a>
-                        {{--<a class="link header__nav-item" href="#">About Us</a>--}}
-                        {{--<a class="link header__nav-item" href="#">Team</a>--}}
-                        {{--<a class="link header__nav-item" href="#">Contacts</a>--}}
+                        <div class="header__nav-container">
+                            <a class="link header__nav-item" href="{{ route('roboAdvisors') }}">Advisor screener</a>
+                            <a class="link header__nav-item" href="{{ route('blog.index') }}">Blog</a>
+                            {{--<a class="link header__nav-item" href="#">About Us</a>--}}
+                            {{--<a class="link header__nav-item" href="#">Team</a>--}}
+                            {{--<a class="link header__nav-item" href="#">Contacts</a>--}}
+                        </div>
+                        <div class="search js-search-wrapp">
+                            <span class="search-icon js-search-open">
+                                @svg('search')
+                            </span>
+                            <div class="search__form js-search-form">
+                                <div class="search__form-item">
+                                    <form action="{{route('blog.search')}}" method="get">
+                                        <div class="search__form-group">
+                                            <input type="search" class="search__form-input" name="q" placeholder="Search..." value="{{request('q')}}">
+                                            <button type="submit" class="search__form-btn">@svg('search')</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -47,9 +64,6 @@
                             </div>
                         @endif
                     </div>
-                    {{--<span class="search-icon">--}}
-                        {{--@svg('search')--}}
-                    {{--</span>--}}
                 </div>
             </div>
         </div>

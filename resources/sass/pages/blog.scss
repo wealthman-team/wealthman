@@ -1,6 +1,8 @@
 .blog {
   background: $white url("../images/blogBG.jpg") top center no-repeat;
-
+  &.blog-search {
+    background: $white url("../images/blogSearchBg.jpg") top center no-repeat;
+  }
   &__header-container {
     margin-left: 20px;
     margin-bottom: 20px;
