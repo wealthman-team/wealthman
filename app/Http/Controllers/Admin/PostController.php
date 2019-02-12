@@ -164,6 +164,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $roboAdvisor = $post->roboAdvisor;
+        if ($roboAdvisor) {
+            $roboAdvisor->post_id = null;
+            $roboAdvisor->save();
+        }
         // remove media
         $post->clearMediaCollection();
         // remove entity
