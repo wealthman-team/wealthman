@@ -4,6 +4,9 @@
     @include('layouts/header')
 
     <div class="content blog blog-search">
+
+        @include('components/parallax', ['bg' => '/images/header-bg3.jpg', 'hidden_stock' => true])
+
         <div class="container">
             <div class="topic">
                 @include('components/breadcrumbs', [
@@ -30,13 +33,8 @@
                             @include ('blog/_list')
                         </div>
                     @else
-                        <div class="blog__content">
-                            <div class="post__empty">
-                                <div class="post__empty-message">
-                                    <h3 class="h3" style="padding-top: 0">Nothing found.</h3>
-                                    Try changing your search terms.
-                                </div>
-                            </div>
+                        <div class="empty-message">
+                            Nothing found. Try changing your search terms.
                         </div>
                     @endif
                 </div>

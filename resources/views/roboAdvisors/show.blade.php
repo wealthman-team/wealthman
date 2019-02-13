@@ -4,23 +4,28 @@
     @include('layouts/header')
 
     <div class="content robo-advisor">
+
+        @include('components/parallax', ['bg' => '/images/header-bg.jpg'])
+
         <div class="container">
-            @include('components/breadcrumbs', [
-                'theme' => 'dark-theme',
-                'breadcrumbs' => [[
-                    'name' => 'Home',
-                    'link' => route('home'),
-                ],[
-                    'name' => 'Robo Advisors',
-                    'link' => route('roboAdvisors'),
-                ],[
-                    'name' => $roboAdvisor->name,
-                ]]
-            ])
-            @include('components/page-header', [
-                'header' => $roboAdvisor->name,
-                'sub_header' => $roboAdvisor->title
-            ])
+            <div class="topic">
+                @include('components/breadcrumbs', [
+                    'theme' => 'dark-theme',
+                    'breadcrumbs' => [[
+                        'name' => 'Home',
+                        'link' => route('home'),
+                    ],[
+                        'name' => 'Robo Advisors',
+                        'link' => route('roboAdvisors'),
+                    ],[
+                        'name' => $roboAdvisor->name,
+                    ]]
+                ])
+                @include('components/page-header', [
+                    'header' => $roboAdvisor->name,
+                    'sub_header' => $roboAdvisor->title
+                ])
+            </div>
 
             <div class="main">
                 <div class="sidebar sidebar__left">

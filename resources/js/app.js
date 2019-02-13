@@ -29,9 +29,29 @@ require('./bootstrap');
 require('./icons.font');
 window.noUiSlider = require('nouislider');
 require('slick-carousel');
-import Parallax from 'parallax-js';
+import * as basicScroll from 'basicscroll'
 
 $(function () {
+    // parallax
+    document.querySelectorAll('.header-scene').forEach((elem) => {
+        const modifier = elem.getAttribute('data-modifier');
+        const scroll_to = elem.getAttribute('data-scroll-to');
+
+        basicScroll.create({
+            elem: elem,
+            from: 0,
+            to: scroll_to,
+            direct: true,
+            props: {
+                '--translateY': {
+                    from: '0',
+                    to: `${ 10 * modifier }px`
+                }
+            }
+        }).start()
+    });
+
+
     // auto update token
     let lifetime_csrf = $('meta[name="csrf-token"]').attr('data-lifetime');
     if (lifetime_csrf) {
@@ -539,6 +559,7 @@ $(function () {
 
         function reduceNum(value)
         {
+            let result;
             if (isNaN(value) || !reduce) {
                 return value;
             }

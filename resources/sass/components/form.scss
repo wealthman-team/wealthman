@@ -1,0 +1,6 @@
+.form-container {
+  @include font(14px, $Geometria, $text, 20px, 400);
+}
+.form-title {
+  @include font(22px, $Geometria, $text, 27px, 700);
+}

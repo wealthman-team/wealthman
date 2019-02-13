@@ -27,7 +27,9 @@ Route::get('/blog/{slug}', 'BlogController@show')->name('blog.show');
 Route::get('/blog/categories/{slug}', 'BlogController@category')->name('blog.category');
 Route::get('/search', 'BlogController@search')->name('blog.search');
 Route::get('/redirect', 'RedirectController@index')->name('redirect');
+Route::get('/contacts', 'ContactController@index')->name('contacts');
 // POST route
+Route::post('/feedback-form', 'ContactController@getFeedbackForm')->name('feedback.form');
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
 Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');

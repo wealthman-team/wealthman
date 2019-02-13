@@ -4,6 +4,9 @@
     @include('layouts/header')
 
     <div class="content blog">
+
+        @include('components/parallax', ['bg' => '/images/header-bg.jpg'])
+
         <div class="container">
             <div class="topic">
                 @include('components/breadcrumbs', [

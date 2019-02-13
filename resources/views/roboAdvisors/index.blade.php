@@ -4,20 +4,25 @@
     @include('layouts/header')
 
     <div class="content robo-advisors">
+
+        @include('components/parallax', ['bg' => '/images/header-bg.jpg'])
+
         <div class="container">
-            @include('components/breadcrumbs', [
-                'theme' => 'dark-theme',
-                'breadcrumbs' => [[
-                    'name' => 'Home',
-                    'link' => route('home'),
-                ],[
-                    'name' => 'Robo Advisors',
-                ]]
-            ])
-            @include('components/page-header', [
-                'header' => 'Advisor screener',
-                'sub_header' => 'Find independent information about roboadvisors in the US'
-            ])
+            <div class="topic">
+                @include('components/breadcrumbs', [
+                    'theme' => 'dark-theme',
+                    'breadcrumbs' => [[
+                        'name' => 'Home',
+                        'link' => route('home'),
+                    ],[
+                        'name' => 'Robo Advisors',
+                    ]]
+                ])
+                @include('components/page-header', [
+                    'header' => 'Advisor screener',
+                    'sub_header' => 'Find independent information about roboadvisors in the US'
+                ])
+            </div>
 
             <div class="main">
 

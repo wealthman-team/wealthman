@@ -1,12 +1,17 @@
 .topic {
   margin-left: 20px;
-  min-height: 151px;
+  min-height: 170px;
+  padding-bottom: 35px;
 }
 
-.main {
+.main,
+.main-top {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
+  align-items: flex-start;
+}
+.main {
+  padding-bottom: 70px;
 }
 
 .main-content {

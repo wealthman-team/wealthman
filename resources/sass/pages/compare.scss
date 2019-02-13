@@ -1,9 +1,4 @@
 .compare {
-  &__empty {
-    margin-bottom: 26px;
-    @include font(14px, $Geometria, $textGray, 20px, 400);
-  }
-
   &__actions-list {
     padding-top: 30px;
     margin-bottom: 26px;

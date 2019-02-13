@@ -4,25 +4,30 @@
     @include('layouts/header')
 
     <div class="content compare">
+
+        @include('components/parallax', ['bg' => '/images/header-bg2.jpg', 'hidden_stock' => true])
+
         <div class="container">
-            @include('components/breadcrumbs', [
-                'theme' => 'dark-theme',
-                'breadcrumbs' => [[
-                    'name' => 'Home',
-                    'link' => route('home'),
-                ],[
-                    'name' => 'Compare',
-                ]]
-            ])
-            @include('components/page-header', [
-                'header' => 'Comparison of robo-advisors',
-                'sub_header' => 'Oh, there is nothing here',
-                'sub_header_class' => count($roboAdvisors) > 0 ? 'js-compare-empty-result hidden' : 'js-compare-empty-result'
-            ])
+            <div class="topic">
+                @include('components/breadcrumbs', [
+                    'theme' => 'dark-theme',
+                    'breadcrumbs' => [[
+                        'name' => 'Home',
+                        'link' => route('home'),
+                    ],[
+                        'name' => 'Compare',
+                    ]]
+                ])
+                @include('components/page-header', [
+                    'header' => 'Comparison of robo-advisors',
+                    'sub_header' => 'Oh, there is nothing here',
+                    'sub_header_class' => count($roboAdvisors) > 0 ? 'js-compare-empty-result hidden' : 'js-compare-empty-result'
+                ])
+            </div>
 
             <div class="main">
                 <div class="main-content">
-                    <div class="compare__empty js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden': ''}}">
+                    <div class="empty-message color-gray js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden': ''}}">
                         You can add an robo-advisors from the
                         <a class="link link_active" href="{{route('roboAdvisors')}}">Advisor screener</a>
                     </div>

@@ -18,8 +18,8 @@
                 <div class="robo-advisors__container">
                     <div class="tableContainerRow">
                         <div class="leftSide">
-                            <h2 class="section-header">TOP 5 <br>Robo-advisors</h2>
-                            <div class="section-sub-header">Use predefined advisor screeners.</div>
+                            <h2 class="block-header">TOP 5 <br>Robo-advisors</h2>
+                            <div class="block-sub-header">Use predefined advisor screeners.</div>
                             <a class="button button_blue" href="{{route('roboAdvisors')}}">More Robo-Advisors</a>
                         </div>
                         <div class="rightSide">
@@ -94,8 +94,8 @@
                             </div>
                         </div>
                         <div class="statistic__right-side">
-                            <h2 class="section-header">Assets Managed by&nbsp;Robo-Advisors</h2>
-                            <div class="section-sub-header">Beginning of <br>robo-advising tsunami</div>
+                            <h2 class="block-header">Assets Managed by&nbsp;Robo-Advisors</h2>
+                            <div class="block-sub-header font-size24">Beginning of <br>robo-advising tsunami</div>
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
 
             <section class="fourthSection">
                 <div class="container">
-                    <h2 class="section-header">What is a Robo-Advisor?</h2>
+                    <h2 class="block-header">What is a Robo-Advisor?</h2>
                     <div class="robo-informer">
                         <div class="robo-informer__container">
                             <div class="robo-informer__row">
@@ -146,7 +146,7 @@
                 <div class="why-use">
                     <div class="why-use__block">
                         <div class="why-use__item">
-                            <h2 class="section-header">Why use us</h2>
+                            <h2 class="block-header">Why use us</h2>
                         </div>
                     </div>
                     <div class="why-use__block">
