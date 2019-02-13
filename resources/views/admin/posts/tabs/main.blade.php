@@ -86,27 +86,27 @@
         </label>
     </div>
 </div>
-{{--<div class="row">--}}
-    {{--<div class="col-md-12">--}}
-        {{--<label>Published At:</label>--}}
-    {{--</div>--}}
-    {{--<div class="col-md-6">--}}
-        {{--<div class="form-group">--}}
-            {{--<div class="input-group date">--}}
-                {{--<div class="input-group-addon">--}}
-                    {{--<i class="fa fa-calendar"></i>--}}
-                {{--</div>--}}
-                {{--<input type="text" class="form-control pull-right">--}}
-            {{--</div>--}}
-            {{--<!-- /.input group -->--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{--<div class="col-md-6">--}}
-        {{--<div class="input-group js-time-picker">--}}
-            {{--<div class="input-group-addon">--}}
-                {{--<i class="fa fa-clock-o"></i>--}}
-            {{--</div>--}}
-            {{--<input type="text" class="form-control">--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
+<div class="row">
+    <div class="col-md-12">
+        <label>Published At:</label>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group date">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right">
+            </div>
+            <!-- /.input group -->
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group js-time-picker">
+            <div class="input-group-addon">
+                <i class="fa fa-clock-o"></i>
+            </div>
+            <input type="text" class="form-control">
+        </div>
+    </div>
+</div>

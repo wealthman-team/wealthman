@@ -91,8 +91,30 @@
                 <div class="main-content">
                     <div class="panel panel_padding">
                         <div class="form-container">
-                            <h3 class="form-title">Get in touch with the Wealthman team:</h3>
-                            <form action=""></form>
+                            <div class="form-header">
+                                <h3 class="form-title">Get in touch with the Wealthman team:</h3>
+                            </div>
+                            <div class="form-item">
+                                <form action="">
+                                    <div class="form-row">
+                                        <div class="form-col-medium">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="form-col-medium">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-col-large">
+                                            <textarea class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
