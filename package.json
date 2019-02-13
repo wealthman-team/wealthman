@@ -32,5 +32,8 @@
         "uniqid": "^5.0.3",
         "vue": "^2.6.3",
         "webfonts-loader": "^4.4.0"
+    },
+    "dependencies": {
+        "parallax-js": "^3.1.0"
     }
 }

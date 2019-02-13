@@ -1,13 +1,4 @@
 .robo-advisors {
-  background: $white url("../images/roboAdvisorsBG.jpg") top center no-repeat;
-
-  &__container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding-top: 55px;
-  }
-
   &__list {
     padding: 4px;
     border-radius: 20px;

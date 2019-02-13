@@ -1,13 +1,3 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-require('./bootstrap');
-require('./icons.font');
-
 //window.Vue = require('vue');
 
 /**
@@ -35,8 +25,11 @@ const app = new Vue({
 });
 */
 
+require('./bootstrap');
+require('./icons.font');
 window.noUiSlider = require('nouislider');
 require('slick-carousel');
+import Parallax from 'parallax-js';
 
 $(function () {
     // auto update token

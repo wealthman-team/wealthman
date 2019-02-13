@@ -1,11 +1,15 @@
+.noty-item {
+  display: none;
+}
+
+#app {
+  min-width: 1340px;
+  height: 100%;
+}
+
 .container {
   width: $containerWidth;
   margin: 0 auto;
-}
-
-.header-logo {
-  width: 204px;
-  color: $logoBG;
 }
 
 .page-header {
@@ -58,16 +62,6 @@
       text-decoration: none;
     }
   }
-}
-
-.main {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-.main-content {
-  flex-shrink: 0;
-  width: 974px;
 }
 
 .h2 {
@@ -172,3 +166,4 @@
     line-height: 22px;
   }
 }
+

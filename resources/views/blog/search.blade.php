@@ -3,30 +3,26 @@
 @section('content')
     @include('layouts/header')
 
-    <div class="content">
-        <div class="blog blog-search">
-            <div class="container">
-                <div class="blog__header-container">
-                    @include('components/breadcrumbs', [
-                        'theme' => 'dark-theme',
-                        'breadcrumbs' => [[
+    <div class="content blog blog-search">
+        <div class="container">
+            <div class="topic">
+                @include('components/breadcrumbs', [
+                    'theme' => 'dark-theme',
+                    'breadcrumbs' => [[
                         'name' => 'Home',
                         'link' => route('home'),
-                        ],[
-                            'name' => 'Search',
-                        ]]
-                    ])
-                    <h1 class="page-header">
-                        SEARCH RESULTS FOR:
-                    </h1>
-                    @if($search)
-                        <div class="page-sub-header">
-                            {{$search}}
-                        </div>
-                    @endif
-                </div>
+                    ],[
+                        'name' => 'Search',
+                    ]]
+                ])
+                @include('components/page-header', [
+                    'header' => 'SEARCH RESULTS FOR:',
+                    'sub_header' => $search ? $search :''
+                ])
+            </div>
 
-                <div class="blog__container">
+            <div class="main">
+                <div class="main-content">
                     @if($search && count($posts) > 0)
                         @include ('blog/_filter')
 

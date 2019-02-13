@@ -3,28 +3,25 @@
 @section('content')
     @include('layouts/header')
 
-    <div class="content">
-        <div class="blog">
-            <div class="container">
-                <div class="blog__header-container">
-                    @include('components/breadcrumbs', [
-                        'theme' => 'dark-theme',
-                        'breadcrumbs' => [[
-                        'name' => 'Home',
-                        'link' => route('home'),
-                        ],[
-                            'name' => 'Blog',
-                        ]]
-                    ])
-                    <h1 class="page-header">
-                        Blog
-                    </h1>
-                    <div class="page-sub-header">
-                        Follow us
-                    </div>
-                </div>
-
-                <div class="blog__container">
+    <div class="content blog">
+        <div class="container">
+            <div class="topic">
+                @include('components/breadcrumbs', [
+                    'theme' => 'dark-theme',
+                    'breadcrumbs' => [[
+                    'name' => 'Home',
+                    'link' => route('home'),
+                    ],[
+                        'name' => 'Blog',
+                    ]]
+                ])
+                @include('components/page-header', [
+                   'header' => 'Blog',
+                   'sub_header' => 'Follow us'
+               ])
+            </div>
+            <div class="main">
+                <div class="main-content">
                     @include ('blog/_filter')
 
                     <div class="blog__content">

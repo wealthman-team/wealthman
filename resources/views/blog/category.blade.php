@@ -3,28 +3,29 @@
 @section('content')
     @include('layouts/header')
 
-    <div class="content">
-        <div class="blog">
-            <div class="container">
-                <div class="blog__header-container">
-                    @include('components/breadcrumbs', [
-                        'theme' => 'dark-theme',
-                        'breadcrumbs' => [[
-                        'name' => 'Home',
-                        'link' => route('home'),
-                        ],[
-                            'name' => 'Blog',
-                            'link' => route('blog.index'),
-                        ],[
-                            'name' => $category->name,
-                        ]]
-                    ])
-                    <h1 class="page-header">
-                        {{$category->name}}
-                    </h1>
-                </div>
+    <div class="content blog">
+        <div class="container">
+            <div class="topic">
+                @include('components/breadcrumbs', [
+                    'theme' => 'dark-theme',
+                    'breadcrumbs' => [[
+                    'name' => 'Home',
+                    'link' => route('home'),
+                    ],[
+                        'name' => 'Blog',
+                        'link' => route('blog.index'),
+                    ],[
+                        'name' => $category->name,
+                    ]]
+                ])
+                @include('components/page-header', [
+                   'header' => $category->name,
+                   'sub_header' => ''
+                ])
+            </div>
 
-                <div class="blog__container">
+            <div class="main">
+                <div class="main-content">
                     @include ('blog/_filter')
 
                     <div class="blog__content">

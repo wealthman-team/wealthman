@@ -3,8 +3,8 @@
 @section('content')
     @include('layouts/header')
 
-    <div class="content">
-        <div class="compare">
+    <div class="content compare">
+        <div class="container">
             @include('components/breadcrumbs', [
                 'theme' => 'dark-theme',
                 'breadcrumbs' => [[
@@ -14,16 +14,14 @@
                     'name' => 'Compare',
                 ]]
             ])
+            @include('components/page-header', [
+                'header' => 'Comparison of robo-advisors',
+                'sub_header' => 'Oh, there is nothing here',
+                'sub_header_class' => count($roboAdvisors) > 0 ? 'js-compare-empty-result hidden' : 'js-compare-empty-result'
+            ])
 
-            <div class="container">
-                <h1 class="page-header">
-                    Comparison of robo-advisors
-                </h1>
-                <div class="page-sub-header js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden' : ''}}">
-                    Oh, there is nothing here
-                </div>
-
-                <div class="compare__container">
+            <div class="main">
+                <div class="main-content">
                     <div class="compare__empty js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden': ''}}">
                         You can add an robo-advisors from the
                         <a class="link link_active" href="{{route('roboAdvisors')}}">Advisor screener</a>

@@ -1,8 +1,4 @@
 .compare {
-  &__container {
-    padding: 30px 0 70px;
-  }
-
   &__empty {
     margin-bottom: 26px;
     @include font(14px, $Geometria, $textGray, 20px, 400);
