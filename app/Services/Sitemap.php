@@ -16,6 +16,7 @@ class Sitemap
             ->add(Url::create(route('roboAdvisors', [], false))->setPriority(0.9))
             ->add(Url::create(route('roboAdvisorsCompare', [], false))->setPriority(0.9))
             ->add(Url::create(route('blog.index', [], false))->setPriority(0.9))
+            ->add(Url::create(route('contacts', [], false))->setPriority(0.9))
         ;
         Category::all()->each(function (Category $category) use ($sitemap) {
             $sitemap->add(Url::create(route('blog.category', $category->slug, false))->setPriority(0.9));
