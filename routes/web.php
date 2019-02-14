@@ -11,12 +11,17 @@
 |
 */
 
+use App\Rules\PhoneNumber;
 use App\Services\Sitemap;
 
 /*
  * Site routes
  */
 // GET route
+Route::get('/reg', function (){
+    dd(new PhoneNumber());
+    return preg_match('/@/', $value);
+});
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/typography', 'IndexController@typography')->name('typography');
 Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
@@ -30,6 +35,7 @@ Route::get('/redirect', 'RedirectController@index')->name('redirect');
 Route::get('/contacts', 'ContactController@index')->name('contacts');
 // POST route
 Route::post('/feedback-form', 'ContactController@getFeedbackForm')->name('feedback.form');
+Route::post('/feedback-send', 'ContactController@feedbackSend')->name('feedback.send');
 Route::post('/toggle-compare', 'RoboAdvisorsController@toggleCompare')->name('toggleCompare');
 Route::post('/remove-compare', 'RoboAdvisorsController@removeCompare')->name('removeCompare');
 Route::post('/clear-compare', 'RoboAdvisorsController@clearCompare')->name('clearCompare');

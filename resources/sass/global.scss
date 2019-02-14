@@ -86,40 +86,6 @@ a img {
   user-select: none;
 }
 
-.links-container {
-  padding: 16px 0;
-}
-
-.link {
-  display: inline-block;
-  @include font(14px, $Geometria, $text, 20px, 400);
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out 0s;
-
-  &:hover {
-    color: $linkInfo;
-    text-decoration: none;
-  }
-
-  &_active {
-    color: $linkInfo;
-  }
-
-  &_white {
-    color: $white;
-  }
-
-  &_red {
-    color: $error;
-
-    &:hover {
-      color: $error;
-      text-decoration: none;
-    }
-  }
-}
-
 .h2 {
   margin-bottom: 50px;
   @include font(32px, $Intro, $text, 38px, 400);
@@ -172,7 +138,7 @@ a img {
   }
 }
 
-.margin {
+.img-margin {
   margin-bottom: 30px;
 }
 
@@ -191,8 +157,16 @@ a img {
   }
 }
 
-.hidden{
+body .hidden{
   display: none;
+}
+
+body .margin-none {
+  margin: 0;
+}
+
+body .padding-none {
+  padding: 0;
 }
 
 //Сам mixin
@@ -210,73 +184,6 @@ a img {
   @include clearfix;
 }
 
-.share {
-  @include clearfix;
-  @include font(16px, $Geometria, $text, 26px, 300);
-  display: inline-block;
-  &-item {
-    float: left;
-    margin-right: 16px;
-  }
-  &-item__title {
-    line-height: 22px;
-  }
-}
-.contact-share {
-  display: flex;
-  justify-content: space-between;
-  padding: 30px 20px;
-  margin-bottom: 28px;
-
-  @include font(16px, $Geometria, $text, 26px, 300);
-  &__item {
-    width: 94px;
-  }
-  &__link {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    span {
-      display: inline-block;
-      padding-top: 14px;
-    }
-  }
-}
-
-
-.social-news {
-  display: flex;
-}
-
-
-
-
-
-.header-scene-wrapper {
-  position: relative;
-  z-index: -1;
-}
-.header-stack-wrapper {
-  position: relative;
-}
-.header-scene {
-  top: 0;
-  left: 0;
-  position: absolute;
-  transform: translateY(var(--translateY));
-  will-change: transform;
-}
-.header-bg {
-  height: 535px;
-  width: 100%;
-  background: transparent no-repeat top center;
-}
-.header-stack {
-  right: 146px;
-  left: auto;
-  top: -28px;
-}
 .empty-message {
   margin-bottom: 26px;
   margin-left: 20px;

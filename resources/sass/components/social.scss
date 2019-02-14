@@ -1,0 +1,32 @@
+.share {
+  @include clearfix;
+  @include font(16px, $Geometria, $text, 26px, 300);
+  display: inline-block;
+  &-item {
+    float: left;
+    margin-right: 16px;
+  }
+  &-item__title {
+    line-height: 22px;
+  }
+}
+.contact-share {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 20px;
+
+  @include font(16px, $Geometria, $text, 26px, 300);
+  &__item {
+    width: 94px;
+  }
+  &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      display: inline-block;
+      padding-top: 14px;
+    }
+  }
+}

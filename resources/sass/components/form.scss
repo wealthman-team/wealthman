@@ -10,6 +10,7 @@
     border-radius: 20px;
     background-color: $white;
     box-shadow: $boxShadow08;
+    position: relative;
 
     textarea {
       resize: none;
@@ -18,6 +19,11 @@
   }
   &-title {
     @include font(22px, $Geometria, $text, 27px, 700);
+  }
+  &-error {
+    @include font(12px, $Geometria, $error, 15px, 400);
+    display: block;
+    padding: 5px 5px 0;
   }
   &-row {
     @include clearfix;
@@ -40,6 +46,10 @@
   }
   &-group {
     margin-bottom: 16px;
+  }
+  &-btn-group {
+    padding-top: 10px;
+    margin-bottom: 10px;
   }
   &-control {
     width: 100%;
@@ -64,4 +74,18 @@
       }
     }
   }
+  &-success-message {
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    @include font(22px, $Geometria, $success, 27px, 700);
+  }
+}
+
+.feedback-height {
+  min-height: 279px;
 }

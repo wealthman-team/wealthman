@@ -26,7 +26,7 @@
             <div class="main-top flex-center">
                 <div class="sidebar sidebar__left">
                     <h2 class="block-header">Follow us:</h2>
-                    <div class="block-sub-header">Follow Our company news now</div>
+                    <div class="block-sub-header margin-none">Follow Our company news now</div>
                 </div>
                 <div class="main-content">
                     <div class="panel">
@@ -87,34 +87,19 @@
                 <div class="sidebar sidebar__left">
                     <h2 class="block-header">Have some questions?</h2>
                     <div class="block-sub-header">If you have any questions regarding the Wealthman project do not hesitate to contact us using the contact form! We will be glad to answer any questions about our project.</div>
+                    <div class="contacts-block">
+                        <span class="contacts-name">ICO, Media\PR inquiries:</span>
+                        <a class="contacts-email link_blue" href="mailto:office@wealthman.io">office@wealthman.io</a>
+                    </div>
+                    <div class="contacts-block margin-none">
+                        <span class="contacts-name">General questions:</span>
+                        <a class="contacts-email link_blue" href="mailto:info@wealthman.io">info@wealthman.io</a>
+                    </div>
                 </div>
                 <div class="main-content">
                     <div class="panel panel_padding">
-                        <div class="form-container">
-                            <div class="form-header">
-                                <h3 class="form-title">Get in touch with the Wealthman team:</h3>
-                            </div>
-                            <div class="form-item">
-                                <form action="">
-                                    <div class="form-row">
-                                        <div class="form-col-medium">
-                                            <div class="form-group">
-                                                <input class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="form-col-medium">
-                                            <div class="form-group">
-                                                <input class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-col-large">
-                                            <textarea class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                        <div class="js-feedback-container">
+                            @include('contacts/_form')
                         </div>
                     </div>
                 </div>

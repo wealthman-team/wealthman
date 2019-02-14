@@ -1,5 +1,5 @@
 <div class="img-card {{$active ? 'active' : ''}}">
-    <img src="{{ $image->getUrl('thumb') }}" alt="{{ $image->name }}" class="margin" width="150" href="100">
+    <img src="{{ $image->getUrl('thumb') }}" alt="{{ $image->name }}" class="img-margin" width="150" href="100">
     <div class="img-card__body">
         <div class="float-left">
             <a href="#" @if(!$active)onclick="event.preventDefault();document.getElementById('selectImageForm{{$image->id}}').submit();"@endif><i class="text-green fa fa-check"></i></a>
