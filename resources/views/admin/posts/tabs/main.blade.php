@@ -11,6 +11,21 @@
         <span class="help-block">{{ $errors->first('title') }}</span>
     @endif
 </div>
+@if (isset($post))
+    <div class="form-group {{ $errors->has('slug') ? ' has-error' : '' }}">
+        <label for="post-slug-input">Slug*</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <i class="fa fa-pencil"></i>
+            </div>
+            <input class="form-control" id="post-slug-input" type="text" name="slug" value="{{ old('slug') ?? $post->slug ??  ''}}">
+        </div>
+
+        @if ($errors->has('slug'))
+            <span class="help-block">{{ $errors->first('slug') }}</span>
+        @endif
+    </div>
+@endif
 
 <div class="form-group {{ $errors->has('content') ? ' has-error' : '' }}">
     <label for="content-input">Short Content*</label>

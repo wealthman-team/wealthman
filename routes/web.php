@@ -18,10 +18,6 @@ use App\Services\Sitemap;
  * Site routes
  */
 // GET route
-Route::get('/reg', function (){
-    dd(new PhoneNumber());
-    return preg_match('/@/', $value);
-});
 Route::get('/', 'IndexController@index')->name('home');
 Route::get('/typography', 'IndexController@typography')->name('typography');
 Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');

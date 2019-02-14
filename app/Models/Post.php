@@ -127,6 +127,7 @@ class Post extends Model implements HasMedia
     {
         return [
             'title' => 'required|string|max:255',
+            'slug'   => 'nullable|string|max:255',
             'content' => 'required|string',
             'content_html' => 'required|string',
             'redirect_url' => 'nullable|string|max:255',
@@ -144,6 +145,7 @@ class Post extends Model implements HasMedia
     {
         return [
             'title' => 'Title',
+            'slug'   => 'Slug',
             'content' => 'Short Content',
             'content_html' => 'Content',
             'redirect_url' => 'Redirect Url',

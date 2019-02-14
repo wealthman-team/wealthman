@@ -12,7 +12,21 @@
         <span class="help-block">{{ $errors->first('name') }}</span>
     @endif
 </div>
+@if (isset($roboAdvisor))
+    <div class="form-group {{ $errors->has('slug') ? ' has-error' : '' }}">
+        <label for="robo-advisor-slug-input">Slug*</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <i class="fa fa-pencil"></i>
+            </div>
+            <input class="form-control" id="robo-advisor-slug-input" type="text" name="slug" value="{{ old('slug') ?? $roboAdvisor->slug ??  ''}}">
+        </div>
 
+        @if ($errors->has('slug'))
+            <span class="help-block">{{ $errors->first('slug') }}</span>
+        @endif
+    </div>
+@endif
 {{-- Robo Advisor verify property --}}
 <div class="form-group">
     <div class="checkbox icheck">
