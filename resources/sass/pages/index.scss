@@ -3,13 +3,14 @@
   margin: -80px auto 0;
   overflow: hidden;
 
-  h1 {
+  .page-header {
     font-size: 28px;
+    max-width: none;
   }
 
   &__container {
     position: relative;
-    padding: 201px 0 235px 20px;
+    padding: 201px 0 318px 20px;
 
     &:before{
       content: '';
@@ -73,6 +74,9 @@
 .thirdSection {
   margin-top: 168px;
 
+  .block-sub-header {
+    font-weight: 300;
+  }
   .statistic {
     display: table;
     width: 100%;
@@ -208,9 +212,9 @@
 }
 /* fourth section */
 .fourthSection {
-  margin-top: 165px;
+  margin-top: 151px;
 
-  .section-header {
+  .block-header {
     margin-bottom: 30px;
     text-align: center;
   }
@@ -392,7 +396,7 @@
   margin-top: 39px;
   overflow: hidden;
 
-  .section-header {
+  .block-header {
     margin-bottom: 30px;
     text-align: center;
   }

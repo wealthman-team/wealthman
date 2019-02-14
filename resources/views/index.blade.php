@@ -103,7 +103,7 @@
 
             <section class="fourthSection">
                 <div class="container">
-                    <h2 class="block-header">What is a Robo-Advisor?</h2>
+                    <h2 class="block-header text-center">What is a Robo-Advisor?</h2>
                     <div class="robo-informer">
                         <div class="robo-informer__container">
                             <div class="robo-informer__row">
