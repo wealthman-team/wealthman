@@ -63,9 +63,18 @@ $(function () {
 
     $(document).click(function(e) {
         $target = $(e.target);
-        if(!$target.closest('.js-auth-icon-wrapper').length && $('.js-user-menu.open').length) {
+        if (!$target.closest('.js-auth-icon-wrapper').length && $('.js-user-menu.open').length) {
             $('.js-user-menu').removeClass('open');
         }
+
+        if (!$target.closest('.js-search-wrapp').length && $('.js-search-form.open').length) {
+            $('.js-search-form').removeClass('open');
+        }
+    });
+
+    $('.js-search-open').on('click', function (e) {
+        e.preventDefault();
+        $('.js-search-form').addClass('open');
     });
 
     // Header scroll

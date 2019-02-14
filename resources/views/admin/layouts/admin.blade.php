@@ -2,8 +2,14 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="{{ $pageDescription }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{ $pageTitle }}</title>
+    <meta name="description" content="{{ $pageDescription }}">
+    @if(isset($pageKeywords) && !empty($pageKeywords))
+        <meta name="keywords" content="{{$pageKeywords}}" />
+    @endif
+
     <meta name="viewport" content="width=1310">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- Favicon --}}
@@ -25,18 +31,15 @@
     <meta name="msapplication-TileImage" content="/images/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>{{ $pageTitle }}</title>
-
     <!-- Fonts -->
 
     <!-- Styles -->
     <link href="{{ mix('/css/admin/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ mix('/css/admin/admin.css') }}" rel="stylesheet">
 </head>
-<body class="@guest('admin') login-page @else skin-red @endguest">
-    @guest('admin')
-        @yield('content')
-    @else
+{{--<body class="@guest('admin') login-page @else skin-red @endguest">--}}
+<body class="@auth() skin-red @else login-page @endauth">
+    @auth()
         <div class="wrapper">
             @include('admin/layouts/header')
             @include('admin/layouts/sidebar')
@@ -53,7 +56,9 @@
                 @yield('content')
             </div>
         </div>
-    @endguest
+    @else
+        @yield('content')
+    @endauth
 
     <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
     <script src="{{ mix('/js/admin.js') }}"></script>
