@@ -3,16 +3,18 @@
 @section('content')
     @include('layouts/header')
     <div class="content modal-page">
-        @include('components/breadcrumbs', [
-            'theme' => 'dark-theme',
-            'breadcrumbs' => [[
-                'name' => 'Home',
-                'link' => route('home'),
-            ],[
-                'name' => 'Sign Up',
-            ]]
-        ])
         <div class="container">
+            <div class="modal-topic">
+                @include('components/breadcrumbs', [
+                    'theme' => 'dark-theme',
+                    'breadcrumbs' => [[
+                        'name' => 'Home',
+                        'link' => route('home'),
+                    ],[
+                        'name' => 'Sign Up',
+                    ]]
+                ])
+            </div>
             <div class="modal-inline">
                 <h1 class="page-header">Sign Up</h1>
                 <div class="modal">

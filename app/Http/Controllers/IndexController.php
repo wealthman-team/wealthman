@@ -45,4 +45,12 @@ class IndexController extends Controller
             'roboAdvisors' => $roboAdvisors
         ]);
     }
+
+    public function typography()
+    {
+        Page::setTitle('Typography | WealthMan');
+        Page::setDescription('Typography - WealthMan');
+
+        return view('typography');
+    }
 }

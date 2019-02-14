@@ -1,0 +1,24 @@
+.header-scene-wrapper {
+  position: relative;
+  z-index: -1;
+}
+.header-stack-wrapper {
+  position: relative;
+}
+.header-scene {
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: translateY(var(--translateY));
+  will-change: transform;
+}
+.header-bg {
+  height: 535px;
+  width: 100%;
+  background: transparent no-repeat top center;
+}
+.header-stack {
+  right: 146px;
+  left: auto;
+  top: -28px;
+}

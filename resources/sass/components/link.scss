@@ -1,0 +1,41 @@
+.link {
+  @include font(14px, $Geometria, $text, 20px, 400);
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out 0s;
+
+  &:hover {
+    color: $linkInfo;
+    text-decoration: none;
+  }
+
+  &_active {
+    color: $linkInfo;
+  }
+
+  &_white {
+    color: $white;
+  }
+
+  &_red {
+    color: $error;
+
+    &:hover {
+      color: $error;
+      text-decoration: none;
+    }
+  }
+
+  &_blue {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out 0s;
+    color: $linkInfo;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

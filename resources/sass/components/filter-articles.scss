@@ -1,0 +1,22 @@
+.filter-articles {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: $contentBG;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 26px 20px 15px;
+  margin-bottom: 18px;
+
+  &__item {
+    margin-bottom: 10px;
+    margin-right: 32px;
+  }
+  &__link {
+    @include font(14px, $Geometria, $text, 20px, 400);
+
+    &:hover,
+    &.active {
+      color: $linkInfo;
+    }
+  }
+}

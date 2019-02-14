@@ -12,9 +12,9 @@
                         <div class="header__nav-container">
                             <a class="link header__nav-item" href="{{ route('roboAdvisors') }}">Advisor screener</a>
                             <a class="link header__nav-item" href="{{ route('blog.index') }}">Blog</a>
+                            <a class="link header__nav-item" href="{{route('contacts')}}">Contacts</a>
                             {{--<a class="link header__nav-item" href="#">About Us</a>--}}
                             {{--<a class="link header__nav-item" href="#">Team</a>--}}
-                            {{--<a class="link header__nav-item" href="#">Contacts</a>--}}
                         </div>
                         <div class="search js-search-wrapp">
                             <span class="search-icon js-search-open">

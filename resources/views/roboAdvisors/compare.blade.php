@@ -3,28 +3,31 @@
 @section('content')
     @include('layouts/header')
 
-    <div class="content">
-        <div class="compare">
-            @include('components/breadcrumbs', [
-                'theme' => 'dark-theme',
-                'breadcrumbs' => [[
-                    'name' => 'Home',
-                    'link' => route('home'),
-                ],[
-                    'name' => 'Compare',
-                ]]
-            ])
+    <div class="content compare">
 
-            <div class="container">
-                <h1 class="page-header">
-                    Comparison of robo-advisors
-                </h1>
-                <div class="page-sub-header js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden' : ''}}">
-                    Oh, there is nothing here
-                </div>
+        @include('components/parallax', ['bg' => '/images/header-bg2.jpg', 'hidden_stock' => true])
 
-                <div class="compare__container">
-                    <div class="compare__empty js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden': ''}}">
+        <div class="container">
+            <div class="topic">
+                @include('components/breadcrumbs', [
+                    'theme' => 'dark-theme',
+                    'breadcrumbs' => [[
+                        'name' => 'Home',
+                        'link' => route('home'),
+                    ],[
+                        'name' => 'Compare',
+                    ]]
+                ])
+                @include('components/page-header', [
+                    'header' => 'Comparison of robo-advisors',
+                    'sub_header' => 'Oh, there is nothing here',
+                    'sub_header_class' => count($roboAdvisors) > 0 ? 'js-compare-empty-result hidden' : 'js-compare-empty-result'
+                ])
+            </div>
+
+            <div class="main">
+                <div class="main-content">
+                    <div class="empty-message color-gray js-compare-empty-result {{count($roboAdvisors) > 0 ? 'hidden': ''}}">
                         You can add an robo-advisors from the
                         <a class="link link_active" href="{{route('roboAdvisors')}}">Advisor screener</a>
                     </div>
@@ -44,10 +47,12 @@
                                     <div class="compare-list__header-container js-compare-header-fixed">
                                         <div class="compare-list__header-bg">
                                             <div class="compare-list__inner compare-list__inner-header">
+                                                @if (count($roboAdvisors) > 6)
                                                 <div class="compare-list__nav">
                                                     <div class="compare-list__nav-left js-compare-list-prev">@svg('arrow-long-left', 'compare-list__arrow')</div>
                                                     <div class="compare-list__nav-right js-compare-list-next">@svg('arrow-long-left', 'compare-list__arrow')</div>
                                                 </div>
+                                                @endif
                                                 <div class="compare-list__group js-compare-list-group">
                                                     <div class="compare-list__row">
                                                         <div class="compare-list__context js-compare-list-context">
