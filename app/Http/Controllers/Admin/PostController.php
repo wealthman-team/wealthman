@@ -132,7 +132,9 @@ class PostController extends Controller
     {
         $request->validate(Post::rules(), Post::messages(), Post::attributes());
 
-        $post->slug = null;
+        if ($request->has('slug') && !empty($request->slug)) {
+            $post->slug = $request->slug;
+        }
         $post->title = $request->{'title'};
         $post->content = $request->{'content'};
         $post->content_html = $request->{'content_html'};

@@ -1,13 +1,3 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-require('./bootstrap');
-require('./icons.font');
-
 //window.Vue = require('vue');
 
 /**
@@ -35,10 +25,33 @@ const app = new Vue({
 });
 */
 
+require('./bootstrap');
+require('./icons.font');
 window.noUiSlider = require('nouislider');
 require('slick-carousel');
+import * as basicScroll from 'basicscroll'
 
 $(function () {
+    // parallax
+    document.querySelectorAll('.header-scene').forEach((elem) => {
+        const modifier = elem.getAttribute('data-modifier');
+        const scroll_to = elem.getAttribute('data-scroll-to');
+
+        basicScroll.create({
+            elem: elem,
+            from: 0,
+            to: scroll_to,
+            direct: true,
+            props: {
+                '--translateY': {
+                    from: '0',
+                    to: `${ 10 * modifier }px`
+                }
+            }
+        }).start()
+    });
+
+
     // auto update token
     let lifetime_csrf = $('meta[name="csrf-token"]').attr('data-lifetime');
     if (lifetime_csrf) {
@@ -62,7 +75,7 @@ $(function () {
     }
 
     $(document).click(function(e) {
-        $target = $(e.target);
+        let $target = $(e.target);
         if (!$target.closest('.js-auth-icon-wrapper').length && $('.js-user-menu.open').length) {
             $('.js-user-menu').removeClass('open');
         }
@@ -286,7 +299,7 @@ $(function () {
                         $('.js-modal-auth').removeAttr('data-href');
                         initAuthMethods();
                     },
-                    error: function (r) {
+                    error: function () {
                         // console.log(r.responseText);
                         console.log('Error init auth form');
                     },
@@ -433,6 +446,111 @@ $(function () {
     Popup.init();
     /** End Popup **/
 
+
+    /** Feedback **/
+    let Feedback = (function () {
+        function initFeedbackMethods() {
+            let $feedback_container = $('.js-feedback-container');
+            let $feedback_form = $('.js-feedback-form:first');
+            // Login function
+            if ($feedback_form.length) {
+                $feedback_form.submit(function (e) {
+                    e.preventDefault();
+                    if (!$feedback_form.hasClass('in-progress')) {
+
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        let form = $(this);
+                        $.ajax({
+                            type: form.attr('method'),
+                            url: form.attr('action'),
+                            data: form.serializeArray(),
+                            dataType: form.data('type'),
+                            beforeSend: function () {
+                                $feedback_form.addClass('in-progress');
+                                //clear errors
+                                $('input[name="email_phone"]', form).removeClass('is-invalid');
+                                $('input[name="name"]', form).removeClass('is-invalid');
+                                $('input[name="message"]', form).removeClass('is-invalid');
+
+                                $('.js-email-phone-error', form).html('');
+                                $('.js-name-error', form).html('');
+                                $('.js-message-error', form).html('');
+                            },
+                            success: function (response) {
+                                if (response.success) {
+                                    $feedback_form.fadeOut(200, function () {
+                                        $('.js-feedback-success:first', $feedback_container).fadeIn(200);
+                                        $feedback_form.html('');
+                                    });
+                                }
+                            },
+                            error: function (jqXHR) {
+                                let response = $.parseJSON(jqXHR.responseText);
+                                if (response.email_phone) {
+                                    $('input[name="email_phone"]', form).addClass('is-invalid');
+                                    $('.js-email-phone-error', form).html('<span>' + response.email_phone[0] + '</span>');
+                                } else {
+                                    $('input[name="email_phone"]', form).addClass('is-valid');
+                                }
+
+                                if (response.name) {
+                                    $('input[name="name"]', form).addClass('is-invalid');
+                                    $('.js-name-error', form).html('<span>' + response.name[0] + '</span>');
+                                } else {
+                                    $('input[name="name"]', form).addClass('is-valid');
+                                }
+
+                                if (response.message) {
+                                    $('textarea[name="message"]', form).addClass('is-invalid');
+                                    $('.js-message-error', form).html('<span>' + response.message[0] + '</span>');
+                                } else {
+                                    $('input[name="message"]', form).addClass('is-valid');
+                                }
+                            },
+                            complete: function () {
+                                $feedback_form.removeClass('in-progress');
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        return {
+            init: function () {
+                let $feedback_container = $('.js-feedback-container');
+                if ($feedback_container.length) {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        type: 'POST',
+                        url: '/feedback-form',
+                        processData: false,
+                        contentType: false,
+                        success: function(result){
+                            $feedback_container.html(result);
+                            initFeedbackMethods();
+                        },
+                        error: function () {
+                            // console.log(r.responseText);
+                            console.log('Error init feedback form');
+                        },
+                    });
+                }
+            }
+        };
+    })();
+
+    Feedback.init();
+    /** End Feedback **/
+
     $('.js-user-menu-open').on('click', function () {
         $('.js-user-menu').toggleClass('open');
     });
@@ -546,6 +664,7 @@ $(function () {
 
         function reduceNum(value)
         {
+            let result;
             if (isNaN(value) || !reduce) {
                 return value;
             }
@@ -627,7 +746,7 @@ $(function () {
 
         let step = 200;
         let currentStep = 0;
-        let minItemCount = 5;
+        let minItemCount = 6;
 
         prevArrow.on('click', function () {
             slideNext();
@@ -887,7 +1006,7 @@ $(function () {
     /* Review Like*/
     (function () {
         const $buttons = $('.js-review-like');
-        $buttons.each(function(idx){
+        $buttons.each(function(){
             let $btn = $(this);
             $btn.on('click', function (e) {
                 e.preventDefault();
@@ -907,7 +1026,7 @@ $(function () {
                             $btn.parents('.js-like-container').find('.js-dislike-count').html(response.success.dislike > 0 ? response.success.dislike : '');
                         }
                     },
-                    error: function (error) {
+                    error: function () {
                         console.log('Error: create like');
                     }
                 });

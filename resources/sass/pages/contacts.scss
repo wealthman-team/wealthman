@@ -1,0 +1,20 @@
+.contacts {
+  .sidebar {
+    padding-left: 20px;
+  }
+
+  &-block {
+    @include font(16px, $Geometria, $text, 22px, 300);
+    margin-bottom: 15px;
+
+    &__margin {
+      margin-bottom: 10px;
+    }
+  }
+  &-name {
+    display: block;
+  }
+  &-email {
+    font-weight: 700;
+  }
+}

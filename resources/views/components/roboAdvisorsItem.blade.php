@@ -15,7 +15,7 @@
                     'reviews' => $roboAdvisor->reviews
                 ])
             @else
-                <span style="color: #abb0ba">&mdash;</span>
+                <span style="color: #abb0ba">Be first</span>
             @endif
 
         </div>

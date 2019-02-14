@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .cls-tel-dark-1 {
+        fill: #172341;
+      }
+
+      .cls-tel-dark-2 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_39" data-name="Ellipse 39" class="cls-tel-dark-1" cx="24" cy="24" r="24" transform="translate(9761 10859)"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_30" data-name="Mask Group 30" class="cls-tel-dark-2" transform="translate(-9761 -10859)">
+    <g id="_006-telegram" data-name="006-telegram" transform="translate(9761 10859)">
+      <path id="Subtraction_4" data-name="Subtraction 4" class="cls-tel-dark-1" d="M47.972,47.972H0V0H47.972V47.972ZM23.531,33.618l8.27,6.07a1.708,1.708,0,0,0,1.016.336h0a1.715,1.715,0,0,0,1.693-1.374l5.477-26.185a1.616,1.616,0,0,0-.33-1.374,1.638,1.638,0,0,0-1.884-.5L5.694,23.091A1.17,1.17,0,0,0,5.787,25.3l8.152,2.407,3.042,9.653a1.4,1.4,0,0,0,1.34.98,1.384,1.384,0,0,0,.995-.421l4.215-4.3Zm-5.674,1.707a.15.15,0,0,1-.147-.109L15.35,27.61a.8.8,0,0,1,.343-.918l17.6-10.913a.381.381,0,0,1,.572.2.371.371,0,0,1-.11.421L18.85,29.577a.8.8,0,0,0-.265.51l-.574,5.1A.152.152,0,0,1,17.857,35.325Z"/>
+    </g>
+  </g>
+</svg>

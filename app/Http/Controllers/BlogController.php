@@ -60,9 +60,8 @@ class BlogController
                 content LIKE "%'.$search.'%" OR
                 content_html LIKE "%'.$search.'%"
             )');
-            $allPosts = $posts->get();
             $posts = $posts->paginate(6)->appends(Input::except('page'));
-            $blogCategoriesFilterOption = (new BlogCategoriesFilterOption(null, $allPosts))->get();
+            $blogCategoriesFilterOption = (new BlogCategoriesFilterOption())->get();
         }
 
 

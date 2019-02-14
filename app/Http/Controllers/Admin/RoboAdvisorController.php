@@ -64,8 +64,9 @@ class RoboAdvisorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function store(Request $request)
     {
@@ -200,7 +201,9 @@ class RoboAdvisorController extends Controller
     {
         $request->validate(RoboAdvisor::rules(), RoboAdvisor::messages(), RoboAdvisor::attributes());
 
-        $roboAdvisor->slug = null;
+        if ($request->has('slug') && !empty($request->slug)) {
+            $roboAdvisor->slug = $request->slug;
+        }
         $roboAdvisor->name = $request->name;
         $roboAdvisor->title = $request->title;
         $roboAdvisor->short_description = $request->short_description;

@@ -1,6 +1,4 @@
 .robo-advisor {
-  background: $white url("../images/roboAdvisorsBG.jpg") top center no-repeat;
-
   &__contact {
     @include font(14px, $Geometria, $text, 20px, 300);
 

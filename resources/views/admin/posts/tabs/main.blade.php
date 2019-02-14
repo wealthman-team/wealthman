@@ -11,6 +11,21 @@
         <span class="help-block">{{ $errors->first('title') }}</span>
     @endif
 </div>
+@if (isset($post))
+    <div class="form-group {{ $errors->has('slug') ? ' has-error' : '' }}">
+        <label for="post-slug-input">Slug*</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <i class="fa fa-pencil"></i>
+            </div>
+            <input class="form-control" id="post-slug-input" type="text" name="slug" value="{{ old('slug') ?? $post->slug ??  ''}}">
+        </div>
+
+        @if ($errors->has('slug'))
+            <span class="help-block">{{ $errors->first('slug') }}</span>
+        @endif
+    </div>
+@endif
 
 <div class="form-group {{ $errors->has('content') ? ' has-error' : '' }}">
     <label for="content-input">Short Content*</label>
@@ -86,27 +101,27 @@
         </label>
     </div>
 </div>
-{{--<div class="row">--}}
-    {{--<div class="col-md-12">--}}
-        {{--<label>Published At:</label>--}}
-    {{--</div>--}}
-    {{--<div class="col-md-6">--}}
-        {{--<div class="form-group">--}}
-            {{--<div class="input-group date">--}}
-                {{--<div class="input-group-addon">--}}
-                    {{--<i class="fa fa-calendar"></i>--}}
-                {{--</div>--}}
-                {{--<input type="text" class="form-control pull-right">--}}
-            {{--</div>--}}
-            {{--<!-- /.input group -->--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{--<div class="col-md-6">--}}
-        {{--<div class="input-group js-time-picker">--}}
-            {{--<div class="input-group-addon">--}}
-                {{--<i class="fa fa-clock-o"></i>--}}
-            {{--</div>--}}
-            {{--<input type="text" class="form-control">--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
+<div class="row">
+    <div class="col-md-12">
+        <label>Published At:</label>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="input-group date">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right">
+            </div>
+            <!-- /.input group -->
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group js-time-picker">
+            <div class="input-group-addon">
+                <i class="fa fa-clock-o"></i>
+            </div>
+            <input type="text" class="form-control">
+        </div>
+    </div>
+</div>

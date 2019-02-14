@@ -1,23 +1,16 @@
-.section-header {
-  @include font(24px, $Intro, $text, 31px, 400);
-  margin-bottom: 17px;
-}
-.section-sub-header{
-  @include font(24px, $Geometria, $text, 30px, 400);
-  margin-bottom: 27px;
-}
 /* first section */
 .firstSection {
   margin: -80px auto 0;
   overflow: hidden;
 
-  h1 {
+  .page-header {
     font-size: 28px;
+    max-width: none;
   }
 
   &__container {
     position: relative;
-    padding: 201px 0 235px 20px;
+    padding: 201px 0 318px 20px;
 
     &:before{
       content: '';
@@ -45,10 +38,6 @@
   margin-top: -175px;
   margin-left: 20px;
 
-  .section-sub-header{
-    font-size: 14px;
-    line-height: 20px;
-  }
   .tableContainer {
     display: table;
     width: 100%;
@@ -85,6 +74,9 @@
 .thirdSection {
   margin-top: 168px;
 
+  .block-sub-header {
+    font-weight: 300;
+  }
   .statistic {
     display: table;
     width: 100%;
@@ -220,9 +212,9 @@
 }
 /* fourth section */
 .fourthSection {
-  margin-top: 165px;
+  margin-top: 151px;
 
-  .section-header {
+  .block-header {
     margin-bottom: 30px;
     text-align: center;
   }
@@ -404,7 +396,7 @@
   margin-top: 39px;
   overflow: hidden;
 
-  .section-header {
+  .block-header {
     margin-bottom: 30px;
     text-align: center;
   }
