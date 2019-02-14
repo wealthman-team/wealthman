@@ -25,11 +25,11 @@
             </div>
             <div class="main">
                 <div class="main-content">
-                    @include ('blog/_filter')
+                    @if(count($posts) > 0)
+                        @include ('blog/_filter')
+                    @endif
 
-                    <div class="blog__content">
-                        @include ('blog/_list')
-                    </div>
+                    @include ('blog/_list')
                 </div>
             </div>
         </div>

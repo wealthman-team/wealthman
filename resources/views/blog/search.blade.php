@@ -27,11 +27,7 @@
             <div class="main">
                 <div class="main-content">
                     @if($search && count($posts) > 0)
-                        @include ('blog/_filter')
-
-                        <div class="blog__content">
-                            @include ('blog/_list')
-                        </div>
+                        @include ('blog/_list')
                     @else
                         <div class="empty-message">
                             Nothing found. Try changing your search terms.

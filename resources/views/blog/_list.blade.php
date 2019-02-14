@@ -13,10 +13,7 @@
         {{ $posts->links('components/pagination') }}
     </div>
 @else
-    <div class="post__empty">
-        <div class="post__empty-message">
-            <h3 class="h3" style="padding-top: 0">Nothing found.</h3>
-            Please try again later
-        </div>
+    <div class="empty-message">
+        Oops, nothing found.
     </div>
 @endif

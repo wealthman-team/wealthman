@@ -746,7 +746,7 @@ $(function () {
 
         let step = 200;
         let currentStep = 0;
-        let minItemCount = 5;
+        let minItemCount = 6;
 
         prevArrow.on('click', function () {
             slideNext();

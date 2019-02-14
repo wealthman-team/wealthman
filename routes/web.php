@@ -19,7 +19,7 @@ use App\Services\Sitemap;
  */
 // GET route
 Route::get('/', 'IndexController@index')->name('home');
-Route::get('/typography', 'IndexController@typography')->name('typography');
+//Route::get('/typography', 'IndexController@typography')->name('typography');
 Route::get('/robo-advisors', 'RoboAdvisorsController@index')->name('roboAdvisors');
 Route::get('/robo-advisors/{slug}', 'RoboAdvisorsController@show')->name('roboAdvisorsShow');
 Route::get('/compare', 'RoboAdvisorsController@compare')->name('roboAdvisorsCompare');

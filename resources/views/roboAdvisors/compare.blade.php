@@ -47,10 +47,12 @@
                                     <div class="compare-list__header-container js-compare-header-fixed">
                                         <div class="compare-list__header-bg">
                                             <div class="compare-list__inner compare-list__inner-header">
+                                                @if (count($roboAdvisors) > 6)
                                                 <div class="compare-list__nav">
                                                     <div class="compare-list__nav-left js-compare-list-prev">@svg('arrow-long-left', 'compare-list__arrow')</div>
                                                     <div class="compare-list__nav-right js-compare-list-next">@svg('arrow-long-left', 'compare-list__arrow')</div>
                                                 </div>
+                                                @endif
                                                 <div class="compare-list__group js-compare-list-group">
                                                     <div class="compare-list__row">
                                                         <div class="compare-list__context js-compare-list-context">
