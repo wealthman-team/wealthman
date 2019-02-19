@@ -2,13 +2,13 @@
 @import '~reset-css/sass/reset';
 
 // Fonts
-@import 'fonts';
+@import '_desktop/fonts';
 
 // Variables
-@import 'variables';
+@import '_desktop/variables';
 
 // Mix
-@import 'mixins';
+@import '_desktop/mixins';
 
 // Noty
 @import "~noty/src/noty.scss";
@@ -27,8 +27,8 @@
 @import "~nouislider/distribute/nouislider.min.css";
 
 // Components
-@import "global";
-@import "layouts";
-@import "components";
-@import "pages";
-@import "typography";
+@import "_desktop/global";
+@import "_desktop/layouts";
+@import "_desktop/components";
+@import "_desktop/pages";
+@import "_desktop/typography";

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('_mobile.layouts.app')
 
 @section('content')
-    @include('layouts/header')
+    @include('_mobile.layouts.header')
 
     <div class="content content__pd-bot">
         <section class="firstSection">
@@ -172,5 +172,5 @@
         </section>
     </div>
 
-    @include('layouts/footer')
+    @include('_mobile.layouts.footer')
 @endsection

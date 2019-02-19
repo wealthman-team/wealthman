@@ -27,9 +27,11 @@ mix.webpackConfig({
 
 mix.js('resources/js/app.js', 'public/js')
 	.js('resources/js/admin.js', 'public/js')
+	.js('resources/js/mobile.js', 'public/js/mobile')
 	.sass('resources/sass/app.scss', 'public/css')
 	.sass('resources/sass/admin.scss', 'public/css/admin')
 	.sass('resources/sass/bootstrap.scss', 'public/css/admin')
+	.sass('resources/sass/mobile.scss', 'public/css/mobile')
 	.styles([
 		'public/fonts/icons/icons.css'
 	], 'public/css/icons.css')
