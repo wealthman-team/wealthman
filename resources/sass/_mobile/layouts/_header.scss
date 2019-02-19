@@ -1,0 +1,56 @@
+.header {
+  height: $mobileHeaderHeight;
+  &__container{
+    background: $white;
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    box-shadow: $boxShadow08Hide;
+    transition: box-shadow 500ms;
+    border-bottom: 1px solid $borderColorHeader;
+  }
+  &__home {
+    position: absolute;
+    background-color: transparent;
+    z-index: 1;
+  }
+  &__scrolled {
+    box-shadow: $boxShadow08;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: $mobileHeaderHeight;
+    @extend .content-margin;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    position: relative;
+    margin-right: 12px;
+
+    &-part {
+     display: flex;
+     align-items: center;
+    }
+    &-part:first-child {
+      flex-grow: 1;
+    }
+  }
+  &__menu {
+    display: flex;
+    align-items: center;
+  }
+  &__logo {
+    height: 25px;
+    .icon-logo {
+      height: 100%;
+    }
+  }
+}

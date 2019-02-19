@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="15.5" viewBox="0 0 17.5 15.5">
+  <defs>
+    <style>
+      .menu-cls-1 {
+        fill: none;
+        stroke: #abb0ba;
+        stroke-linecap: round;
+        stroke-width: 1.5px;
+      }
+    </style>
+  </defs>
+  <g id="Group_357" data-name="Group 357" transform="translate(-291.25 -31.25)">
+    <line id="Line_23" data-name="Line 23" class="menu-cls-1" x2="16" transform="translate(292 32)"/>
+    <line id="Line_24" data-name="Line 24" class="menu-cls-1" x2="16" transform="translate(292 39)"/>
+    <line id="Line_25" data-name="Line 25" class="menu-cls-1" x2="16" transform="translate(292 46)"/>
+  </g>
+</svg>

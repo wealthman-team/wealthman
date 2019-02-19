@@ -16,10 +16,10 @@
 @import "~nouislider/distribute/nouislider.min.css";
 
 // Variables
-@import '_desktop/variables';
+@import 'variables';
 
 // Mix
-@import '_desktop/mixins';
+@import 'mixins';
 
 body {
   font-family: $font-family-sans-serif;

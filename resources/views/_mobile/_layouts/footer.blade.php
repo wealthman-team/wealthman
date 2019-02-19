@@ -20,6 +20,8 @@
                     <li><a class="link link_white" target="_blank" href="https://bitcointalk.org/index.php?topic=2006205">Bitcointalk</a></li>
                 </ul>
             </div>
+        </div>
+        <div class="footer__nav">
             <div class="footer__links">
                 <div class="footer__title">ROBO-ADVISORS</div>
                 <ul class="footer__links-list">
@@ -31,7 +33,7 @@
             </div>
             <div class="footer__links">
                 <div class="footer__title">HAVE A QUESTIONS?</div>
-                <div>
+                <div class="footer__button-container">
                     <a class="button button_blue js-jivo-button" href="#">Ask Question</a>
                 </div>
             </div>

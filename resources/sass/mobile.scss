@@ -2,13 +2,13 @@
 @import '~reset-css/sass/reset';
 
 // Fonts
-@import '_mobile/fonts';
+@import 'fonts';
 
 // Variables
-@import '_mobile/variables';
+@import 'variables';
 
 // Mix
-@import '_mobile/mixins';
+@import 'mixins';
 
 // Components
 @import "_mobile/global";

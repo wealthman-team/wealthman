@@ -2,13 +2,13 @@
 @import '~reset-css/sass/reset';
 
 // Fonts
-@import '_desktop/fonts';
+@import 'fonts';
 
 // Variables
-@import '_desktop/variables';
+@import 'variables';
 
 // Mix
-@import '_desktop/mixins';
+@import 'mixins';
 
 // Noty
 @import "~noty/src/noty.scss";

@@ -42,7 +42,7 @@ class RoboAdvisorsController extends Controller
             ->filter($filter)
             ->sorting($sorting->setDefault('ratings.total'))
             ->paginate(10);
-
+        
         return view('roboAdvisors/index', [
             'roboAdvisors' => $roboAdvisors->appends(Input::except('page')),
             'filtersOption' => $roboAdvisorsFilterOption,

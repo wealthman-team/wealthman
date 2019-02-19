@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="204" height="17.01" viewBox="0 0 204 17.01">
+  <defs>
+    <style>
+      .logo-mobile-cls-1, .logo-mobile-cls-2 {
+        fill: #39a9dc;
+      }
+
+      .logo-mobile-cls-1 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="Group_2" data-name="Group 2" transform="translate(0 0)">
+    <g id="Group_1" data-name="Group 1">
+      <path id="Path_1" data-name="Path 1" class="logo-mobile-cls-1" d="M295.936,16.912h1.521V.284h-4.348V8.417L284.7.21H283.16v16.7h4.395V8.732Z" transform="translate(-93.457 -0.069)"/>
+      <path id="Path_2" data-name="Path 2" class="logo-mobile-cls-1" d="M257.705,16.843h4.154v-.616L254.362,0h-1.829L245.05,16.22v.616H249.2l.978-2.09h6.552l.971,2.1Zm-2.345-5.728h-3.8l1.876-4.368Z" transform="translate(-80.879)"/>
+      <path id="Path_3" data-name="Path 3" class="logo-mobile-cls-1" d="M215.973,7.462,209.468.24H207.9V16.915h4.348V9.505l3.517,3.7h.476l3.537-3.7v7.41h4.348V.247h-1.521Z" transform="translate(-68.617 -0.079)"/>
+      <path id="Path_4" data-name="Path 4" class="logo-mobile-cls-1" d="M185.028.32H180.68V6.356h-5.132V.32H171.2V16.948h4.348V10.275h5.132v6.673h4.348Z" transform="translate(-56.504 -0.106)"/>
+      <path id="Path_5" data-name="Path 5" class="logo-mobile-cls-1" d="M143.123,4.119V16.941h4.2V4.119h4.06V.32H139.03v3.8Z" transform="translate(-45.887 -0.106)"/>
+      <path id="Path_6" data-name="Path 6" class="logo-mobile-cls-1" d="M116.274.32H112V16.948h10.311V13.123h-6.03C116.274,6.041,116.274,8.915,116.274.32Z" transform="translate(-36.966 -0.106)"/>
+      <path id="Path_7" data-name="Path 7" class="logo-mobile-cls-1" d="M86.582,16.843h4.154v-.616L83.226,0H81.4L73.92,16.22v.616h4.154l.971-2.09H85.6l.978,2.1Zm-2.358-5.728h-3.8L82.3,6.746Z" transform="translate(-24.397)"/>
+      <path id="Path_8" data-name="Path 8" class="logo-mobile-cls-1" d="M10.022.581,7.242,9.418H7.168L6.432,6.591,4.3.32H0V.963L5.842,17.116H8.193l2.66-8h.074l2.66,8h2.445L21.8.963V.32H17.573L15.456,6.591l-.737,2.827h-.067L11.831.581Z" transform="translate(0 -0.106)"/>
+      <rect id="Rectangle_11" data-name="Rectangle 11" class="logo-mobile-cls-2" width="9.185" height="3.799" transform="translate(28.587 0.214)"/>
+      <rect id="Rectangle_12" data-name="Rectangle 12" class="logo-mobile-cls-2" width="13.084" height="3.799" transform="translate(28.587 13.037)"/>
+      <rect id="Rectangle_13" data-name="Rectangle 13" class="logo-mobile-cls-2" width="17.251" height="3.799" transform="translate(28.587 6.626)"/>
+    </g>
+  </g>
+</svg>

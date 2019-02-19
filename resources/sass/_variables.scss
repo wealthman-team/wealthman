@@ -1,6 +1,3 @@
-$headerHeight: 68px;
-
-
 // Typography
 $font-family-sans-serif: "Open Sans", sans-serif;
 $font-size-base: 0.9rem;
@@ -55,8 +52,14 @@ $error: #ef6767;
 $default: #aaaaaa;
 $textGray: #abb0ba;
 
-$containerWidth: 1305px;
+$borderColor: #E9EAEC;
+$borderColorHeader: #E2E3E6;
 
+$containerWidth: 1305px;
+$headerHeight: 78px;
+$mobileHeaderHeight: 68px;
 $footerHeight: 296px;
 $sidebarMargin: 17px;
+
 $boxShadow08: 0 4px 12px rgba(0,0,0,0.08);
+$boxShadow08Hide: 0 4px 12px rgba(0,0,0,0);
