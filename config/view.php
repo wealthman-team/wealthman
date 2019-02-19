@@ -13,9 +13,8 @@ return [
     |
     */
 
-    'paths' => [
-        resource_path('views'),
-    ],
+    'paths' => [resource_path('views')],
+    'mobile_paths' => [resource_path('views/_mobile')],
 
     /*
     |--------------------------------------------------------------------------

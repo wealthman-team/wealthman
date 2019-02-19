@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\RoboAdvisor;
 use App\Services\Filters\RoboAdvisorsSorting;
 use App\Sources\Page;
-use Auth;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -40,7 +39,7 @@ class IndexController extends Controller
             ->leftjoin('ratings', 'ratings.robo_advisor_id', '=', 'robo_advisors.id')
             ->sorting($sorting->setDefault('ratings.total'))
             ->get();
-
+        
         return view('index', [
             'roboAdvisors' => $roboAdvisors
         ]);
