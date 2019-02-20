@@ -1,14 +1,7 @@
-// Reset CSS
-@import '~reset-css/sass/reset';
-
-// Fonts
-@import 'fonts';
-
-// Variables
-@import 'variables';
-
-// Mix
-@import 'mixins';
+// Fonts | Variables | Mix
+@import 'utils/module';
+// Base
+@import "_desktop/base/module";
 
 // Noty
 @import "~noty/src/noty.scss";
@@ -27,8 +20,6 @@
 @import "~nouislider/distribute/nouislider.min.css";
 
 // Components
-@import "_desktop/global";
-@import "_desktop/layouts";
-@import "_desktop/components";
-@import "_desktop/pages";
-@import "_desktop/typography";
+@import "_desktop/layouts/module";
+@import "_desktop/components/module";
+@import "_desktop/pages/module";

@@ -1,17 +1,9 @@
-// Reset CSS
-@import '~reset-css/sass/reset';
-
-// Fonts
-@import 'fonts';
-
-// Variables
-@import 'variables';
-
-// Mix
-@import 'mixins';
-
+// Fonts | Variables | Mix
+@import 'utils/module';
+// Base
+@import "_mobile/base/module";
 // Components
-@import "_mobile/global";
-@import "_mobile/layouts";
-@import "_mobile/components";
-@import "_mobile/pages";
+@import "_mobile/base/module";
+@import "_mobile/layouts/module";
+@import "_mobile/components/module";
+@import "_mobile/pages/module";

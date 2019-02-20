@@ -15,11 +15,8 @@
 // Nouislider
 @import "~nouislider/distribute/nouislider.min.css";
 
-// Variables
-@import 'variables';
-
-// Mix
-@import 'mixins';
+// Fonts | Variables | Mix
+@import 'utils/module';
 
 body {
   font-family: $font-family-sans-serif;

@@ -71,3 +71,46 @@ a img {
   margin-left: 23px;
   margin-right: 23px;
 }
+.content-padding {
+  padding-left: 23px;
+  padding-right: 23px;
+}
+
+.full-width {
+  margin-left: -23px;
+  margin-right: -23px;
+}
+.content-width {
+  margin-left: -11px;
+  margin-right: -11px;
+}
+
+.page-header {
+  padding-bottom: 18px;
+  @include font(28px, $Intro, $h1, 40px, 400);
+}
+
+.page-sub-header {
+  padding-bottom: 26px;
+  @include font(24px, $Geometria, $h1, 32px, 300);
+}
+
+.block-header {
+  @include font(24px, $Intro, $text, 31px, 400);
+  margin-bottom: 18px;
+}
+.block-sub-header{
+  @include font(14px, $Geometria, $text, 20px, 400);
+  margin-bottom: 26px;
+}
+.block-sub-header-big {
+  @extend .block-sub-header;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.b-padd {
+  padding-bottom: 46px;
+}
