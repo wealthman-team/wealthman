@@ -1,4 +1,37 @@
+.topic {
+  @extend .content-padding;
+  padding-bottom: 20px;
+}
 .main {
   @extend .content-padding;
   padding-top: 54px;
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  @extend .content-width;
+  &__inner {
+    padding: 5px 4px;
+    border-radius: 20px;
+    background-color: $filtersBG;
+    box-shadow: $boxShadow08;
+  }
+  &__footer {
+    padding: 16px 0;
+    &_center {
+      text-align: center;
+    }
+    &-row {
+      display: block;
+      margin: 0 -6px;
+      @include clearfix;
+    }
+    &-col {
+      width: 50%;
+      padding: 0 6px;
+      float: left;
+    }
+  }
 }

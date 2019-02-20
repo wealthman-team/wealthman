@@ -95,3 +95,8 @@
     }
   }
 }
+
+.button-full-width {
+  @extend .button;
+  width: 100%;
+}

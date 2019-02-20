@@ -17,3 +17,18 @@
 .text-center {
   text-align: center;
 }
+
+.h2 {
+  @include font(32px, $Intro, $text, 39px, 400);
+  padding-bottom: 46px;
+}
+
+.h3 {
+  @include font(22px, $Geometria, $text, 27px, 700);
+  padding-bottom: 18px;
+}
+
+p {
+  @include font(14px, $Geometria, $text, 20px, 400);
+  margin-bottom: 18px;
+}

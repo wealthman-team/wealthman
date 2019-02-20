@@ -2,6 +2,10 @@
 @import 'utils/module';
 // Base
 @import "_mobile/base/module";
+
+// Nouislider
+@import "~nouislider/distribute/nouislider.min.css";
+
 // Components
 @import "_mobile/base/module";
 @import "_mobile/layouts/module";

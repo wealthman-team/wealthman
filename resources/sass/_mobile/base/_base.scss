@@ -86,13 +86,13 @@ a img {
 }
 
 .page-header {
-  padding-bottom: 18px;
-  @include font(28px, $Intro, $h1, 40px, 400);
+  padding-bottom: 10px;
+  @include font(18px, $Intro, $h1, 22px, 400);
 }
 
 .page-sub-header {
-  padding-bottom: 26px;
-  @include font(24px, $Geometria, $h1, 32px, 300);
+  padding-bottom: 10px;
+  @include font(24px, $Geometria, $h1, 28px, 300);
 }
 
 .block-header {
@@ -113,6 +113,10 @@ a img {
 
 .b-padd {
   padding-bottom: 46px;
+}
+
+.links-container {
+  padding: 16px 0;
 }
 
 body .hidden{

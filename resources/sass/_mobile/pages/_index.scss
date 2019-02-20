@@ -2,6 +2,18 @@
 .first-section {
   padding-bottom: 414px;
   position: relative;
+  padding-top: 15px;
+  margin-top: -15px;
+
+  .page-header {
+    padding-bottom: 18px;
+    @include font(28px, $Intro, $h1, 40px, 400);
+  }
+
+  .page-sub-header {
+    padding-bottom: 26px;
+    @include font(24px, $Geometria, $h1, 32px, 300);
+  }
 
   &__bg {
     position: absolute;

@@ -206,8 +206,9 @@ class RoboAdvisorsFilterOption
         $filters = $this->checkActiveFilters($filters, 'general');
         $filters = $this->checkActiveFilters($filters, 'services');
         $filters = $this->checkActiveFilters($filters, 'features');
-        $filters = $this->setAtLeastOneActiveFilters($filters, ['general', 'services', 'features']);
-
+        if (is_desktop()) { // только для desktop
+            $filters = $this->setAtLeastOneActiveFilters($filters, ['general', 'services', 'features']);
+        }
         return $filters;
     }
 

@@ -1,0 +1,25 @@
+.header-scene-wrapper {
+  @extend .container;
+  @extend .full-width;
+  position: relative;
+  z-index: -1;
+}
+.header-scene {
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: translateY(var(--translateY));
+  will-change: transform;
+}
+.header-bg {
+  height: 750px;
+  width: 100%;
+  background: transparent no-repeat top center / 100% 100%;
+}
+.header-stack {
+  @extend .full-width;
+  position: relative;
+  height: 291px;
+  margin-bottom: 42px;
+  background: transparent url("../images/header-stack-mob.png") no-repeat top center;
+}

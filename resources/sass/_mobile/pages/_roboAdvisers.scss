@@ -1,0 +1,33 @@
+.robo-advisors {
+  &__text-container {
+    padding-top: 70px;
+  }
+  &__text-inner {
+    padding: 30px 4px 4px;
+    border-radius: 20px;
+    background-color: $filtersBG;
+    box-shadow: $boxShadow08;
+  }
+  &__hint-title {
+    margin-bottom: 30px;
+    padding-left: 20px;
+    @include font(22px, $Geometria, $text, 26px, 400);
+  }
+
+  &__text-hint {
+    transition: all 300ms;
+    border-radius: 18px;
+    background-color: $contentBG;
+    box-shadow: $boxShadow02Hide;
+    padding: 26px 8px;
+    margin-bottom: 4px;
+    &:hover {
+      background-color: $white;
+      box-shadow: $boxShadow02;
+    }
+    & p:last-child,
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
