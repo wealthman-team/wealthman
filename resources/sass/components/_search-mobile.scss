@@ -3,4 +3,31 @@
   .search__form-input {
     border: 1px solid $borderColor;
   }
+  .search__form-btn {
+    &::after,
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: #172341;
+      width: 17px;
+      height: 1.5px;
+      transition: .4s;
+      top: 18px;
+      opacity: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+  .open .search__form-btn{
+    &::before {
+      transform: rotate(45deg);
+      opacity: 1;
+    }
+    &::after {
+      transform: rotate(-45deg);
+      opacity: 1;
+    }
+  }
 }

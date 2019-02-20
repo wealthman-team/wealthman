@@ -152,30 +152,23 @@
   }
 }
 /* fourth section */
-.fourthSection {
-  margin-top: 151px;
+.fourth-section {
+  margin-bottom: 70px;
 
-  .block-header {
-    margin-bottom: 30px;
-    text-align: center;
-  }
   .robo-informer {
-    @include font(16px, $Geometria, $text, 22px, 400);
-    height: 560px;
-    padding: 80px 300px 120px;
+    @extend .content-width;
+
+    @include font(14px, $Geometria, $text, 20px, 400);
 
     &__container {
       position: relative;
-      width: 644px;
-      margin: 0 auto;
       padding: 4px;
       border-radius: 20px;
-      background-color: #fafafa;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      background-color: $contentBG;
+      box-shadow: $boxShadow08;
     }
     &__row {
-      @include font(14px, $Geometria, $text, 20px, 400);
-      padding: 24px 20px 30px;
+      padding: 26px 8px;
       text-align: center;
       border-radius: 18px;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0);
@@ -183,28 +176,37 @@
       &:hover {
         background-color: #ffffff;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+        font-weight: 700;
       }
     }
+
+    &__block-container {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding-bottom: 40px;
+      margin-bottom: 20px;
+    }
+    &__block-row {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
     &__block{
-      position: absolute;
+      @include font(16px, $Geometria, $textGray, 22px, 400);
+      position: relative;
       padding: 15px 17px;
       display: inline-block;
       border-radius: 18px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
+      box-shadow: $boxShadow36Hide;
+      text-align: center;
       transition: box-shadow,color 300ms;
-      white-space: nowrap;
-      color: #ABB0BA;
 
       &:hover{
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        color: #30BF90;
+        box-shadow: $boxShadow36;
+        color: $success;
       }
-      &:after {
-        right: 100%;
-        margin-right: 6px;
-        opacity: 0.3;
-      }
-
+      &:active:after,
       &:hover:after {
         opacity: 1;
       }
@@ -212,140 +214,48 @@
         content: '';
         display: block;
         position: absolute;
-        opacity: 0.3;
+        top: 50%;
+        opacity: 0;
         transition: opacity 300ms;
+        width: 47px;
+        height: 560px;
       }
 
       &-first,
       &-third,
       &-fifth {
-        text-align: right;
-        right: 100%;
-        margin-right: 100px;
+        &:after {
+          right: 100%;
+          background: url("/images/info-line-l.png") no-repeat top left;
+          margin-right: 20px;
+        }
       }
 
       &-second,
       &-fourth,
       &-sixth {
-        text-align: left;
-        left: 100%;
-        margin-left: 100px;
-      }
-
-      &-first,
-      &-second {
-        bottom: 100%;
-        margin-bottom: -13px;
-
-        &:after {
-          margin-top: 4px;
-          width: 165px;
-          height: 75px;
-          top: 100%;
-        }
-      }
-
-      &-third,
-      &-fourth {
-        top: 50%;
-        margin-top: 8px;
-
-        &:after {
-          width: 81px;
-          height: 20px;
-          top: 50%;
-          margin-top: -10px;
-          background: url("/images/info-line-3.png") no-repeat center center;
-        }
-      }
-
-      &-fifth,
-      &-sixth {
-        top: 100%;
-        margin-top: 85px;
-        margin-right: 0;
-        margin-left: 0;
-
-        &:after {
-          bottom: 50%;
-          width: 150px;
-          height: 115px;
-          margin-bottom: -5px;
-        }
-      }
-
-      &-first {
-        &:after {
-          left: 50%;
-          margin-left: -9px;
-          background: url("/images/info-line-1.png") no-repeat center center;
-        }
-      }
-
-      &-second {
-        &:after {
-          right: 50%;
-          margin-right: -16px;
-          background: url("/images/info-line-2.png") no-repeat center center;
-        }
-      }
-      &-third{
         &:after {
           left: 100%;
+          background: url("/images/info-line-r.png") no-repeat top right;
+          margin-left: 20px;
         }
-      }
-      &-fourth{
-        &:after {
-          right: 100%;
-        }
-      }
-      &-fifth{
-        &:after {
-          left: 100%;
-          margin-left: 6px;
-          background: url("/images/info-line-4.png") no-repeat center center;
-        }
-      }
-      &-sixth{
-        &:after {
-          right: 100%;
-          margin-right: 6px;
-          background: url("/images/info-line-5.png") no-repeat center center;
-        }
-      }
-    }
-
-    &__references {
-      position: absolute;
-      top: 100%;
-      font-size: 14px;
-      line-height: 16px;
-      width: 76px;
-      left: 0;
-      right: 0;
-      margin: 18px auto 0;
-
-      a, span {
-        color: #E2E3E6;
       }
     }
   }
 }
 /* fifth section */
-.fifthSection {
-  height: 442px;
-  margin-top: 39px;
-  overflow: hidden;
-
-  .block-header {
-    margin-bottom: 30px;
-    text-align: center;
+.fifth-section {
+  margin-bottom: 70px;
+  &__content {
+    @extend .full-width;
   }
   .why-use {
     position: relative;
     display: flex;
-    height: 442px;
-    padding-top: 182px;
+    flex-direction: column;
+    max-width: 374px;
+    margin: 0 auto;
+    padding-bottom: 35px;
 
     &:before{
       content: '';
@@ -355,24 +265,20 @@
       right: 0;
       width: 100%;
       height: 100%;
-      background: url(/images/section-bg5.png) no-repeat 113% 0;
+      background: url(/images/section-bg5-mob.png) no-repeat 13px 77px;
       z-index: -1;
-      margin-right: -175px;
     }
 
     &__block {
-      width: 274px;
       display: flex;
       align-items: flex-start;
       justify-content: center;
       flex-grow: 0;
       flex-wrap: wrap;
-      margin-right: 56px;
+      margin-bottom: 76px;
 
       &:nth-child(1){
-        justify-content: flex-start;
-        margin-left: 20px;
-        padding-top: 56px;
+        margin-bottom: 54px;
       }
 
       &:last-child{
@@ -382,6 +288,7 @@
 
     &__item {
       text-align: center;
+      max-width: 260px;
     }
 
     &__icon {

@@ -12,4 +12,8 @@ $(function () {
         e.preventDefault();
         $('.js-search-form').addClass('open');
     });
+    $('.js-search-close').on('click', function (e) {
+        e.preventDefault();
+        $('.js-search-form').removeClass('open');
+    });
 });

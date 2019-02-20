@@ -20,7 +20,8 @@
                                     <form action="{{route('blog.search')}}" method="get">
                                         <div class="search__form-group">
                                             <input type="search" class="search__form-input" name="q" placeholder="Search..." value="{{request('q')}}">
-                                            <button type="submit" class="search__form-btn">@svg('search')</button>
+                                            <span class="search__form-btn js-search-close">&nbsp;</span>
+                                            <button type="submit" class="search__form-btn hidden">&nbsp;</button>
                                         </div>
                                     </form>
                                 </div>
