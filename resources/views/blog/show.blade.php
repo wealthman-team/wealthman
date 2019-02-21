@@ -52,7 +52,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="panel panel_white">
+                        <div class="panel_white">
                             <div class="reach-text">
                                 <div class="blog-post__content">
                                     {!! $post->content_html !!}

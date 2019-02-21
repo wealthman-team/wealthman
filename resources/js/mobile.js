@@ -18,7 +18,7 @@ $(function () {
         $('.js-search-form').removeClass('open');
     });
 
-    /** Robo Advisor **/
+    /** Robo Advisor Filters **/
     $('.js-slide-box').each(function () {
         let slideBox = $(this);
         let slideBoxHeader = $('.js-slide-box-header', slideBox);
@@ -177,5 +177,16 @@ $(function () {
         let separator = uri.indexOf('?') !== -1 ? "&" : "?";
         window.location.href = uri + (q.length > 0 ? separator+q : "");
     });
-    /** End Robo Advisor **/
+    /** End Robo Advisor Filters**/
+    /** Robo Advisor list**/
+    $('.js-robo-opener').on('click', function (e) {
+        $(this).toggleClass('open');
+
+        $(this).parents('.js-robo-row')
+            .toggleClass('open')
+            .next('.js-robo-row-content')
+            .find('.js-robo-wr')
+            .stop().slideToggle(300);
+    });
+    /** End Robo Advisor list**/
 });

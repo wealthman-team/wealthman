@@ -25,3 +25,9 @@
     clear: both;
   }
 }
+
+@mixin panel($radius: 20, $color: $contentBG, $shadow: $boxShadow08) {
+  @if $radius > 0 { border-radius: #{$radius}px; }
+  background-color: $color;
+  box-shadow: $shadow;
+}

@@ -1,10 +1,4 @@
 .robo-advisors {
-  &__list {
-    padding: 4px;
-    border-radius: 20px;
-    background-color: $filtersBG;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
   &__list-empty {
     position: relative;
     min-height: 150px;

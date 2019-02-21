@@ -1,0 +1,254 @@
+.robo-table {
+  display: table;
+
+  &__row,
+  &__row-head,
+  &__row-content,
+  &__row-empty {
+    display: table-row;
+  }
+  &__col,
+  &__col-empty {
+    display: table-cell;
+    vertical-align: inherit;
+    position: relative;
+  }
+
+  &__col-empty {
+    padding: 0 16px;
+  }
+
+  &__row {
+    @include font(13px, $Geometria, $text, 16px, 400);
+  }
+  &__row-content {
+    @include font(13px, $Geometria, $text, 16px, 400);
+  }
+
+  &__row {
+    vertical-align: middle;
+    height: 76px;
+  }
+
+  &__row-head {
+    @include font(12px, $Geometria, $text, 15px, 700);
+    white-space: nowrap;
+    height: 56px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  &__lh {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    color: $text;
+
+    .sort-icon {
+      margin-left: 5px;
+    }
+
+    &:hover {
+      .sort-icon {
+        &:before {
+          border-bottom-color: $text;
+        }
+
+        &:after {
+          border-top-color: $text;
+        }
+
+        &.asc {
+          &:before {
+            border-bottom-color: $text;
+          }
+
+          &:after {
+            border-top-color: #E2E3E6;
+          }
+        }
+
+        &.desc {
+          &:before {
+            border-bottom-color: #E2E3E6;
+          }
+
+          &:after {
+            border-top-color: $text;
+          }
+        }
+      }
+    }
+  }
+
+  &__fee {
+    min-width: 60px;
+  }
+  &__recommendation {
+    min-width: 150px;
+  }
+  &__accounts {
+    min-width: 260px;
+    li {
+      list-style: disc;
+      margin-bottom: 2px;
+      @include font(13px, $Geometria, $text, 18px, 300);
+
+      strong {
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__name {
+    width: 100px;
+  }
+  &__full-name {
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  &__prom {
+    margin-bottom: 6px;
+  }
+  &__prom-info {
+    @include font(12px, $Geometria, $textGray, 15px, 400);
+    min-width: 260px;
+  }
+  &__rating {
+    @include font(13px, $Geometria, $text, 18px, 400);
+    &-name {
+      white-space: nowrap;
+      width: 130px;
+      @include font(13px, $Geometria, $text, 18px, 300);
+    }
+  }
+
+  &__col {
+    padding-right: 15px;
+    &:first-child{
+      padding-left: 12px;
+      padding-right: 23px;
+    }
+    &:last-child{
+      padding-right: 16px;
+    }
+  }
+  &__arrow-long-down .cls-1{
+    transition: stroke 0.2s ease-in-out 0s;
+  }
+  &__arrow-long-down{
+    transition: transform 0.2s ease-in-out 0s
+  }
+  &__opener {
+    position: absolute;
+    right: 6px;
+    width: 8px;
+    height: 18px;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__row-content &__col-wr {
+    @include clearfix;
+    display: none;
+    overflow: hidden;
+  }
+
+  &__name-container {
+    position: relative;
+    min-width: 130px;
+    z-index: 2;
+  }
+
+  &__layout {
+    background-color: $red;
+    //background-color: $contentBG;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 15px;
+    bottom: 0;
+    margin: auto;
+    padding-left: 4px;
+    padding-right: 4px;
+    //box-shadow: $boxShadow08;
+    box-shadow: 0 4px 12px rgba(0,0,0,50);
+    border-radius: 0;
+    transition: border-radius 1000ms;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -12px;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background-color: #ef6767;
+      border-radius: 0;
+      transition: all 1000ms;
+    }
+    //&:after {
+    //  content: '';
+    //  display: block;
+    //  position: absolute;
+    //  top: 4px;
+    //  left: 4px;
+    //  right: 4px;
+    //  bottom: 4px;
+    //  background-color: transparent;
+    //  border-radius: 18px;
+    //}
+  }
+  &__row-head &__col:first-child &__layout{
+    padding-top: 4px;
+    border-radius: 20px 20px 0 0;
+    &:before {
+      display: none;
+    }
+  }
+  &__row:nth-last-child(2) &__col:first-child &__layout{
+    padding-bottom: 4px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .open {
+    .robo-table__layout {
+      border-radius: 0 0 20px 20px;
+      transition: border-radius 200ms;
+    }
+    .robo-table__arrow-long-down {
+      transform: rotate(180deg);
+      .cls-1 {
+        stroke: #172341;
+      }
+    }
+  }
+  .open + &__row-content + &__row {
+    .robo-table__layout {
+      border-radius: 20px 20px 0 0 ;
+      transition: border-radius 200ms;
+      &:before {
+        top: 12px;
+        height: 0;
+        border-radius: 20px 20px 0 0 ;
+        transition: all 200ms;
+      }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 15px;
+    bottom: 0;
+    box-shadow: none;
+    padding: 0;
+    background-color: #9aef67;
+    margin: 4px;
+    border-radius: 18px;
+    z-index: 1;
+  }
+}

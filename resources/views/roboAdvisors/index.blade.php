@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="main-content">
-                    <div class="robo-advisors__list js-ra-list">
+                    <div class="panel-with-padding js-ra-list">
                         <div class="robo-advisors__list-header">
                             <a href="{{sort_url('company')}}" class="robo-advisors__lh-item robo-advisors__lh-company">
                                 Company

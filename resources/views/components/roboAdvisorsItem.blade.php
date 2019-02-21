@@ -155,7 +155,7 @@
                     <li class="robo-advisors-item__properties-item">
                         Tax Loss Harvesting:
                         @if ($roboAdvisor->tax_loss)
-                            <strong>Yes — {{ $roboAdvisor->tax_loss_details }}</strong>
+                            <strong>Yes {{ $roboAdvisor->tax_loss_details ? '— '.$roboAdvisor->tax_loss_details :''}}</strong>
                         @else
                             <strong>No</strong>
                         @endif

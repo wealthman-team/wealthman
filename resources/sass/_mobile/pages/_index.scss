@@ -24,7 +24,7 @@
     background: url(../images/section-first-bg.png) no-repeat bottom right;
     z-index: -1;
 
-    @extend .full-width;
+    @extend .clear-content-margin;
   }
 }
 /* second section */
@@ -40,7 +40,7 @@
 .third-section {
   margin-bottom: 171px;
   &__content {
-    @extend .content-width;
+    @extend .negative-mrg11;
   }
   .statistic {
     width: 100%;
@@ -168,7 +168,7 @@
   margin-bottom: 70px;
 
   .robo-informer {
-    @extend .content-width;
+    @extend .negative-mrg11;
 
     @include font(14px, $Geometria, $text, 20px, 400);
 
@@ -259,7 +259,7 @@
 .fifth-section {
   margin-bottom: 70px;
   &__content {
-    @extend .full-width;
+    @extend .clear-content-margin;
   }
   .why-use {
     position: relative;

@@ -1,7 +1,11 @@
+body .nowrap {
+  white-space: nowrap;
+}
+
 .color-text {
   color: $text;
 }
-.color-gray {
+body .color-gray {
   color: $textGray;
 }
 

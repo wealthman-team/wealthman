@@ -728,7 +728,7 @@
                         </h2>
                         <div class="panel panel_padding">
                             <div class="reach-text">
-                                <div class="panel panel_white">
+                                <div class="panel_white">
                                     <div class="review-form">
                                         <h3>Would you recommend Wealthfront to your friends?</h3>
                                         <div class="review-form__action">

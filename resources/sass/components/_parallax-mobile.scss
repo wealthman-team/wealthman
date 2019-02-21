@@ -1,6 +1,6 @@
 .header-scene-wrapper {
   @extend .container;
-  @extend .full-width;
+  @extend .clear-content-margin;
   position: relative;
   z-index: -1;
 }
@@ -17,7 +17,7 @@
   background: transparent no-repeat top center / 100% 100%;
 }
 .header-stack {
-  @extend .full-width;
+  @extend .clear-content-margin;
   position: relative;
   height: 291px;
   margin-bottom: 42px;

@@ -32,55 +32,14 @@
                 </div>
 
                 <div class="main-content">
-                    {{--<div class="robo-advisors__list js-ra-list">--}}
-                        {{--<div class="robo-advisors__list-header">--}}
-                            {{--<a href="{{sort_url('company')}}" class="robo-advisors__lh-item robo-advisors__lh-company">--}}
-                                {{--Company--}}
-                                {{--<span class="sort-icon {{sort_type('company')}}"></span>--}}
-                            {{--</a>--}}
-                            {{--<a href="{{sort_url('rating')}}" class="robo-advisors__lh-item robo-advisors__lh-rating">--}}
-                                {{--Rating--}}
-                                {{--<span class="sort-icon {{sort_type('rating')}}"></span>--}}
-                            {{--</a>--}}
-                            {{--<div class="robo-advisors__lh-item robo-advisors__lh-recommendation">--}}
-                                {{--Recommendation--}}
-                            {{--</div>--}}
-                            {{--<a href="{{sort_url('account')}}" class="robo-advisors__lh-item robo-advisors__lh-account">--}}
-                                {{--Min account--}}
-                                {{--<span class="sort-icon {{sort_type('account')}}"></span>--}}
-                            {{--</a>--}}
-                            {{--<a href="{{sort_url('fee')}}" class="robo-advisors__lh-item robo-advisors__lh-fee">--}}
-                                {{--Fee--}}
-                                {{--<span class="sort-icon {{sort_type('fee')}}"></span>--}}
-                            {{--</a>--}}
-                            {{--<a href="{{sort_url('aum')}}" class="robo-advisors__lh-item robo-advisors__lh-aum">--}}
-                                {{--AUM--}}
-                                {{--<span class="sort-icon {{sort_type('aum')}}"></span>--}}
-                            {{--</a>--}}
-                            {{--<div class="robo-advisors__lh-item robo-advisors__lh-details">--}}
-                                {{--Additional details--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--@if(count($roboAdvisors) > 0)--}}
-                            {{--<div class="robo-advisors__list-body">--}}
-                                {{--@foreach($roboAdvisors as $roboAdvisor)--}}
-                                    {{--@include('components/roboAdvisorsItem', [--}}
-                                        {{--'roboAdvisor' => $roboAdvisor,--}}
-                                        {{--'compareList' => getCompareList('compare_list'),--}}
-                                    {{--])--}}
-                                {{--@endforeach--}}
-                            {{--</div>--}}
-                        {{--@else--}}
-                            {{--<div class="robo-advisors__list-body robo-advisors__list-empty">--}}
-                                {{--<div class="robo-advisors__list-empty-message">--}}
-                                {{--Oops, nothing found matching your criteria.<br> Remove some features and try again.--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--@endif--}}
-                    {{--</div>--}}
-                    {{--<div class="links-container">--}}
-                        {{--{{ $roboAdvisors->links('components/pagination') }}--}}
-                    {{--</div>--}}
+
+                    <div class="panel-mob-content">
+                        @include ('_mobile/roboAdvisors/_robo-table-mob')
+                    </div>
+
+                    <div class="pagination-wrapper">
+                        {{ $roboAdvisors->links('_mobile/_components/pagination') }}
+                    </div>
 
                     <div class="robo-advisors__text-container">
                         <h2 class="h2">
