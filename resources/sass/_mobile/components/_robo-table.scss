@@ -11,7 +11,12 @@
   &__col-empty {
     display: table-cell;
     vertical-align: inherit;
+    background-color: $contentBG;
+    transition: background-color 200ms;
+  }
+  &__col-fixed {
     position: relative;
+    background-color: $contentBG;
   }
 
   &__col-empty {
@@ -23,6 +28,7 @@
   }
   &__row-content {
     @include font(13px, $Geometria, $text, 16px, 400);
+    position: relative;
   }
 
   &__row {
@@ -141,7 +147,7 @@
   }
   &__opener {
     position: absolute;
-    right: 6px;
+    right: 5px;
     width: 8px;
     height: 18px;
     cursor: pointer;
@@ -154,88 +160,13 @@
     display: none;
     overflow: hidden;
   }
-
+  &__wr-item{
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
   &__name-container {
     position: relative;
-    min-width: 130px;
-    z-index: 2;
-  }
-
-  &__layout {
-    background-color: $red;
-    //background-color: $contentBG;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 15px;
-    bottom: 0;
-    margin: auto;
-    padding-left: 4px;
-    padding-right: 4px;
-    //box-shadow: $boxShadow08;
-    box-shadow: 0 4px 12px rgba(0,0,0,50);
-    border-radius: 0;
-    transition: border-radius 1000ms;
-
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: -12px;
-      left: 0;
-      right: 0;
-      height: 12px;
-      background-color: #ef6767;
-      border-radius: 0;
-      transition: all 1000ms;
-    }
-    //&:after {
-    //  content: '';
-    //  display: block;
-    //  position: absolute;
-    //  top: 4px;
-    //  left: 4px;
-    //  right: 4px;
-    //  bottom: 4px;
-    //  background-color: transparent;
-    //  border-radius: 18px;
-    //}
-  }
-  &__row-head &__col:first-child &__layout{
-    padding-top: 4px;
-    border-radius: 20px 20px 0 0;
-    &:before {
-      display: none;
-    }
-  }
-  &__row:nth-last-child(2) &__col:first-child &__layout{
-    padding-bottom: 4px;
-    border-radius: 0 0 20px 20px;
-  }
-
-  .open {
-    .robo-table__layout {
-      border-radius: 0 0 20px 20px;
-      transition: border-radius 200ms;
-    }
-    .robo-table__arrow-long-down {
-      transform: rotate(180deg);
-      .cls-1 {
-        stroke: #172341;
-      }
-    }
-  }
-  .open + &__row-content + &__row {
-    .robo-table__layout {
-      border-radius: 20px 20px 0 0 ;
-      transition: border-radius 200ms;
-      &:before {
-        top: 12px;
-        height: 0;
-        border-radius: 20px 20px 0 0 ;
-        transition: all 200ms;
-      }
-    }
+    width: 135px;
   }
 
   &__overlay {
@@ -244,11 +175,219 @@
     left: 0;
     right: 15px;
     bottom: 0;
+    margin: auto;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 0;
+    transition: border-radius 1000ms;
+  }
+  &__row-head &__col-fixed &__overlay{
+    padding-top: 4px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    &:before {
+      display: none;
+    }
+  }
+  &__row:nth-last-child(2) &__col-fixed &__overlay{
+    padding-bottom: 4px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .open {
+    .robo-table__overlay {
+      border-bottom-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      transition: border-radius 200ms;
+    }
+    .robo-table__arrow-long-down {
+      transform: rotate(180deg);
+      .cls-1 {
+        stroke: #172341;
+      }
+    }
+    .robo-table__col{
+      background-color: $white;
+    }
+
+    .recommendation {
+      .recommendation__graf {
+        height: 11px;
+
+        span {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .open + &__row-content {
+    .robo-table__col{
+      background-color: $white;
+    }
+  }
+  .open + &__row-content + &__row {
+    .robo-table__overlay {
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      transition: border-radius 200ms;
+      &:before {
+        top: 12px;
+        height: 0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        transition: all 200ms;
+      }
+    }
+  }
+  &__layout {
+    position: relative;
     box-shadow: none;
     padding: 0;
-    background-color: #9aef67;
-    margin: 4px;
     border-radius: 18px;
-    z-index: 1;
+    width: 146px;
+    height: 76px;
+    margin: 3px -3px 3px -8px;
+  }
+  &__layout &__name-container {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+  }
+
+  &__compare-button {
+    margin: 0;
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    @include font(14px, $Geometria, $text, 17px, 400);
+  }
+  &__link {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  &__review {
+    @include font(14px, $Geometria, $text, 17px, 400);
+  }
+
+  &__compare-form {
+    &.active {
+      .robo-table__compare-button {
+        color: $red;
+      }
+    }
+  }
+  &__actions {
+    display: flex;
+    height: 38px;
+    background-color: $white;
+    box-shadow: $boxShadow08;
+    border-radius: 22px;
+    transition-property: opacity;
+    transition-delay: 0ms;
+    transition-duration: 50ms;
+
+    &-part {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid $contentBG;
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+  &__actions-wr,
+  &__actions,
+  &__actions-overlay {
+    width: 328px;
+    height: 38px;
   }
 }
+.robo-table {
+  width: 946px;
+}
+.robo-table-wrapper {
+  position: relative;
+
+  .mCSB_1_scrollbar {
+    height: 0;
+    overflow: hidden;
+  }
+}
+.robo-table-scroll {
+  max-width: 946px;
+  overflow: hidden;
+}
+.robo-table-clone-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 946px;
+  overflow: hidden;
+  margin: -10px 0 -10px -10px;
+  padding: 10px 0 10px 10px;
+
+  .robo-table {
+    &__actions-wr {
+      position: absolute;
+      bottom: 28px;
+      margin: auto;
+    }
+    &__actions-overlay {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+    &__overlay {
+      background-color: $contentBG;
+      box-shadow: $boxShadow08;
+      z-index: 1;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -12px;
+        left: 0;
+        right: 0;
+        height: 12px;
+        background-color: $contentBG;
+        border-radius: 0;
+        transition: all 1000ms;
+      }
+    }
+    .open{
+      .robo-table__layout {
+        background-color: $white;
+      }
+    }
+    &__layout {
+      z-index: 2;
+      background-color: $contentBG;
+    }
+
+    &__name-container {
+      z-index: 3;
+    }
+    &__col {
+      visibility: hidden;
+    }
+    &__col-fixed,
+    &__col-actions {
+      visibility: visible;
+    }
+  }
+}
+.panel-mob-content__padd {
+  margin-top: 32px;
+}
+
+

@@ -1,7 +1,9 @@
 require('./bootstrap');
 window.noUiSlider = require('nouislider');
+require('malihu-custom-scrollbar-plugin');
 
 $(function () {
+
     $(document).click(function(e) {
         let $target = $(e.target);
         if (!$target.closest('.js-search-wrapp').length && $('.js-search-form.open').length) {
@@ -180,13 +182,113 @@ $(function () {
     /** End Robo Advisor Filters**/
     /** Robo Advisor list**/
     $('.js-robo-opener').on('click', function (e) {
-        $(this).toggleClass('open');
+        let opener_id = $(this).attr('data-id-robo-opener');
+        let $robo_openers = $('.js-robo-opener[data-id-robo-opener="'+opener_id+'"]');
 
-        $(this).parents('.js-robo-row')
-            .toggleClass('open')
-            .next('.js-robo-row-content')
-            .find('.js-robo-wr')
-            .stop().slideToggle(300);
+        if ($robo_openers.parents('.js-robo-row:first').hasClass('open')) {
+            $robo_openers.parents('.js-robo-row')
+                .next('.js-robo-row-content')
+                .find('.js-robo-action-overlay').fadeOut(100, function () {
+                    $robo_openers.removeClass('open');
+                    $robo_openers.parents('.js-robo-row')
+                        .removeClass('open')
+                        .next('.js-robo-row-content')
+                        .find('.js-robo-wr')
+                        .stop().slideUp(300);
+                });
+
+        } else {
+            $robo_openers.addClass('open');
+            $robo_openers.parents('.js-robo-row')
+                .addClass('open')
+                .next('.js-robo-row-content')
+                .find('.js-robo-wr')
+                .stop().slideDown(300, function () {
+                    $(this).find('.js-robo-action-overlay').fadeIn(150);
+                });
+        }
     });
+    $('.js-robo-table-wrapper').outerWidth(true);
+
+    let $scrollable_y = $('.js-scrollableX');
+    $scrollable_y.each(function () {
+        $(this).mCustomScrollbar({
+            axis:"x",
+            theme:"inset-dark",
+            scrollbarPosition:"outside",
+            contentTouchScroll: 1,
+            documentTouchScroll: true
+        });
+    });
+    $scrollable_y.removeClass("mCustomScrollbar");
+    // Header compare scroll
+    RoboActionLeftPosition();
+    $(window).resize(function(){
+        RoboActionLeftPosition();
+    });
+    function RoboActionLeftPosition()
+    {
+        let $fixed_robo_action = $('.js-robo-action');
+        $fixed_robo_action.each(function () {
+            let $fixed = $(this);
+
+            let $wrapper = $fixed.parents('.js-robo-table-wrapper:first');
+            let fixed_width = $fixed.outerWidth(true);
+            let wrapper_width = $wrapper.outerWidth(true);
+            let position_left = (wrapper_width - fixed_width) / 2;
+            $fixed.attr('style', 'left:' + (position_left) + 'px;');
+        });
+    }
     /** End Robo Advisor list**/
+    /*************
+     *  COMPARE  *
+     ************/
+    $('.js-add-to-compare').on('submit', function (e) {
+        e.preventDefault();
+        let form = $(this);
+        if (form.hasClass('in-progress')) {
+            return false;
+        }
+        toggleCompare(form, updateCompareLink);
+
+        return false;
+    });
+
+    function toggleCompare(form, cb) {
+        $.ajax({
+            url: form.attr('action'),
+            type: 'post',
+            data:  new FormData(form.get(0)),
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                form.addClass('in-progress');
+            },
+            success: function (response) {
+                if (response.success) {
+                    form.toggleClass('active');
+                    cb(response.data.compareList);
+                }
+            },
+            error: function () {
+                console.log('Error add to compare');
+            },
+            complete: function () {
+                form.removeClass('in-progress');
+            }
+        });
+    }
+
+    function updateCompareLink(compareList) {
+        let list = $('.js-compare-counter');
+
+        if (compareList.length > 0) {
+            list.find('.js-compare-counter-value').html(compareList.length);
+            list.show();
+        } else {
+            list.find('.js-compare-counter-value').html(0);
+            list.hide();
+        }
+    }
 });

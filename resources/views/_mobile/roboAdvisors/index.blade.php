@@ -33,7 +33,7 @@
 
                 <div class="main-content">
 
-                    <div class="panel-mob-content">
+                    <div class="panel-mob-content panel-mob-content__padd">
                         @include ('_mobile/roboAdvisors/_robo-table-mob')
                     </div>
 

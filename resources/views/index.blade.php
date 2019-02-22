@@ -23,7 +23,7 @@
                             <a class="button button_blue" href="{{route('roboAdvisors')}}">More Robo-Advisors</a>
                         </div>
                         <div class="rightSide">
-                            <div class="robo-advisors__list js-ra-list">
+                            <div class="robo-advisors__list panel-with-padding js-ra-list">
                                 <div class="robo-advisors__list-header">
                                     <a href="{{sort_url('company')}}" class="robo-advisors__lh-item robo-advisors__lh-company">
                                         Company

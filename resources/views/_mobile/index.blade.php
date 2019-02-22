@@ -22,7 +22,9 @@
                         <a class="second-section__button" href="{{route('roboAdvisors')}}">More Robo-Advisors</a>
                     </div>
                     <div class="section-section__content">
-
+                        <div class="panel-mob-content">
+                            @include ('_mobile/roboAdvisors/_robo-table-mob')
+                        </div>
                     </div>
                 </section>
                 <section class="third-section">

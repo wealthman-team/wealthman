@@ -23,6 +23,15 @@ mix.webpackConfig({
 			}
 		]
 	}
+}).options({
+    postCss: [
+        require('autoprefixer')({
+            browsers: [
+                "last 10 version",
+                "> 1%"
+            ],
+        })
+    ]
 });
 
 mix.js('resources/js/app.js', 'public/js')
