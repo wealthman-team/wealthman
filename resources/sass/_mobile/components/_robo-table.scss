@@ -319,8 +319,9 @@
   }
 }
 .robo-table-scroll {
-  max-width: 946px;
-  overflow: hidden;
+  width: 100%;
+  overflow: auto;
+  position: relative;
 }
 .robo-table-clone-wrapper {
   position: absolute;
@@ -336,8 +337,7 @@
   .robo-table {
     &__actions-wr {
       position: absolute;
-      bottom: 28px;
-      margin: auto;
+      margin-top: -66px;
     }
     &__actions-overlay {
       display: none;

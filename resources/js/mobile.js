@@ -210,17 +210,17 @@ $(function () {
     });
     $('.js-robo-table-wrapper').outerWidth(true);
 
-    let $scrollable_y = $('.js-scrollableX');
-    $scrollable_y.each(function () {
-        $(this).mCustomScrollbar({
-            axis:"x",
-            theme:"inset-dark",
-            scrollbarPosition:"outside",
-            contentTouchScroll: 1,
-            documentTouchScroll: true
-        });
-    });
-    $scrollable_y.removeClass("mCustomScrollbar");
+    // let $scrollable_y = $('.js-scrollableX');
+    // $scrollable_y.each(function () {
+    //     $(this).mCustomScrollbar({
+    //         axis:"x",
+    //         theme:"inset-dark",
+    //         scrollbarPosition:"outside",
+    //         contentTouchScroll: 1,
+    //         documentTouchScroll: true
+    //     });
+    // });
+    // $scrollable_y.removeClass("mCustomScrollbar");
     // Header compare scroll
     RoboActionLeftPosition();
     $(window).resize(function(){
@@ -236,7 +236,7 @@ $(function () {
             let fixed_width = $fixed.outerWidth(true);
             let wrapper_width = $wrapper.outerWidth(true);
             let position_left = (wrapper_width - fixed_width) / 2;
-            $fixed.attr('style', 'left:' + (position_left) + 'px;');
+            $fixed.attr('style', 'left:' + (position_left+10) + 'px;');
         });
     }
     /** End Robo Advisor list**/
