@@ -4,9 +4,9 @@
     @include('layouts/header')
 
     <div class="content content__pd-bot">
-        <section class="firstSection">
+        <section class="first-section">
             <div class="container">
-                <div class="firstSection__container" >
+                <div class="first-section__container" >
                     <h1 class="page-header">Select the best suited robo-advisor</h1>
                     <h2 class="page-sub-header">Use our sophisticated Advisor screener to select robo-advisor independently or consult our free competent support.</h2>
                     <a class="button button_blue" href="{{route('roboAdvisors')}}">Start Search</a>
@@ -14,7 +14,7 @@
             </div>
         </section>
         <div class="container">
-            <section class="secondSection">
+            <section class="second-section">
                 <div class="robo-advisors__container">
                     <div class="tableContainerRow">
                         <div class="leftSide">
@@ -66,7 +66,7 @@
                 </div>
             </section>
 
-            <section class="thirdSection">
+            <section class="third-section">
                 <div class="container">
                     <div class="statistic">
                         <div class="statistic__left-side">
@@ -101,7 +101,7 @@
                 </div>
             </section>
 
-            <section class="fourthSection">
+            <section class="fourth-section">
                 <div class="container">
                     <h2 class="block-header text-center">What is a Robo-Advisor?</h2>
                     <div class="robo-informer">
@@ -141,7 +141,7 @@
                 </div>
             </section>
         </div>
-        <section class="fifthSection">
+        <section class="fifth-section">
             <div class="container">
                 <div class="why-use">
                     <div class="why-use__block">

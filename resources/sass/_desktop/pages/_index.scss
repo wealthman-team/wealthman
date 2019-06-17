@@ -1,11 +1,12 @@
 /* first section */
-.firstSection {
+.first-section {
   margin: -80px auto 0;
   overflow: hidden;
 
   .page-header {
+    max-width: 600px;
     font-size: 28px;
-    max-width: none;
+    line-height: 40px
   }
 
   &__container {
@@ -34,7 +35,7 @@
   }
 }
 /* second section */
-.secondSection {
+.second-section {
   margin-top: -175px;
   margin-left: 20px;
 
@@ -71,7 +72,7 @@
   }
 }
 /* third section */
-.thirdSection {
+.third-section {
   margin-top: 168px;
 
   .block-sub-header {
@@ -211,7 +212,7 @@
   }
 }
 /* fourth section */
-.fourthSection {
+.fourth-section {
   margin-top: 151px;
 
   .block-header {
@@ -391,7 +392,7 @@
   }
 }
 /* fifth section */
-.fifthSection {
+.fifth-section {
   height: 442px;
   margin-top: 39px;
   overflow: hidden;

@@ -508,7 +508,7 @@ $(function () {
                                     $('textarea[name="message"]', form).addClass('is-invalid');
                                     $('.js-message-error', form).html('<span>' + response.message[0] + '</span>');
                                 } else {
-                                    $('input[name="message"]', form).addClass('is-valid');
+                                    $('textarea[name="message"]', form).addClass('is-valid');
                                 }
                             },
                             complete: function () {
