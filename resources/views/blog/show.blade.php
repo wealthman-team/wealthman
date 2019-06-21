@@ -4,7 +4,7 @@
     @include('layouts/header')
     <div class="content blog-post">
 
-        @include('components/parallax', ['bg' => '/images/header-bg.jpg'])
+        @include('components/parallax', ['bg' => '/images/header-bg.jpg', 'hidden_stock' => true])
 
         <div class="container">
             <div class="topic">
